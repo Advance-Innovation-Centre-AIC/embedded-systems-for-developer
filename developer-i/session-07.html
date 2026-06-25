@@ -55,7 +55,7 @@ state machine: start / play / over<br />
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="4" style="--paginate:true;--theme:default;" data-marpit-pagination-total="15">
 <h2 id="%E0%B8%97%E0%B8%9A%E0%B8%97%E0%B8%A7%E0%B8%99--pong_step3py-%E0%B9%84%E0%B8%A1%E0%B9%89%E0%B9%80%E0%B8%A3%E0%B8%B2%E0%B8%95%E0%B8%B5%E0%B8%A5%E0%B8%B9%E0%B8%81%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A">ทบทวน — pong_step3.py: ไม้เราตีลูกกลับ</h2>
-<p>ไฟล์ <code>practise_codes/pong_step3.py</code> เป็นจุดเริ่มของคาบ ไม้เรา &quot;ตีโดน&quot; ลูกแล้วลูกเด้งกลับ:</p>
+<p>ไฟล์ <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/pong_step3.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/pong_step3.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a> เป็นจุดเริ่มของคาบ ไม้เรา &quot;ตีโดน&quot; ลูกแล้วลูกเด้งกลับ:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># --- ตีกลับเมื่อชนไม้เรา (ลูกกำลังวิ่งเข้าหาไม้: ball_vx &lt; 0) ---</span>
 <span class="hljs-keyword">if</span> ball_vx &lt; <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> game.hit(ball, player_paddle):
     <span class="hljs-comment"># hit_offset: โดนบน/กลาง/ล่างของไม้ = -1..1 (ใช้กำหนดมุมเด้ง)</span>
@@ -314,7 +314,7 @@ ai_paddle.move_to(ai_paddle.x, ai_y)
 <li>[ ] อธิบายได้ว่า <strong>&quot;AI ของเรา = กฎที่อ่านสถานะแล้วเลือกการเคลื่อนที่&quot;</strong></li>
 </ul>
 <div style="border-left:4px solid #c80;background:#fff8e6;padding:8px 14px;margin-top:8px">
-<b>การบ้าน 30% (ทำเอง):</b> เริ่มจาก <code>practise_codes/pong_step3.py</code> เติมส่วนตีลูกกลับให้ครบ
+<b>การบ้าน 30% (ทำเอง):</b> เริ่มจาก <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/pong_step3.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/pong_step3.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a> เติมส่วนตีลูกกลับให้ครบ
 (ถ้าติด ยกมือถามได้เลย เดี๋ยวเฉลยในห้อง) แล้วลองต่อยอด:<br />
 1. ปรับ <code>AI_SPEED</code> 3 ค่า แล้วบอกว่าค่าไหนสนุกสุด เพราะอะไร<br />
 2. ทำให้ AI "พลาดบ้าง" สัก 1 ใน 10 เฟรม (ไม่ขยับ) แล้วสังเกตว่าเล่นง่ายขึ้นไหม<br />
