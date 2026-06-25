@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WiFi + MQTT — IoT Extra Projects</title>
+<style>
+  :root{--bg:#080d18;--ink:#eef2fb;--muted:#94a1bf;--faint:#6f7c9c;--line:#1b2540;--card:#0f1830;--card2:#121d38;
+    --teal:#22d3ee;--gb:#a3c93a;--blue:#6cb2f5;--orange:#ffb066;--gold:#ecc14a;--purple:#c4a6ff;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"IBM Plex Sans Thai","Noto Sans Thai",-apple-system,BlinkMacSystemFont,Inter,sans-serif;
+    background:radial-gradient(1100px 600px at 85% -8%,#16243f 0,rgba(8,13,24,0) 55%),var(--bg);
+    color:var(--ink);padding:44px 5vw 64px;min-height:100%;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1280px;margin:0 auto}
+  .eyebrow{color:var(--teal);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
+  h1{font-size:clamp(1.9rem,4vw,3rem);font-weight:850;margin-top:10px;line-height:1.12}
+  h1 .a{background:linear-gradient(90deg,var(--gb),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);margin-top:12px;font-size:1.06rem;max-width:820px}
+  .sub b{color:#fff}
+  .meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}
+  .pill{font-size:.76rem;font-weight:700;padding:6px 13px;border-radius:999px;background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--muted)}
+  .pill b{color:#fff}
+  section{margin-top:34px}
+  .ph{display:flex;align-items:baseline;gap:12px;padding:12px 16px;border-radius:14px;border:1px solid var(--line);border-left:4px solid var(--c);
+    background:linear-gradient(100deg,color-mix(in srgb,var(--c) 12%,transparent),rgba(255,255,255,.012))}
+  .ph .code{font-weight:900;font-size:1.3rem;color:var(--c)}
+  .ph .name{font-weight:800;font-size:1.1rem}.ph .tag{color:var(--muted);font-size:.88rem;margin-left:auto}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px;margin-top:14px}
+  a.s{display:flex;flex-direction:column;gap:7px;background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--line);border-top:3px solid var(--c);border-radius:13px;padding:14px 15px;text-decoration:none;color:inherit;
+    transition:transform .18s,border-color .18s,box-shadow .18s}
+  a.s:hover{transform:translateY(-5px);border-color:var(--c);box-shadow:0 12px 26px rgba(0,0,0,.45)}
+  .st{font-weight:800;font-size:.98rem;color:#fff}
+  .topic{font:600 .78rem/1.3 ui-monospace,Menlo,monospace;color:var(--teal);word-break:break-all}
+  .row{display:flex;align-items:center;gap:8px;margin-top:2px}
+  .lvl{font-size:.66rem;font-weight:800;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+  .lvl.e{color:var(--gb);border-color:color-mix(in srgb,var(--gb) 45%,transparent)}
+  .lvl.m{color:var(--orange);border-color:color-mix(in srgb,var(--orange) 45%,transparent)}
+  .lvl.h{color:#ff84cf;border-color:#ff84cf55}
+  .boards{color:var(--faint);font-size:.74rem;margin-left:auto}
+  .go{margin-top:auto;font-size:.72rem;font-weight:800;color:var(--c);padding-top:4px}
+  .foot{margin-top:30px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:.82rem}
+</style></head>
+<body><div class="wrap">
+  <div class="eyebrow">BENTO · Extra Pack</div>
+  <h1>WiFi + MQTT — <span class="a">IoT Extra Projects</span></h1>
+  <p class="sub">10 โปรเจกต์สั้น ต่อยอดจากคาบ WiFi+MQTT — pub/sub บน broker จริง (test.mosquitto.org:1883) คือ pattern เดียวกับ
+    <b>Industrial IoT</b>. ใช้ปิดท้ายได้ทั้งคอร์สเกมและ embedded · คลิกการ์ดเพื่อเปิดสไลด์</p>
+  <div class="meta"><span class="pill"><b>10</b> use cases</span><span class="pill"><b>3</b> แนว: เกม · IoT · Control</span>
+    <span class="pill">MQTT 1883 (plaintext)</span><span class="pill">ต่อ WiFi ผ่านเมนูก่อน</span></div>
+
+  <section style="--c:var(--gb)"><div class="ph"><span class="code">A</span><span class="name">แนวเกม</span><span class="tag">ต่อยอดคอร์สเกมโดยตรง</span></div>
+  <div class="cards">
+    <a class="s" style="--c:var(--gb)" href="ex-A1_leaderboard.html"><div class="st">Leaderboard ทั้งห้อง</div><div class="topic">tesaiot/class/score</div><div class="row"><span class="lvl e">ง่าย</span><span class="boards">ทุกบอร์ดรันร่วม</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--gb)" href="ex-A2_2player.html"><div class="st">เล่นข้ามบอร์ด 2-player (Pong)</div><div class="topic">game/room1/p1 · /p2</div><div class="row"><span class="lvl m">กลาง</span><span class="boards">2 บอร์ด</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--gb)" href="ex-A3_wii_remote.html"><div class="st">จอยรีโมตเอียง (Wii-style)</div><div class="topic">ctrl/ship</div><div class="row"><span class="lvl m">กลาง</span><span class="boards">2 บอร์ด (TX/RX)</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--gb)" href="ex-A4_coop_boss.html"><div class="st">Co-op ยิง Boss ร่วมกัน</div><div class="topic">game/boss/dmg</div><div class="row"><span class="lvl h">ยาก</span><span class="boards">≥2 บอร์ด</span></div><span class="go">เปิดสไลด์ →</span></a>
+  </div></section>
+
+  <section style="--c:var(--blue)"><div class="ph"><span class="code">B</span><span class="name">แนว IoT / Embedded</span><span class="tag">เซนเซอร์ขึ้นคลาวด์</span></div>
+  <div class="cards">
+    <a class="s" style="--c:var(--blue)" href="ex-B1_telemetry.html"><div class="st">Telemetry → Dashboard มือถือ</div><div class="topic">sensor/board01/accel</div><div class="row"><span class="lvl e">ง่าย</span><span class="boards">1 บอร์ด + มือถือ</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--blue)" href="ex-B2_sensor_net.html"><div class="st">เครือข่ายเซนเซอร์ (wildcard +)</div><div class="topic">env/+/temp</div><div class="row"><span class="lvl m">กลาง</span><span class="boards">node + aggregator</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--blue)" href="ex-B3_alert.html"><div class="st">แจ้งเตือนสั่น/ล้ม</div><div class="topic">alert/board01</div><div class="row"><span class="lvl m">กลาง</span><span class="boards">≥2 บอร์ด</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--blue)" href="ex-B4_poll.html"><div class="st">โหวต / quiz สด</div><div class="topic">poll/q1</div><div class="row"><span class="lvl e">ง่าย</span><span class="boards">voter + tally</span></div><span class="go">เปิดสไลด์ →</span></a>
+  </div></section>
+
+  <section style="--c:var(--orange)"><div class="ph"><span class="code">C</span><span class="name">แนว Control</span><span class="tag">สั่งงานข้ามบอร์ด</span></div>
+  <div class="cards">
+    <a class="s" style="--c:var(--orange)" href="ex-C1_remote_led.html"><div class="st">รีโมตคุม LED / เสียง</div><div class="topic">cmd/led</div><div class="row"><span class="lvl e">ง่าย</span><span class="boards">sender + actuator</span></div><span class="go">เปิดสไลด์ →</span></a>
+    <a class="s" style="--c:var(--orange)" href="ex-C2_msgboard.html"><div class="st">ป้ายข้อความข้ามบอร์ด</div><div class="topic">msg/board02</div><div class="row"><span class="lvl e">ง่าย</span><span class="boards">sender + display</span></div><span class="go">เปิดสไลด์ →</span></a>
+  </div></section>
+
+  <div class="foot">BENTO &amp; TESAIoT · Extra WiFi+MQTT IoT Pack · โค้ดอยู่ใน <b>../codes/</b> · ต่อ WiFi ผ่านเมนูบนจอก่อน แล้วเปิดไฟล์ใน BENTO IDE → Program to Device</div>
+</div></body></html>

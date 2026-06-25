@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Embedded Systems for Developer — BENTO & TESAIoT</title>
+<style>
+  :root{--bg:#080d18;--ink:#eef2fb;--muted:#94a1bf;--faint:#6f7c9c;--line:#1b2540;--card:#0f1830;--card2:#121d38;
+    --teal:#22d3ee;--gb:#a3c93a;--orange:#ffb066;}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"IBM Plex Sans Thai","Noto Sans Thai",-apple-system,BlinkMacSystemFont,Inter,sans-serif;
+    background:radial-gradient(1100px 620px at 85% -8%,#16243f 0,rgba(8,13,24,0) 55%),
+      radial-gradient(900px 560px at 8% 4%,#13213c 0,rgba(8,13,24,0) 50%),var(--bg);
+    color:var(--ink);padding:56px 5vw 70px;min-height:100vh;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto}
+  .eyebrow{color:var(--teal);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.8rem}
+  h1{font-size:clamp(2.1rem,4.6vw,3.4rem);font-weight:850;margin-top:10px;line-height:1.12;letter-spacing:-.01em}
+  h1 .a{background:linear-gradient(90deg,var(--gb),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);margin-top:14px;font-size:clamp(1rem,1.4vw,1.18rem);max-width:760px}
+  .sub b{color:#fff}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+  .pill{font-size:.78rem;font-weight:700;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.03);border:1px solid var(--line);color:var(--muted)}
+  .pill b{color:#fff}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:34px}
+  a.s{display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--line);border-top:4px solid var(--c);border-radius:18px;padding:24px 22px;text-decoration:none;color:inherit;
+    transition:transform .2s,border-color .2s,box-shadow .2s}
+  a.s:hover{transform:translateY(-6px);border-color:var(--c);box-shadow:0 16px 34px rgba(0,0,0,.5)}
+  .badge{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:1.25rem;color:#0a1020;background:var(--c)}
+  .ct{font-weight:850;font-size:1.32rem;color:#fff;margin-top:4px}
+  .cd{color:var(--muted);font-size:.95rem;flex:1}
+  .tags{display:flex;gap:7px;flex-wrap:wrap}
+  .tag{font-size:.7rem;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--faint)}
+  .go{font-size:.8rem;font-weight:800;color:var(--c)}
+  .foot{margin-top:36px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:.84rem}
+</style></head>
+<body><div class="wrap">
+  <div class="eyebrow">BENTO &amp; TESAIoT · Advance Innovation Centre (AIC)</div>
+  <h1>Embedded Systems <span class="a">for Developer</span></h1>
+  <p class="sub">เรียน embedded systems จากของจริงบนบอร์ด <b>BENTO PSoC Edge</b> ด้วย <b>MicroPython</b> —
+    แตะฮาร์ดแวร์ (LED · ปุ่ม · เซนเซอร์ · WiFi) แล้วสร้างเกม + งาน IoT ด้วยตัวเอง · คลิกเลือกหลักสูตร</p>
+  <div class="meta"><span class="pill"><b>2</b> หลักสูตรหลัก</span><span class="pill"><b>1</b> Extra Pack</span>
+    <span class="pill">MicroPython</span><span class="pill">core 70% · เขียนเอง 30%</span></div>
+
+  <div class="cards">
+    <a class="s" style="--c:var(--teal)" href="developer-i/roadmap.html">
+      <span class="badge">I</span>
+      <div class="ct">Developer I</div>
+      <div class="cd">รากฐาน embedded — LED/ปุ่ม/timer/เซนเซอร์/เสียง/WiFi แล้วประกอบเป็น 2 เกม <b>Pong + Space Shooter</b></div>
+      <div class="tags"><span class="tag">14 คาบ</span><span class="tag">Pong</span><span class="tag">Shooter</span><span class="tag">WiFi+MQTT</span></div>
+      <span class="go">เปิดหลักสูตร →</span>
+    </a>
+    <a class="s" style="--c:var(--gb)" href="developer-ii/roadmap.html">
+      <span class="badge">II</span>
+      <div class="ct">Developer II</div>
+      <div class="cd">ต่อยอด — โครงสร้างข้อมูล list/deque (<b>Snake</b>) + ฟิสิกส์แรงโน้มถ่วง (<b>Flappy</b>) + interrupts</div>
+      <div class="tags"><span class="tag">13 คาบ</span><span class="tag">Snake</span><span class="tag">Flappy</span><span class="tag">Pin.irq</span></div>
+      <span class="go">เปิดหลักสูตร →</span>
+    </a>
+    <a class="s" style="--c:var(--orange)" href="extra/index.html">
+      <span class="badge">+</span>
+      <div class="ct">Extra — WiFi + MQTT</div>
+      <div class="cd">IoT Extra Projects 10 ตัว — leaderboard, เล่นข้ามบอร์ด, telemetry, แจ้งเตือน, รีโมตคุมข้ามบอร์ด</div>
+      <div class="tags"><span class="tag">10 use cases</span><span class="tag">MQTT 1883</span><span class="tag">IoT</span></div>
+      <span class="go">เปิด Extra Pack →</span>
+    </a>
+  </div>
+
+  <div class="foot">BENTO &amp; TESAIoT · Embedded Systems for Developer · สอนบนบอร์ด PSoC Edge ด้วย MicroPython · เล่นได้ → แก้ได้ → สร้างได้ → ส่งจริง</div>
+</div></body></html>

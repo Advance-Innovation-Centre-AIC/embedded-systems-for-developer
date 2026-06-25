@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamental of Embedded Systems Developer I — แผนการเรียน 14 คาบ</title>
+<style>
+  :root{
+    --bg:#080d18; --bg2:#0c1426; --ink:#eef2fb; --muted:#94a1bf; --faint:#6f7c9c;
+    --line:#1b2540; --card:#0f1830; --card2:#121d38;
+    --teal:#22d3ee; --gb:#a3c93a; --blue:#6cb2f5; --pink:#ff84cf; --orange:#ffb066; --gold:#ecc14a; --purple:#c4a6ff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"IBM Plex Sans Thai","Noto Sans Thai",-apple-system,BlinkMacSystemFont,"Inter",Segoe UI,sans-serif;
+    background:
+      radial-gradient(1100px 620px at 88% -8%,#16243f 0%,rgba(8,13,24,0) 55%),
+      radial-gradient(900px 560px at 8% 4%,#13213c 0%,rgba(8,13,24,0) 50%),
+      var(--bg);
+    color:var(--ink);padding:46px 5vw 70px;min-height:100%;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1340px;margin:0 auto}
+  .eyebrow{color:var(--teal);font-weight:800;letter-spacing:.18em;text-transform:uppercase;font-size:.78rem}
+  h1{font-size:clamp(2rem,4.4vw,3.3rem);font-weight:850;margin-top:10px;line-height:1.12;letter-spacing:-.01em}
+  h1 .a{background:linear-gradient(90deg,var(--gb),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .sub{color:var(--muted);margin-top:14px;font-size:clamp(1rem,1.35vw,1.16rem);max-width:880px}
+  .sub b{color:#fff;font-weight:700}
+  .meta{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+  .pill{font-size:.78rem;font-weight:700;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.03);
+    border:1px solid var(--line);color:var(--muted);backdrop-filter:blur(4px)}
+  .pill b{color:#fff}
+  .flow{margin-top:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;color:var(--faint);font-size:.86rem;font-weight:700}
+  .flow .step{color:var(--ink)}.flow .arr{color:var(--teal);font-weight:900}
+  .phase{margin-top:40px}
+  .ph{display:grid;grid-template-columns:auto 1fr;gap:14px 16px;align-items:center;padding:14px 18px;border-radius:16px;
+    background:linear-gradient(100deg,color-mix(in srgb,var(--c) 13%,transparent),rgba(255,255,255,.015));
+    border:1px solid var(--line);border-left:4px solid var(--c)}
+  .badge{grid-row:1/3;width:52px;height:52px;border-radius:14px;display:grid;place-items:center;font-weight:900;font-size:1.5rem;
+    color:#0a1020;background:var(--c);box-shadow:0 6px 18px color-mix(in srgb,var(--c) 35%,transparent)}
+  .phtext{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .pname{font-weight:850;font-size:1.18rem}
+  .psub{color:var(--c);font-weight:700;font-size:.92rem}
+  .prange{color:var(--faint);font-weight:700;font-size:.82rem;margin-left:auto;white-space:nowrap}
+  .ptag{grid-column:2;color:var(--muted);font-size:.9rem;margin-top:-2px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:16px;margin-top:16px}
+  a.s{display:flex;flex-direction:column;background:linear-gradient(180deg,var(--card2),var(--card));
+    border:1px solid var(--line);border-radius:15px;overflow:hidden;text-decoration:none;color:inherit;
+    transition:transform .22s cubic-bezier(.2,.7,.3,1),border-color .22s,box-shadow .22s}
+  a.s:hover{transform:translateY(-6px);border-color:color-mix(in srgb,var(--c) 60%,var(--line));
+    box-shadow:0 16px 34px rgba(0,0,0,.5),0 0 0 1px color-mix(in srgb,var(--c) 30%,transparent)}
+  .thumb{aspect-ratio:800/430;background:#05080f center/cover no-repeat;position:relative;border-bottom:1px solid var(--line)}
+  .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(8,13,24,.05),rgba(8,13,24,.5))}
+  .cap{position:absolute;left:9px;top:9px;z-index:2;font-size:.68rem;font-weight:800;color:#fff;background:rgba(8,13,24,.78);
+    border:1px solid rgba(255,255,255,.14);padding:2px 9px;border-radius:999px;font-variant-numeric:tabular-nums}
+  .verb{position:absolute;right:9px;top:9px;z-index:2;font-size:.66rem;font-weight:800;color:var(--c);
+    background:color-mix(in srgb,var(--c) 16%,rgba(8,13,24,.8));border:1px solid color-mix(in srgb,var(--c) 50%,transparent);
+    padding:2px 9px;border-radius:999px}
+  .b{padding:12px 13px 13px;display:flex;flex-direction:column;flex:1}
+  .st{font-weight:800;font-size:.92rem;line-height:1.32;color:#fff}
+  .hl{color:var(--muted);font-size:.82rem;line-height:1.42;margin-top:6px}
+  .foot-row{margin-top:11px;padding-top:10px;border-top:1px solid rgba(255,255,255,.05);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .go{margin-left:auto;font-size:.76rem;font-weight:800;color:var(--c)}
+  .mvp{font-size:.66rem;font-weight:900;letter-spacing:.02em;padding:3px 9px;border-radius:999px;
+    background:linear-gradient(90deg,rgba(236,193,74,.22),rgba(236,193,74,.06));color:var(--gold);border:1px solid rgba(236,193,74,.45)}
+  .future{margin-top:40px;display:flex;align-items:center;gap:18px;padding:20px 24px;border:1px solid var(--line);border-radius:18px;
+    background:linear-gradient(100deg,rgba(196,166,255,.10),rgba(255,255,255,.015))}
+  .future .ar{font-size:1.7rem;color:var(--purple);font-weight:900} .future b{color:#fff} .future span{color:var(--muted)}
+  .foot{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;
+    color:var(--faint);font-size:.82rem;flex-wrap:wrap;gap:10px}
+  .foot a{color:var(--teal);text-decoration:none} .foot a:hover{text-decoration:underline}
+  @media(max-width:560px){body{padding:30px 5vw 50px}.prange{margin-left:0}.cards{grid-template-columns:1fr 1fr}}
+  @media(max-width:400px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body><div class="wrap">
+  <div class="eyebrow">Fundamental of Embedded Systems · Developer I</div>
+  <h1>แตะ <span class="a">ฮาร์ดแวร์จริง</span> แล้ว <span class="a">สร้างเกมด้วย MicroPython</span></h1>
+  <p class="sub">14 คาบ เรียน embedded จากของจริง — LED · ปุ่ม · เซนเซอร์ · จอ · เสียง · WiFi — โดยใช้
+    <b>MicroPython</b> ล้วน (REPL เห็นผลทันที) แล้วประกอบเป็น 2 เกมหลัก <b>Pong + Space Shooter</b>
+    ด้วยสูตร core 70% เขียนเอง 30%</p>
+  <div class="meta">
+    <span class="pill"><b>14</b> คาบ</span>
+    <span class="pill"><b>5</b> ช่วง · 2 เกม</span>
+    <span class="pill"><b>MicroPython</b> ล้วน</span>
+    <span class="pill">กลุ่มละ <b>3</b> · <b>1</b> บอร์ด/กลุ่ม</span>
+    <span class="pill">Embedded Lab + Games</span>
+  </div>
+  <div class="flow">
+    <span class="step">แตะฮาร์ดแวร์</span><span class="arr">→</span>
+    <span class="step">เขียน 30%</span><span class="arr">→</span>
+    <span class="step">ได้เกมเล่นได้</span><span class="arr">→</span>
+    <span class="step">ส่งจริง</span>
+    <span style="color:var(--faint);font-weight:600">· คลิกการ์ดเพื่อเปิดสไลด์</span>
+  </div>
+
+  <section class="phase" style="--c:var(--teal)">
+    <header class="ph">
+      <span class="badge">0</span>
+      <div class="phtext"><div class="pname">Embedded Foundations <span class="psub">เปิดฝาแตะฮาร์ดแวร์</span></div>
+      <div class="prange">คาบ 1–4</div></div>
+      <div class="ptag">เริ่มจาก LED · ปุ่ม · จอ · จอย ของจริง แล้วประกอบเป็น game loop ตัวแรก</div>
+    </header>
+    <div class="cards">
+      <a class="s" href="session-01.html">
+        <div class="thumb" style="background-image:url('img/home.png')">
+          <span class="cap">คาบ 1</span><span class="verb">สั่ง LED จริง</span>
+        </div>
+        <div class="b">
+          <div class="st">REPL + GPIO: ไฟ LED ดวงแรก</div>
+          <div class="hl">สั่งไฟ LED บนบอร์ดติด-ดับ-วิ่งได้ ด้วย MicroPython ไม่กี่บรรทัดใน REPL</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-02.html">
+        <div class="thumb" style="background-image:url('img/home.png')">
+          <span class="cap">คาบ 2</span><span class="verb">เขียน FSM แรก</span>
+        </div>
+        <div class="b">
+          <div class="st">ปุ่ม + debounce + FSM</div>
+          <div class="hl">กดปุ่มจริงบนบอร์ด สลับสถานะไฟจราจรเอง — รู้จัก state machine ตัวแรก</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-03.html">
+        <div class="thumb" style="background-image:url('img/home.png')">
+          <span class="cap">คาบ 3</span><span class="verb">อ่าน input analog</span>
+        </div>
+        <div class="b">
+          <div class="st">จอ + จอย: กล่องขยับตามจอย</div>
+          <div class="hl">โยกจอยแล้วกล่องวิ่งตามนิ้วบนจอจริง พร้อมกันหลุดขอบอัตโนมัติ</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-04.html">
+        <div class="thumb" style="background-image:url('img/spike_box.png')">
+          <span class="cap">คาบ 4</span><span class="verb">เขียน update() เอง</span>
+        </div>
+        <div class="b">
+          <div class="st">หัวใจเกม: game loop + Catch + 70/30</div>
+          <div class="hl">ประกอบ game loop ตัวแรก ได้เกม Catch เล่นจบ + เข้าใจสูตร 70/30 ที่ใช้ทั้งคอร์ส</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="phase" style="--c:var(--gb)">
+    <header class="ph">
+      <span class="badge">A</span>
+      <div class="phtext"><div class="pname">Pong <span class="psub">เวกเตอร์ + AI</span></div>
+      <div class="prange">คาบ 5–7</div></div>
+      <div class="ptag">fundamentals ครบในเกมเดียว — เวกเตอร์ · การชน · การสะท้อน · AI ตัวแรก</div>
+    </header>
+    <div class="cards">
+      <a class="s" href="session-05.html">
+        <div class="thumb" style="background-image:url('img/session-12.png')">
+          <span class="cap">คาบ 5</span><span class="verb">เขียนเวกเตอร์เด้ง</span>
+        </div>
+        <div class="b">
+          <div class="st">Pong #1: ลูกบอลเด้ง + ไม้ตี</div>
+          <div class="hl">ปล่อยลูกบอลเด้งกำแพงเองด้วยเวกเตอร์ความเร็ว 2 แกน</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-06.html">
+        <div class="thumb" style="background-image:url('img/session-13.png')">
+          <span class="cap">คาบ 6</span><span class="verb">เขียนฟิสิกส์ไม้</span>
+        </div>
+        <div class="b">
+          <div class="st">Pong #2: ฟิสิกส์ไม้ตี + การชน</div>
+          <div class="hl">คุมไม้ตีให้มีน้ำหนัก เร่ง-หน่วง-ชนลูกได้แม่นเหมือนเกมจริง</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-07.html">
+        <div class="thumb" style="background-image:url('img/pong_game.png')">
+          <span class="cap">คาบ 7</span><span class="verb">เขียน AI ตัวแรก</span>
+        </div>
+        <div class="b">
+          <div class="st">Pong #3: AI คู่ต่อสู้ตัวแรก</div>
+          <div class="hl">เขียน AI คู่ต่อสู้ตัวแรกด้วยกฎไม่กี่บรรทัด แล้วสู้กับมันจนจบเกม</div>
+          <div class="foot-row"><span class="mvp">MVP-1</span><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="phase" style="--c:var(--blue)">
+    <header class="ph">
+      <span class="badge">B</span>
+      <div class="phtext"><div class="pname">Peripherals <span class="psub">เสียง + เซนเซอร์</span></div>
+      <div class="prange">คาบ 8–9</div></div>
+      <div class="ptag">ใส่เสียง (PWM/waveform) และอ่าน accelerometer (I2C) ให้เกมมีชีวิต</div>
+    </header>
+    <div class="cards">
+      <a class="s" href="session-08.html">
+        <div class="thumb" style="background-image:url('img/session-12.png')">
+          <span class="cap">คาบ 8</span><span class="verb">เล่น sfx/tone</span>
+        </div>
+        <div class="b">
+          <div class="st">เสียงเกม: sfx + tone</div>
+          <div class="hl">ใส่เสียงเอฟเฟกต์และทำนองให้เกม รู้จัก PWM/waveform บนฮาร์ดแวร์จริง</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-09.html">
+        <div class="thumb" style="background-image:url('img/session-09.png')">
+          <span class="cap">คาบ 9</span><span class="verb">อ่าน accel I2C</span>
+        </div>
+        <div class="b">
+          <div class="st">เซนเซอร์: เอียงบอร์ดเล่นเกม</div>
+          <div class="hl">เอียงบอร์ดแล้วของขยับตาม — อ่าน accelerometer ผ่าน I2C ของจริง</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="phase" style="--c:var(--orange)">
+    <header class="ph">
+      <span class="badge">C</span>
+      <div class="phtext"><div class="pname">Space Shooter <span class="psub">object pool</span></div>
+      <div class="prange">คาบ 10–12</div></div>
+      <div class="ptag">จัดของเป็นร้อยด้วย object pool + ศัตรูเป็น wave — สไตล์ embedded แท้</div>
+    </header>
+    <div class="cards">
+      <a class="s" href="session-10.html">
+        <div class="thumb" style="background-image:url('img/session-15.png')">
+          <span class="cap">คาบ 10</span><span class="verb">เขียนฟิสิกส์ยาน</span>
+        </div>
+        <div class="b">
+          <div class="st">Shooter #1: ยาน + บังคับมีน้ำหนัก + HUD</div>
+          <div class="hl">บังคับยานให้ลื่นมีโมเมนตัม พร้อม HUD คะแนน/ชีวิต</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-11.html">
+        <div class="thumb" style="background-image:url('img/session-16.png')">
+          <span class="cap">คาบ 11</span><span class="verb">เขียน object pool</span>
+        </div>
+        <div class="b">
+          <div class="st">Shooter #2: กระสุน object pool</div>
+          <div class="hl">ยิงกระสุนเป็นร้อยด้วย object pool — เทคนิคจัดหน่วยความจำสไตล์ embedded</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-12.html">
+        <div class="thumb" style="background-image:url('img/shooter_game.png')">
+          <span class="cap">คาบ 12</span><span class="verb">เขียน wave/ชน</span>
+        </div>
+        <div class="b">
+          <div class="st">Shooter #3: ศัตรู + wave + ความยาก</div>
+          <div class="hl">เติมศัตรูเป็น wave ชนกันหลายต่อหลาย จนได้เกมยิงเต็มรูปแบบ</div>
+          <div class="foot-row"><span class="mvp">MVP-2</span><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="phase" style="--c:var(--purple)">
+    <header class="ph">
+      <span class="badge">D</span>
+      <div class="phtext"><div class="pname">เชื่อมต่อ + ส่งจริง <span class="psub">IoT + Capstone</span></div>
+      <div class="prange">คาบ 13–14</div></div>
+      <div class="ptag">ส่งคะแนนผ่าน MQTT แล้วออกแบบเกมของตัวเอง ปล่อย Release ให้เพื่อนเล่น</div>
+    </header>
+    <div class="cards">
+      <a class="s" href="session-13.html">
+        <div class="thumb" style="background-image:url('img/github_repo.png')">
+          <span class="cap">คาบ 13</span><span class="verb">ต่อเน็ต / IoT</span>
+        </div>
+        <div class="b">
+          <div class="st">WiFi + MQTT: leaderboard / 2 บอร์ด</div>
+          <div class="hl">ส่งคะแนนขึ้น leaderboard ออนไลน์ หรือเล่นเชื่อมสองบอร์ดผ่าน MQTT</div>
+          <div class="foot-row"><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+      <a class="s" href="session-14.html">
+        <div class="thumb" style="background-image:url('img/jam_showcase.png')">
+          <span class="cap">คาบ 14</span><span class="verb">ส่ง Release</span>
+        </div>
+        <div class="b">
+          <div class="st">Capstone: ออกแบบเกมเอง + Release</div>
+          <div class="hl">ออกแบบเกมของกลุ่มเอง (reuse 70% เขียน 30%) แล้วปล่อย Release ให้เพื่อนโหลดไปเล่น</div>
+          <div class="foot-row"><span class="mvp">SHIP</span><span class="go">เปิดสไลด์ →</span></div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="future"><span class="ar">→</span><div><b>ต่อยอด Developer II</b>
+    &nbsp;<span>Snake + Flappy Bird (list/deque · ฟิสิกส์แรงโน้มถ่วง · interrupts) — แล้ว Developer III จะลงลึกภาษา C</span></div></div>
+  <div class="foot">
+    <span>BENTO &amp; TESAIoT · Fundamental of Embedded Systems Developer I · 14 คาบ</span>
+    <span>แตะฮาร์ดแวร์ → เขียน 30% → ได้เกมเล่นได้ → ส่งจริง</span>
+  </div>
+</div>
+<script>
+(function(){
+  try{history.scrollRestoration='manual';}catch(e){}
+  var KEY='bento-toc-scroll-devI';
+  function save(){try{sessionStorage.setItem(KEY,String(window.scrollY||window.pageYOffset||0));}catch(e){}}
+  function restore(){try{var y=parseInt(sessionStorage.getItem(KEY)||'0',10);if(y>0)window.scrollTo(0,y);}catch(e){}}
+  var t;window.addEventListener('scroll',function(){clearTimeout(t);t=setTimeout(save,120);},{passive:true});
+  window.addEventListener('beforeunload',save);window.addEventListener('pagehide',save);
+  document.addEventListener('DOMContentLoaded',restore);
+  window.addEventListener('load',function(){restore();setTimeout(restore,150);});
+  window.addEventListener('pageshow',function(e){if(e.persisted)restore();});
+})();
+</script>
+</body>
+</html>
