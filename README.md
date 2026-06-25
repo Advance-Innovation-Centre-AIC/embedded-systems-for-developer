@@ -60,8 +60,7 @@ embedded-systems-for-developer/        (เว็บไซต์ static — GitH
 └── extra/                  สไลด์ Extra WiFi+MQTT (index + 10 โปรเจกต์)
 ```
 
-ซอร์สต้นฉบับ (ไฟล์ `.md`, โค้ดตัวอย่าง `practise_codes/` · `solution_codes/`, เกมเต็ม) อยู่ที่รีโปหลักสูตร
-[game-development-on-embedded-systems](https://github.com/Advance-Innovation-Centre-AIC/game-development-on-embedded-systems)
+ไฟล์ฝึก (`practise_codes/`) แจกในชั้นเรียน — เฉลยอาจารย์เฉลยพร้อมกันในห้อง
 
 ---
 
