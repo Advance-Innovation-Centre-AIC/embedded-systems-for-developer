@@ -56,11 +56,13 @@
 embedded-systems-for-developer/        (เว็บไซต์ static — GitHub Pages)
 ├── index.html              หน้าแรก เลือก 3 ส่วน
 ├── developer-i/            สไลด์ Developer I (roadmap + คาบ 1–14)
+│   └── practise_codes/     ไฟล์ฝึกเว้นช่องให้นิสิตเติม
 ├── developer-ii/           สไลด์ Developer II (roadmap + คาบ 1–13)
+│   └── practise_codes/     ไฟล์ฝึกเว้นช่องให้นิสิตเติม
 └── extra/                  สไลด์ Extra WiFi+MQTT (index + 10 โปรเจกต์)
 ```
 
-ไฟล์ฝึก (`practise_codes/`) แจกในชั้นเรียน — เฉลยอาจารย์เฉลยพร้อมกันในห้อง
+ไฟล์ฝึก (`practise_codes/` ของแต่ละหลักสูตร) เป็นโค้ดเว้นช่อง — โหลดจากรีโปนี้ได้ตรง ๆ แล้วเติมเอง 30% · เฉลยอาจารย์เฉลยพร้อมกันในห้อง
 
 ---
 
