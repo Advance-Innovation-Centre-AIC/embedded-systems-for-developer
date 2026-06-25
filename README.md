@@ -65,10 +65,22 @@ embedded-systems-for-developer/        (เว็บไซต์ static — GitH
 
 ---
 
+## สัญญาอนุญาต (License)
+
+โปรเจกต์นี้ใช้สัญญาอนุญาตแยกตามประเภท:
+
+- **เนื้อหา / สไลด์ / สื่อการสอน** — [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (ดู [CONTENT-LICENSE.md](CONTENT-LICENSE.md)) — ใช้/ดัดแปลง/เผยแพร่ได้ (รวมเชิงพาณิชย์) **โดยต้องอ้างอิงที่มา**
+- **โค้ดตัวอย่าง / สคริปต์** — [MIT License](LICENSE) — ใช้และต่อยอดได้อิสระ
+
+การอ้างอิงที่แนะนำ:
+> "Embedded Systems for Developer" โดย รศ. วิรุฬห์ ศรีบริรักษ์ · Advance Innovation Centre (AIC) · มหาวิทยาลัยบูรพา — CC BY 4.0
+
+---
+
 ## ผู้จัดทำ
 
 **รองศาสตราจารย์ วิรุฬห์ ศรีบริรักษ์**
 Advance Innovation Centre (AIC) · BENTO & TESAIoT
 จัดทำสำหรับนิสิตคณะวิศวกรรมศาสตร์ มหาวิทยาลัยบูรพา
 
-*BENTO : : Make Anything.*
+© 2026 รองศาสตราจารย์ วิรุฬห์ ศรีบริรักษ์ · *BENTO : : Make Anything.*
