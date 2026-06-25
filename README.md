@@ -67,7 +67,8 @@ embedded-systems-for-developer/        (เว็บไซต์ static — GitH
 
 ## ผู้จัดทำ
 
-**BENTO & TESAIoT** · Advance Innovation Centre (AIC)
+**รองศาสตราจารย์ วิรุฬห์ ศรีบริรักษ์**
+Advance Innovation Centre (AIC) · BENTO & TESAIoT
 จัดทำสำหรับนิสิตคณะวิศวกรรมศาสตร์ มหาวิทยาลัยบูรพา
 
 *BENTO : : Make Anything.*
