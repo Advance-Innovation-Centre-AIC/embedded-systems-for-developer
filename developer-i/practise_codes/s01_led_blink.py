@@ -12,21 +12,22 @@ n = gpio.num_leds()
 print("บอร์ดนี้มี LED ทั้งหมด", n, "ดวง")
 print("ข้อมูลบอร์ด:", gpio.board_info())
 
-# --- สเต็ป 1: เปิดแล้วปิด LED ดวงแรก (index 0) ---
-led0 = gpio.led(0)
-# เติม: สั่งให้ LED ดวงที่ 0 ติด ด้วย led0.on()
+# --- สเต็ป 1: เปิดแล้วปิด LED2 (สีเขียว, index 1) ---
+# ใช้ LED2 (เขียว) เพราะ LED1 (แดง, index 0) มักถูกใช้เป็นไฟ status ของระบบหลัก
+led = gpio.led(1)
+# เติม: สั่งให้ LED2 ติด ด้วย led.on()
 pass
 time.sleep_ms(500)
-# เติม: สั่งให้ LED ดวงที่ 0 ดับ ด้วย led0.off()
+# เติม: สั่งให้ LED2 ดับ ด้วย led.off()
 pass
 time.sleep_ms(500)
 
 # --- สเต็ป 2: กะพริบเป็นจังหวะ 5 ครั้งด้วย toggle() ---
 for i in range(5):
-    # เติม: สลับสถานะ LED ด้วย led0.toggle()  (ติด<->ดับ)
+    # เติม: สลับสถานะ LED ด้วย led.toggle()  (ติด<->ดับ)
     pass
     time.sleep_ms(200)
-led0.off()
+led.off()
 
 # --- สเต็ป 3: ไฟวิ่ง knight-rider ข้าม LED ทุกดวง ---
 for sweep in range(3):
