@@ -13,7 +13,7 @@
 
 import bentogame as game
 
-game.start()                                  # เคลียร์จอ + ปลุก joystick (เรียกครั้งเดียว)
+game.title("MOVE BOX")                        # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 # สร้างสี่เหลี่ยมตัวแรก: x, y, กว้าง, สูง, สี
 hero = game.Box(380, 180, 40, 40, game.CYAN)

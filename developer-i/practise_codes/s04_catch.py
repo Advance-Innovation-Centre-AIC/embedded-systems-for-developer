@@ -13,7 +13,7 @@
 import bentogame as game
 import random
 
-game.start()                                              # ล้างจอ + ปลุกจอย
+game.title("CATCH")                                              # หน้าเริ่ม: Start=เล่น  Back=ออก (title ทำ start ให้ในตัว)
 
 # --- สร้าง Box / Text ครั้งเดียว (ห้ามสร้างใหม่ทุกเฟรม) ---
 basket = game.Box(360, 360, 90, 20, game.GB_LIGHT)        # ตะกร้า อยู่ล่างจอ

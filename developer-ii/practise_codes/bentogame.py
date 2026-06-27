@@ -370,6 +370,41 @@ def _restart():
         pass
 
 
+def title(name, hint="Start = Play      Back = Quit"):
+    """Show a title screen (the game name + how to control it), then wait.
+
+    Use it in place of start() at the top of your game:
+        game.title("CATCH")          # waits here
+        # ...build your game...
+        game.run(update, fps=30)
+
+    START begins the game (this returns), BACK quits the whole program.
+    On-screen text is English — the display font has no Thai glyphs.
+    """
+    start()                                          # clear screen + wake joystick
+    name = str(name)
+    # The display font is ~8 px wide per character; center = middle - half the
+    # text width (~4 px/char). (ui.Label has no align/width API to query.)
+    Text(name, WIDTH // 2 - len(name) * 4, 150, CYAN)
+    Text(hint, WIDTH // 2 - len(hint) * 4, 210, WHITE)
+    while True:
+        k = keys()
+        if k.start:                                  # START = เริ่มเล่น
+            sfx("start")
+            # Wait for the button to be released, otherwise run() would see this
+            # same Start press on its first frame and immediately restart.
+            while keys().start:
+                time.sleep_ms(10)
+            clear()
+            return
+        if k.back:                                   # BACK = ออกจากโปรแกรม
+            while keys().back:
+                time.sleep_ms(10)
+            clear()
+            raise SystemExit
+        time.sleep_ms(30)
+
+
 def run(update, fps=30):
     """Run your game. `update` is a function called every frame.
 
@@ -379,6 +414,8 @@ def run(update, fps=30):
     update() may also return False to stop on its own (e.g. GAME OVER).
     """
     delay = int(1000 / fps)
+    # Persistent control hint, bottom-left, so the player always sees the keys.
+    Text("Start = Restart    Back = Quit", 12, HEIGHT - 24, GB_LIGHT)
     while True:
         pressed = keys()
         if pressed.back:            # BACK = ออกกลับ Playground

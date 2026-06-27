@@ -196,7 +196,7 @@
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">import</span> bentogame <span class="hljs-keyword">as</span> game
 <span class="hljs-keyword">import</span> random
 
-game.start()                                          <span class="hljs-comment"># เคลียร์จอ + ปลุกจอย (ครั้งเดียว)</span>
+game.title(<span class="hljs-string">&quot;CATCH&quot;</span>)                                   <span class="hljs-comment"># หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)</span>
 
 basket = game.Box(<span class="hljs-number">360</span>, <span class="hljs-number">360</span>, <span class="hljs-number">90</span>, <span class="hljs-number">20</span>, game.GB_LIGHT)    <span class="hljs-comment"># ตะกร้า ล่างจอ</span>
 item   = game.Box(<span class="hljs-number">380</span>, <span class="hljs-number">0</span>, <span class="hljs-number">24</span>, <span class="hljs-number">24</span>, game.GB_LIGHTEST)   <span class="hljs-comment"># ของ เริ่มบนสุด</span>

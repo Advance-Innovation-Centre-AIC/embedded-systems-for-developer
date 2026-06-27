@@ -115,14 +115,14 @@ NAME = {GREEN: <span class="hljs-string">&quot;GREEN&quot;</span>, YELLOW: <span
 
 <span class="hljs-comment"># ขอใช้ปุ่มดวงแรก (index 0 = SW1 บนบอร์ด) และไฟ LED 2 ดวงไว้บอกสถานะ</span>
 btn = gpio.button(<span class="hljs-number">0</span>)
-led_a = gpio.led(<span class="hljs-number">0</span>)   <span class="hljs-comment"># ใช้คู่กับ led_b เพื่อเข้ารหัส 3 สถานะด้วย 2 ดวง</span>
-led_b = gpio.led(<span class="hljs-number">1</span>)
+led_a = gpio.led(<span class="hljs-number">1</span>)   <span class="hljs-comment"># LED2 (เขียว) — เลี่ยง LED1 (แดง) ที่ระบบใช้</span>
+led_b = gpio.led(<span class="hljs-number">2</span>)   <span class="hljs-comment"># RGB_RED — คู่กับ led_a เข้ารหัส 3 สถานะด้วย 2 ดวง</span>
 
 <span class="hljs-comment"># นิยาม state ของ FSM ให้อ่านง่าย แทนที่จะใช้ตัวเลขลอย ๆ</span>
 GREEN, YELLOW, RED = <span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>
 state = GREEN
 </code></pre>
-<p><code>gpio.button(0)</code> คือปุ่ม SW1 บนบอร์ด ส่วน <code>gpio.led(0)</code> / <code>gpio.led(1)</code> คือ LED สองดวง<br />
+<p><code>gpio.button(0)</code> คือปุ่ม SW1 บนบอร์ด ส่วน <code>gpio.led(1)</code> / <code>gpio.led(2)</code> คือ LED สองดวง (เลี่ยง LED1 แดงที่ระบบใช้)<br />
 ตรงนี้เรายังไม่ทำอะไร แค่ &quot;จองอุปกรณ์&quot; ไว้ใช้ และตั้งชื่อ state ให้คนอ่านเข้าใจ</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;" data-marpit-pagination-total="13">

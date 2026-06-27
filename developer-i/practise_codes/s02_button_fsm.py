@@ -12,9 +12,10 @@ import gpio
 import time
 
 # ขอใช้ปุ่มดวงแรก (index 0 = SW1 บนบอร์ด) และไฟ LED 2 ดวงไว้บอกสถานะ
+# ใช้ LED2 (เขียว) + RGB_RED — เลี่ยง LED1 (แดง, index 0) ที่ระบบหลักใช้
 btn = gpio.button(0)
-led_a = gpio.led(0)
-led_b = gpio.led(1)
+led_a = gpio.led(1)   # LED2 (เขียว)
+led_b = gpio.led(2)   # RGB_RED
 
 # นิยาม state ของ FSM ให้อ่านง่าย แทนที่จะใช้ตัวเลขลอย ๆ
 GREEN, YELLOW, RED = 0, 1, 2
