@@ -21,7 +21,7 @@ ROWS = game.HEIGHT // CELL
 POOL = 26                                   # จำนวนปล้องลำตัว (<= 32 - หัว - อาหาร - score = 29 widget ปลอดภัย)
 MAX_BODY = POOL + 1                         # + หัว
 
-game.start()
+game.title("SNAKE")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 # ----- สร้าง sprite ครั้งเดียว (หัว + pool ลำตัว + อาหาร) -- อย่าสร้างใน update() นะ -----
 body = [[6, 8], [5, 8], [4, 8]]            # หัวอยู่ช่องแรก (เก็บเป็น "ช่อง" [col, row])

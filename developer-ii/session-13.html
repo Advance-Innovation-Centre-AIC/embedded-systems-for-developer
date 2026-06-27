@@ -83,7 +83,7 @@
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-a--%E0%B8%97%E0%B8%B3%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%80%E0%B8%81%E0%B8%A1-%E0%B8%84%E0%B8%A3%E0%B8%9A%E0%B8%A3%E0%B8%AD%E0%B8%9A">ขั้น A — ทำให้เกม &quot;ครบรอบ&quot;</h1>
 <p>&quot;ครบรอบ&quot; บน Bento <strong>ไม่ต้องเขียน loop รอบนอกเอง</strong> — เฟิร์มแวร์จัดการให้แล้ว:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-comment"># mygame.py — โครงทั้งไฟล์: init ครั้งเดียว แล้วเรียก game.run() ครั้งเดียว</span>
-    game.start()
+    game.title(<span class="hljs-string">&quot;MY GAME&quot;</span>)   <span class="hljs-comment"># หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)</span>
     score = <span class="hljs-number">0</span>
     player = game.Box(game.WIDTH // <span class="hljs-number">2</span>, game.HEIGHT // <span class="hljs-number">2</span>, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>, game.CYAN)
     label  = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span class="hljs-number">12</span>, <span class="hljs-number">10</span>, game.WHITE)

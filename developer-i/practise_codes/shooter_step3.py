@@ -16,7 +16,7 @@ import bentogame as game
 ACCEL, MAX_SPEED, FRICTION = 1.4, 13.0, 0.80
 MAX_BULLETS = 6                                 # ขนาดบ่อกระสุน (เท่าเกมจริง :37)
 
-game.start()
+game.title("SHOOTER")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 ship = game.Box(365, 352, 62, 24, game.GREEN)
 ship_x, ship_speed, fire_cooldown = 365.0, 0.0, 0
@@ -38,7 +38,7 @@ def find_free_bullet():
 def on_frame():
     global ship_x, ship_speed, fire_cooldown
     keys = game.keys()
-    if keys.start: return False
+    # (Back=ออก / Start=เริ่มใหม่ — game.run() จัดการให้)
 
     # ยาน (จาก step2)
     if keys.left:    ship_speed -= ACCEL

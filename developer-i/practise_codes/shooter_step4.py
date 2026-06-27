@@ -13,7 +13,7 @@ ACCEL, MAX_SPEED, FRICTION = 1.4, 13.0, 0.80
 MAX_BULLETS, MAX_ENEMIES = 6, 6                 # บ่อกระสุน 6, บ่อศัตรู 6
 ENEMY_COLORS = [game.RED, game.ORANGE, game.PINK]
 
-game.start()
+game.title("SHOOTER")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 ship = game.Box(365, 352, 62, 24, game.GREEN)
 ship_x, ship_speed = 365.0, 0.0
@@ -51,7 +51,7 @@ def respawn_enemy(index):
 def on_frame():
     global ship_x, ship_speed, score, lives, fire_cooldown
     keys = game.keys()
-    if keys.start: return False
+    # (Back=ออก / Start=เริ่มใหม่ — game.run() จัดการให้)
 
     # ยาน (step2)
     if keys.left:    ship_speed -= ACCEL

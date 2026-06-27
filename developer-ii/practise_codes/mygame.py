@@ -20,7 +20,7 @@ PLAYER_COLOR = game.GREEN # ลองเปลี่ยนเป็น game.CYAN
 FPS = 30                  # ความถี่ของ loop
 
 # --- เริ่มเกม (ต้องเรียกก่อนสร้าง Box/Text/Sprite เสมอ) --------------------
-game.start()
+game.title("MY GAME")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 score = 0
 

@@ -15,7 +15,7 @@
 # อ้างอิง: reference/flappy_full.py:12-17
 import bentogame as game
 
-game.start()                                   # bentogame.py:154 — ล้างจอ แล้วปลุกจอย
+game.title("FLAPPY")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 # ----- เติมส่วนนี้เอง (งานของคุณ): เลือกความสูงเริ่มต้นของนก -----
 # สิ่งที่ต้องทำ:

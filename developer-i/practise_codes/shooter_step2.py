@@ -15,7 +15,7 @@ import bentogame as game
 
 ACCEL, MAX_SPEED, FRICTION = 1.4, 13.0, 0.80  # ค่าฟิสิกส์เดียวกับเกมจริง (:43-45)
 
-game.start()
+game.title("SHOOTER")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 ship = game.Box(365, 352, 62, 24, game.GREEN)
 ship_x, ship_speed = 365.0, 0.0               # ตำแหน่ง x + ความเร็วของยาน

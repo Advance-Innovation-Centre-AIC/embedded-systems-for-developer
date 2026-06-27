@@ -33,7 +33,7 @@ SERVE_SPEED = 6.2
 AI_SPEED = 4.2         # ความเร็วที่ไม้ AI วิ่งตามลูก
 WIN_SCORE = 7          # first-to-N
 
-game.start()
+game.title("PONG")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 player_paddle = game.Box(20, PADDLE_START_Y, PADDLE_W, PADDLE_H, game.GB_LIGHT)
 ai_paddle = game.Box(game.WIDTH - 20 - PADDLE_W, PADDLE_START_Y, PADDLE_W, PADDLE_H, game.GB_LIGHT)

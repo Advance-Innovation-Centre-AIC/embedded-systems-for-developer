@@ -20,7 +20,7 @@ import bentogame as game
 GRAVITY = 0.45                                  # แรงโน้มถ่วง (ดึงลงต่อเฟรม)
 FLAP = -7.4                                     # แรงกระพือ (ดีดขึ้น) (flappy_full.py:8)
 
-game.start()
+game.title("FLAPPY")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 bird = game.Box(150, 180, 34, 34, game.GB_LIGHTEST)
 bird_y = 180.0                                  # ความสูงของนก

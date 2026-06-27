@@ -25,7 +25,7 @@ GAP = 152                                       # ช่องว่างที
 PIPE_WIDTH = 64                                 # ความกว้างของท่อ
 SPACING = 270                                   # ระยะห่างระหว่างท่อ
 
-game.start()
+game.title("FLAPPY")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 bird = game.Box(150, 180, 34, 34, game.GB_LIGHTEST)
 bird_y = 180.0

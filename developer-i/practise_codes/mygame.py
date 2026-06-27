@@ -18,7 +18,7 @@ import random
 PLAYER_SPEED = 8
 GOAL = 5
 
-game.start()
+game.title("MY GAME")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 # 1) STATE — เกมของเราต้องจำอะไรบ้าง? (สร้างครั้งเดียว ก่อนลูป)
 #    ใบ้: มีผู้เล่น 1 กล่อง, มีเป้า 1 กล่อง, มีคะแนน, มีป้ายคะแนน
@@ -32,8 +32,7 @@ def update():
     global score
 
     k = game.keys()
-    if k.start:
-        return False  # กด Start = จบเกม
+    # (Back=ออก / Start=เริ่มใหม่ — game.run() จัดการให้)
 
     # 2) TICK — ทุกเฟรมอัปเดตยังไง? (ขยับผู้เล่นตามปุ่มจอย)
     if k.left:

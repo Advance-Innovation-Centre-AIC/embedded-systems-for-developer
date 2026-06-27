@@ -24,7 +24,7 @@ MODES = [
     ("HARD",   120, 300.0, 1300.0, -410.0),
 ]
 
-game.start()
+game.title("FLAPPY")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 best_score = 0
 
 def play_round(mode_index):

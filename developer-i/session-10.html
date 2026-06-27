@@ -69,7 +69,7 @@
 <p>ส่วน <strong>30% ที่อาจารย์เขียนให้ดูเป็นตัวอย่าง</strong> ทุกบรรทัดน้อง ๆ เคยเจอใน Catch/Pong มาแล้ว:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">import</span> bentogame <span class="hljs-keyword">as</span> game
 
-game.start()                                  <span class="hljs-comment"># ล้างจอ + ปลุกจอย (เรียกครั้งเดียว)</span>
+game.title(<span class="hljs-string">&quot;SHOOTER&quot;</span>)                         <span class="hljs-comment"># หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)</span>
 
 ship = game.Box(<span class="hljs-number">365</span>, <span class="hljs-number">352</span>, <span class="hljs-number">62</span>, <span class="hljs-number">24</span>, game.GREEN) <span class="hljs-comment"># ยานกว้าง 62 สูง 24 กลาง-ล่าง</span>
 ship_x = <span class="hljs-number">365.0</span>                                <span class="hljs-comment"># ตำแหน่ง x ของยาน (เก็บเป็น float)</span>

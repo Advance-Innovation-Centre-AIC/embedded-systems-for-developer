@@ -12,7 +12,7 @@ CELL_PX = 26
 GRID_COLS = game.WIDTH // CELL_PX
 GRID_ROWS = game.HEIGHT // CELL_PX
 
-game.start()
+game.title("SNAKE")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 snake_body = [[6, 8], [5, 8], [4, 8]]       # หัวอยู่ตัวแรก
 body_squares = [game.Box(col * CELL_PX, row * CELL_PX, CELL_PX - 2, CELL_PX - 2, game.GB_DARK)

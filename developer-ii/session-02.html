@@ -107,7 +107,7 @@
     CELL_PX   = <span class="hljs-number">26</span>                       <span class="hljs-comment"># 1 ช่องกริด = 26 พิกเซล</span>
     GRID_COLS = game.WIDTH  // CELL_PX   <span class="hljs-comment"># หน้าจอกว้างกี่ช่อง (~30)</span>
     GRID_ROWS = game.HEIGHT // CELL_PX   <span class="hljs-comment"># หน้าจอสูงกี่ช่อง  (~15)</span>
-    game.start()                         <span class="hljs-comment"># ล้างจอ + ปลุกจอย (ครั้งเดียว)</span>
+    game.title(<span class="hljs-string">&quot;SNAKE&quot;</span>)                  <span class="hljs-comment"># หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)</span>
 
     <span class="hljs-comment"># งู = list ของช่อง [คอลัมน์, แถว] — &quot;หัวงูอยู่ช่องแรก&quot; เสมอ</span>
     snake_body = [[<span class="hljs-number">6</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">5</span>, <span class="hljs-number">8</span>], [<span class="hljs-number">4</span>, <span class="hljs-number">8</span>]]

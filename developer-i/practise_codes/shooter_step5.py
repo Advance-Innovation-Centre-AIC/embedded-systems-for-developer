@@ -57,7 +57,7 @@ MODES = [
 MODE = 0                                        # เลือกโหมด (0/1/2) — C เลือกผ่านเมนูบนจอ
 MODE_NAME, SPAWN_DELAY, SPEED_MUL, START_LIVES, LOSE_WHEN_PASS, LOSE_WHEN_HIT = MODES[MODE]
 
-game.start()
+game.title("SHOOTER")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 ship = game.Box(365, 352, 62, 24, game.GREEN)
 ship_x, ship_speed = 365.0, 0.0
@@ -106,7 +106,7 @@ spawn_enemy(); spawn_enemy(); spawn_enemy()
 def on_frame():
     global ship_x, ship_speed, score, lives, fire_cooldown, spawn_timer
     keys = game.keys()
-    if keys.start: return False
+    # (Back=ออก / Start=เริ่มใหม่ — game.run() จัดการให้)
 
     # spawn timer — ปล่อยศัตรูเป็นคลื่นตามจังหวะของโหมด (:362-368)
     if spawn_timer > 0:

@@ -12,7 +12,7 @@ CELL_PX = 26
 GRID_COLS = game.WIDTH // CELL_PX
 GRID_ROWS = game.HEIGHT // CELL_PX
 
-game.start()
+game.title("SNAKE")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 snake_body = [[6, 8], [5, 8], [4, 8]]
 body_squares = [game.Box(col * CELL_PX, row * CELL_PX, CELL_PX - 2, CELL_PX - 2, game.GB_DARK)
@@ -43,7 +43,7 @@ def on_each_frame():
     if keys.right and step_col == 0: step_col, step_row = 1, 0
     if keys.up and step_row == 0:    step_col, step_row = 0, -1
     if keys.down and step_row == 0:  step_col, step_row = 0, 1
-    if keys.start: return False
+    # (Back=ออก / Start=เริ่มใหม่ — game.run() จัดการให้)
 
     next_head = [snake_body[0][0] + step_col, snake_body[0][1] + step_row]
     snake_body.insert(0, next_head)

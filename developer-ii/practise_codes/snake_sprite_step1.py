@@ -19,7 +19,7 @@ CELL = 16                        # ตรงกับเกม C เป๊ะ (S
 COLS = game.WIDTH // CELL         # หน้าจอกว้างกี่ช่อง
 ROWS = game.HEIGHT // CELL        # หน้าจอสูงกี่ช่อง
 
-game.start()                     # ล้างจอ + ปลุกจอย (เรียกครั้งเดียว)
+game.title("SNAKE")                          # หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)
 
 # ตัวงู: หัวอยู่ช่องแรกของ list
 body = [[6, 8], [5, 8], [4, 8]]

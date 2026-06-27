@@ -148,7 +148,7 @@
 <p>ไฟล์เด็กเล่น: <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-ii/practise_codes/flappy_step1.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/flappy_step1.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a> (เว้นช่อง <code>bird_y</code>)</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-keyword">import</span> bentogame <span class="hljs-keyword">as</span> game
 
-    game.start()                                   <span class="hljs-comment"># ล้างจอ + ปลุกจอย</span>
+    game.title(<span class="hljs-string">&quot;FLAPPY&quot;</span>)                            <span class="hljs-comment"># หน้าเริ่ม: Start=เล่น Back=ออก (ทำ start ให้ในตัว)</span>
 
     <span class="hljs-comment"># ----- เติมส่วนนี้เอง: ตำแหน่งเริ่มต้นของนก -----</span>
     bird_y = <span class="hljs-number">180.0</span>                                  <span class="hljs-comment"># ความสูงของนก (พิกเซลจากขอบบน)</span>
@@ -159,8 +159,7 @@
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">on_each_frame</span>():
         <span class="hljs-comment"># ทุกเฟรม วาดนกไว้ที่ความสูง bird_y (ยังไม่ขยับ — เป็นภาพนิ่ง)</span>
         bird.move_to(bird.x, bird_y)
-        <span class="hljs-keyword">if</span> game.keys().start:        <span class="hljs-comment"># กด Start เพื่อออกจากเกม</span>
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>
+        <span class="hljs-comment"># (Back=ออก / Start=เริ่มใหม่ — game.run() จัดการให้)</span>
 
     game.run(on_each_frame, fps=<span class="hljs-number">50</span>)                 <span class="hljs-comment"># ลูปเกม 50 fps</span>
 </code></pre>
