@@ -55,6 +55,9 @@ if _HAS_SOUND:
         "win": ui.SFX_PONG_WIN, "lose": ui.SFX_PONG_LOSE,
         "fire": ui.SFX_SHOOT_FIRE, "hit": ui.SFX_SHOOT_HIT,
         "explode": ui.SFX_SHOOT_EXPLODE, "gameover": ui.SFX_GAME_OVER,
+        # the remaining real-game sounds, now reachable by a friendly name too
+        "fall": ui.SFX_FLAPPY_DIE, "pong_score": ui.SFX_PONG_SCORE,
+        "lose_life": ui.SFX_SHOOT_LOSE_LIFE,
     }
 else:
     SINE = SQUARE = TRIANGLE = SAW = 0
