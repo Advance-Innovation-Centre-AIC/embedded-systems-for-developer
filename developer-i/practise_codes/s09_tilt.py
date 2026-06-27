@@ -32,8 +32,10 @@ while True:
         game.clear()
         break
 
-    # เติม: อ่านความเร่ง 3 แกนด้วย bmi270.acceleration() -> คืน (ax, ay, az)
+    # เติม: อ่านความเร่ง 3 แกนด้วย bmi270.acceleration() -> คืน (ax, ay, az) หน่วย m/s²
     ax, ay, az = (0.0, 0.0, 0.0)
+    # แปลงเป็น g (วางราบ แกนหนึ่ง ≈ 1.0) — บรรทัดนี้ให้ไว้แล้ว
+    ax, ay, az = ax/9.81, ay/9.81, az/9.81
 
     # ตัด noise ในช่วง deadzone ให้เป็น 0 (กล่องจะนิ่งเมื่อวางราบ)
     if abs(ax) < DEADZONE:

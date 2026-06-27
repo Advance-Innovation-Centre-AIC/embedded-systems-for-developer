@@ -30,7 +30,7 @@
 <h1 id="3-%E0%B9%84%E0%B8%AD%E0%B9%80%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%AA%E0%B8%B8%E0%B8%94%E0%B8%97%E0%B9%89%E0%B8%B2%E0%B8%A2">3 ไอเดียของคาบสุดท้าย</h1>
 <div style="display:flex; gap:14px; margin-top:10px">
 <div style="flex:1; border:2px solid #46c; border-radius:10px; padding:12px; background:#eef3ff">
-<b>#1 เกมครบรอบ</b><br />เกมจริงต้องปิดวงจรชีวิตได้เอง: เริ่ม→เล่น→จบ→เริ่มใหม่ วนไม่รู้จบ + best จำข้ามรอบ
+<b>#1 เกมครบรอบ</b><br />เกมจริงต้องปิดวงจรชีวิตได้เอง: เริ่ม→เล่น→จบ→กด START เริ่มใหม่ (firmware soft reset จัดการให้)
 </div>
 <div style="flex:1; border:2px solid #c84; border-radius:10px; padding:12px; background:#fff4ea">
 <b>#2 "ส่งมอบ" ≠ "ทำเสร็จ"</b><br />โค้ดเสร็จเมื่อ <b>คนอื่นเอาไปรันเองได้</b> จากของที่เราปล่อย
@@ -51,18 +51,18 @@
   <text x="235" y="86" text-anchor="middle" font-size="13">game.start / Box / Sprite / Text / keys / run / hit / sfx</text>
   <rect x="70" y="105" width="330" height="70" rx="8" fill="#eafbf0" stroke="#2a7" stroke-width="2" />
   <text x="235" y="135" text-anchor="middle" font-size="16" font-weight="bold">update() — 30% ที่เราเขียนเอง</text>
-  <text x="235" y="158" text-anchor="middle" font-size="12">กติกาเกมใน mygame.py + restart loop รอบนอก</text>
+  <text x="235" y="158" text-anchor="middle" font-size="12">กติกาเกมใน mygame.py (init + update)</text>
   <rect x="470" y="30" width="150" height="160" rx="10" fill="#fff4ea" stroke="#c84" stroke-width="2" />
-  <text x="545" y="100" text-anchor="middle" font-size="14" font-weight="bold">restart loop</text>
-  <text x="545" y="122" text-anchor="middle" font-size="12">+ best score</text>
-  <text x="545" y="144" text-anchor="middle" font-size="12">(รอบนอก)</text>
+  <text x="545" y="92" text-anchor="middle" font-size="14" font-weight="bold">BACK = ออก</text>
+  <text x="545" y="118" text-anchor="middle" font-size="14" font-weight="bold">START = restart</text>
+  <text x="545" y="144" text-anchor="middle" font-size="11">(run() จัดการให้)</text>
 </svg>
 <p>เราเขียนแค่ในช่อง 30% · <strong>ห้ามแก้ <code>bentogame.py</code></strong> · ทุก verb เป็น <code>game.</code> call ที่เตรียมไว้ให้แล้ว · <code>bentogame</code> ฝังในเฟิร์มแวร์ (frozen) เพื่อน <code>import</code> ได้เลย</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="16">
 <h1 id="%E0%B8%88%E0%B8%B8%E0%B8%94%E0%B9%80%E0%B8%A3%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%A5%E0%B8%B8%E0%B9%88%E0%B8%A1--practise_codesmygamepy">จุดเริ่มของกลุ่ม — practise_codes/mygame.py</h1>
 <p>เปิดมาเกมเปล่า ๆ ที่ &quot;รันได้เลย&quot;: ผู้เล่นขยับได้ + มี score บนจอ มี 3 ช่อง TODO ให้เติมเอง</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-comment"># practise_codes/mygame.py:34-51 — โครง update() เปล่าที่รอเราเติม</span>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-comment"># practise_codes/mygame.py — โครง update() เปล่าที่รอเราเติม</span>
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>():
         <span class="hljs-keyword">global</span> score
         k = game.keys()              <span class="hljs-comment"># อ่านปุ่มจากจอย</span>
@@ -70,10 +70,10 @@
         <span class="hljs-keyword">if</span> k.right: player.move(PLAYER_SPEED, <span class="hljs-number">0</span>)
         <span class="hljs-keyword">if</span> k.up:    player.move(<span class="hljs-number">0</span>, -PLAYER_SPEED)
         <span class="hljs-keyword">if</span> k.down:  player.move(<span class="hljs-number">0</span>, PLAYER_SPEED)
-        <span class="hljs-keyword">if</span> k.start: <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>     <span class="hljs-comment"># กด Start = จบเกม</span>
+        <span class="hljs-comment"># BACK = ออกเกม, START = เริ่มใหม่ -&gt; game.run() จัดการให้เอง</span>
         <span class="hljs-comment"># TODO #2 gameplay: game.hit() + score</span>
         <span class="hljs-comment"># TODO #3 polish: Box -&gt; Sprite + game.sfx(&quot;gameover&quot;)</span>
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>                  <span class="hljs-comment"># เล่นต่อ</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>                  <span class="hljs-comment"># เล่นต่อ (return False เฉพาะตอนชนะ/แพ้จริง)</span>
 </code></pre>
 <blockquote>
 <p>ลองเติมเองให้สุดก่อนนะ — <strong>เดี๋ยวเฉลยพร้อมกันในห้องเรียน</strong></p>
@@ -81,43 +81,49 @@
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:default;" data-marpit-pagination-total="16">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-a--%E0%B8%97%E0%B8%B3%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%80%E0%B8%81%E0%B8%A1-%E0%B8%84%E0%B8%A3%E0%B8%9A%E0%B8%A3%E0%B8%AD%E0%B8%9A">ขั้น A — ทำให้เกม &quot;ครบรอบ&quot;</h1>
-<p>restart loop คือ <strong>รอบนอก</strong> — อย่าวาง logic เกมในนี้ แค่ครอบ <code>game.run()</code> ไว้:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-comment"># mygame.py — best ค้างข้ามรอบเพราะอยู่ &quot;นอก&quot; while True</span>
-    best = <span class="hljs-number">0</span>                            <span class="hljs-comment"># ประกาศนอกลูป -&gt; ไม่รีเซ็ตทุกรอบ</span>
-    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
-        reset_round()                  <span class="hljs-comment"># วางผู้เล่น/เป้ากลางจอ + score=0</span>
-        game.run(update, fps=<span class="hljs-number">30</span>)       <span class="hljs-comment"># เล่น 1 รอบ จนผู้เล่นกด Start</span>
-        <span class="hljs-keyword">if</span> score &gt; best:               <span class="hljs-comment"># อัปเดต best หลังจบรอบ</span>
-            best = score
-        game.sfx(<span class="hljs-string">&quot;gameover&quot;</span>)
-        over = game.Text(<span class="hljs-string">&quot;GAME OVER  -  Score: %d  Best: %d&quot;</span> % (score, best),
-                         <span class="hljs-number">220</span>, <span class="hljs-number">180</span>, game.RED)
+<p>&quot;ครบรอบ&quot; บน Bento <strong>ไม่ต้องเขียน loop รอบนอกเอง</strong> — เฟิร์มแวร์จัดการให้แล้ว:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-comment"># mygame.py — โครงทั้งไฟล์: init ครั้งเดียว แล้วเรียก game.run() ครั้งเดียว</span>
+    game.start()
+    score = <span class="hljs-number">0</span>
+    player = game.Box(game.WIDTH // <span class="hljs-number">2</span>, game.HEIGHT // <span class="hljs-number">2</span>, <span class="hljs-number">32</span>, <span class="hljs-number">32</span>, game.CYAN)
+    label  = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span class="hljs-number">12</span>, <span class="hljs-number">10</span>, game.WHITE)
+
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">update</span>():
+        ...
+        <span class="hljs-comment"># ชนะ/แพ้จริง -&gt; return False -&gt; แสดง GAME OVER แล้วหยุดรอ</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
+
+    game.run(update, fps=<span class="hljs-number">30</span>)            <span class="hljs-comment"># เรียกครั้งเดียวพอ</span>
 </code></pre>
-<p>best จำค่าสูงสุดข้ามทุกรอบ (อยู่นอกลูป restart):</p>
-<p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>b</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo>←</mo><mi>max</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>b</mi><mi>e</mi><mi>s</mi><mi>t</mi><mo separator="true">,</mo><mtext>  </mtext><mi>s</mi><mi>c</mi><mi>o</mi><mi>r</mi><mi>e</mi><mo stretchy="false">)</mo><mspace width="1em"/><mtext>หลังจบแต่ละรอบ</mtext></mrow><annotation encoding="application/x-tex">best \leftarrow \max(best,\; score) \quad \text{หลังจบแต่ละรอบ} 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord mathnormal">b</span><span class="mord mathnormal">es</span><span class="mord mathnormal">t</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop">max</span><span class="mopen">(</span><span class="mord mathnormal">b</span><span class="mord mathnormal">es</span><span class="mord mathnormal">t</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">scor</span><span class="mord mathnormal">e</span><span class="mclose">)</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord brahmic_fallback">หลังจบแต่ละรอบ</span></span></span></span></span></span></p><blockquote>
-<p><code>update()</code> คืน <code>False</code> เมื่อจบรอบ → หลุดจาก <code>game.run()</code> → หน้า Game Over → รอ Start → วนใหม่</p>
+<p>ปุ่มระบบ <code>game.run()</code> จัดการให้ทุกเกม: <strong>BACK = ออกกลับ Playground</strong>, <strong>START = เริ่มเกมใหม่</strong> (รัน MicroPython ใหม่ตั้งแต่ต้นไฟล์ → โค้ด init ด้านบนรันใหม่ = เกมสด ๆ รอบใหม่)</p>
+<blockquote>
+<p>START รีเซ็ตทั้งบอร์ด (soft reset) → ตัวแปรใน RAM ทั้งหมดถูกล้าง รวมถึง <code>score</code></p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;" data-marpit-pagination-total="16">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-a--state-machine-%E0%B8%82%E0%B8%AD%E0%B8%87-%E0%B8%84%E0%B8%A3%E0%B8%9A%E0%B8%A3%E0%B8%AD%E0%B8%9A">ขั้น A — state machine ของ &quot;ครบรอบ&quot;</h1>
 <svg viewBox="0 0 660 200" width="100%">
-  <rect x="20" y="80" width="120" height="50" rx="25" fill="#cfe0ff" stroke="#46c" stroke-width="2" />
-  <text x="80" y="110" text-anchor="middle" font-size="15" font-weight="bold">reset_round</text>
-  <rect x="200" y="80" width="120" height="50" rx="25" fill="#eafbf0" stroke="#2a7" stroke-width="2" />
-  <text x="260" y="110" text-anchor="middle" font-size="15" font-weight="bold">เล่น (update)</text>
-  <rect x="380" y="80" width="120" height="50" rx="25" fill="#fde8e8" stroke="#c33" stroke-width="2" />
-  <text x="440" y="110" text-anchor="middle" font-size="15" font-weight="bold">GAME OVER</text>
-  <rect x="540" y="80" width="100" height="50" rx="25" fill="#fff4ea" stroke="#c84" stroke-width="2" />
-  <text x="590" y="105" text-anchor="middle" font-size="14" font-weight="bold">รอ Start</text>
-  <line x1="140" y1="105" x2="198" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
-  <line x1="320" y1="105" x2="378" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
-  <line x1="500" y1="105" x2="538" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
-  <path d="M590 80 Q590 20 80 20 Q80 50 80 78" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)" />
-  <text x="335" y="40" text-anchor="middle" font-size="13" fill="#555">กด Start → วนใหม่ (best ค้าง)</text>
+  <rect x="20" y="80" width="130" height="50" rx="25" fill="#cfe0ff" stroke="#46c" stroke-width="2" />
+  <text x="85" y="105" text-anchor="middle" font-size="14" font-weight="bold">init (บนสุดไฟล์)</text>
+  <text x="85" y="122" text-anchor="middle" font-size="11" fill="#555">start + score=0</text>
+  <rect x="210" y="80" width="120" height="50" rx="25" fill="#eafbf0" stroke="#2a7" stroke-width="2" />
+  <text x="270" y="110" text-anchor="middle" font-size="15" font-weight="bold">เล่น (update)</text>
+  <rect x="390" y="80" width="120" height="50" rx="25" fill="#fde8e8" stroke="#c33" stroke-width="2" />
+  <text x="450" y="110" text-anchor="middle" font-size="15" font-weight="bold">GAME OVER</text>
+  <rect x="550" y="80" width="100" height="50" rx="25" fill="#fff4ea" stroke="#c84" stroke-width="2" />
+  <text x="600" y="105" text-anchor="middle" font-size="13" font-weight="bold">รอ START</text>
+  <line x1="150" y1="105" x2="208" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
+  <line x1="330" y1="105" x2="388" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
+  <line x1="510" y1="105" x2="548" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
+  <path d="M600 80 Q600 18 85 18 Q85 50 85 78" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)" />
+  <text x="345" y="36" text-anchor="middle" font-size="13" fill="#555">กด START → soft reset → รันไฟล์ใหม่ตั้งแต่ init</text>
   <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#333" /></marker></defs>
 </svg>
-<p><code>best</code> ประกาศ <strong>นอก</strong> <code>while True</code> → จึงค้างข้ามรอบทุกรอบ · <strong>เช็คผ่าน:</strong> เล่นแพ้ → เห็น GAME OVER + Score + Best → กด Start → best ยังจำได้</p>
+<p>START = soft reset → กลับไป <strong>init บนสุดของไฟล์</strong> เอง (ไม่ต้องเขียน <code>while True</code> ครอบ) · <strong>เช็คผ่าน:</strong> เล่นแพ้ → เห็น GAME OVER + Score → กด START → เกมเริ่มรอบใหม่สด ๆ</p>
+<blockquote>
+<p><strong>อยากเก็บ best score ข้ามรอบ?</strong> RAM ถูกล้างตอน START → ต้องเซฟ <strong>ลงไฟล์</strong>:<br />
+<code>try: best = int(open(&quot;best.txt&quot;).read())</code> ... <code>except: best = 0</code> ตอน init · เขียนกลับ <code>open(&quot;best.txt&quot;,&quot;w&quot;).write(str(best))</code> ตอนจบรอบ · ถ้ายังไม่ถึงขั้นนั้น ตัด best ทิ้งไปก่อนได้ ทำเกมให้ครบรอบสำคัญกว่า</p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;" data-marpit-pagination-total="16">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-b--%E0%B9%80%E0%B8%95%E0%B8%B4%E0%B8%A1-gameplay-%E0%B9%80%E0%B8%89%E0%B8%A5%E0%B8%A2%E0%B8%8A%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88-2">ขั้น B — เติม gameplay (เฉลยช่องที่ 2)</h1>
@@ -164,7 +170,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="11" style="--paginate:true;--theme:default;" data-marpit-pagination-total="16">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-d--%E0%B8%AD%E0%B8%AD%E0%B8%81-release-v10">ขั้น D — ออก Release v1.0</h1>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    git add mygame.py                    <span class="hljs-comment"># ship เฉพาะเกมตัวเอง — bentogame frozen (ห้าม git add .)</span>
-    git commit -m <span class="hljs-string">&quot;team3: final game ครบรอบ + best score (v1.0)&quot;</span>
+    git commit -m <span class="hljs-string">&quot;team3: final game ครบรอบ + START restart (v1.0)&quot;</span>
     git push -u origin team-yourgame
 </code></pre>
 <p>GitHub → Releases → Draft → tag <code>v1.0</code> → <strong>Attach: <code>mygame.py</code></strong> (bentogame frozen ไม่ต้องแนบ) → Publish</p>
@@ -214,19 +220,19 @@
 </thead>
 <tbody>
 <tr>
-<td>เล่นได้รอบเดียว ไม่ restart</td>
-<td>ไม่มี <code>while True</code> ครอบ <code>game.run()</code></td>
-<td>ครอบ <code>game.run()</code> ด้วยลูป restart</td>
+<td>กด START แล้วไม่เริ่มใหม่</td>
+<td>ดักปุ่ม START เองใน <code>update()</code></td>
+<td>ลบ <code>if k.start: return False</code> — <code>game.run()</code> จัดการ restart ให้</td>
 </tr>
 <tr>
-<td>best รีเซ็ตทุกรอบ</td>
-<td>ประกาศ <code>best</code> ในลูป restart</td>
-<td>ประกาศ <code>best = 0</code> <strong>นอก</strong> ลูป</td>
+<td>best หาย/เป็น 0 ทุกครั้ง</td>
+<td>เก็บ <code>best</code> ในตัวแปร RAM ที่ START ล้างทิ้ง</td>
+<td>เซฟ best ลงไฟล์ (<code>best.txt</code>) อ่านตอน init</td>
 </tr>
 <tr>
 <td>เล่น ~30 วิ แล้วค้าง</td>
 <td>สร้าง widget ในลูป → ชน 32 cap</td>
-<td>สร้างครั้งเดียว + <code>.move_to</code>/<code>.set</code></td>
+<td>สร้างครั้งเดียวตอน init + <code>.move_to</code>/<code>.set</code></td>
 </tr>
 <tr>
 <td>เพื่อนรันไม่ได้</td>
@@ -248,7 +254,7 @@
 <h1 id="acceptance-final--%E0%B8%9B%E0%B8%B4%E0%B8%94%E0%B8%84%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%AA">Acceptance (FINAL) + ปิดคอร์ส</h1>
 <div style="border:2px solid #2a7; border-radius:8px; padding:10px; background:#eafbf0; font-size:0.84em">
 <ul>
-<li>[ ] เล่น <strong>ครบรอบบนบอร์ดจริง</strong> (≥3 รอบติดไม่ค้าง) + best ค้างข้ามรอบ</li>
+<li>[ ] เล่น <strong>ครบรอบบนบอร์ดจริง</strong> (เล่น → จบ → กด START เริ่มใหม่ ≥3 รอบติดไม่ค้าง)</li>
 <li>[ ] ใช้ 70% core เท่านั้น — <strong>ไม่แก้ <code>bentogame.py</code></strong></li>
 <li>[ ] PR → <strong>CI เขียว</strong> → review ไขว้ → merge</li>
 <li>[ ] <strong>Release <code>v1.0</code></strong> แนบ <code>mygame.py</code> + วิธีรัน (bentogame frozen ไม่ต้องแนบ)</li>
@@ -256,7 +262,7 @@
 <li>[ ] <strong>โชว์ + demo</strong> ที่ Game Jam + ตอบปากเปล่าได้</li>
 </ul>
 </div>
-<p><strong>ทำเอง 30% — เติมเกมของกลุ่มใน <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-ii/practise_codes/mygame.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/mygame.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a></strong> (ลองเองให้สุดก่อน เดี๋ยวเฉลยในห้อง) ให้ครบ 3 ช่อง + ครอบ restart loop + best score</p>
+<p><strong>ทำเอง 30% — เติมเกมของกลุ่มใน <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-ii/practise_codes/mygame.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/mygame.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a></strong> (ลองเองให้สุดก่อน เดี๋ยวเฉลยในห้อง) ให้ครบ 3 ช่อง — restart มาจาก START ของ <code>game.run()</code> แล้ว</p>
 
 <blockquote>
 <p>ผ่านครบทุกข้อ คือจบคอร์ส Developer II แล้ว น้อง ๆ สร้างเกม Embedded ด้วย MicroPython ของตัวเองได้จริง ครบ 70/30 ภูมิใจในตัวน้อง ๆ นะ<br />

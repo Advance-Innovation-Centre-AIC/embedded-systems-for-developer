@@ -78,7 +78,8 @@
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    sensors.init()                       <span class="hljs-comment"># ปลุก BMI270 ผ่าน I2C ครั้งเดียวพอ</span>
 
     <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
-        ax, ay, az = bmi270.acceleration()   <span class="hljs-comment"># ความเร่ง 3 แกน หน่วย g</span>
+        ax, ay, az = bmi270.acceleration()   <span class="hljs-comment"># เซนเซอร์คืน m/s²</span>
+        ax, ay, az = ax/<span class="hljs-number">9.81</span>, ay/<span class="hljs-number">9.81</span>, az/<span class="hljs-number">9.81</span>  <span class="hljs-comment"># แปลงเป็น g (วางราบ แกนหนึ่ง ≈ 1.0)</span>
 
         <span class="hljs-comment"># payload JSON-ish: {:.2f} ให้ตัวเลขสั้น อ่านบนมือถือสบายตา</span>
         payload = <span class="hljs-string">&#x27;{&quot;board&quot;:&quot;%s&quot;,&quot;ax&quot;:%.2f,&quot;ay&quot;:%.2f,&quot;az&quot;:%.2f}&#x27;</span> % (
@@ -96,7 +97,8 @@
 <p>แทนที่จะ <code>time.sleep(1)</code> รอแล้วค่อย publish (ทำให้เกมค้าง) ใช้ <code>machine.Timer</code> ยิง publish เป็นจังหวะเบื้องหลัง:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-keyword">from</span> machine <span class="hljs-keyword">import</span> Timer
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">heartbeat</span>(<span class="hljs-params">t</span>):
-        ax, ay, az = bmi270.acceleration()
+        ax, ay, az = bmi270.acceleration()    <span class="hljs-comment"># m/s²</span>
+        ax, ay, az = ax/<span class="hljs-number">9.81</span>, ay/<span class="hljs-number">9.81</span>, az/<span class="hljs-number">9.81</span>  <span class="hljs-comment"># -&gt; g</span>
         payload = <span class="hljs-string">&#x27;{&quot;board&quot;:&quot;%s&quot;,&quot;ax&quot;:%.2f,&quot;ay&quot;:%.2f,&quot;az&quot;:%.2f}&#x27;</span> % (
             BOARD, ax, ay, az)
         mqtt.publish(TOPIC, payload)      <span class="hljs-comment"># ส่งทุก 5 วินาที</span>

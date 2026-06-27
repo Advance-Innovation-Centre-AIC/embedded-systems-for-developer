@@ -23,8 +23,8 @@
 <div style="display:flex;gap:16px;margin-top:12px">
 <div style="flex:1;border:3px solid #2a7;border-radius:12px;padding:14px">
 <b>บอร์ด A = รีโมต (sender)</b><br />
-กด SW1 → ส่ง <code>"on"</code><br />
-กด SW2 → ส่ง <code>"off"</code><br />
+มีปุ่มเดียว = SW1 (ใช้เป็น toggle)<br />
+กด SW1 สลับ <code>"on"</code>/<code>"off"</code><br />
 ตัวมันเองไม่เปิดไฟ แค่ "สั่ง"
 </div>
 <div style="flex:1;border:3px solid #27a;border-radius:12px;padding:14px">
@@ -50,7 +50,7 @@
 <svg viewBox="0 0 760 220" width="100%">
 <rect x="20" y="60" width="160" height="90" rx="10" fill="#eafaf0" stroke="#2a7" stroke-width="2" />
 <text x="100" y="92" text-anchor="middle" font-size="15" font-weight="bold">บอร์ด A — รีโมต</text>
-<text x="100" y="114" text-anchor="middle" font-size="12">กดปุ่ม SW1/SW2</text>
+<text x="100" y="114" text-anchor="middle" font-size="12">กดปุ่ม SW1 (toggle)</text>
 <text x="100" y="134" text-anchor="middle" font-size="12">publish "on"/"off"</text>
 <rect x="305" y="55" width="150" height="100" rx="10" fill="#fff3d6" stroke="#e90" stroke-width="3" />
 <text x="380" y="90" text-anchor="middle" font-size="15" font-weight="bold">Broker</text>
@@ -71,26 +71,23 @@
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="8">
 <h1 id="%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%9D%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%A3%E0%B8%B5%E0%B9%82%E0%B8%A1%E0%B8%95-sender">เดินโค้ดฝั่งรีโมต (sender)</h1>
-<p>ต่อ WiFi → ต่อ broker → แล้ววนอ่านปุ่ม ส่งคำสั่งเฉพาะ <strong>จังหวะเพิ่งกด</strong> (กันส่งรัวตอนกดค้าง)</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    sw_on  = gpio.button(<span class="hljs-number">0</span>)            <span class="hljs-comment"># SW1 = สั่งเปิด</span>
-    sw_off = gpio.button(<span class="hljs-number">1</span>)            <span class="hljs-comment"># SW2 = สั่งปิด</span>
-    prev_on  = sw_on.is_pressed()
-    prev_off = sw_off.is_pressed()
+<p>ต่อ WiFi → ต่อ broker → แล้ววนอ่าน <strong>ปุ่มเดียว (SW1)</strong> ใช้เป็น toggle ส่งคำสั่งเฉพาะ <strong>จังหวะเพิ่งกด</strong> (กันส่งรัวตอนกดค้าง)</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    sw    = gpio.button(<span class="hljs-number">0</span>)             <span class="hljs-comment"># บอร์ดนี้มีปุ่มเดียว = SW1</span>
+    prev  = sw.is_pressed()
+    state = <span class="hljs-literal">False</span>                      <span class="hljs-comment"># สถานะไฟปลายทางที่เราจำไว้ (เริ่ม &quot;ปิด&quot;)</span>
 
     <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:
-        now_on  = sw_on.is_pressed()
-        now_off = sw_off.is_pressed()
-        <span class="hljs-comment"># ส่ง &quot;on&quot; เฉพาะขอบขาลง (ปล่อย -&gt; กด) ไม่ส่งรัวตอนกดค้าง</span>
-        <span class="hljs-keyword">if</span> now_on <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> prev_on:
-            mqtt.publish(TOPIC, <span class="hljs-string">&quot;on&quot;</span>)
-            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ส่งคำสั่ง -&gt; on&quot;</span>)
-        <span class="hljs-keyword">if</span> now_off <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> prev_off:
-            mqtt.publish(TOPIC, <span class="hljs-string">&quot;off&quot;</span>)
-            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ส่งคำสั่ง -&gt; off&quot;</span>)
-        prev_on, prev_off = now_on, now_off
+        now = sw.is_pressed()
+        <span class="hljs-comment"># จับขอบขาลง (ปล่อย -&gt; กด) แล้วสลับสถานะ on&lt;-&gt;off</span>
+        <span class="hljs-keyword">if</span> now <span class="hljs-keyword">and</span> <span class="hljs-keyword">not</span> prev:
+            state = <span class="hljs-keyword">not</span> state
+            cmd = <span class="hljs-string">&quot;on&quot;</span> <span class="hljs-keyword">if</span> state <span class="hljs-keyword">else</span> <span class="hljs-string">&quot;off&quot;</span>
+            mqtt.publish(TOPIC, cmd)
+            <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ส่งคำสั่ง -&gt;&quot;</span>, cmd)
+        prev = now
         time.sleep_ms(<span class="hljs-number">20</span>)
 </code></pre>
-<p><code>prev_*</code> คือเทคนิค edge detection เดียวกับคาบปุ่ม FSM — จับ &quot;เพิ่งกด&quot; ไม่ใช่ &quot;กำลังกดค้าง&quot;</p>
+<p><code>prev</code> คือเทคนิค edge detection เดียวกับคาบปุ่ม FSM — จับ &quot;เพิ่งกด&quot; ไม่ใช่ &quot;กำลังกดค้าง&quot; · ปุ่มเดียวก็คุมได้ครบเพราะแต่ละครั้งที่กด เราสลับ <code>state</code> แล้วส่งค่าใหม่</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:default;" data-marpit-pagination-total="8">
 <h1 id="%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%9D%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%97%E0%B8%B2%E0%B8%87-actuator">เดินโค้ดฝั่งปลายทาง (actuator)</h1>
@@ -119,7 +116,7 @@
 <li>ต่อ WiFi 2.4GHz ผ่าน <strong>เมนู Wi-Fi บนจอ</strong> ทั้งสองบอร์ดก่อน (เซฟรหัสไว้ครั้งเดียว)</li>
 <li>บอร์ด B: เปิด <code>ex_c1_actuator.py</code> กด <strong>Program to Device</strong> → รอขึ้น &quot;พร้อมรับคำสั่ง&quot;</li>
 <li>บอร์ด A: เปิด <code>ex_c1_sender.py</code> กด <strong>Program to Device</strong></li>
-<li>กด <strong>SW1</strong> ที่บอร์ด A → ไฟบอร์ด B ติด + มีเสียง · กด <strong>SW2</strong> → ดับ</li>
+<li>กด <strong>SW1</strong> ที่บอร์ด A → ไฟบอร์ด B ติด + มีเสียง · กด <strong>SW1</strong> อีกครั้ง → ดับ (ปุ่มเดียวสลับไปมา)</li>
 </ol>
 <blockquote>
 <p>มีบอร์ดเดียวก็เทสต์ได้: รัน actuator บอร์ดเดียว แล้วใช้แอป MQTT บนมือถือ publish <code>on</code>/<code>off</code> เข้า topic <code>cmd/led</code> ดูไฟตอบสนอง</p>

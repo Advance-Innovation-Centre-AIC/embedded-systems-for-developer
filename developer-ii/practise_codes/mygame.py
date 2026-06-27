@@ -46,9 +46,8 @@ def update():
     if k.down:
         player.move(0, PLAYER_SPEED)
 
-    # 2) กด Start = จบเกม
-    if k.start:
-        return False
+    # BACK = ออกเกม, START = เริ่มใหม่ — game.run() จัดการให้อัตโนมัติ
+    # update() จึง return False เฉพาะตอน "ชนะ/แพ้จริง" เท่านั้น (ดู TODO #2)
 
     # --- TODO (Issue #2) gameplay: สร้างศัตรู/ของ + game.hit() + คะแนน -------
     #     ตัวอย่าง (ลบคอมเมนต์ออกเมื่อพร้อม):

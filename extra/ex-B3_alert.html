@@ -58,7 +58,8 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:default;" data-marpit-pagination-total="6">
 <h1 id="%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94-1--%E0%B8%A7%E0%B8%B1%E0%B8%94-%E0%B8%82%E0%B8%99%E0%B8%B2%E0%B8%94-%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%A3%E0%B9%88%E0%B8%87%E0%B9%81%E0%B8%A5%E0%B9%89%E0%B8%A7%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B9%80%E0%B8%95%E0%B8%B7%E0%B8%AD%E0%B8%99">เดินโค้ด (1) — วัด &quot;ขนาด&quot; ความเร่งแล้วส่งเตือน</h1>
 <p>วางนิ่ง ขนาดรวมจะอยู่ราว 1g (แรงโน้มถ่วง) เขย่า/ตก ค่าจะพุ่งเกิน threshold เราจับจังหวะนั้นแล้ว <code>publish</code></p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    ax, ay, az = bmi270.acceleration()
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    ax, ay, az = bmi270.acceleration()        <span class="hljs-comment"># เซนเซอร์คืน m/s²</span>
+    ax, ay, az = ax/<span class="hljs-number">9.81</span>, ay/<span class="hljs-number">9.81</span>, az/<span class="hljs-number">9.81</span>    <span class="hljs-comment"># แปลงเป็น g (วางนิ่ง mag รวม ≈ 1.0)</span>
     mag = math.sqrt(ax * ax + ay * ay + az * az)
     now = time.time()
     <span class="hljs-keyword">if</span> mag &gt; THRESHOLD <span class="hljs-keyword">and</span> (now - last_fire) &gt; COOLDOWN:

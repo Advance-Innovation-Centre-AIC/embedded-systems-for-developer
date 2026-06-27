@@ -64,7 +64,8 @@
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    sensors.init()                       <span class="hljs-comment"># ปลุกเซนเซอร์ครั้งเดียวพอ</span>
 
     <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> btn.is_pressed():           <span class="hljs-comment"># กด SW1 ค้างเพื่อหยุด</span>
-        ax, ay, az = bmi270.acceleration()  <span class="hljs-comment"># ความเร่ง 3 แกน หน่วย g</span>
+        ax, ay, az = bmi270.acceleration()  <span class="hljs-comment"># เซนเซอร์คืน m/s²</span>
+        ax, ay = ax/<span class="hljs-number">9.81</span>, ay/<span class="hljs-number">9.81</span>        <span class="hljs-comment"># แปลงเป็น g (วางราบ ≈ 0, เอียงราว -1..1)</span>
 
         <span class="hljs-keyword">if</span> <span class="hljs-built_in">abs</span>(ax) &lt; DEADZONE:            <span class="hljs-comment"># ตัด noise -&gt; ยานนิ่งเมื่อวางราบ</span>
             ax = <span class="hljs-number">0.0</span>
