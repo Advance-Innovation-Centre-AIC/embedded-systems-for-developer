@@ -23,7 +23,7 @@
 <img src="img/home.png" width="380" style="float:right; border:1px solid #ccc; border-radius:6px; margin-left:18px; margin-right:8px;" />
 <ul>
 <li>เข้าใจ <strong>ระบบพิกัดของจอ</strong> และการขยับด้วยการบวกเวกเตอร์</li>
-<li>เขียนโปรแกรมสั้น ๆ ให้ <strong>กล่องสี่เหลี่ยม</strong> ขยับตามจอย (analog input)</li>
+<li>เขียนโปรแกรมสั้น ๆ ให้ <strong>กล่องสี่เหลี่ยม</strong> ขยับตามจอย (USB gamepad)</li>
 <li>กล่อง <strong>ไม่หลุดขอบจอ</strong> (clamp ให้ฟรีอยู่ใน Game Engine)</li>
 <li>ปุ่มระบบ: <strong>Back</strong> = ออกกลับ Playground · <strong>Start</strong> = เริ่มใหม่ (จัดการให้โดย <code>game.run()</code>)</li>
 </ul>
@@ -116,18 +116,18 @@ hero.move_to(<span class="hljs-number">380</span>, <span class="hljs-number">180
   <text x="550" y="105" text-anchor="middle" font-size="13" fill="#555">รวม D-pad + ก้านอนาล็อกให้แล้ว — ไม่ต้องแตะค่าดิบ</text>
   <defs><marker id="k" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#444" /></marker></defs>
 </svg>
-<p>ก้านจอยเป็น analog input อ่านได้เป็นค่าต่อเนื่อง แต่ Game Engine แปลงให้เราเรียบร้อย เหลือแค่ True/False ต่อทิศ ไม่ต้องไปยุ่งกับค่าดิบเอง</p>
+<p>จอยของเราเป็น USB HID gamepad — ก้าน/ปุ่มส่งค่ามาทาง USB แต่ Game Engine แปลงให้เราเรียบร้อย เหลือแค่ True/False ต่อทิศ ไม่ต้องไปยุ่งกับค่าดิบเอง</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%88%E0%B8%AE%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%94%E0%B9%81%E0%B8%A7%E0%B8%A3%E0%B9%8C--%E0%B8%88%E0%B8%AD%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%9C%E0%B8%A5--%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99%E0%B8%88%E0%B8%AD%E0%B8%A2">เข้าใจฮาร์ดแวร์ · จอแสดงผล + อ่านจอย</h1>
 <p>ภาพบนจอมาจาก <strong>framebuffer</strong> (พื้นที่ memory) — เกมวาดลง buffer แล้วบอร์ดส่งให้จอผ่าน <strong>MIPI-DSI</strong> (สายความเร็วสูง; จอเล็กทั่วไปใช้ <strong>SPI</strong> ที่ช้ากว่า)</p>
 <p><img src="img/hw_board_block.png" alt="" style="width:430px;" /></p>
 <ul>
-<li>ก้านจอยเป็น <strong>analog</strong> (แรงดันต่อเนื่อง) → <strong>ADC</strong> แปลงเป็นตัวเลข · <strong>resolution</strong> (จำนวน bit) บอกว่าแบ่งเป็นกี่ขั้น (เช่น 12-bit = 4096 ขั้น)</li>
-<li>ใต้ <code>game.keys()</code> มี ADC อ่านก้านอยู่ แต่ engine แปลงให้เป็นทิศ (ซ้าย/ขวา/ขึ้น/ลง) เรียบร้อยแล้ว</li>
+<li>จอยของเราเป็น <strong>USB HID gamepad</strong> (มาตรฐานเดียวกับจอยคอม) — เสียบพอร์ต USB แล้วส่งสถานะ <strong>ปุ่ม/แกน</strong> มาเป็นตัวเลขผ่าน USB</li>
+<li><code>game.keys()</code> รับเลขพวกนั้นมาแปลงให้เหลือ True/False ต่อทิศ (ซ้าย/ขวา/ขึ้น/ลง) ให้เราใช้ง่าย ๆ</li>
 </ul>
 <blockquote>
-<p>นี่คือ analog ของจริงตัวแรกที่เราเจอ — เซนเซอร์บางตัวในคาบหลัง ๆ มี ADC อยู่ในชิปแล้ว ส่งเลขมาเลย</p>
+<p>บอร์ดมี <strong>ADC</strong> ไว้อ่าน analog sensor (เช่น potentiometer ที่ส่งแรงดันต่อเนื่อง) — แต่จอย USB ของเราเป็น <strong>digital</strong> ส่งเลขมาเลย ไม่ผ่าน ADC</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
