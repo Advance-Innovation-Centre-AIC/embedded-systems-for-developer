@@ -379,7 +379,7 @@ def title(name, hint="Start = Play      Back = Quit"):
         game.run(update, fps=30)
 
     START begins the game (this returns), BACK quits the whole program.
-    On-screen text is English — the display font has no Thai glyphs.
+    Thai works on the board (current Game firmware) — keep Thai titles short.
     """
     start()                                          # clear screen + wake joystick
     name = str(name)
