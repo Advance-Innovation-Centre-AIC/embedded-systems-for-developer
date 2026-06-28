@@ -149,10 +149,8 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
   <text x="720" y="80" text-anchor="middle" font-size="12">วาด/อ่านจอย</text>
   <line x1="590" y1="65" x2="640" y2="65" stroke="#888" stroke-width="2" marker-end="url(#nx)" />
   <text x="593" y="58" font-size="11" fill="#777">frame</text>
-  <line x1="100" y1="96" x2="510" y2="34" stroke="#27c" stroke-width="1.5" stroke-dasharray="4 4" />
-  <line x1="310" y1="96" x2="720" y2="34" stroke="#c33" stroke-width="1.5" stroke-dasharray="4 4" />
-  <text x="20"  y="150" font-size="13" fill="#27c">CPU  ↔  Python  = ฝั่ง “คิด”</text>
-  <text x="430" y="150" font-size="13" fill="#c33">PPU  ↔  C core  = ฝั่ง “วาด”</text>
+  <text x="20"  y="148" font-size="13" fill="#27c">กล่อง<tspan font-weight="700">น้ำเงิน</tspan> = ฝั่ง “คิด” (CPU ↔ Python)</text>
+  <text x="430" y="148" font-size="13" fill="#c33">กล่อง<tspan font-weight="700">แดง</tspan> = ฝั่ง “วาด” (PPU ↔ C core)</text>
   <defs><marker id="nx" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888" /></marker></defs>
 </svg>
 <p><sub>ที่มา: &quot;NES-Console-Set&quot; — Evan-Amos, Public domain, Wikimedia Commons</sub></p>
@@ -355,8 +353,8 @@ game.run(update, fps=<span class="hljs-number">30</span>)
 <p><strong>เสียงในคาบนี้</strong> — Catch ใช้ &quot;ติ๊ง&quot; ตอนรับของได้ (<code>sfx(&quot;eat&quot;)</code>) และเสียงจบรอบตอนหมดเวลา (<code>sfx(&quot;gameover&quot;)</code>) (กดเล่นฟังได้จริง):</p>
 </blockquote>
 <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
-<span><b>eat (ได้แต้ม) — "ติ๊ง" สั้น</b><br /><img src="img/sfx_snake_eat.png" width="240" style="border-radius:6px;margin:3px 0" /><br /><audio controls src="img/sfx_snake_eat.mp3" style="height:30px;width:240px"></audio></span>
-<span><b>gameover (จบรอบ) — ยาว ค่อย ๆ จาง</b><br /><img src="img/sfx_game_over.png" width="240" style="border-radius:6px;margin:3px 0" /><br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:240px"></audio></span>
+<span><b>eat (ได้แต้ม) — "ติ๊ง" สั้น</b><br /><img src="img/sfx_snake_eat.png" width="240" style="border-radius:6px;margin:3px 0" /><br /><audio controls src="img/sfx_snake_eat.mp3" style="height:30px;width:240px"></audio><br /><img src="img/sfx_snake_eat_zoom.png" style="width:160px;border-radius:4px;margin-top:3px" /></span>
+<span><b>gameover (จบรอบ) — ยาว ค่อย ๆ จาง</b><br /><img src="img/sfx_game_over.png" width="240" style="border-radius:6px;margin:3px 0" /><br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:240px"></audio><br /><img src="img/sfx_game_over_zoom.png" style="width:160px;border-radius:4px;margin-top:3px" /></span>
 <span style="min-width:160px;align-self:center">รูปคลื่นต่างกันชัด: "eat" คลื่น square สั้น เด้งเร็ว · "gameover" ยาวกว่าแล้วค่อยจาง<br />ฟังครบ 21 ตัว + ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
 <blockquote>

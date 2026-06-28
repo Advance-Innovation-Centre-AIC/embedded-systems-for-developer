@@ -89,11 +89,12 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
   <text x="613" y="95" font-size="11" text-anchor="middle" fill="#b71c1c">reflect</text>
   <line x1="554" y1="56" x2="554" y2="76" stroke="#d32f2f" stroke-width="1.5" marker-end="url(#sb)" />
   
-  <line x1="493" y1="104" x2="280" y2="128" stroke="#888" stroke-width="1.5" marker-end="url(#sb)" />
-  <line x1="552" y1="104" x2="300" y2="128" stroke="#888" stroke-width="1.5" marker-end="url(#sb)" />
-  <line x1="613" y1="104" x2="320" y2="128" stroke="#888" stroke-width="1.5" marker-end="url(#sb)" />
-  <rect x="178" y="126" width="232" height="20" rx="5" fill="#0d1117" />
-  <text x="294" y="140" font-size="12" text-anchor="middle" fill="#7ee787">def on_each_frame(): ...</text>
+  <line x1="493" y1="104" x2="493" y2="122" stroke="#888" stroke-width="1.5" marker-end="url(#sb)" />
+  <line x1="552" y1="104" x2="552" y2="122" stroke="#888" stroke-width="1.5" marker-end="url(#sb)" />
+  <line x1="613" y1="104" x2="613" y2="122" stroke="#888" stroke-width="1.5" marker-end="url(#sb)" />
+  <rect x="455" y="124" width="200" height="22" rx="5" fill="#0d1117" />
+  <text x="555" y="139" font-size="12" text-anchor="middle" fill="#7ee787">def on_each_frame(): ...</text>
+  <text x="28" y="139" font-size="12.5" fill="#555">เราเขียน 3 ส่วนนี้ไว้ใน on_each_frame() ที่ core เรียกทุกเฟรม</text>
   <defs><marker id="sb" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#666" /></marker></defs>
 </svg>
 </div>
@@ -265,8 +266,8 @@ ball_vx, ball_vy = <span class="hljs-number">6.2</span>, <span class="hljs-numbe
 <blockquote>
 <p><strong>เสียงในคาบนี้</strong> — Pong คาบนี้มีเสียงเดียวคือ <code>wall</code> ตอนลูกชนขอบบน/ล่าง (คาบหน้าค่อยเติมเสียงไม้ตี <code>paddle</code>) กดเล่นฟังได้จริง:</p>
 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
-<span><b>pong_wall</b> (คาบนี้)<br /><audio controls src="img/sfx_pong_wall.mp3" style="height:30px;width:160px"></audio></span>
-<span><b>pong_paddle</b> (คาบหน้า)<br /><audio controls src="img/sfx_pong_paddle.mp3" style="height:30px;width:160px"></audio></span>
+<span><b>pong_wall</b> (คาบนี้)<br /><audio controls src="img/sfx_pong_wall.mp3" style="height:30px;width:160px"></audio><br /><img src="img/sfx_pong_wall_zoom.png" style="width:160px;border-radius:4px;margin-top:3px" /></span>
+<span><b>pong_paddle</b> (คาบหน้า)<br /><audio controls src="img/sfx_pong_paddle.mp3" style="height:30px;width:160px"></audio><br /><img src="img/sfx_pong_paddle_zoom.png" style="width:160px;border-radius:4px;margin-top:3px" /></span>
 <span style="min-width:180px">ฟังครบ 21 ตัว + รูปคลื่น/ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
 </blockquote>
