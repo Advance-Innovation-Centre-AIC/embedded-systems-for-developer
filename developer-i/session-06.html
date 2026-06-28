@@ -15,7 +15,7 @@
 <blockquote>
 <p>คาถาประจำคาบ: <strong>&quot;กดค้างคือสะสมความเร็ว ปล่อยคือไถลหยุดเอง การชนคือกล่องสองกล่องซ้อนกัน&quot;</strong></p>
 </blockquote>
-<p>3 ชม. · นั่งทีม 3 คน / 1 บอร์ด · ช่วง Pong</p>
+<p>นั่งทีม 3 คน / 1 บอร์ด · ช่วง Pong</p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="" data-marpit-pagination-total="19" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B8%B5%E0%B9%89">เป้าหมายของคาบนี้</h1>
@@ -86,8 +86,44 @@ v_{\text{paddle}} \cdot f &amp; \text{ปล่อยปุ่ม } (0 &lt; f &l
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%9F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%A3%E0%B9%87%E0%B8%A7%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%84%E0%B8%A1%E0%B9%89--%E0%B9%80%E0%B8%AB%E0%B9%87%E0%B8%99%E0%B8%AA%E0%B8%A1%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%87">กราฟความเร็วของไม้ — เห็นสมการเป็นเส้นโค้ง</h1>
-<p>ลองดูว่า <code>player_speed</code> เปลี่ยนยังไงในแต่ละเฟรม ถ้าเรากดค้างแล้วปล่อย:</p>
-<p><img src="img/paddle_velocity_profile.png" alt="" style="width:680px;" /></p>
+<p>ลองดูว่า <code>player_speed</code> เปลี่ยนยังไงในแต่ละเฟรม ถ้าเรากดค้างแล้วปล่อย — จุดส้มคือค่าความเร็ว ณ เฟรมนั้น วิ่งไปตามเวลาจริง:</p>
+<div style="text-align:center;margin:4px 0;">
+<svg width="620" height="270" viewBox="0 0 620 270" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect x="2" y="2" width="616" height="266" fill="#fcfdff" stroke="#d0d7de" rx="8" />
+  <line x1="70" y1="210" x2="590" y2="210" stroke="#444" stroke-width="2" />
+  <line x1="70" y1="32" x2="70" y2="210" stroke="#444" stroke-width="2" />
+  <text x="40" y="56" font-size="12" fill="#444" text-anchor="end">12</text>
+  <text x="40" y="96" font-size="12" fill="#444" text-anchor="end">9</text>
+  <text x="40" y="135" font-size="12" fill="#444" text-anchor="end">6</text>
+  <text x="40" y="174" font-size="12" fill="#444" text-anchor="end">3</text>
+  <text x="40" y="214" font-size="12" fill="#444" text-anchor="end">0</text>
+  <text x="18" y="125" font-size="13" fill="#1565c0" text-anchor="middle" transform="rotate(-90 18 125)">player_speed</text>
+  <text x="330" y="234" font-size="12" fill="#444" text-anchor="middle">เฟรม (เวลา) →</text>
+  <line x1="70" y1="53.1" x2="590" y2="53.1" stroke="#d32f2f" stroke-width="2" stroke-dasharray="6 4" />
+  <text x="585" y="48" font-size="12" fill="#d32f2f" text-anchor="end">เพดาน MAX_SPEED = 12 (clamp)</text>
+  <rect x="70" y="32" width="269" height="178" fill="#2e7d32" opacity="0.06" />
+  <rect x="339" y="32" width="251" height="178" fill="#1565c0" opacity="0.06" />
+  <line x1="339" y1="32" x2="339" y2="210" stroke="#888" stroke-width="1.5" stroke-dasharray="3 3" />
+  <text x="205" y="206" font-size="12" fill="#2e7d32" text-anchor="middle">กดค้าง: เร่งเป็นเส้นตรง</text>
+  <text x="464" y="206" font-size="12" fill="#1565c0" text-anchor="middle">ปล่อย: ไถลลู่เข้าศูนย์</text>
+  <polyline fill="none" stroke="#1565c0" stroke-width="3"
+    points="70.0,210.0 87.9,190.4 105.9,170.8 123.8,151.2 141.7,131.5 159.7,111.9 177.6,92.3 195.5,72.7 213.4,53.1 231.4,53.1 249.3,53.1 267.2,53.1 285.2,53.1 303.1,53.1 321.0,53.1 339.0,53.1 356.9,87.6 374.8,114.5 392.8,135.5 410.7,151.9 428.6,164.7 446.6,174.7 464.5,182.4 482.4,188.5 500.3,193.2 518.3,196.9 536.2,199.8 554.1,202.0 572.1,203.8 590.0,205.2" />
+  <circle r="7" fill="#ef6c00" stroke="#fff" stroke-width="2" />
+    <animate attributeName="cx" dur="4.5s" repeatCount="indefinite"
+      keyTimes="0.0;0.0345;0.069;0.1034;0.1379;0.1724;0.2069;0.2414;0.2759;0.3103;0.3448;0.3793;0.4138;0.4483;0.4828;0.5172;0.5517;0.5862;0.6207;0.6552;0.6897;0.7241;0.7586;0.7931;0.8276;0.8621;0.8966;0.931;0.9655;1.0"
+      values="70.0;87.9;105.9;123.8;141.7;159.7;177.6;195.5;213.4;231.4;249.3;267.2;285.2;303.1;321.0;339.0;356.9;374.8;392.8;410.7;428.6;446.6;464.5;482.4;500.3;518.3;536.2;554.1;572.1;590.0"/>
+    <animate attributeName="cy" dur="4.5s" repeatCount="indefinite"
+      keyTimes="0.0;0.0345;0.069;0.1034;0.1379;0.1724;0.2069;0.2414;0.2759;0.3103;0.3448;0.3793;0.4138;0.4483;0.4828;0.5172;0.5517;0.5862;0.6207;0.6552;0.6897;0.7241;0.7586;0.7931;0.8276;0.8621;0.8966;0.931;0.9655;1.0"
+      values="210.0;190.4;170.8;151.2;131.5;111.9;92.3;72.7;53.1;53.1;53.1;53.1;53.1;53.1;53.1;53.1;87.6;114.5;135.5;151.9;164.7;174.7;182.4;188.5;193.2;196.9;199.8;202.0;203.8;205.2"/>
+  <circle />
+  <rect x="486" y="13" width="42" height="22" rx="5" fill="#2e7d32" stroke="#1b5e20" stroke-width="1.5" />
+    <animate attributeName="fill" dur="4.5s" repeatCount="indefinite"
+      keyTimes="0;0.5;0.51;1" values="#2e7d32;#2e7d32;#cfd8dc;#cfd8dc"/>
+  <rect />
+  <text x="507" y="29" font-size="12" text-anchor="middle" fill="#fff">UP</text>
+  <text x="536" y="29" font-size="11" fill="#90a4ae">กดค้าง → ปล่อย</text>
+</svg>
+</div>
 <p>ช่วงกด ความเร็วโตเป็น <strong>เส้นตรง</strong> (บวก <code>ACCEL</code> คงที่ทุกเฟรม) จนชน <strong>เพดาน 12</strong> แล้วถูก clamp ให้แบนราบ พอปล่อยปุ่ม การคูณ <code>FRICTION = 0.78</code> ซ้ำ ๆ ทำให้เป็น <strong>เส้นโค้งลู่เข้าศูนย์</strong> (geometric decay): หลังปล่อย 1 เฟรมเหลือ 78%, 2 เฟรมเหลือ ~61%, 3 เฟรมเหลือ ~47%</p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>v</mi><mi>n</mi></msub><mo>=</mo><msub><mi>v</mi><mn>0</mn></msub><mo>⋅</mo><msup><mi>f</mi><mrow><mtext> </mtext><mi>n</mi></mrow></msup><mspace width="1em"/><mo>⇒</mo><mspace width="1em"/><mn>12</mn><mo>→</mo><mn>9.4</mn><mo>→</mo><mn>7.3</mn><mo>→</mo><mn>5.7</mn><mo>→</mo><mo>⋯</mo><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">v_n = v_0 \cdot f^{\,n} \quad\Rightarrow\quad 12 \to 9.4 \to 7.3 \to 5.7 \to \dots \to 0
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.5945em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.9088em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7144em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mspace mtight" style="margin-right:0.1952em;"></span><span class="mord mathnormal mtight">n</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:1em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">9.4</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">7.3</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">5.7</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6444em;"></span><span class="mord">0</span></span></span></span></span></p><blockquote>
@@ -202,13 +238,48 @@ v_{\text{paddle}} \cdot f &amp; \text{ปล่อยปุ่ม } (0 &lt; f &l
 <h1 id="%E0%B8%AA%E0%B8%9B%E0%B8%B4%E0%B8%99--%E0%B9%84%E0%B8%A1%E0%B9%89%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%81%E0%B8%B3%E0%B8%A5%E0%B8%B1%E0%B8%87%E0%B9%80%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B9%83%E0%B8%AA%E0%B9%88%E0%B8%AB%E0%B8%A1%E0%B8%B8%E0%B8%99%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%A5%E0%B8%B9%E0%B8%81">สปิน — ไม้ที่กำลังเคลื่อนใส่หมุนให้ลูก</h1>
 <p>เมื่อลูกชนไม้ ถ้าไม้ &quot;กำลังเคลื่อน&quot; อยู่ตอนตี เราเอาความเร็วไม้ส่วนหนึ่งไปบวกเข้ากับความเร็วลูก = <strong>สปิน</strong></p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>v</mi><mrow><mi>y</mi><mo separator="true">,</mo><mtext>ball</mtext></mrow></msub><mo>+</mo><mo>=</mo><msub><mi>v</mi><mtext>paddle</mtext></msub><mo>×</mo><mtext>SPIN</mtext></mrow><annotation encoding="application/x-tex">v_{y,\text{ball}} \mathrel{+}= v_{\text{paddle}} \times \text{SPIN}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span><span class="mpunct mtight">,</span><span class="mord text mtight"><span class="mord mtight">ball</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mord">+</span></span></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">paddle</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">SPIN</span></span></span></span></span></span></p><div style="display:flex;gap:18px;justify-content:center;margin-top:8px;">
-  <div style="border:2px solid #2e7d32;border-radius:10px;padding:10px 16px;background:#e8f5e9;">
-    ไม้หยุดนิ่งตอนตี<br /><small>ลูกเด้งตรง ๆ ตามมุมจุดสัมผัส</small>
-  </div>
-  <div style="border:2px solid #1565c0;border-radius:10px;padding:10px 16px;background:#e3f2fd;">
-    ไม้กำลังเลื่อนขึ้น/ลงตอนตี<br /><small>ลูกถูก "ปัด" ให้เด้งเฉียงมากขึ้น</small>
-  </div>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span><span class="mpunct mtight">,</span><span class="mord text mtight"><span class="mord mtight">ball</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel"><span class="mord">+</span></span></span><span class="base"><span class="strut" style="height:0.3669em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8694em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">paddle</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord">SPIN</span></span></span></span></span></span></p><div style="display:flex;gap:18px;justify-content:center;align-items:flex-start;margin-top:4px;">
+<div style="text-align:center;">
+<svg width="290" height="210" viewBox="0 0 290 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect x="2" y="2" width="286" height="206" fill="#f6fbf6" stroke="#2e7d32" stroke-width="2" rx="8" />
+  <text x="145" y="22" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="bold">ไม้หยุดนิ่งตอนตี</text>
+  <rect x="40" y="92" width="16" height="58" fill="#2e7d32" />
+  <line x1="250" y1="70" x2="64" y2="118" stroke="#bbb" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="64" y1="118" x2="250" y2="166" stroke="#bbb" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="120" y1="148" x2="240" y2="178" stroke="#2e7d32" stroke-width="2" marker-end="url(#ar)" opacity="0.5" />
+  <circle r="9" fill="#1565c0" stroke="#fff" stroke-width="2" />
+    <animate attributeName="cx" dur="3s" repeatCount="indefinite" keyTimes="0;0.45;0.5;1" values="250;64;64;250"/>
+    <animate attributeName="cy" dur="3s" repeatCount="indefinite" keyTimes="0;0.45;0.5;1" values="70;118;118;166"/>
+  <circle />
+  <text x="158" y="100" font-size="11" fill="#2e7d32">เด้งตรง ๆ</text>
+  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#2e7d32" /></marker></defs>
+</svg>
+<div style="font-size:13px;color:#2e7d32;">vy เท่าเดิม → มุมเด้งเท่าขาเข้า</div>
+</div>
+<div style="text-align:center;">
+<svg width="290" height="210" viewBox="0 0 290 210" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect x="2" y="2" width="286" height="206" fill="#f3f8ff" stroke="#1565c0" stroke-width="2" rx="8" />
+  <text x="145" y="22" font-size="13" text-anchor="middle" fill="#1565c0" font-weight="bold">ไม้กำลังเลื่อนขึ้นตอนตี</text>
+  <rect x="40" width="16" height="58" fill="#1565c0" />
+    <animate attributeName="y" dur="3s" repeatCount="indefinite" keyTimes="0;0.3;0.5;0.6;1" values="120;104;92;92;120"/>
+  <rect />
+  <line x1="48" y1="92" x2="48" y2="64" stroke="#ef6c00" stroke-width="2.5" marker-end="url(#up)" />
+  <text x="60" y="74" font-size="11" fill="#ef6c00">v_paddle</text>
+  <line x1="250" y1="70" x2="64" y2="118" stroke="#bbb" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="64" y1="118" x2="250" y2="40" stroke="#1565c0" stroke-width="1" stroke-dasharray="3 3" />
+  <line x1="120" y1="98" x2="244" y2="44" stroke="#1565c0" stroke-width="2" marker-end="url(#ar2)" opacity="0.5" />
+  <circle r="9" fill="#1565c0" stroke="#fff" stroke-width="2" />
+    <animate attributeName="cx" dur="3s" repeatCount="indefinite" keyTimes="0;0.45;0.5;1" values="250;64;64;250"/>
+    <animate attributeName="cy" dur="3s" repeatCount="indefinite" keyTimes="0;0.45;0.5;1" values="70;118;118;40"/>
+  <circle />
+  <text x="150" y="62" font-size="11" fill="#1565c0">เด้งเฉียงขึ้น (spin)</text>
+  <defs>
+    <marker id="up" markerWidth="9" markerHeight="9" refX="3" refY="6" orient="auto"><path d="M0,6 L3,0 L6,6 Z" fill="#ef6c00" /></marker>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#1565c0" /></marker>
+  </defs>
+</svg>
+<div style="font-size:13px;color:#1565c0;">vy += v_paddle×SPIN → เด้งชันขึ้น</div>
+</div>
 </div>
 <blockquote>
 <p>นี่คือเหตุผลที่เราเก็บไม้เป็น <code>player_speed</code> ตั้งแต่ต้น — พอถึงคาบหน้าเรามีความเร็วไม้พร้อมใช้ใส่สปินได้ทันที (ค่าจริง <code>SPIN = 0.28</code>)</p>
@@ -244,6 +315,39 @@ v_{\text{paddle}} \cdot f &amp; \text{ปล่อยปุ่ม } (0 &lt; f &l
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="14" style="" data-marpit-pagination-total="19" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%94%E0%B8%B1%E0%B8%81%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%88%E0%B8%AD%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%A2-novice-traps">กับดักที่เจอบ่อย (novice traps)</h1>
+<p>กับดักยอดฮิตของแถวล่าง &quot;ไม้หลุดขอบจอ&quot; — ลืม clamp <strong>ตำแหน่ง</strong> ไม้ก็ไถลเลยขอบบนหายไปจากจอ ใส่ <code>max(0, …)</code> กลับมาอยู่ที่ขอบพอดี:</p>
+<div style="display:flex;gap:16px;justify-content:center;align-items:flex-start;margin:2px 0 6px;">
+<div style="text-align:center;">
+<svg width="250" height="178" viewBox="0 0 270 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="135" y="18" font-size="13" text-anchor="middle" fill="#d32f2f" font-weight="bold">ไม่ clamp ตำแหน่ง — บั๊ก</text>
+  <rect x="70" y="30" width="130" height="150" fill="#fafafa" stroke="#333" stroke-width="2" />
+  <line x1="70" y1="30" x2="200" y2="30" stroke="#d32f2f" stroke-width="3" />
+  <text x="205" y="34" font-size="10" fill="#d32f2f">ขอบบน y=0</text>
+  <rect x="92" y="-2" width="16" height="46" fill="#2e7d32" opacity="0.6" stroke="#888" stroke-dasharray="3" />
+  <line x1="100" y1="44" x2="100" y2="6" stroke="#d32f2f" stroke-width="2" marker-end="url(#u1)" />
+  <text x="116" y="14" font-size="11" fill="#d32f2f">หลุดออกนอกจอ</text>
+  <text x="135" y="120" font-size="11" fill="#777" text-anchor="middle">y ติดลบเรื่อย ๆ</text>
+  <text x="135" y="138" font-size="11" fill="#777" text-anchor="middle">ไม้หายจากจอ</text>
+  <defs><marker id="u1" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,6 L3,0 L6,6 Z" fill="#d32f2f" /></marker></defs>
+</svg>
+<div style="font-size:12px;color:#d32f2f;"><code>player_y += speed</code> (ไม่จำกัด)</div>
+</div>
+<div style="font-size:28px;align-self:center;color:#888;">→</div>
+<div style="text-align:center;">
+<svg width="250" height="178" viewBox="0 0 270 200" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <text x="135" y="18" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="bold">clamp ตำแหน่ง — แก้แล้ว</text>
+  <rect x="70" y="30" width="130" height="150" fill="#fafafa" stroke="#333" stroke-width="2" />
+  <line x1="70" y1="30" x2="200" y2="30" stroke="#2e7d32" stroke-width="3" />
+  <text x="205" y="34" font-size="10" fill="#2e7d32">ขอบบน y=0</text>
+  <rect x="92" y="31" width="16" height="46" fill="#2e7d32" />
+  <line x1="100" y1="77" x2="100" y2="39" stroke="#2e7d32" stroke-width="2" marker-end="url(#u2)" />
+  <text x="116" y="48" font-size="11" fill="#2e7d32">หยุดที่ y=0</text>
+  <text x="135" y="130" font-size="11" fill="#777" text-anchor="middle">max(0, …) กันค่าติดลบ</text>
+  <defs><marker id="u2" markerWidth="8" markerHeight="8" refX="3" refY="6" orient="auto"><path d="M0,6 L3,0 L6,6 Z" fill="#2e7d32" /></marker></defs>
+</svg>
+<div style="font-size:12px;color:#2e7d32;"><code>player_y = max(0, min(H−PADDLE_H, …))</code></div>
+</div>
+</div>
 <div style="font-size:21px;">
 <table>
 <thead>

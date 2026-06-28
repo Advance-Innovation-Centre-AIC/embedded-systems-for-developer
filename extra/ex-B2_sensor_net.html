@@ -32,6 +32,8 @@
 เก็บค่าล่าสุดใน <code>dict</code> วาดกราฟแท่งบนจอ
 </div>
 </div>
+<p><img src="img/node_aggregator_roles.png" alt="" style="width:880px;" /></p>
+<p><sub>หลาย <b>node</b> (เขียว) วัดค่าแล้ว publish เข้า <code>env/&lt;board&gt;/temp</code> ของตัวเอง — <b>aggregator</b> (น้ำเงิน) ตัวเดียว subscribe <code>env/+/temp</code> รับครบทุกบอร์ด เพิ่ม node กี่ตัวก็ไม่ต้องแก้โค้ดฝั่งกลาง</sub></p>
 <p><strong>โลกจริงที่หน้าตาเหมือนกันเป๊ะ:</strong> เซนเซอร์อุณหภูมิทุกห้องในตึกส่งค่าเข้า dashboard กลาง, เครื่องจักรในโรงงานส่งสถานะเข้าระบบมอนิเตอร์ (Industry 4.0) — โครงสร้าง pub/sub + wildcard อันเดียวกันนี้เลย</p>
 <div style="display:flex;gap:16px;align-items:center;margin-top:8px">
 <div style="flex:0 0 300px">

@@ -47,9 +47,41 @@
 <b>3. จบเกม</b><br />เล่นเสียง <code>die</code> +<br />ป้าย GAME OVER +<br />ออกจาก game loop
 </div>
 </div>
+<svg width="100%" viewBox="0 0 600 150" font-size="11" style="margin-top:8px">
+  
+  <text x="90" y="14" fill="#c0392b" font-weight="bold" text-anchor="middle">1 · ชนกำแพง</text>
+  <g transform="translate(20,24)">
+    <rect x="0" y="0" width="116" height="116" fill="none" stroke="#888" stroke-width="2" />
+    <rect x="2"  y="60" width="26" height="26" fill="#27ae60" />
+    <rect x="30" y="60" width="26" height="26" fill="#27ae60" />
+    <rect x="58" y="60" width="26" height="26" fill="#27ae60" />
+    <rect x="86" y="60" width="26" height="26" fill="#2ecc71" />
+    <rect x="118" y="60" width="26" height="26" fill="#c0392b" fill-opacity="0.25" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3" />
+    <text x="131" y="100" fill="#c0392b" text-anchor="middle">หลุดขอบ</text>
+  </g>
+  
+  <text x="300" y="14" fill="#c0392b" font-weight="bold" text-anchor="middle">2 · ชนตัวเอง</text>
+  <g transform="translate(242,24)">
+    <rect x="0" y="0" width="116" height="116" fill="none" stroke="#888" stroke-width="2" />
+    <rect x="30" y="30" width="26" height="26" fill="#27ae60" />
+    <rect x="58" y="30" width="26" height="26" fill="#27ae60" />
+    <rect x="58" y="58" width="26" height="26" fill="#27ae60" />
+    <rect x="30" y="58" width="26" height="26" fill="#2ecc71" />
+    <rect x="30" y="30" width="26" height="26" fill="#c0392b" fill-opacity="0.30" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3" />
+    <text x="58" y="104" fill="#c0392b" text-anchor="middle">ทับลำตัว</text>
+  </g>
+  
+  <text x="510" y="14" fill="#c0392b" font-weight="bold" text-anchor="middle">3 · จบเกม</text>
+  <g transform="translate(452,24)">
+    <rect x="0" y="0" width="116" height="116" rx="8" fill="#101418" stroke="#30363d" stroke-width="2" />
+    <text x="58" y="54" fill="#e74c3c" font-size="15" font-weight="bold" text-anchor="middle">GAME</text>
+    <text x="58" y="74" fill="#e74c3c" font-size="15" font-weight="bold" text-anchor="middle">OVER</text>
+    <text x="58" y="100" fill="#8b949e" font-size="10" text-anchor="middle">die + return False</text>
+  </g>
+</svg>
 <br />
 <blockquote>
-<p>เติมแค่ 3 ข้อนี้ Snake ก็กลายเป็นเกมจบสมบูรณ์ ที่เล่นแพ้และทำคะแนนสูงได้จริง</p>
+<p>เติมแค่ 3 ข้อนี้ Snake ก็กลายเป็นเกมจบสมบูรณ์ ที่เล่นแพ้และทำคะแนนสูงได้จริง — ภาพย่อด้านบนคือ <code>collision_check.png</code> (สไลด์ถัดไป) แบบจิ๋ว: เส้นประแดงคือช่อง <code>next_head</code> ที่ &quot;แพ้&quot; ก่อนงูจะขยับจริง</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
@@ -194,12 +226,13 @@
 <blockquote>
 <p><strong>เสียงในคาบนี้</strong> — Snake ใช้ <code>snake_die</code> ตอนชน/แพ้ (บล็อก <code>if</code> วันนี้) คู่กับ <code>snake_eat</code> ตอนกินอาหารจากคาบก่อน และ <code>game_over</code> เป็น stretch ต่อท้ายตอนจบเกม (กดเล่นฟังได้จริง):</p>
 </blockquote>
-<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
-<span><b>snake_die</b><br /><audio controls src="img/sfx_snake_die.mp3" style="height:30px;width:160px"></audio></span>
-<span><b>snake_eat</b><br /><audio controls src="img/sfx_snake_eat.mp3" style="height:30px;width:160px"></audio></span>
-<span><b>game_over</b><br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:160px"></audio></span>
+<div style="display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
+<span><b>snake_die</b><br /><audio controls src="img/sfx_snake_die.mp3" style="height:30px;width:160px"></audio><br /><img src="img/sfx_snake_die_spec.png" style="width:160px;height:auto;margin-top:4px;filter:none" alt="spectrogram ของ snake_die" /></span>
+<span><b>snake_eat</b><br /><audio controls src="img/sfx_snake_eat.mp3" style="height:30px;width:160px"></audio><br /><img src="img/sfx_snake_eat_spec.png" style="width:160px;height:auto;margin-top:4px;filter:none" alt="spectrogram ของ snake_eat" /></span>
+<span><b>game_over</b><br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:160px"></audio><br /><img src="img/sfx_game_over_spec.png" style="width:160px;height:auto;margin-top:4px;filter:none" alt="spectrogram ของ game_over" /></span>
 <span style="min-width:180px">ฟังครบ 21 ตัว + รูปคลื่น/ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
+<p><sub>รูป spectrogram สร้างจากไฟล์เสียง <code>.mp3</code> ชุดเดียวกันด้านบน (สี = ความเข้มพลังงานตามความถี่–เวลา) — สังเกต <code>snake_die</code> ทอดเสียงยาว–ตกต่ำ ส่วน <code>snake_eat</code> สั้น–สูง คม</sub></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h2 id="flow-%E0%B8%88%E0%B8%9A%E0%B9%80%E0%B8%81%E0%B8%A1%E0%B8%AD%E0%B8%A2%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%AA%E0%B8%B8%E0%B8%A0%E0%B8%B2%E0%B8%9E-state-machine">flow จบเกมอย่างสุภาพ (state machine)</h2>

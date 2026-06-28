@@ -109,6 +109,8 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-1--%E0%B8%A3%E0%B8%B1%E0%B8%99-mygamepy-%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%80%E0%B8%AB%E0%B9%87%E0%B8%99%E0%B8%A7%E0%B9%88%E0%B8%B2%E0%B9%82%E0%B8%84%E0%B8%A3%E0%B8%87%E0%B8%9E%E0%B8%A3%E0%B9%89%E0%B8%AD%E0%B8%A1-20-%E0%B8%99%E0%B8%B2%E0%B8%97%E0%B8%B5">ขั้น 1 — รัน <code>mygame.py</code> ให้เห็นว่าโครงพร้อม (20 นาที)</h1>
 <p>ก่อนจะออกแบบ เราอยากให้น้อง ๆ เห็นก่อนว่าโครงนี้รันได้จริงตั้งแต่ยังไม่แก้อะไรเลย:</p>
 <p>เปิด <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/mygame.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/mygame.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a> <strong>ใน BENTO IDE</strong> แล้วกดปุ่ม <strong>Program to Device</strong></p>
+<p><img src="img/Bento_IDE_Program_to_Device.png" alt="" style="width:440px;" /><br />
+<sub>ปุ่ม <strong>Program to Device</strong> ใน BENTO IDE — นี่คือปุ่มที่กดทุกครั้งหลังเติมโค้ดเสร็จ เพื่อ flash <code>mygame.py</code> ลงบอร์ด</sub></p>
 <p>จะได้เกมตัวอย่าง &quot;วิ่งกล่อง cyan ไปชนเป้า yellow ให้ครบ 5 แต้ม&quot; โครงมี 3 ช่องว่างเขียนป้าย <code># 1) / # 2) / # 3)</code> ไว้ชัดเจน (Draw เอนจินวาดให้เอง)</p>
 <p><img src="img/mygame_demo.gif" alt="" style="width:560px;" /></p>
 <p>หน้าตาเกมตัวอย่างบนจอเป็นแบบนี้ — กล่อง cyan คือผู้เล่น เลื่อนด้วยจอยไปแตะเป้าเหลือง ครบ 5 แต้มขึ้น <code>YOU WIN!</code> นี่คือเป้าหมาย MVP ที่กลุ่มจะดัดแปลงเป็นเกมของตัวเอง</p>
@@ -175,6 +177,32 @@ target = ____        <span class="hljs-comment"># เป้าสีเหลื
 
 game.run(update, fps=<span class="hljs-number">30</span>)
 </code></pre>
+<p>แต่ละช่องรัน &quot;เมื่อไหร่&quot; ต่างกัน — <code># 1) STATE</code> รันครั้งเดียวตอนเริ่ม ส่วน <code># 2) TICK</code> กับ <code># 3) WIN/LOSE</code> อยู่ใน <code>update()</code> ที่ engine เรียกซ้ำทุกเฟรม:</p>
+<svg viewBox="0 0 720 178" width="86%">
+  
+  <rect x="10" y="20" width="200" height="58" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="110" y="44" font-size="14" text-anchor="middle" font-weight="bold" fill="#0d47a1"># 1) STATE</text>
+  <text x="110" y="64" font-size="11" text-anchor="middle" fill="#555">รันครั้งเดียว · ก่อนลูป</text>
+  
+  <text x="245" y="54" font-size="16" text-anchor="middle" fill="#444">game.run( )</text>
+  <path d="M210 49 H280" stroke="#888" stroke-width="2" marker-end="url(#a14)" />
+  
+  <rect x="300" y="8" width="408" height="120" rx="10" fill="#fff" stroke="#ef6c00" stroke-width="2" stroke-dasharray="6 4" />
+  <text x="504" y="28" font-size="12" text-anchor="middle" fill="#e65100" font-weight="bold">update() — engine เรียกซ้ำทุกเฟรม (30 ครั้ง/วินาที)</text>
+  <rect x="318" y="40" width="170" height="50" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="403" y="62" font-size="14" text-anchor="middle" font-weight="bold" fill="#1b5e20"># 2) TICK</text>
+  <text x="403" y="80" font-size="10.5" text-anchor="middle" fill="#555">ขยับผู้เล่นตามปุ่ม</text>
+  <rect x="510" y="40" width="180" height="50" rx="8" fill="#fce4ec" stroke="#c2185b" stroke-width="2" />
+  <text x="600" y="62" font-size="14" text-anchor="middle" font-weight="bold" fill="#880e4f"># 3) WIN/LOSE</text>
+  <text x="600" y="80" font-size="10.5" text-anchor="middle" fill="#555">ชนเป้า/ครบ GOAL?</text>
+  
+  <path d="M504 104 q0 18 -150 18 q-200 0 -200 -18" fill="none" stroke="#ef6c00" stroke-width="2" stroke-dasharray="4 3" marker-end="url(#a14b)" />
+  <text x="360" y="150" font-size="11" text-anchor="middle" fill="#e65100">วนกลับมาเฟรมถัดไป</text>
+  <defs>
+    <marker id="a14" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 Z" fill="#888" /></marker>
+    <marker id="a14b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 Z" fill="#ef6c00" /></marker>
+  </defs>
+</svg>
 <p>ไฟล์เว้นช่อง: <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/mygame.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/mygame.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="24">
@@ -230,6 +258,8 @@ game.run(update, fps=<span class="hljs-number">30</span>)
 <blockquote>
 <p><strong>กฎ:</strong> ทุกเกมไม่ต้องเขียน engine ใหม่ ต่างกันแค่ &quot;30% ยากแค่ไหน&quot; เลือกตามกำลังของกลุ่มได้เลย</p>
 </blockquote>
+<p>หน้าตาคร่าว ๆ ของบางเกมในตาราง — ดูแล้วเลือกที่กลุ่มอยากทำได้เลย:</p>
+<p><img src="img/game_catalog_thumbs.png" alt="" style="width:600px;" /></p>
 <p><img src="img/game_catalog_ladder.png" alt="" style="width:600px;" /></p>
 <p><strong>ผลงานขั้นนี้:</strong> กลุ่มตกลงชื่อเกม 1 เกม พร้อมเหตุผลว่าทำไมถึงเลือกเกมนั้น</p>
 </section>
@@ -308,6 +338,8 @@ label = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span c
     <span class="hljs-keyword">if</span> k.down:  player.move(<span class="hljs-number">0</span>, PLAYER_SPEED)
     <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>
 </code></pre>
+<p>ช่อง TICK นี้ทำงานแบบนี้ — กดจอยทิศไหน กล่อง cyan ก็เลื่อนทิศนั้น และ <code>Box.move()</code> จะ <strong>clamp</strong> ให้เองเมื่อชนขอบ (ไม่หลุดจอ):</p>
+<p><img src="img/tick_move.gif" alt="" style="width:440px;" /></p>
 <p>เปิดไฟล์ใน BENTO IDE แล้วกด <strong>Program to Device</strong> ทุกครั้งที่เติมเสร็จ 1 ช่อง — เห็นผลทันที</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="24">
@@ -324,6 +356,8 @@ label = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span c
             game.sfx(<span class="hljs-string">&quot;win&quot;</span>)
             <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span>             <span class="hljs-comment"># ชนะ -&gt; จบเกม</span>
 </code></pre>
+<p>โค้ดช่องนี้ map ตรงกับสิ่งที่เห็นบนจอ: แตะเป้า → <code>score += 1</code> ป้ายอัปเดต เป้าโผล่ที่ใหม่ พอครบ <code>GOAL</code> ก็ขึ้น <strong>YOU WIN!</strong> แล้วจบรอบ:</p>
+<p><img src="img/win_score.gif" alt="" style="width:440px;" /></p>
 <p>เขียนเองก่อน ติดตรงไหนยกมือถามได้เลย เดี๋ยวเฉลยในห้อง — อย่าลอกทั้งก้อน</p>
 <blockquote>
 <p><strong>ผลงานขั้นนี้:</strong> เกมขึ้นจอ เล่นได้ครบลูป (เริ่ม → ได้แต้ม → ชนะ/จบ) และ Issue ปิด checklist ครบ</p>
@@ -341,6 +375,9 @@ label = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span c
 <span><b>sfx_game_over</b> (ปิดเกม)<br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:160px"></audio></span>
 <span style="min-width:180px">ฟังครบ 21 ตัว + รูปคลื่น/ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
+<p>เสียงไม่ได้มีแค่ &quot;ได้ยิน&quot; — มันมี <strong>รูปร่าง</strong> ด้วย นี่คือ waveform ของ <code>sfx_ui_select</code> (เสียงตอนแตะเป้า/ได้แต้ม) เสียงสั้นแหลมจะขึ้นต้นแรงแล้วจางเร็ว:</p>
+<p><img src="img/sfx_ui_select.png" alt="" style="width:560px;" /><br />
+<sub>รูปคลื่น (waveform) ของ <code>sfx_ui_select</code> — แกนนอนคือเวลา แกนตั้งคือความดัง</sub></p>
 <p>แต่ละกลุ่มจับคู่ event ของเกมตัวเอง (ได้แต้ม / ชนะ / แพ้) กับเสียงที่เหมาะ แล้วลอง map ชื่อใน <code>game.sfx(&quot;...&quot;)</code> ให้ตรงกับโทนเกม</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="16" style="--paginate:true;--theme:default;" data-marpit-pagination-total="24">
@@ -360,6 +397,8 @@ label = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span c
   <text x="620" y="78" font-size="12" text-anchor="middle" fill="#666">แนบ mygame.py</text>
 </svg>
 <p>ที่ repo: <strong>Releases → Draft a new release</strong> ตั้ง tag <code>v0.1</code> ใส่ชื่อเกม + วิธีเล่น แล้ว <strong>แนบไฟล์ <code>mygame.py</code></strong></p>
+<p><img src="img/github_release_draft.png" alt="" style="width:560px;" /><br />
+<sub>หน้า <strong>Draft a new release</strong> บน GitHub — ช่อง <strong>Tag</strong> ใส่ <code>v0.1</code> · กล่อง <strong>Attach binaries</strong> ลากไฟล์ <code>mygame.py</code> มาวาง · แล้วกด <strong>Publish release</strong></sub></p>
 <p>เพื่อนกลุ่มอื่นโหลด <code>mygame.py</code> จากหน้า Release → เปิดใน BENTO IDE → กด <strong>Program to Device</strong> → เล่นได้เลย</p>
 <blockquote>
 <p>DevOps/CI ตัวเต็ม (GitHub Actions, auto-build) เราจะลงลึกในคอร์ส Developer II</p>
@@ -386,8 +425,9 @@ label = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span c
 </ul>
 </div>
 </div>
-<p><img src="img/jam_showcase.png" alt="" style="width:360px;" /></p>
-<p>นี่คือบทพิสูจน์ว่า &quot;ของเรารันบนเครื่องคนอื่นได้&quot; — หัวใจของการ ship งานจริง</p>
+<p><img src="img/jam_showcase_real.jpg" alt="" style="width:520px;" /><br />
+<sub>ที่มา: &quot;WikiGameJam NYC 2025 participants&quot; — Kevin Payravi, CC BY-SA 4.0, Wikimedia Commons</sub></p>
+<p>บรรยากาศ showcase จริง — กลุ่มเล็ก ๆ ล้อมโต๊ะ โชว์เกมที่เพิ่งทำเสร็จให้กันดูและลองเล่น นี่คือบทพิสูจน์ว่า &quot;ของเรารันบนเครื่องคนอื่นได้&quot; — หัวใจของการ ship งานจริง</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:default;" data-marpit-pagination-total="24">
 <h1 id="game-jam-%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%A3%E0%B8%B2%E0%B8%97%E0%B8%B3%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%99%E0%B8%B5%E0%B9%89-%E0%B9%84%E0%B8%A1%E0%B9%88%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%97%E0%B8%B3%E0%B8%84%E0%B8%99%E0%B9%80%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B8%A7%E0%B9%83%E0%B8%99%E0%B9%82%E0%B8%A5%E0%B8%81">Game Jam ที่เราทำวันนี้ ไม่ได้ทำคนเดียวในโลก</h1>
@@ -408,6 +448,26 @@ label = game.Text(<span class="hljs-string">&quot;Score: 0&quot;</span>, <span c
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:default;" data-marpit-pagination-total="24">
 <h1 id="%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%94%E0%B8%B1%E0%B8%81%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%88%E0%B8%AD%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%A2">กับดักที่เจอบ่อย</h1>
 <div style="background:#fff3e0;border-radius:6px;padding:8px 16px;color:#e65100;font-weight:bold;text-align:center;margin:6px 0;">Scope creep คือศัตรูหมายเลข 1 ของคาบนี้</div>
+<svg viewBox="0 0 720 150" width="74%">
+  
+  <text x="150" y="22" font-size="13" text-anchor="middle" fill="#1b5e20" font-weight="bold">งบ 30% = 3 ช่องเท่านั้น</text>
+  <rect x="20" y="30" width="260" height="96" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <rect x="34" y="44" width="232" height="22" rx="5" fill="#a5d6a7" /><text x="150" y="60" font-size="12" text-anchor="middle" fill="#1b5e20">1) State</text>
+  <rect x="34" y="70" width="232" height="22" rx="5" fill="#a5d6a7" /><text x="150" y="86" font-size="12" text-anchor="middle" fill="#1b5e20">2) Tick</text>
+  <rect x="34" y="96" width="232" height="22" rx="5" fill="#a5d6a7" /><text x="150" y="112" font-size="12" text-anchor="middle" fill="#1b5e20">3) Win/Lose</text>
+  
+  <text x="500" y="22" font-size="13" text-anchor="middle" fill="#b71c1c" font-weight="bold">ไอเดียเต็มที่บวมเกินงบ</text>
+  <rect x="300" y="30" width="400" height="96" rx="10" fill="#ffebee" stroke="#c62828" stroke-width="2" stroke-dasharray="6 4" />
+  <rect x="312" y="40" width="120" height="20" rx="5" fill="#ef9a9a" /><text x="372" y="55" font-size="11" text-anchor="middle" fill="#7f1d1d">หมุน Tetris</text>
+  <rect x="438" y="40" width="120" height="20" rx="5" fill="#ef9a9a" /><text x="498" y="55" font-size="11" text-anchor="middle" fill="#7f1d1d">ผี AI ไล่</text>
+  <rect x="564" y="40" width="124" height="20" rx="5" fill="#ef9a9a" /><text x="626" y="55" font-size="11" text-anchor="middle" fill="#7f1d1d">2 ผู้เล่น</text>
+  <rect x="312" y="66" width="120" height="20" rx="5" fill="#ef9a9a" /><text x="372" y="81" font-size="11" text-anchor="middle" fill="#7f1d1d">เลเวล 10 ด่าน</text>
+  <rect x="438" y="66" width="120" height="20" rx="5" fill="#ef9a9a" /><text x="498" y="81" font-size="11" text-anchor="middle" fill="#7f1d1d">power-up</text>
+  <rect x="564" y="66" width="124" height="20" rx="5" fill="#ef9a9a" /><text x="626" y="81" font-size="11" text-anchor="middle" fill="#7f1d1d">ร้านค้า</text>
+  <rect x="375" y="92" width="120" height="20" rx="5" fill="#ef9a9a" /><text x="435" y="107" font-size="11" text-anchor="middle" fill="#7f1d1d">เก็บไฮสกอร์</text>
+  <rect x="501" y="92" width="120" height="20" rx="5" fill="#ef9a9a" /><text x="561" y="107" font-size="11" text-anchor="middle" fill="#7f1d1d">โหมดเนื้อเรื่อง</text>
+  <text x="500" y="140" font-size="12" text-anchor="middle" fill="#c62828" font-weight="bold">ของที่ล้นกล่อง = ตัดออก เก็บไว้ทำ v0.2</text>
+</svg>
 <table>
 <thead>
 <tr>

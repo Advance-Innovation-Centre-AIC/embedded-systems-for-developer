@@ -32,7 +32,28 @@
 แล้วขยับ <code>game.Box</code> (ยาน) ตามที่เอียง
 </div>
 </div>
-<p><strong>ทำไมเรื่องนี้สำคัญ:</strong> นี่คือหัวใจของ IoT — เซนเซอร์ที่ &quot;หนึ่งที่&quot; ส่งค่าให้ &quot;อีกที่&quot; ตัดสินใจ เหมือนรีโมตโรงงาน, จอย VR, หรือเซนเซอร์สั่นในเครื่องจักร Industry 4.0 ที่ส่งสถานะขึ้นห้องควบคุม</p>
+<p>ทั้งสองใบไม่มีสายต่อกันเลย คุยกันผ่านอากาศล้วน ๆ:</p>
+<svg viewBox="0 0 760 150" width="100%" style="margin-top:6px">
+<rect x="14" y="40" width="172" height="74" rx="10" fill="#eafaf0" stroke="#2a7" stroke-width="2.5" />
+<text x="100" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="#2a7">บอร์ด TX (รีโมต)</text>
+<text x="100" y="68" text-anchor="middle" font-size="12">อ่านเซนเซอร์เอียง</text>
+<text x="100" y="90" text-anchor="middle" font-size="11" fill="#555">BMI270 -&gt; publish</text>
+<rect x="574" y="40" width="172" height="74" rx="10" fill="#e8f0ff" stroke="#27a" stroke-width="2.5" />
+<text x="660" y="32" text-anchor="middle" font-size="13" font-weight="bold" fill="#27a">บอร์ด RX (จอเกม)</text>
+<text x="660" y="68" text-anchor="middle" font-size="12">รับค่า -&gt; ขยับยาน</text>
+<text x="660" y="90" text-anchor="middle" font-size="11" fill="#555">subscribe -&gt; Box</text>
+<text x="380" y="46" text-anchor="middle" font-size="13" font-weight="bold" fill="#e90">ผ่านอากาศ</text>
+<text x="380" y="64" text-anchor="middle" font-size="11" fill="#888">WiFi + MQTT broker</text>
+<line x1="186" y1="77" x2="574" y2="77" stroke="#bbb" stroke-width="2" stroke-dasharray="7 6" />
+<line x1="200" y1="77" x2="560" y2="77" stroke="#e90" stroke-width="3" marker-end="url(#a2)" />
+<text x="380" y="98" text-anchor="middle" font-size="11" fill="#555">"x:-3,y:2"</text>
+<defs><marker id="a2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#e90" /></marker></defs>
+</svg>
+<div style="text-align:center;margin-top:-2px">
+<p><strong>ทำไมเรื่องนี้สำคัญ:</strong> นี่คือหัวใจของ IoT — เซนเซอร์ที่ &quot;หนึ่งที่&quot; ส่งค่าให้ &quot;อีกที่&quot; ตัดสินใจ เหมือนรีโมตโรงงาน, <strong>จอย VR</strong> (เอียงมือคุมของในเกม), หรือเซนเซอร์สั่นในเครื่องจักร Industry 4.0 ที่ส่งสถานะขึ้นห้องควบคุม</p>
+<p><img src="img/vr_motion_controller.jpg" alt="" style="width:200px;" /></p>
+<p><sub>จอย VR ก็คือ &quot;เซนเซอร์ในมือ&quot; ที่ส่งการเคลื่อนไหวไปขยับของบนจอ — หลักการเดียวกับงานวันนี้ · ที่มา: &quot;HTC Vive Controllers&quot; — CULLEN STEBER, CC BY-SA 4.0, Wikimedia Commons</sub></p>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="3" style="--paginate:true;--theme:default;" data-marpit-pagination-total="14">
 <h1 id="%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%A3%E0%B8%A7%E0%B8%A1%E0%B8%87%E0%B8%B2%E0%B8%99-%E0%B9%80%E0%B8%AD%E0%B8%B5%E0%B8%A2%E0%B8%87---%E0%B8%AA%E0%B9%88%E0%B8%87---%E0%B8%82%E0%B8%A2%E0%B8%B1%E0%B8%9A%E0%B8%A2%E0%B8%B2%E0%B8%99">ภาพรวมงาน: เอียง -&gt; ส่ง -&gt; ขยับยาน</h1>
@@ -57,6 +78,11 @@
 <blockquote>
 <p>เราไม่ได้สร้างของเล่นใหม่จากศูนย์ เรากำลัง <strong>ถอดหลักการ</strong> ของอุปกรณ์ระดับตำนานออกมาทำเองด้วยบอร์ดสองใบ</p>
 </blockquote>
+<p><strong>ดูของจริงสักครู่:</strong> สังเกตว่าผู้เล่นแค่ &quot;เหวี่ยงมือ&quot; แล้วไม้เทนนิสบนจอขยับตาม — นั่นคือ accelerometer ในจอยอ่านความเอียง/ความเร่ง แล้วส่งไปให้เครื่องเกม เหมือนที่เราจะทำเป๊ะ</p>
+<div style="text-align:center">
+<iframe width="480" height="270" src="https://www.youtube.com/embed/uZNy31Fraq4" title="Wii Sports Nintendo Wii Gameplay Walkthrough Part 1 - Tennis!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><em>Wii Sports Nintendo Wii Gameplay Walkthrough Part 1 - Tennis! — Zebra Gamer · เอียง/เหวี่ยงมือ -&gt; ของบนจอขยับตาม คือสิ่งที่โปรเจกต์นี้จำลอง</em></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="14">
 <h1 id="%E0%B9%80%E0%B8%AD%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%81%E0%B8%A5%E0%B9%89%E0%B8%A7%E0%B9%84%E0%B8%94%E0%B9%89-%E0%B9%80%E0%B8%A5%E0%B8%82-%E0%B8%A1%E0%B8%B2%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%87">เอียงแล้วได้ &quot;เลข&quot; มาได้ยังไง</h1>
@@ -185,7 +211,35 @@
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:default;" data-marpit-pagination-total="14">
 <h1 id="%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%A3%E0%B8%B1%E0%B8%99--%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%83%E0%B8%8A%E0%B9%89-2-%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94">วิธีรัน — ต้องใช้ 2 บอร์ด</h1>
-<p>ตั้ง <code>SSID</code>/<code>PASSWORD</code> ให้ตรงห้องเรา (หรือต่อ WiFi ผ่านเมนูบนจอไว้ก่อน) แล้วแยกบอร์ด:</p>
+<p>ตั้ง <code>SSID</code>/<code>PASSWORD</code> ให้ตรงห้องเรา (หรือต่อ WiFi ผ่านเมนูบนจอไว้ก่อน) แล้วแยกบอร์ด — ผลที่ควรเห็น: <strong>เอียงบอร์ดซ้าย ยานวิ่งซ้าย เอียงขวา ยานวิ่งขวา</strong> แบบนี้</p>
+<svg viewBox="0 0 760 170" width="100%">
+
+<text x="120" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#2a7">บอร์ด TX — เอียงมือ</text>
+<g transform="translate(120 95)">
+  <g>
+    <rect x="-52" y="-34" width="104" height="68" rx="9" fill="#173" stroke="#2a7" stroke-width="2.5" />
+    <circle cx="0" cy="0" r="9" fill="#7ee787" />
+    <rect x="-40" y="-26" width="14" height="9" rx="2" fill="#0a3" />
+    <animateTransform attributeName="transform" type="rotate" values="0;-26;0;26;0" keyTimes="0;0.25;0.5;0.75;1" dur="4s" repeatCount="indefinite"/>
+  </g>
+</g>
+
+<line x1="186" y1="95" x2="476" y2="95" stroke="#bbb" stroke-width="2" stroke-dasharray="6 6" />
+<g>
+  <circle cx="0" cy="95" r="7" fill="#e90" />
+  <animate attributeName="cx" values="190;472" dur="0.9s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;1;1;0" dur="0.9s" repeatCount="indefinite"/>
+</g>
+<text x="330" y="84" text-anchor="middle" font-size="11" fill="#e90">"x:..,y:.."  (~10/วินาที)</text>
+<text x="330" y="120" text-anchor="middle" font-size="10" fill="#999">WiFi + MQTT</text>
+
+<text x="630" y="20" text-anchor="middle" font-size="13" font-weight="bold" fill="#27a">บอร์ด RX — ยานวิ่งตาม</text>
+<rect x="510" y="40" width="240" height="110" rx="8" fill="#06121f" stroke="#27a" stroke-width="2.5" />
+<g>
+  <polygon points="0,-11 10,9 -10,9" fill="#4ea1ff" stroke="#cfe6ff" stroke-width="1.5" />
+  <animateTransform attributeName="transform" type="translate" values="630,95; 548,95; 630,95; 712,95; 630,95" keyTimes="0;0.25;0.5;0.75;1" dur="4s" repeatCount="indefinite"/>
+</g>
+</svg>
 <div style="display:flex;gap:16px;margin-top:8px">
 <div style="flex:1;border:3px solid #2a7;border-radius:12px;padding:14px;background:#eafaf0">
 <b>บอร์ดที่ 1 (รีโมต)</b><br />
@@ -239,7 +293,15 @@
 <li><strong>Industry 4.0:</strong> เปลี่ยนค่าเอียงเป็นค่าสั่นของมอเตอร์ ส่งขึ้น broker ให้ห้องควบคุมเฝ้าดู (predictive maintenance) — โครงโค้ดเดิมเป๊ะ ๆ</li>
 <li><strong>IoT remote:</strong> ใช้บอร์ด TX เป็นรีโมตคุมหุ่น/รถของเล่นจริง โดย RX ขับมอเตอร์แทนการขยับ Box</li>
 </ul>
-<p><img src="img/a3_reskin.png" alt="" style="width:760px;" /></p>
+<div style="display:flex;gap:18px;align-items:center;margin-top:6px">
+<div style="flex:0 0 188px;text-align:center">
+<p><img src="img/rc_car_arduino.jpg" alt="" style="width:188px;" /></p>
+<p><sub>ของจริง: รถ RC ต่อเข้าไมโครคอนโทรลเลอร์ (Arduino) — เปลี่ยน &quot;ขยับยานบนจอ&quot; เป็น &quot;สั่งล้อหมุนจริง&quot; ก็คือ IoT remote · ที่มา: &quot;RC car hooked up to the arduino&quot; — Mbroemme5783, CC BY-SA 3.0, Wikimedia Commons</sub></p>
+</div>
+<div style="flex:1">
+<p><img src="img/a3_reskin.png" alt="" style="width:560px;" /></p>
+</div>
+</div>
 <blockquote>
 <p>หลักการเดียวกันนี้ scale ได้ถึงระดับโรงงาน เซนเซอร์หนึ่งที่ ส่งค่าให้อีกที่ตัดสินใจ คือหัวใจของ IoT ทั้งหมด น้อง ๆ ทำเป็นแล้ววันนี้</p>
 </blockquote>

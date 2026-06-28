@@ -12,7 +12,7 @@
 <h1 id="bento-game-console--developer-ii">BENTO Game Console — Developer II</h1>
 <h2 id="%E0%B8%84%E0%B8%B2%E0%B8%9A-11--wifi--mqtt-high-score-board">คาบ 11 — WiFi + MQTT: high-score board</h2>
 <p>สองคาบที่ผ่านมา Snake กับ Flappy ของเราเล่นจบรอบได้แล้ว มีคะแนนของตัวเองแล้วด้วย วันนี้เราจะพาคะแนนนั้น &quot;ออกจากบอร์ด&quot; ขึ้นไปอยู่บนกระดานออนไลน์ที่ทุกคนในห้องเห็นพร้อมกัน</p>
-<p>ช่วง network / IoT · ~3 ชม. · 3 คน/บอร์ด</p>
+<p>ช่วง network / IoT · 3 คน/บอร์ด</p>
 <p><img src="img/session-11.png" alt="" style="width:600px;" /></p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="" data-marpit-pagination-total="18" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
@@ -103,6 +103,26 @@
     <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;ต่อ WiFi แล้ว IP =&quot;</span>, wifi.ip())   <span class="hljs-comment"># โชว์ IP ที่ได้มา</span>
 </code></pre>
 <p><code>SSID</code>/<code>PASSWORD</code> ตรงนี้เป็นแค่ตัวอย่าง (placeholder) ก่อนรันจริงในห้อง น้อง ๆ ต้องแก้ให้ตรงกับ WiFi ที่อาจารย์เตรียมไว้ และต้องเป็นคลื่น <strong>2.4GHz</strong> เท่านั้น</p>
+<p>ตรรกะของบล็อกนี้มีแค่ 2 ปลายทาง: ต่อผ่าน → ไปต่อ, ต่อไม่ผ่าน → <code>raise SystemExit</code> หยุดทันที</p>
+<svg viewBox="0 0 720 150" width="100%">
+<rect x="20" y="45" width="150" height="60" rx="10" fill="#fdeaea" stroke="#c33" stroke-width="2" />
+<text x="95" y="72" text-anchor="middle" font-size="14" font-weight="bold">DISCONNECTED</text>
+<text x="95" y="92" text-anchor="middle" font-size="12">เพิ่งบูต ยังไม่มีเน็ต</text>
+<rect x="300" y="45" width="160" height="60" rx="10" fill="#e8faf0" stroke="#2a7" stroke-width="2" />
+<text x="380" y="72" text-anchor="middle" font-size="14" font-weight="bold">CONNECTED</text>
+<text x="380" y="92" text-anchor="middle" font-size="12">มี IP แล้ว ไปต่อ MQTT</text>
+<rect x="560" y="45" width="140" height="60" rx="10" fill="#f3f4f6" stroke="#888" stroke-width="2" stroke-dasharray="5 4" />
+<text x="630" y="72" text-anchor="middle" font-size="14" font-weight="bold" fill="#a33">SystemExit</text>
+<text x="630" y="92" text-anchor="middle" font-size="12">หยุดโปรแกรม</text>
+<line x1="170" y1="75" x2="298" y2="75" stroke="#2a7" stroke-width="3" marker-end="url(#arw)" />
+<text x="234" y="64" text-anchor="middle" font-size="12" fill="#2a7">connect()=True</text>
+<line x1="95" y1="105" x2="95" y2="135" stroke="#c33" stroke-width="3" />
+<line x1="95" y1="135" x2="628" y2="135" stroke="#c33" stroke-width="3" marker-end="url(#arw)" />
+<text x="360" y="128" text-anchor="middle" font-size="12" fill="#c33">connect()=False  →  raise SystemExit</text>
+<defs><marker id="arw" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#444" /></marker></defs>
+</svg>
+<p>ต่อสำเร็จ serial console จะพิมพ์ IP ที่ได้มา — นี่คือสถานะ &quot;เน็ตพร้อม&quot; ที่เราอยากเห็นก่อนไปขั้นต่อไป:</p>
+<p><img src="img/wifi_connect_ok.png" alt="" style="width:560px;" /></p>
 <blockquote>
 <p>ถ้าต่อ WiFi ไม่ผ่าน ก็ <code>raise SystemExit</code> หยุดไปเลย ดีกว่าปล่อยให้โค้ดวิ่งต่อแล้วพังตรง MQTT แบบงง ๆ</p>
 </blockquote>
@@ -113,7 +133,8 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
 <h1 id="%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%88%E0%B8%AE%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%94%E0%B9%81%E0%B8%A7%E0%B8%A3%E0%B9%8C--wifi--mqtt-%E0%B8%97%E0%B8%9A%E0%B8%97%E0%B8%A7%E0%B8%99--%E0%B8%A5%E0%B8%B6%E0%B8%81%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99">เข้าใจฮาร์ดแวร์ · WiFi + MQTT (ทบทวน + ลึกขึ้น)</h1>
 <p>ทบทวน: ชิป PSoC Edge ไม่มีวิทยุในตัว → ใช้ชิป <strong>AIROC CYW55513</strong> แยก · <strong>MQTT broker</strong> = ตัวกลาง publish / subscribe</p>
-<p><img src="img/hw_board_block.png" alt="" style="width:380px;" /></p>
+<p><img src="img/hw_board_block.png" alt="" style="width:300px;" /> <img src="img/wifi_bt_module.jpg" alt="" style="width:248px;" /><br />
+<sub>ขวา: ตัวอย่างโมดูลวิทยุ WiFi + Bluetooth จริง (กล่องโลหะ = ตัว shield คลื่น, ลายทองแดงข้าง ๆ = เสาอากาศบน PCB) — CYW55513 บนบอร์ดเราเป็นชิปประเภทเดียวกัน · ที่มา: &quot;Espressif ESP-WROOM-32 Wi-Fi &amp; Bluetooth Module&quot; — Brian Krent, CC BY-SA 4.0, Wikimedia Commons</sub></p>
 <ul>
 <li><strong><code>client_id</code> ต้องไม่ซ้ำ</strong> — broker แยกแต่ละบอร์ดด้วย id ถ้าซ้ำจะเตะกันหลุด</li>
 <li>payload ที่ได้จาก MQTT เป็น <strong>bytes</strong> → ต้อง <code>.decode()</code> เป็น str หรือแปลงเป็นตัวเลขก่อนใช้</li>
@@ -282,6 +303,8 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 </tr>
 </tbody>
 </table>
+<p>ตัวที่เจอบ่อยสุดคือลืม <code>.decode()</code> — สังเกตว่า output ฝั่งซ้ายมี <code>b'</code> นำหน้า (ยังเป็น bytes อยู่) พอใส่ <code>.decode()</code> ก็กลายเป็น str สะอาด ๆ ที่ <code>split(&quot;:&quot;)</code> ต่อได้:</p>
+<p><img src="img/decode_beforeafter.png" alt="" style="width:680px;" /></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="17" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
 <h2 id="%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B9%82%E0%B8%A2%E0%B8%87%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%90%E0%B8%B2%E0%B8%99--leaderboard-%E0%B8%99%E0%B8%B5%E0%B9%89%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%A7%E0%B8%B4%E0%B8%A8%E0%B8%A7%E0%B8%81%E0%B8%A3%E0%B8%A3%E0%B8%A1-iot-%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87">เชื่อมโยงรากฐาน — leaderboard นี้คือวิศวกรรม IoT จริง</h2>
@@ -300,6 +323,31 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 <div style="margin-top:10px;font-size:0.86em">
 และโมเดล <b>publish/subscribe</b> ที่ broker แยกผู้ส่งออกจากผู้รับ (decoupling) คือสถาปัตยกรรมเดียวกับที่โรงงาน รถยนต์ และ smart home ใช้ส่งข้อมูลขึ้นคลาวด์ — ต่างกันแค่ payload กับ topic เท่านั้น
 </div>
+<svg viewBox="0 0 760 196" width="100%">
+<rect x="10" y="14" width="200" height="46" rx="9" fill="#eef5ff" stroke="#4a90d9" stroke-width="2" />
+<text x="110" y="34" text-anchor="middle" font-size="13" font-weight="bold">Embedded · วิทยุจริง</text>
+<text x="110" y="51" text-anchor="middle" font-size="11">ต่อ WiFi = สั่งชิป CYW</text>
+<rect x="10" y="74" width="200" height="46" rx="9" fill="#fffaf0" stroke="#d9a93a" stroke-width="2" />
+<text x="110" y="94" text-anchor="middle" font-size="13" font-weight="bold">Python · bytes→str</text>
+<text x="110" y="111" text-anchor="middle" font-size="11">.decode() ก่อนใช้</text>
+<rect x="10" y="134" width="200" height="46" rx="9" fill="#f3fdf7" stroke="#4ad98a" stroke-width="2" />
+<text x="110" y="154" text-anchor="middle" font-size="13" font-weight="bold">Algorithms · protocol</text>
+<text x="110" y="171" text-anchor="middle" font-size="11">"ชื่อ:คะแนน" + split</text>
+<rect x="300" y="74" width="150" height="46" rx="9" fill="#fff3d6" stroke="#e90" stroke-width="2.5" />
+<text x="375" y="94" text-anchor="middle" font-size="13" font-weight="bold">pub/sub broker</text>
+<text x="375" y="111" text-anchor="middle" font-size="11">decoupling</text>
+<rect x="560" y="74" width="190" height="46" rx="9" fill="#fde8f3" stroke="#c39" stroke-width="2" />
+<text x="655" y="93" text-anchor="middle" font-size="13" font-weight="bold">ผลิตภัณฑ์ IoT จริง</text>
+<text x="655" y="111" text-anchor="middle" font-size="11">โรงงาน · รถยนต์ · smart home → cloud</text>
+<line x1="210" y1="37"  x2="299" y2="88" stroke="#888" stroke-width="2" marker-end="url(#cm)" />
+<line x1="210" y1="97"  x2="299" y2="97" stroke="#888" stroke-width="2" marker-end="url(#cm)" />
+<line x1="210" y1="157" x2="299" y2="106" stroke="#888" stroke-width="2" marker-end="url(#cm)" />
+<line x1="450" y1="97"  x2="558" y2="97" stroke="#c39" stroke-width="3" marker-end="url(#cm)" />
+<text x="504" y="88" text-anchor="middle" font-size="11" fill="#c39">เปลี่ยนแค่ payload/topic</text>
+<defs><marker id="cm" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555" /></marker></defs>
+</svg>
+<p><img src="img/iot_smart_home_hub.jpg" alt="" style="width:300px;" /><br />
+<sub>ลำโพงอัจฉริยะ/smart-home hub ก็ &quot;ต่อ WiFi แล้ว publish/subscribe ขึ้นคลาวด์&quot; ด้วยสถาปัตยกรรมเดียวกับ leaderboard ของเรา · ที่มา: &quot;Google Home Hub on table&quot; — Y2kcrazyjoker4, CC BY-SA 4.0, Wikimedia Commons</sub></p>
 <blockquote>
 <p>เป้าหมายของคอร์สนี้คือ พอน้องส่งคะแนนเกมขึ้นกระดานเป็น น้องก็ส่งค่าเซนเซอร์ของผลิตภัณฑ์จริงขึ้นคลาวด์เป็น — ด้วยโครงสร้างก้อนเดียวกัน เล่นเป็น แล้วต่อยอดไปสร้างของจริงได้</p>
 </blockquote>

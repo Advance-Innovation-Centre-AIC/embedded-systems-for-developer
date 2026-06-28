@@ -11,7 +11,7 @@
 </style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="overview" tabindex="-1" title="Toggle overview view (o)">Toggle overview view</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="--paginate:true;--class:cover;--theme:default;" data-marpit-pagination-total="23" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/cover_s08.png&quot;);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="--paginate:true;--class:cover;--theme:default;" data-marpit-pagination-total="23" data-marpit-advanced-background="content">
 <h1 id="%E0%B8%84%E0%B8%B2%E0%B8%9A-8--%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%A1-sfx--tone">คาบ 8 — เสียงเกม: sfx + tone</h1>
 <h2 id="%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B9%80%E0%B8%81%E0%B8%A1%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2-%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%87-%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%9A%E0%B8%99%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94">ให้เกมของเรา &quot;ส่งเสียง&quot; ได้จริงบนบอร์ด</h2>
-<p><strong>Peripheral Lab · ~3 ชม. · 3 คน / 1 บอร์ด</strong></p>
+<p><strong>Peripheral Lab · 3 คน / 1 บอร์ด</strong></p>
 <blockquote>
 <p>คาถาประจำคาบ: <strong>&quot;เสียงคือการเปิด-ปิดขาเร็ว ๆ แล้วเลือกรูปคลื่น&quot;</strong></p>
 </blockquote>
@@ -42,6 +42,8 @@
 <path d="M340 100 V40 H365 V100 H390 V40 H415 V100 H440 V40 H465 V100 H490 V40 H515 V100 H540 V40 H565 V100" stroke="#ff7b72" fill="none" stroke-width="3" />
 <text x="340" y="30" font-size="13" fill="#555">ความถี่สูง → เสียงสูง</text>
 </svg>
+<p><strong>ลองรู้สึก: สลับเร็วขึ้น → เสียงสูงขึ้น</strong> (อนิเมชันเล่นเอง — เข็ม pitch ไต่ขึ้นตามความถี่)</p>
+<p><img src="img/pwm_pitch_anim.gif" alt="" style="width:680px;" /></p>
 <blockquote>
 <p>ขาเปิด = แรงดันดันลำโพงออก, ขาปิด = ปล่อยกลับ — สลับเร็วพอหู เราได้ยินเป็น &quot;โน้ต&quot;</p>
 </blockquote>
@@ -84,7 +86,41 @@ led = gpio.led(<span class="hljs-number">0</span>)
 <blockquote>
 <p><code>brightness(0)</code> ดับ · <code>100</code> สว่างเต็ม · ระหว่างนั้นหรี่ — เบื้องหลังคือ <strong>PWM ~10 kHz</strong> ที่ตามองเป็นความสว่างต่อเนื่อง (ต้องใช้เฟิร์มแวร์ Game รุ่นล่าสุดที่เปิด LED PWM)</p>
 </blockquote>
-<p><img src="img/pwm_brightness.png" alt="" style="width:640px;" /></p>
+<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+<div style="flex:1.4;min-width:300px">
+<p><img src="img/pwm_brightness.png" alt="" style="width:520px;" /></p>
+</div>
+<div style="flex:1;min-width:200px;text-align:center">
+<svg viewBox="0 0 220 156" width="220" style="background:#0d1117;border:1px solid #30363d;border-radius:10px">
+  <defs>
+    <radialGradient id="ledg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffe08a" /><stop offset="55%" stop-color="#ffb01f" /><stop offset="100%" stop-color="#ff7b00" />
+    </radialGradient>
+  </defs>
+  
+  <circle cx="110" cy="56" fill="#ffb01f" />
+    <animate attributeName="r" dur="3s" repeatCount="indefinite"
+      values="6;56;6" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>
+    <animate attributeName="opacity" dur="3s" repeatCount="indefinite"
+      values="0.04;0.5;0.04" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>
+  <circle />
+  
+  <circle cx="110" cy="56" r="19" fill="url(#ledg)" stroke="#5a4500" stroke-width="2" />
+    <animate attributeName="opacity" dur="3s" repeatCount="indefinite"
+      values="0.12;1;0.12" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>
+  <circle />
+  
+  <rect x="34" y="104" width="152" height="14" rx="7" fill="#161b22" stroke="#30363d" />
+  <rect x="34" y="104" height="14" rx="7" fill="#19c8ff" />
+    <animate attributeName="width" dur="3s" repeatCount="indefinite"
+      values="2;152;2" keyTimes="0;0.5;1" calcMode="spline" keySplines="0.42 0 0.58 1;0.42 0 0.58 1"/>
+  <rect />
+  <text x="34" y="98" font-size="11" fill="#8b949e">brightness 0</text>
+  <text x="186" y="98" font-size="11" fill="#8b949e" text-anchor="end">100</text>
+  <text x="110" y="140" font-size="11" fill="#8b949e" text-anchor="middle">ไฟ "หายใจ" — duty 0→100→0</text>
+</svg>
+</div>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
 <h1 id="%E0%B8%A3%E0%B8%B9%E0%B8%9B%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99-waveform-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3">&quot;รูปคลื่น&quot; (waveform) คืออะไร</h1>
@@ -104,6 +140,8 @@ led = gpio.led(<span class="hljs-number">0</span>)
 <text x="360" y="20" font-size="13" fill="#79c0ff">SINE</text>
 <path d="M360 60 Q390 20 420 60 T480 60 T540 60 T600 60" stroke="#79c0ff" fill="none" stroke-width="3" />
 </svg>
+<p><strong>โน้ตเดิม เปลี่ยนแค่รูปคลื่น</strong> — ดูทรงคลื่น &quot;morph&quot; ไปมา (square <img class="emoji" draggable="false" alt="↔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.2/assets/svg/2194.svg" data-marp-twemoji=""/> sine) ความถี่คงเดิม:</p>
+<p><img src="img/wave_sq_sine_morph.gif" alt="" style="width:600px;" /></p>
 <blockquote>
 <p>มี TRIANGLE / SAW ด้วย น้ำเสียงก้ำกึ่งระหว่างสองแบบนี้ คาบนี้เราโฟกัส SQUARE กับ SINE ก่อน</p>
 </blockquote>
@@ -269,6 +307,8 @@ time.sleep_ms(<span class="hljs-number">400</span>)
 ui.sfx(ui.SFX_GAME_OVER)
 time.sleep_ms(<span class="hljs-number">900</span>)
 </code></pre>
+<p><img src="img/bento_ide_sfx_demo.png" alt="" style="width:560px;" /><br />
+<sub>รันโค้ดข้างบนใน BENTO IDE → คอนโซลพิมพ์ <code>เล่น sfx: ...</code> ทีละบรรทัด พร้อมกับเสียงดังจากลำโพงบนบอร์ด</sub></p>
 <blockquote>
 <p>ใส่ <code>sleep_ms</code> คั่น เพื่อให้แต่ละเสียงเล่นจบก่อนเริ่มเสียงถัดไป — ไม่งั้นมันจะตัดทับกัน</p>
 </blockquote>
@@ -322,6 +362,60 @@ NOTE_MS = <span class="hljs-number">200</span>                      <span class=
 </code></pre>
 <blockquote>
 <p>เก็บทำนองเป็น <code>list</code> ของเลข MIDI แล้ววน <code>for</code> เล่นทีละโน้ต — เพิ่ม/ลด/สลับโน้ตได้ง่ายมาก</p>
+</blockquote>
+<p>แต่ละค่าใน <code>melody</code> คือ &quot;ระดับเสียง&quot; — เรียงในลิสต์อย่างไร เสียงก็ไต่ขึ้นตามนั้น:</p>
+<svg viewBox="0 0 620 200" width="640" style="background:#0d1117;border:1px solid #30363d;border-radius:10px">
+  
+  <g stroke="#21262d" stroke-width="1">
+    <line x1="40" y1="60" x2="600" y2="60" />
+    <line x1="40" y1="84" x2="600" y2="84" />
+    <line x1="40" y1="108" x2="600" y2="108" />
+    <line x1="40" y1="132" x2="600" y2="132" />
+    <line x1="40" y1="156" x2="600" y2="156" />
+  </g>
+  <text x="40" y="24" font-size="13" fill="#8b949e">ระดับเสียง (pitch) สูงขึ้น ↑</text>
+  
+  <polyline points="100,156 210,132 320,108 410,96 520,72" fill="none" stroke="#30c060" stroke-width="2.5" stroke-dasharray="5 4" />
+  
+  
+  <g>
+    <ellipse cx="100" cy="156" rx="13" ry="9" fill="#ff7b72" transform="rotate(-18 100 156)" />
+    <text x="100" y="184" font-size="13" fill="#e6edf3" text-anchor="middle" font-family="monospace">60</text>
+    <text x="100" y="146" font-size="11" fill="#8b949e" text-anchor="middle">C4 โด</text>
+  </g>
+  
+  <g>
+    <ellipse cx="210" cy="132" rx="13" ry="9" fill="#ffa657" transform="rotate(-18 210 132)" />
+    <text x="210" y="184" font-size="13" fill="#e6edf3" text-anchor="middle" font-family="monospace">62</text>
+    <text x="210" y="122" font-size="11" fill="#8b949e" text-anchor="middle">D4 เร</text>
+    <text x="155" y="138" font-size="11" fill="#30c060" text-anchor="middle">+2</text>
+  </g>
+  
+  <g>
+    <ellipse cx="320" cy="108" rx="13" ry="9" fill="#e3b341" transform="rotate(-18 320 108)" />
+    <text x="320" y="184" font-size="13" fill="#e6edf3" text-anchor="middle" font-family="monospace">64</text>
+    <text x="320" y="98" font-size="11" fill="#8b949e" text-anchor="middle">E4 มี</text>
+    <text x="265" y="114" font-size="11" fill="#30c060" text-anchor="middle">+2</text>
+  </g>
+  
+  <g>
+    <ellipse cx="410" cy="96" rx="13" ry="9" fill="#7ee787" transform="rotate(-18 410 96)" />
+    <text x="410" y="184" font-size="13" fill="#e6edf3" text-anchor="middle" font-family="monospace">65</text>
+    <text x="410" y="86" font-size="11" fill="#8b949e" text-anchor="middle">F4 ฟา</text>
+    <text x="365" y="96" font-size="11" fill="#19c8ff" text-anchor="middle">+1</text>
+  </g>
+  
+  <g>
+    <ellipse cx="520" cy="72" rx="13" ry="9" fill="#58a6ff" transform="rotate(-18 520 72)" />
+    <text x="520" y="184" font-size="13" fill="#e6edf3" text-anchor="middle" font-family="monospace">67</text>
+    <text x="520" y="62" font-size="11" fill="#8b949e" text-anchor="middle">G4 ซอล</text>
+    <text x="465" y="78" font-size="11" fill="#30c060" text-anchor="middle">+2</text>
+  </g>
+  <text x="100" y="198" font-size="11" fill="#6e7a90">melody[0]</text>
+  <text x="520" y="198" font-size="11" fill="#6e7a90" text-anchor="end">melody[4]</text>
+</svg>
+<blockquote>
+<p>โน้ต <code>+1</code> (65→F4) คือก้าว <strong>ครึ่งเสียง</strong> จึงไต่ขึ้นน้อยกว่า <code>+2</code> ที่เป็นเต็มเสียง — ลำดับในลิสต์ = เส้นทางขึ้นของทำนองพอดี</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
@@ -387,8 +481,13 @@ window.addEventListener('resize',function(){setTimeout(function(){draw(cur,+docu
 
 <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;จบแล็บเสียง — ลองแก้ melody / wave / NOTE_MS ดูว่าผลลัพธ์เปลี่ยนยังไง&quot;</span>)
 </code></pre>
+<div style="display:flex;gap:14px;align-items:center;justify-content:center;margin-top:4px;flex-wrap:wrap">
+<code style="font-size:0.82em;background:#0d1117;color:#ff7b72;border:1px solid #30363d;border-radius:8px;padding:6px 10px">ui.WAVE_SQUARE</code>
+<p><img src="img/wave_sq_sine_morph.gif" alt="" style="width:320px;" /></p>
+<p><code style="font-size:0.82em;background:#0d1117;color:#79c0ff;border:1px solid #30363d;border-radius:8px;padding:6px 10px">ui.WAVE_SINE</code></p>
+</div>
 <blockquote>
-<p>นี่คือหัวใจของแล็บ: <strong>เปลี่ยนตัวแปรเดียว (wave) ผลลัพธ์เปลี่ยนทั้งความรู้สึก</strong> — นี่แหละ waveform</p>
+<p>นี่คือหัวใจของแล็บ: <strong>เปลี่ยนตัวแปรเดียว (wave) ผลลัพธ์เปลี่ยนทั้งความรู้สึก</strong> — นี่แหละ waveform (รูปคลื่นข้างบน morph ตามที่เราสลับ <code>wave</code>)</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="17" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
@@ -477,7 +576,8 @@ game.sfx(<span class="hljs-string">&quot;fall&quot;</span>)         <span class=
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="20" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="20" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
 <h1 id="%E0%B9%80%E0%B8%AD%E0%B8%B2%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%84%E0%B8%9B%E0%B9%83%E0%B8%AA%E0%B9%88-pong">เอาเสียงไปใส่ Pong</h1>
 <p>แนวคิดเดียวกันนี้เอาไปต่อใน Pong ได้ทันที วางเสียงตาม &quot;เหตุการณ์&quot; ในเกม:</p>
-<div style="font-size:0.92em">
+<div style="display:flex;gap:18px;align-items:center;flex-wrap:wrap">
+<div style="flex:1;min-width:280px;font-size:0.92em">
 <table>
 <thead>
 <tr>
@@ -504,6 +604,11 @@ game.sfx(<span class="hljs-string">&quot;fall&quot;</span>)         <span class=
 </tr>
 </tbody>
 </table>
+</div>
+<div style="flex:1.1;min-width:300px;text-align:center">
+<p><img src="img/pong_sfx_events.png" alt="" style="width:430px;" /></p>
+<p><sub>Pong จริงบนบอร์ด — แต่ละจุดสีคือ &quot;เหตุการณ์ → เสียง&quot; ที่เราวาง</sub></p>
+</div>
 </div>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># ตัวอย่างวางในลูปเกม Pong: บอลชนไม้ตี</span>
 <span class="hljs-keyword">if</span> ball_hits_paddle:

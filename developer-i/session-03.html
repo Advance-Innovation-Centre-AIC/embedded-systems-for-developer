@@ -11,7 +11,7 @@
 </style></head><body><div class="bespoke-marp-osc"><button data-bespoke-marp-osc="prev" tabindex="-1" title="Previous slide">Previous slide</button><span data-bespoke-marp-osc="page"></span><button data-bespoke-marp-osc="next" tabindex="-1" title="Next slide">Next slide</button><button data-bespoke-marp-osc="fullscreen" tabindex="-1" title="Toggle fullscreen (f)">Toggle fullscreen</button><button data-bespoke-marp-osc="overview" tabindex="-1" title="Toggle overview view (o)">Toggle overview view</button><button data-bespoke-marp-osc="presenter" tabindex="-1" title="Open presenter view (p)">Open presenter view</button></div><div id=":$p"><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="--paginate:true;--class:cover;--theme:default;" data-marpit-pagination-total="21" data-marpit-advanced-background="background"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/cover_s03.png&quot;);"></figure></div></section></foreignObject><foreignObject width="1280" height="720"><section id="1" data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="--paginate:true;--class:cover;--theme:default;" data-marpit-pagination-total="21" data-marpit-advanced-background="content">
 <h1 id="%E0%B8%84%E0%B8%B2%E0%B8%9A-3--%E0%B8%88%E0%B8%AD--%E0%B8%88%E0%B8%AD%E0%B8%A2">คาบ 3 — จอ + จอย</h1>
 <h2 id="%E0%B8%81%E0%B8%A5%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%82%E0%B8%A2%E0%B8%B1%E0%B8%9A%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%88%E0%B8%AD%E0%B8%A2">กล่องขยับตามจอย</h2>
-<p><strong>Fundamental of Embedded Systems Developer I</strong> · คาบ 3 / 14 · 3 ชม. (lab) · 3 คน / 1 บอร์ด</p>
+<p><strong>Fundamental of Embedded Systems Developer I</strong> · คาบ 3 / 14 · 3 คน / 1 บอร์ด</p>
 <div style="border:2px solid #0aa; border-radius:10px; padding:10px 16px; margin-top:18px; background:#e8fbff;">
 <b>เป้าที่จับต้องได้:</b> กล่องสีฟ้าขยับ ซ้าย/ขวา/ขึ้น/ลง ตามจอย — บนบอร์ดของกลุ่มเราเอง (กด <b>Back</b> ออกกลับ Playground · <b>Start</b> เริ่มใหม่)
 </div>
@@ -227,6 +227,25 @@ hold_frames = <span class="hljs-number">0</span>     <span class="hljs-comment">
     <span class="hljs-comment">#         ขึ้นกับซ้ายใช้ค่าลบ · ลงกับขวาใช้ค่าบวก</span>
     <span class="hljs-keyword">pass</span>   <span class="hljs-comment"># &lt;- ลบ pass ออกเมื่อเริ่มเขียน</span>
 </code></pre>
+<p>โครงของช่องที่ต้องเติมมีแค่ 3 ขั้น เรียงต่อกันตรง ๆ ตาม STEP ในโค้ด:</p>
+<svg width="880" height="180" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
+  <rect x="20" y="45" width="246" height="92" rx="10" fill="#e7f0ff" stroke="#2275c0" stroke-width="2" />
+  <text x="143" y="70" text-anchor="middle" font-size="15" font-weight="bold" fill="#2275c0">STEP 1 · สะสม</text>
+  <text x="143" y="96" text-anchor="middle" font-size="14">กด → hold_frames += 1</text>
+  <text x="143" y="120" text-anchor="middle" font-size="14">ไม่กด → hold_frames = 0</text>
+  <rect x="307" y="45" width="246" height="92" rx="10" fill="#fff0db" stroke="#c08a22" stroke-width="2" />
+  <text x="430" y="70" text-anchor="middle" font-size="15" font-weight="bold" fill="#c08a22">STEP 2 · คิดความเร็ว</text>
+  <text x="430" y="98" text-anchor="middle" font-size="14">speed =</text>
+  <text x="430" y="120" text-anchor="middle" font-size="13.5">min(BASE+hold, MAX)</text>
+  <rect x="594" y="45" width="266" height="92" rx="10" fill="#d6f5d6" stroke="#2a8a2a" stroke-width="2" />
+  <text x="727" y="70" text-anchor="middle" font-size="15" font-weight="bold" fill="#2a8a2a">STEP 3 · ขยับ</text>
+  <text x="727" y="96" text-anchor="middle" font-size="14">hero.move(±speed, 0) แกน x</text>
+  <text x="727" y="120" text-anchor="middle" font-size="14">hero.move(0, ±speed) แกน y</text>
+  <line x1="266" y1="91" x2="305" y2="91" stroke="#444" stroke-width="2" marker-end="url(#f5)" />
+  <line x1="553" y1="91" x2="592" y2="91" stroke="#444" stroke-width="2" marker-end="url(#f5)" />
+  <text x="727" y="155" text-anchor="middle" font-size="12" fill="#555">ขึ้น/ซ้าย = ค่าลบ · ลง/ขวา = ค่าบวก</text>
+  <defs><marker id="f5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#444" /></marker></defs>
+</svg>
 <p>ลองคิดสูตรเองก่อน ติดตรงไหนยกมือถามได้เลย เดี๋ยวเฉลยในห้อง อาจารย์อยากให้น้อง ๆ ได้ลองพลาดเองก่อน เพราะนั่นคือตอนที่เราจำได้แม่นที่สุด</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="16" style="--paginate:true;--theme:default;" data-marpit-pagination-total="21">

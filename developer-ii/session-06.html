@@ -15,7 +15,7 @@
 <blockquote>
 <p>คาถาประจำคาบ: <strong>&quot;ตรรกะเดิม ผิวเกมใหม่ — แค่เปลี่ยน <code>Box</code> เป็น <code>Sprite</code> งูก็กลายเป็นของจริง&quot;</strong></p>
 </blockquote>
-<p>เวลา 3 ชม. · 3 คน / 1 บอร์ด · BLOCK A — คาบสุดท้ายของบล็อก Snake</p>
+<p>3 คน / 1 บอร์ด · BLOCK A — คาบสุดท้ายของบล็อก Snake</p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="" data-marpit-pagination-total="22" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:default;" data-marpit-pagination-total="22">
 <h1 id="%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B8%B5%E0%B9%89">เป้าหมายของคาบนี้</h1>
@@ -28,6 +28,11 @@
 <div style="flex:1;border:2px solid #2a7;border-radius:10px;padding:16px;text-align:center;background:#cfc">
 <b>step5: Sprite</b><br /><small>รูปจริง + หัวหันทิศ</small>
 </div>
+</div>
+<p>ของจริงบนจอเป็นแบบนี้ — ซ้ายคือผิวเกมแบบ <strong>กล่อง</strong> (สิ่งที่ step4 / sim เก่าวาด) ขวาคือ <strong>สไปรท์หัวงู</strong> จริงที่ step5 สั่งวาดด้วย <code>game.Sprite</code>:</p>
+<div style="display:flex;gap:14px;align-items:flex-end;justify-content:center;margin-top:6px">
+<span style="text-align:center"><img src="img/snake_game.png" width="380" alt="step4 box snake on board" /><br /><small>step4 — งูกล่องเขียวบนบอร์ดจริง (BENTO Playground)</small></span>
+<span style="text-align:center"><img src="img/sprite_frame.png" width="300" alt="step5 sprite head frames" /><br /><small>step5 — เฟรมสไปรท์หัวงูจริง (หันขวา/ซ้าย/ขึ้น/ลง)</small></span>
 </div>
 <blockquote>
 <p><strong>MVP-1 Snake:</strong> เล่นได้ครบ เลือกได้อย่างน้อย 2 โหมดที่เร็วต่างกันจริง และ Best ค้างข้ามรอบ เท่านี้ก็ถือว่าผ่านบล็อก Snake ทั้งบล็อก เป็นเกมเต็มเกมแรกของคอร์สนี้</p>
@@ -347,7 +352,31 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
  11.7-311.7 78.3-403 201-6 8-9.7 12-11 12-.7.7-6.7 1-18 1s-17.3-.3-18-1c-1.3 0
 -5-4-11-12-44.7-59.3-101.3-106.3-170-141s-145.3-54.3-229-60H0V214z"/></svg></span><span class="brace-right" style="height:0.548em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="0.548em" viewBox="0 0 400000 548" preserveAspectRatio="xMaxYMin slice"><path d="M399994 0l6 6v35l-6 11c-56 104-135.3 181.3-238 232-57.3
  28.7-117 45-179 50H-300V214h399897c43.3-7 81-15 113-26 100.7-33 179.7-91 237
--174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"/></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.648em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5433em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord brahmic_fallback">แครช</span></span></span></span></span></span></p><table>
+-174 2.7-5 6-9 10-13 .7-1 7.3-1 20-1h17z"/></svg></span></span></span><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">32</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.648em;"><span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.5433em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">⇒</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord text"><span class="mord brahmic_fallback">แครช</span></span></span></span></span></span></p><svg viewBox="0 0 600 210" width="100%" role="img" aria-label="จำนวน widget เทียบเพดาน 32">
+  
+  <line x1="60" y1="20" x2="60" y2="170" stroke="#333" stroke-width="1.5" />
+  <line x1="60" y1="170" x2="560" y2="170" stroke="#333" stroke-width="1.5" />
+  <text x="14" y="28" font-size="12">widget</text>
+  <text x="470" y="190" font-size="12">เฟรมที่ผ่านไป →</text>
+  
+  <line x1="60" y1="60" x2="560" y2="60" stroke="#e11" stroke-width="2" stroke-dasharray="7 5" />
+  <text x="66" y="54" font-size="13" fill="#e11" font-weight="bold">เพดาน 32 (UI_MAX_WIDGETS)</text>
+  
+  <line x1="60" y1="120" x2="560" y2="120" stroke="#2a7" stroke-width="3" />
+  <circle cx="560" cy="120" r="4" fill="#2a7" />
+  <text x="360" y="138" font-size="12" fill="#2a7" font-weight="bold">reuse pool: show()/hide() — คงที่ 29 ✓</text>
+  
+  <path d="M60,160 L150,140 L240,116 L320,92 L380,60" fill="none" stroke="#e11" stroke-width="3" />
+  
+  <path d="M380,60 L430,36 L470,18" fill="none" stroke="#e11" stroke-width="3" stroke-dasharray="3 3" />
+  <text x="120" y="150" font-size="12" fill="#e11" font-weight="bold">สร้าง Sprite() ในลูป → ไต่ขึ้นทุกเฟรม</text>
+  
+  <polygon points="380,46 388,62 372,62" fill="#e11" />
+  <text x="396" y="34" font-size="14" fill="#e11" font-weight="bold">CRASH!</text>
+  <text x="388" y="50" font-size="11" fill="#e11">ทะลุเพดาน</text>
+</svg>
+<p><sub>เส้นเขียว = ใช้ของในลังซ้ำ (จำนวน widget คงที่) · เส้นแดง = <code>game.Sprite()</code>/<code>pool()</code> ใน <code>on_each_frame()</code> ทำให้ widget เพิ่มทุกเฟรมจนทะลุ 32 แล้วแครช</sub></p>
+<table>
 <thead>
 <tr>
 <th>อาการ</th>

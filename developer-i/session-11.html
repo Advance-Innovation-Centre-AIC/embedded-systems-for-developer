@@ -29,9 +29,12 @@
 ศัตรูตกจากฟ้า · ยิงโดน = +1 คะแนน · หลุดถึงพื้น = เสีย 1 ชีวิต · ชีวิตหมด = GAME OVER
 </div>
 </div>
-<p><img src="img/shooter_endstate.png" alt="" style="width:560px;" /></p>
+<div style="display:flex;gap:14px;align-items:center;justify-content:center;">
+<div><img src="img/shooter_endstate.png" width="430" /><div style="text-align:center;font-size:0.8em;color:#555">หน้าจอเป้าหมาย (ภาพนิ่ง)</div></div>
+<div><img src="img/shooter_gameplay.gif" width="320" /><div style="text-align:center;font-size:0.8em;color:#555">เล่นจริงเป็นภาพเคลื่อนไหว: ยิง → โดน +1 → หลุด → GAME OVER</div></div>
+</div>
 <blockquote>
-<p>สิ่งที่อยากให้เห็น: กด A แล้วเลเซอร์สีฟ้าพุ่งขึ้นต่อเนื่อง ยิงโดนได้คะแนน +1 ถ้าศัตรูหลุดลงล่างชีวิตจะลด และเมื่อชีวิตหมดจะขึ้น <strong>GAME OVER</strong> — ภาพบนคือหน้าจอเป้าหมายที่เราจะค่อย ๆ ประกอบให้ครบในคาบนี้</p>
+<p>สิ่งที่อยากให้เห็น: กด A แล้วเลเซอร์สีฟ้าพุ่งขึ้นต่อเนื่อง ยิงโดนได้คะแนน +1 ถ้าศัตรูหลุดลงล่างชีวิตจะลด และเมื่อชีวิตหมดจะขึ้น <strong>GAME OVER</strong> — ภาพซ้ายคือหน้าจอเป้าหมาย ภาพขวาคือลำดับเหตุการณ์ทั้งรอบที่เราจะค่อย ๆ ประกอบให้ครบในคาบนี้</p>
 </blockquote>
 <p>พอจบคาบนี้เราก็มีเกมเล่นจบรอบได้ครบ <strong>Snake / Flappy / Pong / Shooter</strong> ทั้งสี่เกมในมือเรา</p>
 </section>
@@ -58,6 +61,7 @@
   <text x="535" y="160" text-anchor="middle" font-style="italic">REUSE — DON'T CREATE</text>
   <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#333" /></marker></defs>
 </svg>
+<div style="text-align:center;margin-top:4px"><img src="img/pool_borrow_return.gif" width="430" /><div style="font-size:0.8em;color:#555">หนึ่งรอบของบ่อ: หยิบนัดว่าง → <b>show()</b> → ยิงขึ้น → พ้นจอ → <b>hide()</b> คืนบ่อ (object เดิม ไม่สร้างใหม่)</div></div>
 <blockquote>
 <p>คิดง่าย ๆ เหมือนกล่องปากกาที่เรายืมแล้วคืน นี่คือ <strong>pattern เดียวกับท่อ Flappy</strong> ที่เราเคยทำมาแล้ว เพียงแต่คาบนี้เราใช้กับทั้งกระสุน <strong>และ</strong> ศัตรู</p>
 </blockquote>
@@ -96,7 +100,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%9F--%E0%B8%AA%E0%B8%AD%E0%B8%87%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%99%E0%B8%B5%E0%B9%89%E0%B8%81%E0%B8%B4%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B9%88%E0%B8%A7%E0%B8%A2%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B8%88%E0%B8%B3%E0%B8%95%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%84%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99">กราฟ · สองวิธีนี้กินหน่วยความจำต่างกันแค่ไหน</h1>
 <p>ลองมองเป็นกราฟ &quot;หน่วยความจำที่ใช้&quot; เทียบกับ &quot;จำนวนนัดที่ยิงไปแล้ว&quot; จะเห็นภาพชัดทันที:</p>
-<p><img src="img/pool_memory.png" alt="" style="width:600px;" /></p>
+<div style="text-align:center"><img src="img/pool_memory_anim.gif" width="600" /><div style="font-size:0.8em;color:#555">ยิ่งยิงไปเรื่อย ๆ เส้นแดง (สร้างใหม่ทุกนัด) ไต่ขึ้นจน <b>ชนขีดจำกัด RAM</b> แล้วค้าง · เส้นเขียว (pool) <b>แบนราบคงที่</b></div></div>
 <p>ให้ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span></span></span></span> = จำนวนนัดที่ยิงไปแล้ว, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">s</span></span></span></span> = ขนาดหน่วยความจำต่อ object หนึ่งตัว:</p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>M</mi><mtext>ใหม่ทุกนัด</mtext></msub><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mi>s</mi><mo>⋅</mo><mi>n</mi><mspace width="1em"/><mtext>(โตเป็นเส้นตรง ไม่หยุด)</mtext><mspace width="2em"/><msub><mi>M</mi><mtext>pool</mtext></msub><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mi>s</mi><mo>⋅</mo><mn>12</mn><mspace width="1em"/><mtext>(ค่าคงที่)</mtext></mrow><annotation encoding="application/x-tex">M_{\text{ใหม่ทุกนัด}}(n) = s \cdot n \quad\text{(โตเป็นเส้นตรง ไม่หยุด)} \qquad M_{\text{pool}}(n) = s \cdot 12 \quad\text{(ค่าคงที่)} 
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord brahmic_fallback mtight">ใหม่ทุกนัด</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">(</span><span class="mord brahmic_fallback">โตเป็นเส้นตรง</span><span class="mord"> </span><span class="mord brahmic_fallback">ไม่หยุด</span><span class="mord">)</span></span><span class="mspace" style="margin-right:2em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">M</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:-0.109em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">pool</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.4445em;"></span><span class="mord mathnormal">s</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">12</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord">(</span><span class="mord brahmic_fallback">ค่าคงที่</span><span class="mord">)</span></span></span></span></span></span></p><ul>
@@ -220,8 +224,35 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 </code></pre>
 <p>ศัตรูแต่ละตัวเริ่มเหนือจอ (y ติดลบสุ่ม) + ความเร็วสุ่มในช่วง:</p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>y</mi><mn>0</mn></msub><mo>∈</mo><mo stretchy="false">[</mo><mo>−</mo><mn>400</mn><mo separator="true">,</mo><mtext> </mtext><mo>−</mo><mn>40</mn><mo stretchy="false">]</mo><mo separator="true">,</mo><mspace width="2em"/><msub><mi>v</mi><mtext>enemy</mtext></msub><mo>∼</mo><mi mathvariant="script">U</mi><mo stretchy="false">(</mo><mn>2.5</mn><mo separator="true">,</mo><mtext> </mtext><mn>4.5</mn><mo stretchy="false">)</mo><mtext> px/frame</mtext></mrow><annotation encoding="application/x-tex">y_0 \in [-400,\ -40], \qquad v_{\text{enemy}} \sim \mathcal{U}(2.5,\ 4.5)\ \text{px/frame} 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">400</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mord">40</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">enemy</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">U</span><span class="mopen">(</span><span class="mord">2.5</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4.5</span><span class="mclose">)</span><span class="mspace"> </span><span class="mord text"><span class="mord">px/frame</span></span></span></span></span></span></p><blockquote>
-<p>ที่เราให้แต่ละตัวเร็วต่างกันด้วย <code>random.uniform</code> แล้วสุ่มสีใหม่ตอน respawn ก็เพื่อให้ศัตรูดูมีชีวิต ไม่ตกลงมาเป็นแถวเดียวกันน่าเบื่อ</p>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7335em;vertical-align:-0.1944em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">0</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mopen">[</span><span class="mord">−</span><span class="mord">400</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">−</span><span class="mord">40</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">enemy</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.0993em;">U</span><span class="mopen">(</span><span class="mord">2.5</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord">4.5</span><span class="mclose">)</span><span class="mspace"> </span><span class="mord text"><span class="mord">px/frame</span></span></span></span></span></span></p><svg viewBox="0 0 760 240" width="92%" font-family="sans-serif" font-size="13">
+  <defs>
+    <pattern id="band" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <rect width="14" height="14" fill="#FFF3E0" /><line x1="0" y1="0" x2="0" y2="14" stroke="#FFCC80" stroke-width="3" />
+    </pattern>
+    <marker id="dn" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto"><path d="M0 0 L4 7 L8 0 z" fill="#555" /></marker>
+  </defs>
+  
+  <rect x="180" y="14" width="430" height="86" fill="url(#band)" stroke="#FB8C00" stroke-dasharray="5 4" />
+  <text x="395" y="10" text-anchor="middle" fill="#E65100" font-weight="bold">โซนเกิดสุ่ม (เหนือจอ) · y ∈ [−400, −40]</text>
+  
+  <rect x="180" y="108" width="430" height="118" rx="6" fill="#0d1117" stroke="#30363d" />
+  <text x="395" y="128" text-anchor="middle" fill="#8b949e">หน้าจอที่มองเห็น · y = 0 … HEIGHT</text>
+  <line x1="180" y1="100" x2="610" y2="100" stroke="#FB8C00" stroke-width="1.5" />
+  <text x="618" y="104" fill="#FB8C00" font-size="11">ขอบบนจอ (y = 0)</text>
+  
+  <line x1="150" y1="14" x2="150" y2="226" stroke="#333" stroke-width="2" marker-end="url(#dn)" />
+  <text x="142" y="120" text-anchor="end" fill="#333" transform="rotate(-90 142 120)">y เพิ่มลงล่าง →</text>
+  
+  <g>
+    <rect x="230" y="22" width="26" height="20" rx="3" fill="#F44336" /><line x1="243" y1="44" x2="243" y2="64" stroke="#F44336" stroke-width="2.5" marker-end="url(#dn)" /><text x="248" y="60" fill="#F44336" font-size="10">v=4.5</text>
+    <rect x="330" y="58" width="26" height="20" rx="3" fill="#FF9800" /><line x1="343" y1="80" x2="343" y2="94" stroke="#FF9800" stroke-width="2.5" marker-end="url(#dn)" /><text x="348" y="92" fill="#E65100" font-size="10">v=2.8</text>
+    <rect x="430" y="30" width="26" height="20" rx="3" fill="#E91E63" /><line x1="443" y1="52" x2="443" y2="70" stroke="#E91E63" stroke-width="2.5" marker-end="url(#dn)" /><text x="448" y="66" fill="#C2185B" font-size="10">v=3.9</text>
+    <rect x="520" y="64" width="26" height="20" rx="3" fill="#F44336" /><line x1="533" y1="86" x2="533" y2="98" stroke="#F44336" stroke-width="2.5" marker-end="url(#dn)" /><text x="538" y="96" fill="#F44336" font-size="10">v=2.5</text>
+  </g>
+  <text x="395" y="218" text-anchor="middle" fill="#9e9e9e" font-style="italic" font-size="11">x สุ่ม 0…WIDTH−30 · สีสุ่ม · ความเร็วสุ่มต่างกัน → ตกไม่พร้อมกัน</text>
+</svg>
+<blockquote>
+<p>ที่เราให้แต่ละตัวเร็วต่างกันด้วย <code>random.uniform</code> แล้วสุ่มสีใหม่ตอน respawn ก็เพื่อให้ศัตรูดูมีชีวิต ไม่ตกลงมาเป็นแถวเดียวกันน่าเบื่อ — ในรูปจะเห็นว่าศัตรูแต่ละตัว<strong>เกิดที่ความสูง (y ติดลบ) ต่างกัน</strong>ในแถบสุ่ม แล้ว<strong>ลูกศรความเร็วยาวไม่เท่ากัน</strong> ตัวที่ v มากตกถึงจอก่อน</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
@@ -245,8 +276,45 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
                 respawn_enemy(index)
                 <span class="hljs-keyword">break</span>                           <span class="hljs-comment"># อย่าลืม break!</span>
 </code></pre>
+<svg viewBox="0 0 770 250" width="100%" font-family="sans-serif" font-size="12.5">
+  <defs><marker id="fa" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#555" /></marker></defs>
+  
+  <rect x="10" y="14" width="120" height="36" rx="18" fill="#E3F2FD" stroke="#2196F3" />
+  <text x="70" y="30" text-anchor="middle">for ศัตรูแต่ละตัว</text><text x="70" y="44" text-anchor="middle" font-size="11">enemy.y += speed</text>
+  <path d="M130 32 H 168" stroke="#555" stroke-width="1.6" marker-end="url(#fa)" />
+  
+  <polygon points="240,12 300,52 240,92 180,52" fill="#FFF3E0" stroke="#FB8C00" />
+  <text x="240" y="48" text-anchor="middle">หลุดพื้น?</text><text x="240" y="62" text-anchor="middle" font-size="10">y &gt; HEIGHT</text>
+  
+  <path d="M240 92 V 120" stroke="#FB8C00" stroke-width="1.6" marker-end="url(#fa)" /><text x="252" y="110" fill="#E65100">ใช่</text>
+  <rect x="160" y="120" width="160" height="34" rx="6" fill="#FFEBEE" stroke="#F44336" />
+  <text x="240" y="135" text-anchor="middle">lives − 1 · respawn</text><text x="240" y="148" text-anchor="middle" font-size="10">อัปเดต HUD</text>
+  <path d="M240 154 V 178" stroke="#F44336" stroke-width="1.6" marker-end="url(#fa)" />
+  <polygon points="240,178 296,206 240,234 184,206" fill="#FFEBEE" stroke="#F44336" />
+  <text x="240" y="210" text-anchor="middle" font-size="11">lives ≤ 0 ?</text>
+  <text x="306" y="204" fill="#F44336">ใช่ →</text>
+  <rect x="350" y="190" width="120" height="34" rx="6" fill="#F44336" />
+  <text x="410" y="206" text-anchor="middle" fill="#fff" font-weight="bold">GAME OVER</text><text x="410" y="219" text-anchor="middle" fill="#fff" font-size="10">return False</text>
+  <text x="150" y="204" text-anchor="end" fill="#888">ไม่ → continue</text>
+  
+  <path d="M300 52 H 360" stroke="#4CAF50" stroke-width="1.6" marker-end="url(#fa)" /><text x="330" y="44" fill="#388E3C">ไม่</text>
+  <rect x="360" y="34" width="150" height="36" rx="18" fill="#E8F5E9" stroke="#4CAF50" />
+  <text x="435" y="50" text-anchor="middle">for กระสุนแต่ละนัด</text><text x="435" y="63" text-anchor="middle" font-size="10">เฉพาะนัดที่บิน</text>
+  <path d="M510 52 H 548" stroke="#555" stroke-width="1.6" marker-end="url(#fa)" />
+  <polygon points="612,14 680,52 612,90 544,52" fill="#FFF3E0" stroke="#FB8C00" />
+  <text x="612" y="50" text-anchor="middle">game.hit()?</text><text x="612" y="64" text-anchor="middle" font-size="10">กระสุน × ศัตรู</text>
+  
+  <path d="M612 90 V 112" stroke="#4CAF50" stroke-width="1.6" marker-end="url(#fa)" /><text x="624" y="106" fill="#388E3C">โดน</text>
+  <rect x="520" y="112" width="190" height="48" rx="6" fill="#E8F5E9" stroke="#4CAF50" />
+  <text x="615" y="129" text-anchor="middle">score + 1 · sfx("hit")</text>
+  <text x="615" y="144" text-anchor="middle" font-size="11">คืนกระสุน · respawn ศัตรู</text>
+  <text x="615" y="156" text-anchor="middle" font-size="10" font-weight="bold" fill="#2E7D32">break (เลิกวนนัด)</text>
+  
+  <path d="M680 52 H 718 V 168 H 435 V 70" fill="none" stroke="#bbb" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#fa)" />
+  <text x="700" y="64" fill="#999" font-size="10">ไม่โดน</text>
+</svg>
 <blockquote>
-<p>จุดที่น้อง ๆ พลาดบ่อยคือลืมประกาศ <code>global ship_x, ship_speed, score, lives, fire_cooldown</code> ไว้บรรทัดแรกของ <code>on_frame</code> อย่าลืมนะ</p>
+<p>จุดที่น้อง ๆ พลาดบ่อยคือลืมประกาศ <code>global ship_x, ship_speed, score, lives, fire_cooldown</code> ไว้บรรทัดแรกของ <code>on_frame</code> อย่าลืมนะ — โครงในรูปคือ <strong>วนศัตรู → หลุดพื้นไหม → ถ้าไม่ ก็วนเช็คทุกนัดว่าโดนไหม → โดนแล้ว <code>break</code></strong> ทันที (อย่ายิงนัดเดียวได้หลายคะแนน) เป็น control flow ที่ซ้อนกันหนาที่สุดของคาบนี้</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">

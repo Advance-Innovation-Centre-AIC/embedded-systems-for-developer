@@ -15,7 +15,7 @@
 <blockquote>
 <p>คาถาประจำคาบ: <strong>&quot;อย่านั่งเฝ้าถาม ให้ฮาร์ดแวร์สะกิดเราเอง&quot;</strong></p>
 </blockquote>
-<p>3 ชม. · MicroPython บนบอร์ด PSoC Edge</p>
+<p>MicroPython บนบอร์ด PSoC Edge</p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="" data-marpit-pagination-total="23" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
 <h1 id="%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B8%B5%E0%B9%89">เป้าหมายของคาบนี้</h1>
@@ -147,6 +147,17 @@ Timer(<span class="hljs-number">0</span>, mode=Timer.PERIODIC, period=<span clas
 <li><code>Pin(&quot;USER_BUTTON&quot;, Pin.IN)</code> ใช้ชื่อขาบนบอร์ดได้เลย ไม่ต้องจำเบอร์ขา</li>
 <li><code>press_count</code> เป็นตัวแปรร่วม เดี๋ยว handler จะมาบวกค่าให้</li>
 </ul>
+<div style="display:flex;gap:20px;align-items:center;margin-top:4px;">
+  <div style="text-align:center;flex:0 0 auto;">
+    <img src="img/ins_tactile_switch.jpg" width="170" alt="tactile push-button on a PCB" />
+    <div><sub>ที่มา: "Tactile switches on a printed circuit board" — Raimond Spekking, CC BY-SA 4.0, Wikimedia Commons</sub></div>
+  </div>
+  <div style="font-size:20px;line-height:1.35;">
+    ปุ่ม <code>USER_BUTTON</code> ในโค้ดก็คือ <b>tactile switch</b> ตัวจริงที่บัดกรีบนบอร์ดแบบนี้เลย<br />
+    บนบอร์ดเกมมันคือ <b>SW1</b> (ขา <b>P7_0</b>) — กดแล้วขาเปลี่ยนสถานะ<br />
+    ส่วน <code>gpio.led(0)</code> คือ <b>LED</b> ดวงเล็กข้าง ๆ ที่เราสั่งกระพริบ
+  </div>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
 <h1 id="%E0%B8%AB%E0%B8%B1%E0%B8%A7%E0%B9%83%E0%B8%88-1--interrupt-handler-%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%B1%E0%B9%89%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%A3%E0%B9%87%E0%B8%A7">หัวใจ #1 — interrupt handler (ต้องสั้นและเร็ว)</h1>
@@ -208,8 +219,14 @@ Timer(<span class="hljs-number">0</span>, mode=Timer.PERIODIC, period=<span clas
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
 <h1 id="interrupt-%E0%B8%AD%E0%B8%A2%E0%B8%B9%E0%B9%88%E0%B8%95%E0%B8%A3%E0%B8%87%E0%B9%84%E0%B8%AB%E0%B8%99%E0%B9%83%E0%B8%99%E0%B8%8A%E0%B8%B4%E0%B8%9B%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87">interrupt อยู่ตรงไหนในชิปจริง</h1>
 <p><code>Pin.irq</code> กับ <code>machine.Timer</code> ที่เราเรียกด้วย Python ไม่ใช่เวทมนตร์ — มันสั่ง <strong>บล็อกฮาร์ดแวร์จริง</strong> ที่ฝังอยู่ในไมโครคอนโทรลเลอร์ตัวเล็ก ๆ นี้ ทั้งขา GPIO, ตัวจัดคิว interrupt (NVIC ของ Cortex-M), และตัวนับเวลา (timer/TCPWM) ล้วนเป็นวงจรบนซิลิคอนชิ้นนี้</p>
-<p><img src="img/ins_mcu_chip.jpg" alt="" style="width:380px;" /></p>
-<p><sub>ที่มา: &quot;NXP LPC18B1&quot; — Henriok, CC0, Wikimedia Commons</sub></p>
+<div style="display:flex;gap:22px;align-items:center;justify-content:center;margin-top:2px;">
+  <div style="text-align:center;flex:0 0 auto;">
+    <img src="img/ins_mcu_chip.jpg" width="250" alt="microcontroller chip" />
+    <div><sub>ที่มา: "NXP LPC18B1" — Henriok, CC0, Wikimedia Commons</sub></div>
+  </div>
+  <img src="img/s01_irq_blocks.png" width="430" alt="GPIO pin and TCPWM timer feed NVIC which interrupts the CPU core" />
+</div>
+<div style="text-align:center;font-size:20px;color:#455a64;margin-top:2px;">บล็อกที่มีชื่อในชิป (ซ้าย) ต่อกันตามผังนี้ (ขวา): <b>GPIO / TCPWM → NVIC → CPU core</b></div>
 <blockquote>
 <p><strong>เชื่อมโยงรากฐาน</strong> — เกมเล็ก ๆ คาบนี้แตะรากฐานวิศวกรรมฝังตัวพอดี:<br />
 <strong>Embedded:</strong> GPIO (ขาปุ่ม/LED) · <strong>Interrupt</strong> (NVIC สะกิด CPU) · <strong>Timer</strong> (นับเวลาเอง) — สามเสาหลักของ MCU<br />
@@ -257,6 +274,10 @@ Timer(<span class="hljs-number">0</span>, mode=Timer.PERIODIC, period=<span clas
 <li><code>time.ticks_diff(now, last_blink)</code> = เวลาที่ผ่านไปตั้งแต่สลับไฟครั้งล่าสุด</li>
 <li>ครบ <code>BLINK_MS</code> เมื่อไหร่ค่อยสลับไฟ ระหว่างนั้นลูปไม่หยุดรอ จึงไม่ขวางการนับปุ่ม</li>
 </ul>
+<p><img src="img/s01_blink_timeline.png" alt="" style="width:700px;" /></p>
+<blockquote>
+<p>เส้นน้ำเงินคือ <code>now - last_blink</code> ไต่ขึ้นทุกรอบลูป พอแตะเส้น <code>BLINK_MS</code> ก็สลับไฟแล้วรีเซ็ต <code>last_blink = now</code> — ลูปไม่เคยหยุดรอเลย</p>
+</blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:default;" data-marpit-pagination-total="23">
 <h1 id="%E0%B8%AB%E0%B8%B1%E0%B8%A7%E0%B9%83%E0%B8%88-4-%E0%B8%95%E0%B9%88%E0%B8%AD--%E0%B8%A3%E0%B8%B2%E0%B8%A2%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9C%E0%B8%A5%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9E%E0%B8%B1%E0%B8%81%E0%B8%AA%E0%B8%B1%E0%B9%89%E0%B8%99-%E0%B9%86">หัวใจ #4 (ต่อ) — รายงานผลและพักสั้น ๆ</h1>
@@ -297,7 +318,13 @@ Timer(<span class="hljs-number">0</span>, mode=Timer.PERIODIC, period=<span clas
 <li>กดปุ่ม <strong>SW1</strong> บนบอร์ด แล้วดูข้อความ &quot;ปุ่มถูกกดแล้ว N ครั้ง&quot; ใน console</li>
 <li>สังเกตว่า <strong>ไฟยังกระพริบสม่ำเสมอ</strong> ตลอดเวลา ไม่ว่าจะกดปุ่มถี่แค่ไหน</li>
 </ol>
-<p><img src="img/s01_run_flow.png" alt="" style="width:760px;" /></p>
+<div style="display:flex;gap:20px;align-items:center;justify-content:center;">
+  <div style="text-align:center;flex:1 1 0;">
+    <img src="img/Bento_IDE_Program_to_Device.png" style="max-width:100%;" alt="BENTO IDE Program to Device button" />
+    <div><sub>ปุ่ม <b>Program to Device</b> (มุมซ้ายบน) ใน BENTO IDE — ที่มา: ภาพหน้าจอ BENTO IDE (สื่อประกอบคอร์ส)</sub></div>
+  </div>
+  <img src="img/s01_run_flow.png" style="flex:1 1 0;max-width:46%;" alt="run flow" />
+</div>
 <blockquote>
 <p>ที่ไฟไม่สะดุดตอนกดปุ่ม คือผลของ interrupt + non-blocking loop ทำงานคู่กัน นี่คือสิ่งที่เราอยากให้น้อง ๆ เห็นกับตา</p>
 </blockquote>

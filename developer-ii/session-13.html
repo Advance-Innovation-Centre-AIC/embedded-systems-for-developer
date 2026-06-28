@@ -15,7 +15,7 @@
 <blockquote>
 <p>คาถาประจำคาบ: <strong>&quot;เกมของเรา เพื่อนต้องโหลดไปรันเองได้ โดยไม่ต้องมีเราอยู่ข้าง ๆ&quot;</strong></p>
 </blockquote>
-<p>เวลา ~3 ชม. · กลุ่ม 3 คน / 1 บอร์ด · <strong>MVP สุดท้าย (FINAL)</strong></p>
+<p>กลุ่ม 3 คน / 1 บอร์ด · <strong>MVP สุดท้าย (FINAL)</strong></p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="" data-marpit-pagination-total="20" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:default;" data-marpit-pagination-total="20">
 <h1 id="%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B8%9A">เป้าหมายของคาบ</h1>
@@ -40,6 +40,9 @@
 <b>#3 Showcase = feedback loop</b><br />เล่นเกมเพื่อน → ชม → ติเชิงสร้างสรรค์ → ชุมชน dev โตขึ้นจากตรงนี้
 </div>
 </div>
+<p>หน้าตาของ <strong>&quot;#1 เกมครบรอบ&quot;</strong> บนของจริง คือเกมที่รันจบรอบได้บนหน้า Playground/Release ของบอร์ด — เพื่อนเปิดแล้วเล่นได้ทันที เหมือนภาพนี้:</p>
+<p><img src="img/session-13.png" alt="" style="width:520px;" /><br />
+<sub>ที่มา: ภาพหน้าจอบอร์ด PSoC Edge รันบน BENTO IDE — สื่อประกอบคอร์ส BDH &amp; TESAIoT</sub></p>
 <blockquote>
 <p>คาบนี้ <strong>ไม่มี API ใหม่เลย</strong> เราแค่รวมทุกอย่างที่ฝึกมา 12 คาบเข้าด้วยกัน แล้ว &quot;ส่งมอบ&quot; ให้เป็น</p>
 </blockquote>
@@ -77,6 +80,26 @@
         <span class="hljs-comment"># TODO #3 polish: Box -&gt; Sprite + game.sfx(&quot;gameover&quot;)</span>
         <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span>                  <span class="hljs-comment"># เล่นต่อ (return False เฉพาะตอนชนะ/แพ้จริง)</span>
 </code></pre>
+<p>โครงทั้งไฟล์มีแค่ 3 จังหวะ: <code>init</code> รัน <strong>ครั้งเดียว</strong> ตอนเปิด → <code>game.run()</code> วน <code>update()</code> ให้เองทุกเฟรม → ตอนชนะ/แพ้เรา <code>return False</code> เพื่อจบรอบ:</p>
+<svg viewBox="0 0 700 150" width="100%">
+  <defs><marker id="rs" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#333" /></marker></defs>
+  <rect x="14" y="42" width="150" height="64" rx="10" fill="#cfe0ff" stroke="#46c" stroke-width="2" />
+  <text x="89" y="70" text-anchor="middle" font-size="15" font-weight="bold">init (ครั้งเดียว)</text>
+  <text x="89" y="90" text-anchor="middle" font-size="12" fill="#555">title / Box / Text / score=0</text>
+  <rect x="230" y="34" width="210" height="80" rx="10" fill="#eafbf0" stroke="#2a7" stroke-width="2" />
+  <text x="335" y="60" text-anchor="middle" font-size="15" font-weight="bold">game.run() วน update()</text>
+  <text x="335" y="80" text-anchor="middle" font-size="12" fill="#555">ทุกเฟรม: keys -&gt; move -&gt; draw</text>
+  <text x="335" y="98" text-anchor="middle" font-size="12" fill="#2a7" font-weight="bold">return True = เล่นต่อ</text>
+  <path d="M335 34 Q335 8 410 14 Q440 18 438 32" fill="none" stroke="#2a7" stroke-width="2" marker-end="url(#rs)" />
+  <text x="412" y="6" text-anchor="middle" font-size="10.5" fill="#2a7">~30 ครั้ง/วินาที</text>
+  <rect x="506" y="42" width="180" height="64" rx="10" fill="#fde8e8" stroke="#c33" stroke-width="2" />
+  <text x="596" y="68" text-anchor="middle" font-size="15" font-weight="bold">return False</text>
+  <text x="596" y="90" text-anchor="middle" font-size="12" fill="#555">จบรอบ -&gt; GAME OVER</text>
+  <line x1="164" y1="74" x2="228" y2="74" stroke="#333" stroke-width="2" marker-end="url(#rs)" />
+  <line x1="440" y1="74" x2="504" y2="74" stroke="#333" stroke-width="2" marker-end="url(#rs)" />
+  <text x="196" y="66" text-anchor="middle" font-size="11" fill="#555">เรียก 1 ครั้ง</text>
+  <text x="472" y="66" text-anchor="middle" font-size="11" fill="#c33">ชนะ/แพ้</text>
+</svg>
 <blockquote>
 <p>ลองเติมเองให้สุดก่อนนะ — <strong>เดี๋ยวเฉลยพร้อมกันในห้องเรียน</strong></p>
 </blockquote>
@@ -235,7 +258,7 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="16" style="--paginate:true;--theme:default;" data-marpit-pagination-total="20">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-e%E2%80%93f--game-jam-%E0%B8%A3%E0%B8%AD%E0%B8%9A%E0%B8%AB%E0%B9%89%E0%B8%AD%E0%B8%87--%E0%B9%82%E0%B8%AB%E0%B8%A7%E0%B8%95">ขั้น E–F — Game Jam รอบห้อง + โหวต</h1>
 <blockquote>
-<p>แต่ละกลุ่ม = 1 บูธ (เกมที่ ship เป็น Release แล้ว) → เพื่อนเดินรอบห้อง โหลดไปรันบนบอร์ดตัวเอง เล่น + ให้ feedback ~1 ชม. → คนละ 1 ข้อติเชิงสร้างสรรค์ → โหวต <strong>WINNER</strong></p>
+<p>แต่ละกลุ่ม = 1 บูธ (เกมที่ ship เป็น Release แล้ว) → เพื่อนเดินรอบห้อง โหลดไปรันบนบอร์ดตัวเอง เล่น + ให้ feedback → คนละ 1 ข้อติเชิงสร้างสรรค์ → โหวต <strong>WINNER</strong></p>
 </blockquote>
 <p><img src="img/jam_showcase.png" alt="" style="width:600px;" /></p>
 </section>
@@ -247,6 +270,11 @@
 <blockquote>
 <p>ทักษะชุดเดียวกับที่ฝึกมา 13 คาบ — ทำเกมให้ครบรอบ, ส่งมอบให้คนอื่นรันได้, รับฟังคำติเพื่อแก้ — คือทักษะที่ทีมพัฒนาจริงใช้ ไม่ว่าจะทำเกม แอป หรือผลิตภัณฑ์ฝังตัว</p>
 </blockquote>
+<p>ลองดูบรรยากาศจริงของงานระดับโลก — คนนับหมื่นทั่วโลกจับกลุ่มทำเกมพร้อมกันในสุดสัปดาห์เดียว เหมือนที่เรากำลังจะทำในห้อง:</p>
+<div style="text-align:center">
+<iframe width="480" height="270" src="https://www.youtube.com/embed/PPJGLTXfH6o" title="What is Global Game Jam?" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+</div>
+<p><em>What is Global Game Jam? — GlobalGameJam (ช่องทางการของงาน)</em></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="18" style="--paginate:true;--theme:default;" data-marpit-pagination-total="20">
 <h1 id="%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%94%E0%B8%B1%E0%B8%81%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%88%E0%B8%AD%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%A2-%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99-debug">กับดักที่เจอบ่อย (อ่านก่อน debug)</h1>
@@ -286,6 +314,9 @@
 </tr>
 </tbody>
 </table>
+<p>หน้าตาของอาการแถวสุดท้าย — ซ้ายคือ &quot;ผิด&quot; (sprite กลายเป็นกล่องเขียวทึบ) ขวาคือ &quot;ถูก&quot; (pixel-art ขึ้นจริงบนบอร์ด):</p>
+<p><img src="img/sprite_box_fallback.png" alt="" style="width:380px;" /> <img src="img/sprite_check_a.png" alt="" style="width:380px;" /><br />
+<sub>ที่มา: ภาพประกอบอาการ fallback (ซ้าย) + ภาพหน้าจอบอร์ดจริง (ขวา) — สื่อประกอบคอร์ส BDH &amp; TESAIoT</sub></p>
 <blockquote>
 <p>sprite = pixel-art เห็นได้บน <strong>บอร์ดจริง</strong> เท่านั้น (desktop/fw เก่า fallback เป็นกล่องเขียว)</p>
 </blockquote>

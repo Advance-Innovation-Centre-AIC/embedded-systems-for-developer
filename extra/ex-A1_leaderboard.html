@@ -27,6 +27,8 @@
 </ul>
 <p><img src="img/goal_evolution.png" alt="" style="width:760px;" /></p>
 <p><strong>use case จริง:</strong> นี่คือแพตเทิร์น pub/sub แบบเดียวกับที่โรงงาน Industry 4.0 ใช้ — เครื่องจักรหลายตัว publish ค่าวัด, dashboard กลาง subscribe มารวมแสดง บอร์ดของเราวันนี้ก็คือ sensor node + dashboard ย่อ ๆ ตัวหนึ่ง</p>
+<img src="img/lan_party_dreamhack.jpg" width="300" style="border-radius:8px;float:right;margin:2px 0 6px 14px" />
+<sub style="float:right;clear:both;text-align:right;display:block;width:300px">ภาพจริงของ "ทั้งห้องเล่นแข่งกัน": งาน LAN party คนนับพันต่อเครื่องเข้าเครือข่ายเดียว เล่นเกมเดียวกันพร้อมกัน — วันนี้เราย่อมันลงมาเหลือทั้งห้องบนบอร์ด Bento<br />ที่มา: "Winter 2004 DreamHack LAN Party" — Toffelginkgo, CC BY-SA 3.0, Wikimedia Commons</sub>
 <blockquote>
 <p>หัวใจคือ topic เดียวกัน = อยู่ห้องเดียวกัน ได้ยินกันหมด เปลี่ยนแค่ชื่อ <code>PLAYER</code> ก็เป็นคนละบอร์ด</p>
 </blockquote>
@@ -54,23 +56,105 @@
 <line x1="462" y1="125" x2="590" y2="125" stroke="#2a7" stroke-width="2" marker-end="url(#ar)" />
 <text x="526" y="145" text-anchor="middle" font-size="12">subscribe</text>
 <text x="380" y="205" text-anchor="middle" font-size="13" fill="#555" font-family="monospace">topic: tesaiot/class/score   payload: "ชื่อ:คะแนน"  เช่น  "board-01:1250"</text>
+
+<rect x="170" y="83" width="84" height="22" rx="6" fill="#27a" opacity="0" />
+  <animate attributeName="x" values="170;346;346;606" keyTimes="0;0.42;0.5;1" dur="3.4s" begin="0s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.06;0.9;0.96;1" dur="3.4s" begin="0s" repeatCount="indefinite"/>
+<rect />
+<text x="212" y="99" font-size="11" fill="#fff" text-anchor="middle" font-family="monospace" opacity="0">board-01:1250
+  <animate attributeName="x" values="212;388;388;648" keyTimes="0;0.42;0.5;1" dur="3.4s" begin="0s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.06;0.9;0.96;1" dur="3.4s" begin="0s" repeatCount="indefinite"/>
+</text>
+
+<rect x="590" y="113" width="84" height="22" rx="6" fill="#c39" opacity="0" />
+  <animate attributeName="x" values="590;414;414;154" keyTimes="0;0.42;0.5;1" dur="3.4s" begin="1.7s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.06;0.9;0.96;1" dur="3.4s" begin="1.7s" repeatCount="indefinite"/>
+<rect />
+<text x="632" y="129" font-size="11" fill="#fff" text-anchor="middle" font-family="monospace" opacity="0">board-02:980
+  <animate attributeName="x" values="632;456;456;196" keyTimes="0;0.42;0.5;1" dur="3.4s" begin="1.7s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="0;1;1;1;0" keyTimes="0;0.06;0.9;0.96;1" dur="3.4s" begin="1.7s" repeatCount="indefinite"/>
+</text>
 <defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#444" /></marker></defs>
 </svg>
+<p>แพ็กเก็ตวิ่งจากบอร์ดเข้า broker แล้ว broker กระจายต่อให้ทุกคนที่ subscribe — นี่คือ publish/subscribe ที่กำลัง &quot;เคลื่อนไหว&quot; จริง ๆ ไม่ใช่แค่ลูกศรนิ่ง ๆ</p>
 <p><code>payload</code> เป็น <code>str</code> ฝั่งส่ง แต่ตอนรับจะมาเป็น <code>bytes</code> เสมอ ต้อง <code>.decode()</code> ก่อนแยกด้วย <code>split(&quot;:&quot;)</code></p>
+<p>ลองเปิด <code>mosquitto_sub</code> (หรือ MQTT Explorer) บนเครื่อง subscribe topic เดียวกัน จะเห็นข้อความของทุกบอร์ดวิ่งเข้ามาสด ๆ แบบนี้:</p>
+<p><img src="img/mqtt_sub_console.png" alt="" style="width:560px;" /></p>
+<p><sub>ภาพจำลองคอนโซล <code>mosquitto_sub -v</code> ขณะ subscribe topic <code>tesaiot/class/score</code> — รูปแบบบรรทัด <code>&amp;lt;topic&amp;gt; &amp;lt;payload&amp;gt;</code> ตรงกับที่เครื่องมือจริงพิมพ์ออกมา</sub></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="payload-%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%87--str-%E0%B8%AD%E0%B8%AD%E0%B8%81%E0%B9%84%E0%B8%9B-bytes-%E0%B8%81%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%A1%E0%B8%B2">payload เดินทางยังไง · str ออกไป bytes กลับมา</h1>
 <p>ก่อนแตะโค้ด ขอปูภาพรวมการแปลงข้อมูลให้เห็นทั้งเส้นก่อน เพราะจุดนี้พลาดกันบ่อยที่สุด</p>
 <p><img src="img/payload_pipeline.png" alt="" style="width:680px;" /></p>
 <p>ฝั่งส่งเราเอาตัวเลขมาทำเป็น <code>str</code> แล้ว <code>publish</code> · ระหว่างทาง MQTT ห่อเป็น <strong>UTF-8 bytes</strong> ให้เอง · ฝั่งรับจึงได้ <code>bytes</code> กลับมา ต้อง <code>.decode()</code> คืนเป็น <code>str</code> แล้วค่อย <code>split(&quot;:&quot;)</code> กับ <code>int()</code> แยกชื่อกับคะแนนออกมา</p>
+<p>ดูแบบไล่ทีละขั้น — กล่องจะสว่างทีละช่องตามลำดับที่ข้อมูลถูกแปลง:</p>
+<svg viewBox="0 0 760 200" width="100%">
+<style>.lbl{font-family:'Noto Sans Thai',sans-serif}.mono{font-family:monospace}</style>
+<defs><marker id="ar4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#999" /></marker></defs>
+<g class="mono">
+<g>
+  <rect x="14" y="70" width="104" height="58" rx="8" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+  <rect x="14" y="70" width="104" height="58" rx="8" fill="#27a" opacity="0" /><animate attributeName="opacity" values="0;0.85;0" keyTimes="0;0.06;0.16" dur="3.6s" begin="0s" repeatCount="indefinite"/><rect />
+  <text x="66" y="93" text-anchor="middle" font-size="11" fill="#333">1250 + ชื่อ</text>
+  <text x="66" y="113" text-anchor="middle" font-size="10" fill="#666" class="lbl">ตัวเลข</text>
+</g>
+<g>
+  <rect x="142" y="70" width="104" height="58" rx="8" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+  <rect x="142" y="70" width="104" height="58" rx="8" fill="#27a" opacity="0" /><animate attributeName="opacity" values="0;0;0.85;0" keyTimes="0;0.13;0.2;0.32" dur="3.6s" begin="0s" repeatCount="indefinite"/><rect />
+  <text x="194" y="98" text-anchor="middle" font-size="11">"board-01:1250"</text>
+  <text x="194" y="116" text-anchor="middle" font-size="10" fill="#666">str</text>
+</g>
+<g>
+  <rect x="270" y="70" width="104" height="58" rx="8" fill="#fff3d6" stroke="#e90" stroke-width="2.5" />
+  <rect x="270" y="70" width="104" height="58" rx="8" fill="#e90" opacity="0" /><animate attributeName="opacity" values="0;0;0.8;0" keyTimes="0;0.3;0.36;0.48" dur="3.6s" begin="0s" repeatCount="indefinite"/><rect />
+  <text x="322" y="95" text-anchor="middle" font-size="10.5">b'board-01..'</text>
+  <text x="322" y="114" text-anchor="middle" font-size="9.5" class="lbl">UTF-8 bytes</text>
+</g>
+<g>
+  <rect x="398" y="70" width="104" height="58" rx="8" fill="#fde8f3" stroke="#c39" stroke-width="2" />
+  <rect x="398" y="70" width="104" height="58" rx="8" fill="#c39" opacity="0" /><animate attributeName="opacity" values="0;0;0.75;0" keyTimes="0;0.48;0.54;0.66" dur="3.6s" begin="0s" repeatCount="indefinite"/><rect />
+  <text x="450" y="95" text-anchor="middle" font-size="11">.decode()</text>
+  <text x="450" y="114" text-anchor="middle" font-size="10" fill="#666">→ str</text>
+</g>
+<g>
+  <rect x="526" y="70" width="104" height="58" rx="8" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+  <rect x="526" y="70" width="104" height="58" rx="8" fill="#27a" opacity="0" /><animate attributeName="opacity" values="0;0;0.85;0" keyTimes="0;0.66;0.72;0.84" dur="3.6s" begin="0s" repeatCount="indefinite"/><rect />
+  <text x="578" y="95" text-anchor="middle" font-size="10.5">.split(":")</text>
+  <text x="578" y="114" text-anchor="middle" font-size="10" fill="#666">list</text>
+</g>
+<g>
+  <rect x="654" y="70" width="92" height="58" rx="8" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+  <rect x="654" y="70" width="92" height="58" rx="8" fill="#2a7" opacity="0" /><animate attributeName="opacity" values="0;0;0.85;0" keyTimes="0;0.84;0.92;1" dur="3.6s" begin="0s" repeatCount="indefinite"/><rect />
+  <text x="700" y="95" text-anchor="middle" font-size="11">int(score)</text>
+  <text x="700" y="114" text-anchor="middle" font-size="10" fill="#666" class="lbl">คะแนน</text>
+</g>
+</g>
+<g stroke="#bbb" stroke-width="2" marker-end="url(#ar4)">
+<line x1="118" y1="99" x2="140" y2="99" /><line x1="246" y1="99" x2="268" y2="99" />
+<line x1="374" y1="99" x2="396" y2="99" /><line x1="502" y1="99" x2="524" y2="99" /><line x1="630" y1="99" x2="652" y2="99" />
+</g>
+<text x="194" y="152" text-anchor="middle" font-size="10.5" fill="#27a" class="lbl">ฝั่งส่ง: publish</text>
+<text x="546" y="152" text-anchor="middle" font-size="10.5" fill="#c39" class="lbl">ฝั่งรับ: get_message → แยกข้อมูล</text>
+</svg>
 <blockquote>
 <p>ถ้าจอขึ้นเป็น <code>b'board-01:1250'</code> (มี <code>b'</code> นำหน้า) แปลว่าลืม <code>.decode()</code> — นี่คือบั๊กอันดับหนึ่งของคาบนี้</p>
 </blockquote>
+<p>เทียบให้เห็นชัดใน REPL: ลืม <code>.decode()</code> แล้ว <code>split</code> จะพังทันที แต่ใส่แล้วแยกข้อมูลได้สวยงาม</p>
+<p><img src="img/repl_decode_fix.png" alt="" style="width:660px;" /></p>
+<p><sub>ภาพจำลองหน้าจอ REPL (MicroPython) เทียบ payload ที่ลืม/ใส่ <code>.decode()</code> — ค่าและข้อความ error ตรงกับที่เกิดขึ้นจริงเมื่อรันบนบอร์ด</sub></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B9%80%E0%B8%82%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%88%E0%B8%AE%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%94%E0%B9%81%E0%B8%A7%E0%B8%A3%E0%B9%8C--%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1-mqtt-%E0%B9%80%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%B0%E0%B8%81%E0%B8%B1%E0%B8%9A-iot">เข้าใจฮาร์ดแวร์ · ทำไม MQTT เหมาะกับ IoT</h1>
 <p>หลายบอร์ด <strong>publish</strong> / <strong>subscribe</strong> ผ่าน <strong>broker</strong> ตัวเดียว — บอร์ดไม่ต้องรู้จักกันเอง แค่รู้ <strong>topic</strong> เดียวกัน</p>
-<p><img src="img/hw_board_block.png" alt="" style="width:380px;" /></p>
+<div style="display:flex;gap:18px;align-items:center;margin-top:6px">
+<div style="flex:0 0 360px">
+<p><img src="img/hw_board_block.png" alt="" style="width:360px;" /></p>
+</div>
+<div style="flex:0 0 300px">
+<p><img src="img/psoc_dev_board.jpg" alt="" style="width:300px;" /></p>
+</div>
+</div>
+<p><sub>ขวา: บอร์ดตระกูล PSoC จริง (พร้อมตัวโปรแกรม MiniProg) — ก้อนซิลิคอนเดียวกับ PSoC Edge ที่เราถืออยู่ บล็อกไดอะแกรมซ้ายคือ &quot;ข้างใน&quot; ของอุปกรณ์จริงตัวนี้<br />ที่มา: &quot;PSoC Express Development Board 1&quot; — Dacs, CC BY-SA 4.0, Wikimedia Commons</sub></p>
 <ul>
 <li>เพิ่มบอร์ดได้ไม่จำกัด (broker เป็นตัวกลาง) = <strong>scale</strong> ง่าย — นี่คือเหตุผลที่ IoT ใช้ MQTT</li>
 <li><strong>topic</strong> ทำหน้าที่ routing (เช่น <code>game/score</code>, <code>sensor/temp</code>) — สมัครรับเฉพาะป้ายที่เราสนใจ</li>
@@ -83,7 +167,60 @@
 <h1 id="%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1-broker-%E0%B8%96%E0%B8%B6%E0%B8%87-scale-%E0%B8%87%E0%B9%88%E0%B8%B2%E0%B8%A2-%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87--%E0%B8%94%E0%B8%B9%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%88%E0%B8%B3%E0%B8%99%E0%B8%A7%E0%B8%99%E0%B8%AA%E0%B8%B2%E0%B8%A2">ทำไม broker ถึง &quot;scale ง่าย&quot; จริง · ดูที่จำนวนสาย</h1>
 <p>ถ้าให้บอร์ดทุกใบต่อตรงหากันเอง (mesh) จำนวนสายจะโตแบบ <strong>กำลังสอง</strong> แต่ผ่าน broker ตัวกลางจะโตแบบ <strong>เส้นตรง</strong></p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mtext>mesh</mtext><mo>=</mo><mfrac><mrow><mi>N</mi><mo stretchy="false">(</mo><mi>N</mi><mo>−</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></mfrac><mtext>  </mtext><mo>=</mo><mtext>  </mtext><mi>O</mi><mo stretchy="false">(</mo><msup><mi>N</mi><mn>2</mn></msup><mo stretchy="false">)</mo><mspace width="2em"/><mspace width="2em"/><mtext>broker</mtext><mo>=</mo><mi>N</mi><mtext>  </mtext><mo>=</mo><mtext>  </mtext><mi>O</mi><mo stretchy="false">(</mo><mi>N</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\text{mesh} = \frac{N(N-1)}{2} \;=\; O(N^2) \qquad\qquad \text{broker} = N \;=\; O(N)
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">mesh</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">broker</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mclose">)</span></span></span></span></span></p><p><img src="img/scale_fanout.png" alt="" style="width:600px;" /></p>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6944em;"></span><span class="mord text"><span class="mord">mesh</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.113em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord">1</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:2em;"></span><span class="mspace" style="margin-right:2em;"></span><span class="mord text"><span class="mord">broker</span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.109em;">N</span><span class="mclose">)</span></span></span></span></span></p><p>ก่อนดูกราฟ ดูที่ &quot;รูปทรง&quot; ของการต่อสายก่อน — ฝั่งซ้าย (mesh) ทุก node ต้องลากสายหากันเองทุกคู่ พอเพิ่ม node สายเลยพุ่ง · ฝั่งขวา (broker) เพิ่ม node ก็แค่ลากเข้าตัวกลาง <strong>เส้นเดียว</strong>:</p>
+<svg viewBox="0 0 760 250" width="100%">
+<style>.lbl{font-family:'Noto Sans Thai',sans-serif}.mono{font-family:monospace}</style>
+<text x="190" y="22" text-anchor="middle" font-size="15" font-weight="bold" class="lbl" fill="#c0392b">mesh: เพิ่ม node = สายพุ่ง</text>
+<text x="570" y="22" text-anchor="middle" font-size="15" font-weight="bold" class="lbl" fill="#1f8a4c">broker: เพิ่ม node = +1 สาย</text>
+<g stroke="#c0392b" stroke-width="1.5">
+<line x1="190" y1="60" x2="255" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.16;0.2;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="190" y1="60" x2="255" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.32;0.36;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="98" x2="255" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.32;0.36;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="190" y1="60" x2="190" y2="210" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.48;0.52;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="98" x2="190" y2="210" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.48;0.52;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="172" x2="190" y2="210" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.48;0.52;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="190" y1="60" x2="125" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="98" x2="125" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="172" x2="125" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="190" y1="210" x2="125" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="190" y1="60" x2="125" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="98" x2="125" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="255" y1="172" x2="125" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="190" y1="210" x2="125" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="125" y1="172" x2="125" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;0.6;0.6" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><line />
+</g>
+<g fill="#e8f0ff" stroke="#27a" stroke-width="2">
+<circle cx="190" cy="60" r="13" />
+<circle cx="255" cy="98" r="13" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.16;0.2;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="255" cy="172" r="13" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.32;0.36;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="190" cy="210" r="13" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.48;0.52;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="125" cy="172" r="13" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="125" cy="98" r="13" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><circle />
+</g>
+<text x="190" y="240" text-anchor="middle" font-size="13" class="mono" fill="#c0392b">สาย = N(N-1)/2 → 15</text>
+<g stroke="#1f8a4c" stroke-width="2">
+<line x1="570" y1="135" x2="570" y2="60" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.16;0.2;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="570" y1="135" x2="635" y2="98" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.32;0.36;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="570" y1="135" x2="635" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.48;0.52;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="570" y1="135" x2="570" y2="210" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="570" y1="135" x2="505" y2="172" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><line />
+<line x1="570" y1="135" x2="505" y2="98" />
+</g>
+<rect x="548" y="118" width="44" height="34" rx="8" fill="#fff3d6" stroke="#e90" stroke-width="2.5" />
+<text x="570" y="140" text-anchor="middle" font-size="11" font-weight="bold" class="lbl">broker</text>
+<g fill="#e8f0ff" stroke="#27a" stroke-width="2">
+<circle cx="505" cy="98" r="12" />
+<circle cx="570" cy="60" r="12" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.16;0.2;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="635" cy="98" r="12" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.32;0.36;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="635" cy="172" r="12" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.48;0.52;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="570" cy="210" r="12" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.64;0.68;1" dur="6s" repeatCount="indefinite"/><circle />
+<circle cx="505" cy="172" r="12" opacity="0" /><animate attributeName="opacity" values="0;0;1;1" keyTimes="0;0.8;0.84;1" dur="6s" repeatCount="indefinite"/><circle />
+</g>
+<text x="570" y="240" text-anchor="middle" font-size="13" class="mono" fill="#1f8a4c">สาย = N → 6</text>
+<line x1="380" y1="40" x2="380" y2="225" stroke="#ccc" stroke-width="1" stroke-dasharray="4 4" />
+</svg>
+<p>ทีนี้พอเอาจำนวนสายไปพล็อตตาม <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span> จะเห็นเส้นแดง (mesh) แยกหนีเส้นน้ำเงิน (broker) ชัดเจน:</p>
+<p><img src="img/scale_fanout.png" alt="" style="width:600px;" /></p>
 <ul>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span> คือจำนวนบอร์ดในห้อง · ห้องเรา 12 คน: ต่อกันเอง = <strong>66 สาย</strong> แต่ผ่าน broker = <strong>12 สาย</strong></li>
 <li>เพิ่มอีก 1 บอร์ด: mesh ต้องลากสายใหม่ถึง <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.6833em;"></span><span class="mord mathnormal" style="margin-right:0.109em;">N</span></span></span></span> เส้น แต่ broker เพิ่มแค่ <strong>เส้นเดียว</strong></li>
@@ -112,6 +249,32 @@
     mqtt.publish(TOPIC, <span class="hljs-string">&quot;%s:%d&quot;</span> % (PLAYER, my_score))   <span class="hljs-comment"># &quot;board-01:1250&quot;</span>
 </code></pre>
 <p><code>subscribe</code> = บอก broker ว่า &quot;มีใครส่งเข้า topic นี้ ส่งมาให้ผมด้วย&quot;</p>
+<p>ลำดับ 4 ขั้นต้องเป๊ะตามนี้ — <strong>WiFi ก่อน</strong> เสมอ ถ้าสลับไป <code>mqtt.connect</code> ก่อนต่อเน็ตจะ error ทันที:</p>
+<svg viewBox="0 0 760 120" width="100%">
+<style>.lbl{font-family:'Noto Sans Thai',sans-serif}.mono{font-family:monospace}</style>
+<defs><marker id="ar7" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555" /></marker></defs>
+<circle cx="86" cy="50" r="22" fill="#dbeafe" stroke="#2563eb" stroke-width="2.5" /><text x="86" y="55" text-anchor="middle" font-size="14" font-weight="bold">1</text>
+<text x="86" y="92" text-anchor="middle" font-size="12.5" class="mono">wifi.connect</text>
+<text x="86" y="108" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">ต่อเน็ตก่อน</text>
+<line x1="118" y1="50" x2="172" y2="50" stroke="#555" stroke-width="2.5" marker-end="url(#ar7)" />
+<circle cx="226" cy="50" r="22" fill="#fef3c7" stroke="#d97706" stroke-width="2.5" /><text x="226" y="55" text-anchor="middle" font-size="14" font-weight="bold">2</text>
+<text x="226" y="92" text-anchor="middle" font-size="12.5" class="mono">mqtt.connect</text>
+<text x="226" y="108" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">ค่อยต่อ broker</text>
+<line x1="258" y1="50" x2="312" y2="50" stroke="#555" stroke-width="2.5" marker-end="url(#ar7)" />
+<circle cx="366" cy="50" r="22" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5" /><text x="366" y="55" text-anchor="middle" font-size="14" font-weight="bold">3</text>
+<text x="366" y="92" text-anchor="middle" font-size="12.5" class="mono">subscribe</text>
+<text x="366" y="108" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">ขอฟัง topic</text>
+<line x1="398" y1="50" x2="452" y2="50" stroke="#555" stroke-width="2.5" marker-end="url(#ar7)" />
+<circle cx="506" cy="50" r="22" fill="#fce7f3" stroke="#db2777" stroke-width="2.5" /><text x="506" y="55" text-anchor="middle" font-size="14" font-weight="bold">4</text>
+<text x="506" y="92" text-anchor="middle" font-size="12.5" class="mono">publish</text>
+<text x="506" y="108" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">ส่งคะแนน</text>
+<rect x="566" y="22" width="184" height="58" rx="9" fill="#fff5f5" stroke="#e74c3c" stroke-width="1.6" />
+<text x="658" y="44" text-anchor="middle" font-size="12" class="lbl" font-weight="bold" fill="#c0392b">ผิดลำดับ = ต่อไม่ติด</text>
+<text x="658" y="64" text-anchor="middle" font-size="11" class="lbl" fill="#555">MQTT ก่อน WiFi → error</text>
+</svg>
+<p>เปิดไฟล์นี้ใน BENTO IDE แล้วกดปุ่ม <strong>Program to Device</strong> (มุมซ้ายบน) เพื่อส่งโค้ดลงบอร์ด — เป็นปุ่มเดียวกับที่เราใช้ตลอดคอร์ส:</p>
+<p><img src="img/Bento_IDE_Program_to_Device.png" alt="" style="width:560px;" /></p>
+<p><sub>BENTO IDE — ปุ่ม <strong>Program to Device</strong> มุมซ้ายบน · คอนโซลด้านล่างคือผลตอนกดรันลงบอร์ดจริง</sub></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="8" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B9%80%E0%B8%94%E0%B8%B4%E0%B8%99%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94-2--%E0%B9%80%E0%B8%81%E0%B9%87%E0%B8%9A%E0%B9%83%E0%B8%99-dict--%E0%B9%82%E0%B8%8A%E0%B8%A7%E0%B9%8C-top-5">เดินโค้ด (2) — เก็บใน dict + โชว์ top-5</h1>
@@ -139,6 +302,36 @@
     game.run(update, fps=<span class="hljs-number">10</span>)           <span class="hljs-comment"># BACK = ออก, START = เริ่มใหม่</span>
 </code></pre>
 <p><code>game.run</code> วน <code>update()</code> ให้ทุกเฟรม เราจึง poll ข้อความใหม่ตลอด กระดานอัปเดตสด</p>
+<p>สิ่งที่ <code>update()</code> ทำในแต่ละเฟรม — ถ้าไม่มีข้อความก็ข้ามไปเลย (ไม่บล็อกเกม):</p>
+<svg viewBox="0 0 760 165" width="100%">
+<style>.lbl{font-family:'Noto Sans Thai',sans-serif}.mono{font-family:monospace}</style>
+<defs><marker id="ar8" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555" /></marker></defs>
+<rect x="14" y="44" width="120" height="52" rx="9" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+<text x="74" y="68" text-anchor="middle" font-size="12.5" class="mono">get_message()</text>
+<text x="74" y="86" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">มีของ? / None</text>
+<rect x="160" y="44" width="108" height="52" rx="9" fill="#fde8f3" stroke="#c39" stroke-width="2" />
+<text x="214" y="68" text-anchor="middle" font-size="12.5" class="mono">.decode()</text>
+<text x="214" y="86" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">bytes→str</text>
+<rect x="294" y="44" width="108" height="52" rx="9" fill="#fff3d6" stroke="#e90" stroke-width="2" />
+<text x="348" y="68" text-anchor="middle" font-size="12.5" class="mono">.split(":")</text>
+<text x="348" y="86" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">ชื่อ, คะแนน</text>
+<rect x="428" y="40" width="138" height="60" rx="9" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" />
+<text x="497" y="62" text-anchor="middle" font-size="11.5" class="mono">score &gt; max?</text>
+<text x="497" y="80" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">เก็บคะแนนสูงสุด</text>
+<text x="497" y="94" text-anchor="middle" font-size="10" class="mono" fill="#0284c7">board[name]=score</text>
+<rect x="592" y="44" width="108" height="52" rx="9" fill="#dcfce7" stroke="#16a34a" stroke-width="2.5" />
+<text x="646" y="68" text-anchor="middle" font-size="12.5" class="mono">redraw()</text>
+<text x="646" y="86" text-anchor="middle" font-size="10.5" class="lbl" fill="#666">วาด top-5</text>
+<g stroke="#555" stroke-width="2.2" marker-end="url(#ar8)">
+<line x1="134" y1="70" x2="158" y2="70" /><line x1="268" y1="70" x2="292" y2="70" />
+<line x1="402" y1="70" x2="426" y2="70" /><line x1="566" y1="70" x2="590" y2="70" />
+</g>
+<path d="M74,96 q0,40 200,40 l260,0" fill="none" stroke="#bbb" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#ar8)" />
+<text x="300" y="152" text-anchor="middle" font-size="10.5" class="lbl" fill="#999">ไม่มีข้อความ → ข้ามไปเฟรมถัดไป (ไม่บล็อก)</text>
+</svg>
+<p>ผลบนจอบอร์ดหน้าตาประมาณนี้ (อันดับ 1 ไฮไลต์เหลือง คะแนนชิดขวาด้วย <code>%6d</code>):</p>
+<p><img src="img/leaderboard_screen.png" alt="" style="width:420px;" /></p>
+<p><sub>ภาพจำลองหน้าจอบอร์ด สร้างตาม <code>game.Text</code> ในโค้ดจริง (หัวข้อ CYAN ที่ (40,24) · แต่ละแถวที่ y=80+i·48)</sub></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B9%83%E0%B8%AB%E0%B8%A1%E0%B9%88%E0%B9%80%E0%B8%AD%E0%B8%87%E0%B8%97%E0%B8%B8%E0%B8%81%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87--%E0%B8%99%E0%B8%B5%E0%B9%88%E0%B8%84%E0%B8%B7%E0%B8%AD-sorted-%E0%B8%97%E0%B8%B3%E0%B8%87%E0%B8%B2%E0%B8%99">กระดานเรียงใหม่เองทุกครั้ง · นี่คือ <code>sorted()</code> ทำงาน</h1>
@@ -155,11 +348,19 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%A3%E0%B8%B1%E0%B8%99--%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B8%81%E0%B8%B5%E0%B9%88%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94">วิธีรัน + ต้องกี่บอร์ด</h1>
 <p><strong>รัน:</strong> เปิด <code>codes/ex_a1_leaderboard.py</code> ใน BENTO IDE แล้วกด <strong>Program to Device</strong> ทุกบอร์ดรัน <strong>ไฟล์อันเดียวกัน</strong> เปลี่ยนแค่บรรทัด <code>PLAYER</code> ให้ไม่ซ้ำ</p>
+<div style="display:flex;gap:18px;align-items:center;margin-top:4px">
+<div style="flex:1">
 <ul>
 <li><strong>1 บอร์ด</strong> ก็เห็นกระดาน (มีชื่อตัวเองคนเดียว) — ใช้ทดสอบว่าต่อเน็ต/ส่งได้</li>
 <li><strong>2 บอร์ดขึ้นไป</strong> ถึงจะสนุก: คะแนนเพื่อนวิ่งเข้ามาขึ้นกระดานสด ๆ</li>
 <li>ทั้งห้องตั้ง <code>TOPIC</code> เป๊ะตัวเดียวกัน → กลายเป็นกระดานรวมห้องเดียว</li>
 </ul>
+</div>
+<div style="flex:0 0 320px">
+<p><img src="img/Bento_IDE_Program_to_Device.png" alt="" style="width:320px;" /></p>
+<p><sub>กดปุ่ม <strong>Program to Device</strong> (เขียว มุมซ้ายบน) ในทุกบอร์ด</sub></p>
+</div>
+</div>
 <p><img src="img/same_code_diff_player.png" alt="" style="width:660px;" /></p>
 <blockquote>
 <p>กับดักที่เจอบ่อย: <code>client_id</code> (<code>PLAYER</code>) ซ้ำกัน broker จะเตะกันหลุด — ตั้งชื่อไม่ซ้ำทั้งห้อง และ topic ต้องสะกดตรงกันทุกตัวอักษร</p>
@@ -174,6 +375,30 @@
 <li><strong>Multiplayer จริง:</strong> ส่ง state มากกว่าคะแนน เช่น <code>&quot;ชื่อ:คะแนน:ด่าน&quot;</code> แล้ว <code>split(&quot;:&quot;)</code> หลายช่อง → ทำ co-op / แข่งเรียลไทม์ได้</li>
 <li><strong>เก็บประวัติ:</strong> ให้บอร์ดหนึ่งทำหน้าที่ logger เขียนคะแนนลงไฟล์ตลอดคาบ</li>
 </ul>
+<div style="max-width:470px">
+<svg viewBox="0 0 470 190" width="100%">
+<style>.lbl{font-family:'Noto Sans Thai',sans-serif}</style>
+<defs><marker id="ar11b" markerWidth="10" markerHeight="10" refX="8" refY="3.2" orient="auto"><path d="M0,0 L8,3.2 L0,6.4 Z" fill="#888" /></marker></defs>
+<text x="105" y="18" text-anchor="middle" font-size="13" font-weight="bold" class="lbl" fill="#2563eb">เกมเรา</text>
+<text x="365" y="18" text-anchor="middle" font-size="13" font-weight="bold" class="lbl" fill="#16a34a">ระบบจริง</text>
+<rect x="14" y="30" width="182" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.6" />
+<text x="105" y="53" text-anchor="middle" font-size="13" class="lbl">คะแนนผู้เล่น</text>
+<line x1="200" y1="48" x2="270" y2="48" stroke="#888" stroke-width="2" marker-end="url(#ar11b)" />
+<rect x="278" y="30" width="178" height="36" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.6" />
+<text x="367" y="53" text-anchor="middle" font-size="12.5" class="lbl">ค่าเซนเซอร์</text>
+<rect x="14" y="74" width="182" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.6" />
+<text x="105" y="97" text-anchor="middle" font-size="13" class="lbl">บอร์ดแต่ละใบ</text>
+<line x1="200" y1="92" x2="270" y2="92" stroke="#888" stroke-width="2" marker-end="url(#ar11b)" />
+<rect x="278" y="74" width="178" height="36" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.6" />
+<text x="367" y="97" text-anchor="middle" font-size="12.5" class="lbl">เครื่องจักร</text>
+<rect x="14" y="118" width="182" height="36" rx="8" fill="#dbeafe" stroke="#2563eb" stroke-width="1.6" />
+<text x="105" y="141" text-anchor="middle" font-size="13" class="lbl">กระดานคะแนน</text>
+<line x1="200" y1="136" x2="270" y2="136" stroke="#888" stroke-width="2" marker-end="url(#ar11b)" />
+<rect x="278" y="118" width="178" height="36" rx="8" fill="#dcfce7" stroke="#16a34a" stroke-width="1.6" />
+<text x="367" y="141" text-anchor="middle" font-size="12.5" class="lbl">SCADA dashboard</text>
+<text x="235" y="178" text-anchor="middle" font-size="11" class="lbl" fill="#e90" font-weight="bold">โครงเดียวกัน: node → broker → กระดานรวม</text>
+</svg>
+</div>
 <p>ภาพขวาคือห้องควบคุมจริง: วิศวกรหนึ่งคนเฝ้า &quot;กระดานรวม&quot; ที่รับค่าจากอุปกรณ์กระจายอยู่ทั้งระบบ — กระดานคะแนนของเราคือเวอร์ชันจิ๋วของหน้าจอนี้</p>
 <blockquote>
 <p>สิ่งที่น้อง ๆ ทำวันนี้ ไม่ใช่ของเล่น — มันคือสถาปัตยกรรม pub/sub ที่ใช้จริงในระบบ IoT ระดับโรงงาน เราแค่ใส่มันลงในเกมให้สนุกก่อน</p>
@@ -183,6 +408,28 @@
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="11" style="" data-marpit-pagination-total="12" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B9%82%E0%B8%A2%E0%B8%87%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%90%E0%B8%B2%E0%B8%99--%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%94%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B8%B6%E0%B9%88%E0%B8%87%E0%B8%88%E0%B8%AD-%E0%B9%82%E0%B8%A2%E0%B8%87%E0%B9%84%E0%B8%9B%E0%B8%96%E0%B8%B6%E0%B8%87%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3%E0%B8%9A%E0%B9%89%E0%B8%B2%E0%B8%87">เชื่อมโยงรากฐาน · กระดานคะแนนหนึ่งจอ โยงไปถึงอะไรบ้าง</h1>
 <p>กระดานเล็ก ๆ ที่คะแนนเพื่อนวิ่งเข้ามานี้ รวมรากฐานสี่ด้านที่เราใช้ตลอดคอร์สไว้ในงานเดียว:</p>
+<svg viewBox="0 0 760 200" width="100%" style="max-height:200px">
+<style>.lbl{font-family:'Noto Sans Thai',sans-serif}.mono{font-family:monospace}</style>
+<line x1="380" y1="100" x2="180" y2="50" stroke="#94a3b8" stroke-width="2.5" />
+<line x1="380" y1="100" x2="580" y2="50" stroke="#94a3b8" stroke-width="2.5" />
+<line x1="380" y1="100" x2="180" y2="150" stroke="#94a3b8" stroke-width="2.5" />
+<line x1="380" y1="100" x2="580" y2="150" stroke="#94a3b8" stroke-width="2.5" />
+<rect x="44" y="28" width="240" height="46" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2" />
+<text x="164" y="49" text-anchor="middle" font-size="14.5" font-weight="bold" class="lbl" fill="#1e40af">Embedded / MCU</text>
+<text x="164" y="66" text-anchor="middle" font-size="10.5" class="lbl" fill="#555">WiFi · network node · poll ไม่บล็อก</text>
+<rect x="476" y="28" width="240" height="46" rx="10" fill="#dcfce7" stroke="#16a34a" stroke-width="2" />
+<text x="596" y="49" text-anchor="middle" font-size="14.5" font-weight="bold" class="lbl" fill="#166534">Python</text>
+<text x="596" y="66" text-anchor="middle" font-size="10.5" class="lbl" fill="#555">dict · str↔bytes · split/int</text>
+<rect x="44" y="126" width="240" height="46" rx="10" fill="#fef3c7" stroke="#d97706" stroke-width="2" />
+<text x="164" y="147" text-anchor="middle" font-size="14.5" font-weight="bold" class="lbl" fill="#92400e">Algorithms</text>
+<text x="164" y="164" text-anchor="middle" font-size="10.5" class="mono" fill="#555">sort O(N logN) · O(N) vs O(N²)</text>
+<rect x="476" y="126" width="240" height="46" rx="10" fill="#fce7f3" stroke="#db2777" stroke-width="2" />
+<text x="596" y="147" text-anchor="middle" font-size="14.5" font-weight="bold" class="lbl" fill="#9d174d">Graphics</text>
+<text x="596" y="164" text-anchor="middle" font-size="10.5" class="lbl" fill="#555">พิกัด y=80+i·48 · redraw on change</text>
+<circle cx="380" cy="100" r="52" fill="#1e293b" stroke="#0ea5e9" stroke-width="3" />
+<text x="380" y="95" text-anchor="middle" font-size="13.5" font-weight="bold" class="lbl" fill="#fff">Leaderboard</text>
+<text x="380" y="113" text-anchor="middle" font-size="12" class="lbl" fill="#7dd3fc">ทั้งห้อง</text>
+</svg>
 <div style="font-size:21px;">
 <p><strong>Embedded / MCU</strong> — บอร์ดต่อ <strong>WiFi</strong> ขึ้น network stack กลายเป็น node หนึ่งบนเครือข่าย; <code>update()</code> ที่ส่งให้ <code>game.run()</code> ถูกเรียกตามจังหวะเฟรม เราเลย <strong>poll</strong> ข้อความใหม่ได้เรื่อย ๆ โดยไม่บล็อก</p>
 <p><strong>Python</strong> — เก็บคะแนนใน <strong>dict</strong> (<code>ชื่อ → คะแนนสูงสุด</code>); สร้างแถวด้วย <strong>list comprehension</strong>; แปลง <strong>str <img class="emoji" draggable="false" alt="↔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.2/assets/svg/2194.svg" data-marp-twemoji=""/> bytes</strong> ด้วย <code>.decode()</code>; แยกข้อมูลด้วย <code>.split(&quot;:&quot;)</code> + <code>int()</code>; กัน payload เพี้ยนด้วย <code>try/except</code></p>

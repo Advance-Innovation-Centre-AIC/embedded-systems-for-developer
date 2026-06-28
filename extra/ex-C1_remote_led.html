@@ -36,7 +36,27 @@
 ได้ <code>"off"</code> → ไฟดับ + เสียง
 </div>
 </div>
+<div style="text-align:center;margin-top:8px">
+<svg viewBox="0 0 640 70" width="78%">
+<rect x="8" y="16" width="190" height="40" rx="8" fill="#eafaf0" stroke="#2a7" stroke-width="2" />
+<text x="103" y="41" text-anchor="middle" font-size="14" font-weight="bold">A — คนสั่ง (sender)</text>
+<rect x="442" y="16" width="190" height="40" rx="8" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+<text x="537" y="41" text-anchor="middle" font-size="14" font-weight="bold">B — คนทำ (actuator)</text>
+<line x1="198" y1="36" x2="440" y2="36" stroke="#555" stroke-width="3" marker-end="url(#abar)" />
+<text x="319" y="22" text-anchor="middle" font-size="13" font-family="monospace" fill="#222">cmd/led: "on"/"off"</text>
+<text x="319" y="54" text-anchor="middle" font-size="11" fill="#777">สั่งทางเดียว — A ไม่ต้องรู้ว่า B เป็นใคร</text>
+<defs><marker id="abar" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#555" /></marker></defs>
+</svg>
+</div>
+<div style="display:flex;gap:16px;align-items:center;margin-top:8px">
+<div style="flex:1">
 <p><strong>ของจริงรอบตัว:</strong> สวิตช์ไฟอัจฉริยะในบ้าน, ปุ่มฉุกเฉินสั่งหยุดสายพานในโรงงาน (Industry 4.0), รีโมตเปิด-ปิดอุปกรณ์ — ทั้งหมดคือ &quot;กดที่นี่ ทำงานที่โน่น&quot; แบบเดียวกับที่เราจะทำเลย</p>
+</div>
+<div style="flex:0 0 168px;text-align:center">
+<p><img src="img/smart_plug_kasa.jpg" alt="" style="width:160px;" /><br />
+<sub>ที่มา: &quot;TP-Link Kasa Smart Home WLAN-Steckdose HS110&quot; — www.digitalpush.net, CC BY 4.0, Wikimedia Commons · ปลั๊ก WiFi สั่งเปิด-ปิดจากมือถือ = &quot;กดที่นี่ ทำงานที่โน่น&quot; ของจริง</sub></p>
+</div>
+</div>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="3" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B9%80%E0%B8%81%E0%B8%A3%E0%B9%87%E0%B8%94-%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1-embedded-%E0%B8%AA%E0%B8%B3%E0%B8%84%E0%B8%B1%E0%B8%8D--genesis-%E0%B9%81%E0%B8%9A%E0%B9%88%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%8A%E0%B8%B4%E0%B8%9B%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%96%E0%B8%99%E0%B8%B1%E0%B8%94">เกร็ด: ทำไม embedded สำคัญ — Genesis: แบ่งงานให้ชิปที่ถนัด</h1>
@@ -102,6 +122,28 @@
         time.sleep_ms(<span class="hljs-number">20</span>)
 </code></pre>
 <p><code>prev</code> คือเทคนิค edge detection เดียวกับคาบปุ่ม FSM — จับ &quot;เพิ่งกด&quot; ไม่ใช่ &quot;กำลังกดค้าง&quot; · ปุ่มเดียวก็คุมได้ครบเพราะแต่ละครั้งที่กด เราสลับ <code>state</code> แล้วส่งค่าใหม่</p>
+<svg viewBox="0 0 760 150" width="100%">
+<text x="8" y="16" font-size="12" fill="#555">แต่ละช่อง = 1 รอบลูป (20 ms) — เส้นบนคือ <tspan font-family="monospace">now</tspan>, ลูกศรชี้รอบที่ <tspan font-family="monospace" font-weight="bold">now and not prev</tspan> เป็นจริง</text>
+
+<g stroke="#e3e3e3" stroke-width="1">
+<line x1="60" y1="34" x2="60" y2="120" /><line x1="148" y1="34" x2="148" y2="120" /><line x1="236" y1="34" x2="236" y2="120" /><line x1="324" y1="34" x2="324" y2="120" /><line x1="412" y1="34" x2="412" y2="120" /><line x1="500" y1="34" x2="500" y2="120" /><line x1="588" y1="34" x2="588" y2="120" /><line x1="676" y1="34" x2="676" y2="120" /><line x1="724" y1="34" x2="724" y2="120" />
+</g>
+
+<polyline fill="none" stroke="#27a" stroke-width="3"
+ points="60,104 148,104 236,104 236,56 324,56 412,56 500,56 500,104 588,104 676,104 676,56 724,56" />
+<text x="30" y="60" font-size="11" fill="#27a">HIGH</text>
+<text x="34" y="108" font-size="11" fill="#27a">LOW</text>
+
+<circle cx="236" cy="56" r="7" fill="none" stroke="#e33" stroke-width="3" />
+<line x1="236" y1="120" x2="236" y2="134" stroke="#e33" stroke-width="2" />
+<text x="236" y="146" text-anchor="middle" font-size="11" fill="#e33" font-weight="bold">publish!</text>
+<circle cx="676" cy="56" r="7" fill="none" stroke="#e33" stroke-width="3" />
+<line x1="676" y1="120" x2="676" y2="134" stroke="#e33" stroke-width="2" />
+<text x="676" y="146" text-anchor="middle" font-size="11" fill="#e33" font-weight="bold">publish!</text>
+
+<text x="412" y="48" text-anchor="middle" font-size="11" fill="#999">กดค้าง — ไม่ส่งซ้ำ</text>
+</svg>
+<p>ภาพนี้คือสัญญาณปุ่มจริง ๆ ทีละรอบลูป: ตอนกดค้าง <code>now</code> เป็น HIGH หลายรอบติด แต่ <code>now and not prev</code> เป็นจริง <strong>แค่รอบแรก</strong> (วงแดง) เท่านั้น — จึง publish ครั้งเดียวต่อการกดหนึ่งครั้ง ไม่ท่วม broker</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;" data-marpit-pagination-total="12">
 <h1 id="%E0%B8%A1%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99-state-machine-%E0%B8%9B%E0%B8%B8%E0%B9%88%E0%B8%A1%E0%B9%80%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B8%A7%E0%B8%AA%E0%B8%A5%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B8%AD%E0%B8%87%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B0">มองเป็น state machine: ปุ่มเดียวสลับสองสถานะ</h1>
@@ -128,6 +170,39 @@
         time.sleep_ms(<span class="hljs-number">50</span>)
 </code></pre>
 <p>อย่าลืม <code>.decode()</code> — payload ที่ได้มาเป็น <code>bytes</code> (เช่น <code>b&quot;on&quot;</code>) เทียบกับ string ตรง ๆ ไม่ติด</p>
+<svg viewBox="0 0 760 170" width="100%">
+<defs><marker id="rl" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#444" /></marker></defs>
+
+<rect x="14" y="58" width="150" height="54" rx="9" fill="#eef4ff" stroke="#27a" stroke-width="2" />
+<text x="89" y="80" text-anchor="middle" font-size="13" font-family="monospace">get_message()</text>
+<text x="89" y="99" text-anchor="middle" font-size="11" fill="#555">ไม่บล็อก</text>
+
+<polygon points="250,85 305,55 360,85 305,115" fill="#fff6e0" stroke="#e90" stroke-width="2" />
+<text x="305" y="82" text-anchor="middle" font-size="13">None?</text>
+<text x="305" y="100" text-anchor="middle" font-size="11" fill="#777">มีข้อความ?</text>
+
+<rect x="430" y="58" width="150" height="54" rx="9" fill="#f3f0ff" stroke="#75c" stroke-width="2" />
+<text x="505" y="80" text-anchor="middle" font-size="13" font-family="monospace">data.decode()</text>
+<text x="505" y="99" text-anchor="middle" font-size="11" fill="#555">bytes → str</text>
+
+<rect x="628" y="50" width="120" height="70" rx="9" fill="#eafaf0" stroke="#2a7" stroke-width="2" />
+<text x="688" y="74" text-anchor="middle" font-size="12">"on" → led.on()</text>
+<text x="688" y="92" text-anchor="middle" font-size="12">"off" → led.off()</text>
+<text x="688" y="110" text-anchor="middle" font-size="11" fill="#555">+ game.sfx()</text>
+
+<line x1="164" y1="85" x2="248" y2="85" stroke="#444" stroke-width="2.5" marker-end="url(#rl)" />
+<line x1="360" y1="85" x2="428" y2="85" stroke="#444" stroke-width="2.5" marker-end="url(#rl)" />
+<text x="394" y="78" text-anchor="middle" font-size="11" fill="#2a7">ใช่ (topic,payload)</text>
+<line x1="505" y1="58" x2="505" y2="40" stroke="#444" stroke-width="2.5" />
+<line x1="505" y1="40" x2="688" y2="40" stroke="#444" stroke-width="2.5" />
+<line x1="688" y1="40" x2="688" y2="48" stroke="#444" stroke-width="2.5" marker-end="url(#rl)" />
+
+<line x1="305" y1="115" x2="305" y2="146" stroke="#e90" stroke-width="2.5" />
+<line x1="305" y1="146" x2="89" y2="146" stroke="#e90" stroke-width="2.5" />
+<line x1="89" y1="146" x2="89" y2="114" stroke="#e90" stroke-width="2.5" marker-end="url(#rl)" />
+<text x="197" y="160" text-anchor="middle" font-size="11" fill="#e90">None → วนต่อ (sleep 50 ms) ไม่ค้างรอ</text>
+</svg>
+<p>โครงนี้คือหัวใจของ &quot;ไม่บล็อก&quot;: ถ้า <code>get_message()</code> คืน <code>None</code> ก็แค่วนกลับไปทำงานอื่นต่อ ไม่ยืนค้างรอข้อความ — ได้ข้อความเมื่อไรค่อย <code>.decode()</code> แล้วสั่งงาน LED/เสียง</p>
 <blockquote>
 <p><strong>เสียงในคาบนี้</strong> — ปลายทางใช้เสียง UI สั้น ๆ ตอบรับคำสั่ง: ได้ <code>&quot;on&quot;</code> เล่น <code>select</code>, ได้ <code>&quot;off&quot;</code> เล่น <code>back</code> ให้ผู้ใช้รู้ว่าคำสั่งถึงแล้ว (กดเล่นฟังได้จริง):</p>
 <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
@@ -154,7 +229,15 @@
 <li>บอร์ด A: เปิด <code>ex_c1_sender.py</code> กด <strong>Program to Device</strong></li>
 <li>กด <strong>SW1</strong> ที่บอร์ด A → ไฟบอร์ด B ติด + มีเสียง · กด <strong>SW1</strong> อีกครั้ง → ดับ (ปุ่มเดียวสลับไปมา)</li>
 </ol>
-<p><img src="img/run_steps.png" alt="" style="width:720px;" /></p>
+<div style="display:flex;gap:18px;align-items:flex-start;margin-top:6px">
+<div style="flex:0 0 300px;text-align:center">
+<p><img src="img/Bento_IDE_Program_to_Device.png" alt="" style="width:290px;" /><br />
+<sub>ปุ่ม <b>Program to Device</b> มุมซ้ายบนของ BENTO IDE (ขั้นตอน 2–3) — กดแล้วเซฟเป็น <code>main.py</code> ลงบอร์ดและรันทันที · ที่มา: BENTO IDE (course asset)</sub></p>
+</div>
+<div style="flex:1">
+<p><img src="img/run_steps.png" alt="" style="width:430px;" /></p>
+</div>
+</div>
 <blockquote>
 <p>มีบอร์ดเดียวก็เทสต์ได้: รัน actuator บอร์ดเดียว แล้วใช้แอป MQTT บนมือถือ publish <code>on</code>/<code>off</code> เข้า topic <code>cmd/led</code> ดูไฟตอบสนอง</p>
 </blockquote>
@@ -169,7 +252,15 @@
 <li><strong>คำสั่งหลายแบบ:</strong> ขยาย payload เป็น <code>&quot;on&quot;/&quot;off&quot;/&quot;blink&quot;/&quot;red&quot;</code> แล้วแตก <code>if/elif</code> เพิ่ม</li>
 <li><strong>มัลติเพลเยอร์:</strong> สองบอร์ดส่ง <code>&quot;on&quot;/&quot;off&quot;</code> หากันได้ทั้งคู่ (ต่างคนต่างเป็นทั้ง sender + actuator) → กลายเป็นปุ่มสั่งงานข้ามบอร์ดแบบสองทาง</li>
 </ul>
-<p><img src="img/scale_world.png" alt="" style="width:720px;" /></p>
+<div style="display:flex;gap:18px;align-items:flex-start;margin-top:6px">
+<div style="flex:0 0 250px;text-align:center">
+<p><img src="img/estop_industrial.jpg" alt="" style="width:240px;" /><br />
+<sub>ที่มา: &quot;Emergency stop button&quot; — Cjp24, CC BY-SA 3.0, Wikimedia Commons · ปุ่มฉุกเฉินในโรงงานคือ sender ตัวจริง — กดทีเดียว publish <code>&quot;stop&quot;</code> ให้เครื่องจักรทุกตัวหยุดพร้อมกัน</sub></p>
+</div>
+<div style="flex:1">
+<p><img src="img/scale_world.png" alt="" style="width:470px;" /></p>
+</div>
+</div>
 <blockquote>
 <p>น้อง ๆ ลองคิดดูว่าอุปกรณ์รอบตัวที่ &quot;กดที่นี่ ทำงานที่โน่น&quot; มีอะไรบ้าง แล้วลองทำให้บอร์ดเราเป็นแบบนั้น</p>
 </blockquote>
@@ -183,6 +274,32 @@
 <li><strong>อัลกอริทึม — pub/sub decoupling:</strong> ผู้ส่งกับผู้รับไม่รู้จักกัน คุยผ่าน topic กลาง เป็นรูปแบบสถาปัตยกรรมที่ระบบกระจายจริง (IoT, message queue) ใช้เพื่อให้ขยายสเกลได้โดยไม่ต้องแก้ของเดิม</li>
 <li><strong>กราฟิก/UX — feedback ทันใจ:</strong> ไฟติด + เสียงตอบรับภายใน ~128 ms ทำให้ผู้ใช้ &quot;รู้สึก&quot; ว่าคำสั่งถึงปลายทางแล้ว หลักการ latency budget เดียวกับที่ออกแบบ UI ทุกระบบที่ต้องตอบสนองเร็ว</li>
 </ul>
+<div style="text-align:center;margin-top:4px">
+<svg viewBox="0 0 760 180" width="92%">
+
+<ellipse cx="380" cy="90" rx="92" ry="40" fill="#0d1117" stroke="#4a90d9" stroke-width="2.5" />
+<text x="380" y="84" text-anchor="middle" font-size="15" font-weight="bold" fill="#fff">ผลิตภัณฑ์ IoT</text>
+<text x="380" y="104" text-anchor="middle" font-size="12" fill="#9ecbff">หนึ่งเดียว</text>
+
+<line x1="180" y1="48" x2="296" y2="74" stroke="#2a7" stroke-width="2" />
+<line x1="180" y1="132" x2="296" y2="106" stroke="#75c" stroke-width="2" />
+<line x1="580" y1="48" x2="464" y2="74" stroke="#e90" stroke-width="2" />
+<line x1="580" y1="132" x2="464" y2="106" stroke="#0aa" stroke-width="2" />
+
+<rect x="18" y="28" width="164" height="42" rx="9" fill="#eafaf0" stroke="#2a7" stroke-width="2" />
+<text x="100" y="46" text-anchor="middle" font-size="12" font-weight="bold">Embedded</text>
+<text x="100" y="62" text-anchor="middle" font-size="11">GPIO เข้า/ออก</text>
+<rect x="18" y="112" width="164" height="42" rx="9" fill="#f3f0ff" stroke="#75c" stroke-width="2" />
+<text x="100" y="130" text-anchor="middle" font-size="12" font-weight="bold">Python</text>
+<text x="100" y="146" text-anchor="middle" font-size="11">edge detection</text>
+<rect x="578" y="28" width="164" height="42" rx="9" fill="#fff6e0" stroke="#e90" stroke-width="2" />
+<text x="660" y="46" text-anchor="middle" font-size="12" font-weight="bold">Algorithm</text>
+<text x="660" y="62" text-anchor="middle" font-size="11">pub/sub decoupling</text>
+<rect x="578" y="112" width="164" height="42" rx="9" fill="#e6fafa" stroke="#0aa" stroke-width="2" />
+<text x="660" y="130" text-anchor="middle" font-size="12" font-weight="bold">กราฟิก/UX</text>
+<text x="660" y="146" text-anchor="middle" font-size="11">latency / feedback</text>
+</svg>
+</div>
 <blockquote>
 <p>จากเกม &quot;กดที่นี่ ไฟติดที่โน่น&quot; น้องได้ครบทั้ง GPIO, การจัดการ input ใน Python, สถาปัตยกรรมระบบกระจาย และการออกแบบ feedback ที่ตอบสนองทันใจ — สี่เสาที่อยู่ในผลิตภัณฑ์ IoT จริงทุกตัว</p>
 </blockquote>

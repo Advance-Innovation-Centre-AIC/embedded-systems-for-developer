@@ -28,6 +28,7 @@
 <b>เป้าหมายถัดไป — step 2</b><br />กดจอยซ้าย/ขวา → ยาน <b>ค่อย ๆ เร่ง</b>, ปล่อยแล้ว <b>ลื่น</b>, <b>ชนขอบจอแล้วหยุด</b> ไม่หลุดออก
 </div>
 </div>
+<p><img src="img/shooter_s10_ends.png" alt="" style="width:720px;" /></p>
 <blockquote>
 <p>เกมนี้คือบทพิสูจน์ 70/30 อีกครั้งของเรา โครงไฟล์เหมือน Catch/Pong ทุกอย่าง เป็นเกมใหม่ก็จริง แต่มือเราคุ้นกับมันไปแล้ว</p>
 </blockquote>
@@ -48,13 +49,32 @@
 <small>~4 บรรทัด</small>
 </div>
 </div>
+<div style="text-align:center;margin-top:12px">
+<svg width="820" height="62" viewBox="0 0 820 62" font-family="DejaVu Sans, sans-serif">
+  
+  <rect x="0" y="10" width="574" height="38" rx="8" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="287" y="34" text-anchor="middle" font-size="16" font-weight="700" fill="#37474f">70% — core API (bentogame.py)</text>
+  
+  <rect x="578" y="10" width="242" height="38" rx="8" fill="#ffe0b2" stroke="#ef6c00" stroke-width="2" />
+  <text x="699" y="34" text-anchor="middle" font-size="16" font-weight="700" fill="#e65100">30% — on_frame()</text>
+  
+  <text x="287" y="60" text-anchor="middle" font-size="12" fill="#78909c">start · Box · Text · keys · run · move_to</text>
+  <text x="699" y="60" text-anchor="middle" font-size="12" fill="#fb8c00">accel · friction · clamp</text>
+</svg>
+</div>
 <p>โครงไฟล์ทุกเกมเหมือนเดิม:<br />
 <code>game.start()</code> → วางตัวละคร → <code>def on_frame():</code> → <code>game.run(on_frame, fps=30)</code></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="4" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="4" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="velocity-%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%A3%E0%B9%87%E0%B8%A7-%E0%B8%84%E0%B8%B7%E0%B8%AD%E0%B8%AD%E0%B8%B0%E0%B9%84%E0%B8%A3">velocity (ความเร็ว) คืออะไร?</h1>
 <p>แทนที่จะเขียน <code>ship_x += 8</code> (ที่เลื่อนคงที่ทุกเฟรม) เราเก็บตัวแปร <strong><code>ship_speed</code></strong> ไว้ แล้วบวกมันเข้า <code>ship_x</code> ทุกเฟรม วิธีนี้ทำให้ความเร็วค่อย ๆ เปลี่ยนได้</p>
-<p><img src="img/velocity_concept.png" alt="" style="width:600px;" /></p>
+<div id="velacc" style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:10px 14px;margin:8px 0">
+<div style="display:flex;align-items:center;gap:10px;color:#e6edf3;font-size:.62em;margin-bottom:4px">
+<b id="velbtn" style="color:#19c8ff;width:130px">● กดปุ่มค้าง (เร่ง)</b>
+<span style="color:#8b949e">ship_speed =</span><b id="velval" style="color:#7ee787;width:54px;display:inline-block">0.0</b>
+</div>
+<canvas id="velcv" style="width:100%;height:150px;display:block;background:#05070a;border-radius:6px"></canvas>
+</div>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mtext>ใหม่</mtext></msub><mo>=</mo><msub><mi>x</mi><mtext>เดิม</mtext></msub><mo>+</mo><mi>v</mi><mspace width="2em"/><msub><mi>v</mi><mtext>ใหม่</mtext></msub><mo>=</mo><mo stretchy="false">(</mo><msub><mi>v</mi><mtext>เดิม</mtext></msub><mo>+</mo><mi>a</mi><mo stretchy="false">)</mo><mtext> หรือ </mtext><mo stretchy="false">(</mo><msub><mi>v</mi><mtext>เดิม</mtext></msub><mo>×</mo><mi>f</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x_{\text{ใหม่}} = x_{\text{เดิม}} + v \qquad v_{\text{ใหม่}} = (v_{\text{เดิม}} + a)\ \text{หรือ}\ (v_{\text{เดิม}} \times f) 
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord brahmic_fallback mtight">ใหม่</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.7333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord brahmic_fallback mtight">เดิม</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mspace" style="margin-right:2em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord brahmic_fallback mtight">ใหม่</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord brahmic_fallback mtight">เดิม</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">a</span><span class="mclose">)</span><span class="mspace"> </span><span class="mord text"><span class="mord brahmic_fallback">หรือ</span></span><span class="mspace"> </span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:-0.0359em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord brahmic_fallback mtight">เดิม</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span><span class="mclose">)</span></span></span></span></span></p><ul>
 <li><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">a</span></span></span></span> = <strong>ACCEL</strong> = 1.4 เร่งเมื่อกดปุ่ม ความเร็วเพิ่มขึ้น ยานก็เร่งขึ้น</li>
@@ -63,11 +83,46 @@
 <blockquote>
 <p>นี่คือเรื่องเดียวกับไม้ตี Pong ที่เราทำในคาบก่อน accel / friction / clamp ชุดเดิม เปลี่ยนแค่จาก &quot;พายขึ้น-ลง&quot; มาเป็น &quot;ยานซ้าย-ขวา&quot; เป็นทักษะที่เราฝึกมาแล้ว แค่นำกลับมาใช้</p>
 </blockquote>
+<script>
+(function(){
+var box=document.getElementById('velacc'); if(!box||box.dataset.i)return; box.dataset.i=1;
+var ACCEL=1.4,MAX=13.0,FRIC=0.80,speed=0,x=60,t0=null;
+var c=document.getElementById('velcv'),lab=document.getElementById('velbtn'),val=document.getElementById('velval');
+function frame(ts){
+  if(t0===null)t0=ts;
+  var phase=((ts-t0)/1000)%3.5;       // 0..1.5 = held, 1.5..3.5 = released
+  var held=phase<1.5;
+  if(held){speed+=ACCEL; if(speed>MAX)speed=MAX;} else {speed*=FRIC;}
+  var dpr=window.devicePixelRatio||1,W=c.clientWidth||640,H=150;
+  c.width=W*dpr;c.height=H*dpr;var g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+  g.fillStyle='#05070a';g.fillRect(0,0,W,H);
+  // move ship dot by speed, wrap
+  x+=speed; if(x>W-30)x=W-30; // clamp like the game (no wrap, hugs right) then reset on release end
+  if(!held&&speed<0.05){x=40;}    // reset to left when fully stopped, ready for next hold
+  // speed bar
+  g.fillStyle='#161b22';g.fillRect(20,H-26,W-40,12);
+  g.fillStyle=held?'#ff8f00':'#19c8ff';g.fillRect(20,H-26,(W-40)*(speed/MAX),12);
+  g.fillStyle='#8b949e';g.font='11px sans-serif';g.fillText('0',20,H-30);g.fillText('MAX '+MAX,W-70,H-30);
+  // ship
+  g.fillStyle='#00d11a';g.fillRect(x,50,52,20);
+  g.beginPath();g.moveTo(x+26,42);g.lineTo(x+16,50);g.lineTo(x+36,50);g.closePath();g.fill();
+  if(held){g.fillStyle='#ffb300';g.beginPath();g.moveTo(x,56);g.lineTo(x-18-speed,60);g.lineTo(x,64);g.closePath();g.fill();}
+  lab.textContent=held?'● กดปุ่มค้าง (เร่ง +ACCEL)':'○ ปล่อยปุ่ม (×FRICTION → ลื่น)';
+  lab.style.color=held?'#ff8f00':'#19c8ff';
+  val.textContent=speed.toFixed(1);
+  requestAnimationFrame(frame);
+}
+function go(){requestAnimationFrame(frame);}
+if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="5" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="5" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="%E0%B8%81%E0%B8%A3%E0%B8%B2%E0%B8%9F%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%A3%E0%B9%87%E0%B8%A7--%E0%B9%80%E0%B8%A3%E0%B9%88%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B9%89%E0%B8%99%E0%B8%95%E0%B8%A3%E0%B8%87-%E0%B8%9B%E0%B8%A5%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B9%81%E0%B8%A5%E0%B9%89%E0%B8%A7%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%87%E0%B8%A5%E0%B8%87">กราฟความเร็ว · เร่งเป็นเส้นตรง ปล่อยแล้วโค้งลง</h1>
 <p>ลองดูค่าจริงของ <code>ship_speed</code> เมื่อ <strong>กดค้างแล้วปล่อย</strong> ตามสมการสองตัวบนหน้าก่อน เห็นได้ว่าสองช่วงคนละรูปทรงกัน:</p>
-<p><img src="img/velocity_graph.png" alt="" style="width:660px;" /></p>
+<div id="velgr" style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:8px 12px;margin:6px 0">
+<canvas id="velgrcv" style="width:100%;height:200px;display:block;background:#05070a;border-radius:6px"></canvas>
+</div>
 <ul>
 <li>ช่วง <strong>กดค้าง</strong> (พื้นส้ม): บวก <code>+ACCEL</code> คงที่ทุกเฟรม ความเร็วจึงไต่ขึ้น <strong>เป็นเส้นตรง</strong> จนชน <code>MAX_SPEED = 13</code> แล้วราบ (clamp คุมเพดาน)</li>
 <li>ช่วง <strong>ปล่อยปุ่ม</strong> (พื้นฟ้า): คูณ <code>×0.80</code> ทุกเฟรม ความเร็วจึง <strong>โค้งลงแบบ exponential</strong> — ลดเยอะตอนเร็ว แล้วค่อย ๆ เฉียดศูนย์ นี่คือ &quot;ความลื่น&quot; ที่เรารู้สึกได้</li>
@@ -75,8 +130,47 @@
 <blockquote>
 <p>จำง่าย ๆ ว่า <strong>บวก = เส้นตรง, คูณ = เส้นโค้ง</strong> ใครอยากให้ยานลื่นยาวก็ดัน <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span> เข้าใกล้ 1 (เส้นโค้งแบนลง หางยาวขึ้น) ใครอยากให้หยุดไวก็ลด <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi></mrow><annotation encoding="application/x-tex">f</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord mathnormal" style="margin-right:0.1076em;">f</span></span></span></span> ลง</p>
 </blockquote>
+<script>
+(function(){
+var box=document.getElementById('velgr'); if(!box||box.dataset.i)return; box.dataset.i=1;
+var ACCEL=1.4,MAX=13.0,FRIC=0.80,HOLD=35,REL=60,N=HOLD+REL;
+var ser=[],v=0;
+for(var i=0;i<N;i++){ if(i<HOLD){v+=ACCEL;if(v>MAX)v=MAX;} else {v*=FRIC;} ser.push(v); }
+var c=document.getElementById('velgrcv'),pen=0,t0=null;
+function frame(ts){
+  if(t0===null)t0=ts; var elapsed=(ts-t0)/1000; pen=(elapsed/2.6)*N; // ~2.6s to trace, then loop
+  if(pen>=N){t0=ts;pen=0;}
+  var dpr=window.devicePixelRatio||1,W=c.clientWidth||660,H=200;c.width=W*dpr;c.height=H*dpr;
+  var g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);
+  var L=44,R=W-14,B=H-26,T=14,PW=R-L,PH=B-T;
+  g.fillStyle='#05070a';g.fillRect(0,0,W,H);
+  function X(i){return L+i/(N-1)*PW;} function Y(val){return B-val/MAX*PH;}
+  // phase shading
+  g.fillStyle='rgba(255,143,0,0.13)';g.fillRect(X(0),T,X(HOLD)-X(0),PH);
+  g.fillStyle='rgba(25,200,255,0.10)';g.fillRect(X(HOLD),T,X(N-1)-X(HOLD),PH);
+  // MAX line
+  g.strokeStyle='#30363d';g.setLineDash([4,4]);g.beginPath();g.moveTo(L,Y(MAX));g.lineTo(R,Y(MAX));g.stroke();g.setLineDash([]);
+  g.fillStyle='#8b949e';g.font='11px sans-serif';g.fillText('MAX 13',L-2,Y(MAX)-4);g.fillText('0',L-14,B);g.fillText('เฟรม →',R-44,B+18);
+  g.fillStyle='#ff8f00';g.fillText('กดค้าง: เส้นตรง',X(2),T+14);
+  g.fillStyle='#19c8ff';g.fillText('ปล่อย: โค้งลง',X(HOLD)+6,T+14);
+  // trace up to pen
+  var upto=Math.max(1,Math.min(N,Math.floor(pen)));
+  g.lineWidth=2.4;
+  // draw two-colour segments (orange = hold/linear, blue = release/decay)
+  g.strokeStyle='#ffb000';g.beginPath();
+  for(var i=0;i<Math.min(upto,HOLD+1);i++){i?g.lineTo(X(i),Y(ser[i])):g.moveTo(X(0),Y(ser[0]));}g.stroke();
+  if(upto>HOLD){g.strokeStyle='#19c8ff';g.beginPath();g.moveTo(X(HOLD),Y(ser[HOLD]));
+    for(var j=HOLD+1;j<upto;j++)g.lineTo(X(j),Y(ser[j]));g.stroke();}
+  // moving pen dot
+  var pi=Math.min(N-1,upto-1);g.fillStyle='#fff';g.beginPath();g.arc(X(pi),Y(ser[pi]),3.2,0,7);g.fill();
+  requestAnimationFrame(frame);
+}
+function go(){requestAnimationFrame(frame);}
+if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="6" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:default;--marpit-advanced-background-split:34%;" data-marpit-pagination-total="17" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/shooter_s10_step1_result.png&quot;);background-size:94% auto;"></figure></div></section></foreignObject><foreignObject width="66%" height="720"><section id="6" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="--paginate:true;--theme:default;--marpit-advanced-background-split:34%;" data-marpit-pagination-total="17" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h1 id="step-1--%E0%B8%A7%E0%B8%B2%E0%B8%87%E0%B8%A2%E0%B8%B2%E0%B8%99%E0%B8%A5%E0%B8%87%E0%B8%AA%E0%B8%99%E0%B8%B2%E0%B8%A1--hud-45-%E0%B8%99%E0%B8%B2%E0%B8%97%E0%B8%B5">step 1 — วางยานลงสนาม + HUD (~45 นาที)</h1>
 <p>ส่วน <strong>30% ที่อาจารย์เขียนให้ดูเป็นตัวอย่าง</strong> ทุกบรรทัดน้อง ๆ เคยเจอใน Catch/Pong มาแล้ว:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">import</span> bentogame <span class="hljs-keyword">as</span> game
@@ -93,15 +187,23 @@ hud = game.Text(<span class="hljs-string">&quot;Score: 0   Lives: 3&quot;</span>
 
 game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <span class="hljs-comment"># Back = ออก / Start = เริ่มใหม่ (เอนจินจัดการเอง)</span>
 </code></pre>
+
 <blockquote>
-<p>ไฟล์เว้นช่อง: <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/shooter_step1.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/shooter_step1.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a></p>
+<p>ไฟล์เว้นช่อง: <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/shooter_step1.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/shooter_step1.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a> — โค้ดข้างบนให้ผลแบบจอด้านขวา: <strong>ยานเขียวกลาง-ล่าง + HUD</strong> มุมบน ยังเป็นภาพนิ่ง</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="6" style="" data-marpit-pagination-total="17" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="%E0%B8%97%E0%B8%B3%E0%B9%84%E0%B8%A1-ship_x-%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99-float">ทำไม <code>ship_x</code> ต้องเป็น float?</h1>
 <p>เราเก็บตำแหน่งเป็นทศนิยม เพื่อให้สะสมเศษความเร็วได้ ถ้าเก็บเป็น int มันจะปัดเศษทิ้งทุกเฟรม จนยานขยับกระตุก:</p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>x</mi><mtext>int</mtext></msub><mo>=</mo><mo stretchy="false">⌊</mo><mn>365</mn><mo>+</mo><mn>1.4</mn><mo stretchy="false">⌋</mo><mo>=</mo><mn>366</mn><mspace width="1em"/><mtext>แต่</mtext><mspace width="1em"/><msub><mi>x</mi><mtext>float</mtext></msub><mo>=</mo><mn>366.4</mn><mtext> </mtext><mo stretchy="false">(</mo><mtext>เก็บเศษ </mtext><mn>0.4</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x_{\text{int}} = \lfloor 365 + 1.4 \rfloor = 366 \quad\text{แต่}\quad x_{\text{float}} = 366.4 \ (\text{เก็บเศษ } 0.4) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">int</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord">365</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1.4</span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">366</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord brahmic_fallback">แต่</span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">float</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">366.4</span><span class="mspace"> </span><span class="mopen">(</span><span class="mord text"><span class="mord brahmic_fallback">เก็บเศษ</span><span class="mord"> </span></span><span class="mord">0.4</span><span class="mclose">)</span></span></span></span></span></p><p><img src="img/float_int_graph.png" alt="" style="width:560px;" /></p>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3175em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">int</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">⌊</span><span class="mord">365</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1.4</span><span class="mclose">⌋</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord">366</span><span class="mspace" style="margin-right:1em;"></span><span class="mord text"><span class="mord brahmic_fallback">แต่</span></span><span class="mspace" style="margin-right:1em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3361em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord text mtight"><span class="mord mtight">float</span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">366.4</span><span class="mspace"> </span><span class="mopen">(</span><span class="mord text"><span class="mord brahmic_fallback">เก็บเศษ</span><span class="mord"> </span></span><span class="mord">0.4</span><span class="mclose">)</span></span></span></span></span></p><div id="fidrift" style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:10px 14px;margin:6px 0;font-size:.62em;color:#e6edf3">
+<div style="display:flex;justify-content:space-between;margin-bottom:2px">
+<span><b style="color:#7ee787">float</b> ship_x += 1.4 → <b id="fidF" style="color:#7ee787">365.0</b></span>
+<span><b style="color:#ff7b72">int</b> ship_x += 1.4 → <b id="fidI" style="color:#ff7b72">365</b> <small style="color:#8b949e">(เศษถูกปัดทิ้ง)</small></span>
+</div>
+<canvas id="fidcv" style="width:100%;height:120px;display:block;background:#05070a;border-radius:6px"></canvas>
+<div style="color:#8b949e;margin-top:2px">เฟรมเดิม +1.4 เท่ากัน แต่ int สะสมไม่ได้ → ค่อย ๆ ตามหลัง float (ช่องว่างกว้างขึ้น = ยานกระตุก)</div>
+</div>
 <ul>
 <li>เขียน <code>ship_x = 365.0</code> (มีจุดทศนิยม) → เศษ <code>0.4</code> ถูกเก็บไว้ พอครบ ๆ ก็ขยับเพิ่มอีก 1 พิกเซลเอง</li>
 <li>เขียน <code>ship_x = 365</code> (ไม่มีจุด) → ทุกเฟรมโดนปัดทิ้ง ยานเหมือนไม่ขยับ หรือกระตุก</li>
@@ -109,6 +211,38 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 <blockquote>
 <p>เรื่องเล็ก ๆ นี้คือกับดักที่เจอบ่อยที่สุดของคาบนี้ ใน step 2 เราจะบวกความเร็วที่เป็นเศษส่วน (เช่น 1.4) เข้าไป ถ้า <code>ship_x</code> เป็น int ทุกอย่างจะพังเงียบ ๆ</p>
 </blockquote>
+<script>
+(function(){
+var box=document.getElementById('fidrift'); if(!box||box.dataset.i)return; box.dataset.i=1;
+var STEP=1.4,BASE=365,xf=BASE,xi=BASE,t0=null,acc=0;
+var c=document.getElementById('fidcv'),lf=document.getElementById('fidF'),li=document.getElementById('fidI');
+function frame(ts){
+  if(t0===null)t0=ts; var dt=(ts-(box._last||ts))/1000; box._last=ts; acc+=dt;
+  if(acc>=0.18){ acc=0;                       // step ~5.5 times/sec so the drift is watchable
+    xf=xf+STEP;                               // float: keeps the .4 remainder
+    xi=Math.floor(xi+STEP);                   // int: floor each frame → loses .4 every step
+    if(xf>BASE+70){xf=BASE;xi=BASE;}          // loop
+  }
+  var dpr=window.devicePixelRatio||1,W=c.clientWidth||560,H=120;c.width=W*dpr;c.height=H*dpr;
+  var g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.fillStyle='#05070a';g.fillRect(0,0,W,H);
+  var L=10,scale=(W-90)/72;                   // map x in [365,437] to canvas
+  function px(x){return L+(x-BASE)*scale;}
+  // float ship (top)
+  g.fillStyle='#7ee787';g.fillRect(px(xf),22,40,18);g.fillStyle='#8b949e';g.font='11px sans-serif';g.fillText('float',W-44,35);
+  // int ship (bottom)
+  g.fillStyle='#ff7b72';g.fillRect(px(xi),78,40,18);g.fillText('int',W-44,91);
+  // gap marker
+  var gap=xf-xi; g.strokeStyle='#ffd166';g.setLineDash([3,3]);
+  g.beginPath();g.moveTo(px(xf),40);g.lineTo(px(xf),78);g.stroke();
+  g.beginPath();g.moveTo(px(xi)+40,40);g.lineTo(px(xi)+40,78);g.stroke();g.setLineDash([]);
+  g.fillStyle='#ffd166';g.fillText('ตามหลัง '+gap.toFixed(1)+' px',Math.min(W-110,px(xi)+44),62);
+  lf.textContent=xf.toFixed(1); li.textContent=xi.toFixed(0);
+  requestAnimationFrame(frame);
+}
+function go(){requestAnimationFrame(frame);}
+if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;--marpit-advanced-background-split:40%;" data-marpit-pagination-total="17" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/Bento_IDE_Program_to_Device.png&quot;);background-size:92% auto;"></figure></div></section></foreignObject><foreignObject width="60%" height="720"><section id="8" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="8" style="--paginate:true;--theme:default;--marpit-advanced-background-split:40%;" data-marpit-pagination-total="17" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h1 id="step-1--%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%A3%E0%B8%B1%E0%B8%99%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B9%80%E0%B8%8A%E0%B9%87%E0%B8%84%E0%B8%9C%E0%B9%88%E0%B8%B2%E0%B8%99-%E0%B8%A0%E0%B8%B2%E0%B8%9E%E0%B8%99%E0%B8%B4%E0%B9%88%E0%B8%87">step 1 — วิธีรันและเช็คผ่าน (ภาพนิ่ง)</h1>
@@ -151,36 +285,79 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="11" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="4-%E0%B8%9A%E0%B8%A3%E0%B8%A3%E0%B8%97%E0%B8%B1%E0%B8%94%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%9F%E0%B8%B4%E0%B8%AA%E0%B8%B4%E0%B8%81%E0%B8%AA%E0%B9%8C--%E0%B8%A5%E0%B8%B3%E0%B8%94%E0%B8%B1%E0%B8%9A%E0%B8%84%E0%B8%B4%E0%B8%94">4 บรรทัดของฟิสิกส์ — ลำดับคิด</h1>
-<div style="display:flex;align-items:center;gap:6px;margin-top:18px;font-size:0.92em">
-<div style="flex:1;background:#fff3e0;border:2px solid #ef6c00;border-radius:10px;padding:14px;text-align:center">
+<div id="flowseq" style="display:flex;align-items:center;gap:6px;margin-top:18px;font-size:0.92em">
+<div class="fstep" style="flex:1;background:#fff3e0;border:2px solid #ef6c00;border-radius:10px;padding:14px;text-align:center;transition:all .18s">
 <b>1. เร่ง</b><br /><code>speed ± ACCEL</code><br /><small>กดปุ่มไหน → เร่งทิศนั้น</small>
 </div>
 <div style="font-size:1.6em;color:#888">→</div>
-<div style="flex:1;background:#e3f2fd;border:2px solid #1565c0;border-radius:10px;padding:14px;text-align:center">
+<div class="fstep" style="flex:1;background:#e3f2fd;border:2px solid #1565c0;border-radius:10px;padding:14px;text-align:center;transition:all .18s">
 <b>2. ลื่น</b><br /><code>speed *= FRICTION</code><br /><small>ไม่กด → คูณ 0.80</small>
 </div>
 <div style="font-size:1.6em;color:#888">→</div>
-<div style="flex:1;background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:14px;text-align:center">
+<div class="fstep" style="flex:1;background:#f3e5f5;border:2px solid #6a1b9a;border-radius:10px;padding:14px;text-align:center;transition:all .18s">
 <b>3. จำกัด</b><br /><code>max / min</code><br /><small>ความเร็วสูงสุด</small>
 </div>
 <div style="font-size:1.6em;color:#888">→</div>
-<div style="flex:1;background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:14px;text-align:center">
+<div class="fstep" style="flex:1;background:#e8f5e9;border:2px solid #2e7d32;border-radius:10px;padding:14px;text-align:center;transition:all .18s">
 <b>4. ขยับ + clamp</b><br /><code>x += speed</code><br /><small>บีบให้อยู่ในจอ</small>
 </div>
 </div>
+<script>
+(function(){
+var seq=document.getElementById('flowseq'); if(!seq||seq.dataset.i)return; seq.dataset.i=1;
+var steps=seq.querySelectorAll('.fstep'),k=0;
+function tick(){
+  steps.forEach(function(s,j){
+    if(j===k){s.style.transform='translateY(-4px) scale(1.05)';s.style.boxShadow='0 0 0 3px #ffd166, 0 6px 16px rgba(0,0,0,.3)';s.style.opacity='1';}
+    else{s.style.transform='none';s.style.boxShadow='none';s.style.opacity='0.55';}
+  });
+  k=(k+1)%steps.length;
+}
+function go(){tick();setInterval(tick,700);}   // one frame-tick per box, loops 1→2→3→4
+if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
 <p><strong>clamp ขอบจอ:</strong> <code>ship_x = max(0, min(game.WIDTH - ship.w, ship_x + ship_speed))</code><br />
 อ่านบรรทัดนี้แบบนี้: ถ้ายานเลย 0 ไปทางซ้าย ก็ดึงกลับมาที่ 0 ถ้าเลยขอบขวา ก็ดึงกลับมาที่ <code>WIDTH - ship.w</code> ที่ต้องลบ <code>ship.w</code> ด้วย เพราะไม่งั้นยานครึ่งลำจะหลุดขอบขวาไป</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="12" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="%E0%B8%A0%E0%B8%B2%E0%B8%A2%E0%B9%83%E0%B8%99-on_frame-%E0%B8%AB%E0%B8%99%E0%B8%B6%E0%B9%88%E0%B8%87%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87--%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%A1%E0%B8%B9%E0%B8%A5%E0%B9%84%E0%B8%AB%E0%B8%A5%E0%B9%84%E0%B8%9B%E0%B8%97%E0%B8%B2%E0%B8%87%E0%B9%84%E0%B8%AB%E0%B8%99">ภายใน <code>on_frame()</code> หนึ่งครั้ง · ข้อมูลไหลไปทางไหน</h1>
 <p>ทุกเฟรม (30 ครั้งต่อวินาที) ข้อมูลวิ่งจาก <strong>ปุ่มจอย → ความเร็ว → ตำแหน่ง → ภาพบนจอ</strong> เป็นทางเดียว แล้ววนกลับมาเริ่มใหม่:</p>
-<p><img src="img/onframe_pipeline.png" alt="" style="width:980px;" /></p>
+<div style="text-align:center">
+<svg width="940" height="190" viewBox="0 0 940 190" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="ar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <g font-size="16" text-anchor="middle">
+    <rect x="30"  y="58" width="160" height="54" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" /><text x="110" y="82" font-weight="700" fill="#e65100">จอย (keys)</text><text x="110" y="102" font-size="12" fill="#999">keys.left / keys.right</text>
+    <rect x="270" y="58" width="160" height="54" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="350" y="82" font-weight="700" fill="#1565c0">ship_speed</text><text x="350" y="102" font-size="12" fill="#999">±ACCEL / ×FRICTION</text>
+    <rect x="510" y="58" width="160" height="54" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" /><text x="590" y="82" font-weight="700" fill="#6a1b9a">ship_x</text><text x="590" y="102" font-size="12" fill="#999">x += speed (clamp)</text>
+    <rect x="750" y="58" width="160" height="54" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="830" y="82" font-weight="700" fill="#2e7d32">ภาพบนจอ</text><text x="830" y="102" font-size="12" fill="#999">ship.move_to()</text>
+  </g>
+  
+  <line x1="190" y1="85" x2="262" y2="85" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar)" />
+  <line x1="430" y1="85" x2="502" y2="85" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar)" />
+  <line x1="670" y1="85" x2="742" y2="85" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar)" />
+  
+  <path id="ret" d="M830,112 C830,165 110,165 110,112" fill="none" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="6 5" />
+  <text x="470" y="182" text-anchor="middle" font-size="13" fill="#9e9e9e">game.run() เรียก on_frame() ซ้ำทุกเฟรม (30 Hz)</text>
+  
+  <circle r="8" fill="#ff5252" />
+    <animateMotion dur="3.2s" repeatCount="indefinite" rotate="0"
+      path="M110,85 L350,85 L590,85 L830,85 C830,165 110,165 110,85"/>
+    <animate attributeName="fill" dur="3.2s" repeatCount="indefinite"
+      values="#ef6c00;#1565c0;#6a1b9a;#2e7d32;#9e9e9e;#ef6c00"
+      keyTimes="0;0.22;0.45;0.68;0.85;1"/>
+  <circle />
+</svg>
+</div>
 <p>สังเกตว่า <strong>ปุ่มไม่ได้ขยับยานโดยตรง</strong> แต่ไปแก้ <code>ship_speed</code> ก่อน แล้วความเร็วค่อยไปดันตำแหน่ง นี่คือเหตุผลที่ยาน &quot;เร่ง&quot; และ &quot;ลื่น&quot; ได้ ถ้าปุ่มสั่ง <code>ship_x</code> ตรง ๆ ยานจะกระโดดทันทีแบบ Catch ไม่มีน้ำหนัก</p>
 <blockquote>
 <p>เส้นประที่วิ่งกลับ คือหัวใจของทุกเกม: <code>game.run()</code> เรียก <code>on_frame()</code> ซ้ำ ๆ ให้เราเอง เราแค่เขียน &quot;หนึ่งเฟรมทำอะไร&quot; ที่เหลือเอนจินวนให้</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:default;--marpit-advanced-background-split:30%;" data-marpit-pagination-total="17" data-marpit-advanced-background="background" data-marpit-advanced-background-split="right"><div data-marpit-advanced-background-container="true" data-marpit-advanced-background-direction="horizontal"><figure style="background-image:url(&quot;img/shooter_s10_clamp_edge.png&quot;);background-size:94% auto;"></figure></div></section></foreignObject><foreignObject width="70%" height="720"><section id="13" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:default;--marpit-advanced-background-split:30%;" data-marpit-pagination-total="17" data-marpit-advanced-background="content" data-marpit-advanced-background-split="right">
 <h1 id="step-2--%E0%B9%80%E0%B8%A5%E0%B9%88%E0%B8%99%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%95%E0%B8%B1%E0%B8%A7%E0%B9%80%E0%B8%A5%E0%B8%82-30-%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%A3%E0%B8%B2">step 2 — เล่นกับตัวเลข (30% ที่เป็นของเรา)</h1>
 <p>เปิด <a class="pc-gh-link" href="https://github.com/Advance-Innovation-Centre-AIC/embedded-systems-for-developer/blob/main/developer-i/practise_codes/shooter_step2.py" target="_blank" rel="noopener" title="เปิดไฟล์บน GitHub (แท็บใหม่)" style="text-decoration:none"><code>practise_codes/shooter_step2.py</code><sup style="color:#22d3ee;font-weight:800">&#8599;</sup></a> ใน BENTO IDE แล้วกดปุ่ม <strong>Program to Device</strong> แล้วลองแก้ค่าด้านบน สังเกตว่าความรู้สึกในการบังคับเปลี่ยนไปอย่างไร:</p>
 <table>
@@ -209,13 +386,52 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 </tr>
 </tbody>
 </table>
+<div id="tuner" style="background:#0d1117;border:1px solid #30363d;border-radius:10px;padding:8px 12px;margin:6px 0;font-size:.58em;color:#e6edf3">
+<div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:4px">
+<span>ACCEL <b id="tA" style="color:#ff8f00">1.4</b><input id="tAs" type="range" min="0.4" max="4" step="0.1" value="1.4" style="vertical-align:middle" /></span>
+<span>FRICTION <b id="tF" style="color:#19c8ff">0.80</b><input id="tFs" type="range" min="0.5" max="0.97" step="0.01" value="0.80" style="vertical-align:middle" /></span>
+<span>MAX_SPEED <b id="tM" style="color:#7ee787">13</b><input id="tMs" type="range" min="3" max="20" step="1" value="13" style="vertical-align:middle" /></span>
+</div>
+<canvas id="tunecv" style="width:100%;height:96px;display:block;background:#05070a;border-radius:6px"></canvas>
+<div style="color:#8b949e;margin-top:2px">ลากแถบแล้วดูยาน "เร่ง/ลื่น" ทันที — เทียบกับแถวในตารางก่อนเอาไปแก้บนบอร์ดจริง</div>
+</div>
 <p>clamp ขอบจอ คือการบีบตำแหน่งให้อยู่ในช่วงที่ยานยังเห็นเต็มลำ:</p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>x</mi><mo>←</mo><mi>max</mi><mo>⁡</mo><mtext> ⁣</mtext><mo fence="false" stretchy="true" minsize="1.2em" maxsize="1.2em">(</mo><mn>0</mn><mo separator="true">,</mo><mtext> </mtext><mi>min</mi><mo>⁡</mo><mo stretchy="false">(</mo><mtext>WIDTH</mtext><mo>−</mo><mtext>ship.w</mtext><mo separator="true">,</mo><mtext> </mtext><mi>x</mi><mo>+</mo><mi>v</mi><mo stretchy="false">)</mo><mo fence="false" stretchy="true" minsize="1.2em" maxsize="1.2em">)</mo></mrow><annotation encoding="application/x-tex">x \leftarrow \max\!\big(0,\ \min(\text{WIDTH} - \text{ship.w},\ x + v)\big) 
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="delimsizing size1">(</span></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord text"><span class="mord">WIDTH</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">ship.w</span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mclose">)</span><span class="mord"><span class="delimsizing size1">)</span></span></span></span></span></span></p><blockquote>
-<p><strong>จุดเช็คผ่าน:</strong> ขับยานไปแตะ <strong>ขอบซ้ายและขอบขวา</strong> ให้ครบ โดยยานไม่หลุดจอ แล้วถ่ายรูปจอ 1 ใบเก็บไว้เป็นหลักฐานว่า clamp ทำงาน</p>
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mop">max</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="delimsizing size1">(</span></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mop">min</span><span class="mopen">(</span><span class="mord text"><span class="mord">WIDTH</span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:0.8889em;vertical-align:-0.1944em;"></span><span class="mord text"><span class="mord">ship.w</span></span><span class="mpunct">,</span><span class="mspace"> </span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.2em;vertical-align:-0.35em;"></span><span class="mord mathnormal" style="margin-right:0.0359em;">v</span><span class="mclose">)</span><span class="mord"><span class="delimsizing size1">)</span></span></span></span></span></span></p>
+<blockquote>
+<p><strong>จุดเช็คผ่าน:</strong> ขับยานไปแตะ <strong>ขอบซ้ายและขอบขวา</strong> ให้ครบ โดยยานไม่หลุดจอ แล้วถ่ายรูปจอ 1 ใบเก็บไว้เป็นหลักฐานว่า clamp ทำงาน (จอด้านขวาคือหน้าตาที่ควรเห็น — ยานชิดขอบขวาพอดี ไม่หลุดออก)</p>
 </blockquote>
+<script>
+(function(){
+var box=document.getElementById('tuner'); if(!box||box.dataset.i)return; box.dataset.i=1;
+var As=document.getElementById('tAs'),Fs=document.getElementById('tFs'),Ms=document.getElementById('tMs');
+var Av=document.getElementById('tA'),Fv=document.getElementById('tF'),Mv=document.getElementById('tM');
+var c=document.getElementById('tunecv'),x=20,speed=0,t0=null;
+function lbl(){Av.textContent=use().A.toFixed(1);Fv.textContent=use().F.toFixed(2);Mv.textContent=use().M.toFixed(0);}
+function use(){return {A:+As.value,F:+Fs.value,M:+Ms.value};}
+[As,Fs,Ms].forEach(function(s){s.addEventListener('input',lbl);});
+function frame(ts){
+  if(t0===null)t0=ts; var p=use(),phase=((ts-t0)/1000)%3.2,held=phase<1.4;
+  if(held){speed+=p.A; if(speed>p.M)speed=p.M;} else {speed*=p.F;}
+  var dpr=window.devicePixelRatio||1,W=c.clientWidth||640,H=96;c.width=W*dpr;c.height=H*dpr;
+  var g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.fillStyle='#05070a';g.fillRect(0,0,W,H);
+  var SW=52; x=x+speed; if(x>W-SW){x=W-SW;speed=0;} if(x<0){x=0;speed=0;}
+  if(!held&&Math.abs(speed)<0.05&&x>W-SW-2){x=4;}     // reset to left when parked at right
+  // edge guides
+  g.strokeStyle='#33404f';g.setLineDash([3,3]);g.beginPath();g.moveTo(1,8);g.lineTo(1,H-8);g.moveTo(W-1,8);g.lineTo(W-1,H-8);g.stroke();g.setLineDash([]);
+  // speed bar
+  g.fillStyle='#161b22';g.fillRect(8,H-14,W-16,6);g.fillStyle=held?'#ff8f00':'#19c8ff';g.fillRect(8,H-14,(W-16)*Math.min(1,speed/p.M),6);
+  // ship
+  g.fillStyle='#00d11a';g.fillRect(x,30,SW,20);g.beginPath();g.moveTo(x+26,22);g.lineTo(x+16,30);g.lineTo(x+36,30);g.closePath();g.fill();
+  if(held){g.fillStyle='#ffb300';g.beginPath();g.moveTo(x,36);g.lineTo(x-16-speed,40);g.lineTo(x,44);g.closePath();g.fill();}
+  requestAnimationFrame(frame);
+}
+function go(){lbl();requestAnimationFrame(frame);}
+if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
+</foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="13" style="" data-marpit-pagination-total="17" data-marpit-advanced-background="pseudo" data-marpit-advanced-background-split="right"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="%E0%B8%81%E0%B8%B1%E0%B8%9A%E0%B8%94%E0%B8%B1%E0%B8%81%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%88%E0%B8%AD%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%A2">กับดักที่เจอบ่อย</h1>
 <ul>
 <li><strong>ลืม <code>global ship_x, ship_speed</code></strong> ยานจะไม่ขยับเลย เพราะ Python ไปสร้างตัวแปร local ใหม่แทน ต้องมีบรรทัด <code>global</code> ไว้บนสุดของฟังก์ชัน</li>
@@ -225,6 +441,16 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 <li><strong>อยากออกจากเกมหรือเริ่มใหม่</strong> น้อง ๆ ไม่ต้องเขียนเอง เอนจิน <code>game.run()</code> จัดการให้แล้ว: <strong>Back = ออก · Start = เริ่มใหม่</strong></li>
 <li><strong>จอยกดไม่ติดหลังเพิ่งรีเซ็ตบอร์ด</strong> ให้ <strong>ถอดแล้วเสียบสาย USB จอยใหม่</strong> เพราะ warm reset ทำให้จอยค้างสถานะเดิม</li>
 </ul>
+<div id="bafix" style="display:flex;gap:10px;margin:6px 0">
+<div style="flex:1;background:#1a1012;border:1px solid #c44;border-radius:8px;padding:5px 8px">
+<div style="color:#ff8a80;font-size:.6em;font-weight:600;margin-bottom:2px">✗ ลืม global / ship_x เป็น int → ยานค้าง·กระตุก</div>
+<canvas id="bafX" style="width:100%;height:60px;display:block;background:#05070a;border-radius:5px"></canvas>
+</div>
+<div style="flex:1;background:#0f1a12;border:1px solid #2a7;border-radius:8px;padding:5px 8px">
+<div style="color:#7ee787;font-size:.6em;font-weight:600;margin-bottom:2px">✓ มี global + ship_x = float → ยานลื่นนุ่ม</div>
+<canvas id="bafG" style="width:100%;height:60px;display:block;background:#05070a;border-radius:5px"></canvas>
+</div>
+</div>
 <div style="text-align:center;margin-top:6px">
 <svg width="600" height="56" viewBox="0 0 600 56" font-family="sans-serif" font-size="13">
   <rect x="10" y="14" width="130" height="30" rx="6" fill="#ffe9e9" stroke="#c44" /><text x="75" y="34" text-anchor="middle">ใส่ global</text>
@@ -233,6 +459,32 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
   <rect x="460" y="14" width="130" height="30" rx="6" fill="#eafff3" stroke="#2a7" /><text x="525" y="34" text-anchor="middle">*= FRICTION</text>
 </svg>
 </div>
+<script>
+(function(){
+var box=document.getElementById('bafix'); if(!box||box.dataset.i)return; box.dataset.i=1;
+var cx=document.getElementById('bafX'),cg=document.getElementById('bafG');
+var t0=null,bjit=0,bpos=4,fpos=4,fs=0;     // broken: jitter+pos ; fixed: pos+speed
+function frame(ts){
+  if(t0===null)t0=ts; var phase=((ts-t0)/1000)%3.0,held=phase<1.4;
+  // broken panel
+  (function(){var c=cx,dpr=window.devicePixelRatio||1,W=c.clientWidth||300,H=60;c.width=W*dpr;c.height=H*dpr;
+    var g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.fillStyle='#05070a';g.fillRect(0,0,W,H);var SW=44;
+    if(held){bjit+=0.05; if(bjit>=1){bjit=0;bpos+=1;}} if(bpos>W-SW)bpos=4;
+    g.fillStyle='#ff5252';g.fillRect(bpos,22,SW,18);g.beginPath();g.moveTo(bpos+22,15);g.lineTo(bpos+14,22);g.lineTo(bpos+30,22);g.closePath();g.fill();
+    g.fillStyle='#7a4a4a';g.font='10px sans-serif';g.fillText('เศษ 0.4 ถูกปัดทิ้งทุกเฟรม',6,H-6);})();
+  // fixed panel
+  (function(){var c=cg,dpr=window.devicePixelRatio||1,W=c.clientWidth||300,H=60;c.width=W*dpr;c.height=H*dpr;
+    var g=c.getContext('2d');g.setTransform(dpr,0,0,dpr,0,0);g.fillStyle='#05070a';g.fillRect(0,0,W,H);var SW=44;
+    if(held){fs+=1.4;if(fs>13)fs=13;}else{fs*=0.80;} fpos+=fs; if(fpos>W-SW){fpos=W-SW;fs=0;} if(!held&&fs<0.05&&fpos>W-SW-2)fpos=4;
+    g.fillStyle='#161b22';g.fillRect(6,H-10,W-12,4);g.fillStyle='#19c8ff';g.fillRect(6,H-10,(W-12)*Math.min(1,fs/13),4);
+    g.fillStyle='#00d11a';g.fillRect(fpos,20,SW,18);g.beginPath();g.moveTo(fpos+22,13);g.lineTo(fpos+14,20);g.lineTo(fpos+30,20);g.closePath();g.fill();
+    if(held){g.fillStyle='#ffb300';g.beginPath();g.moveTo(fpos,26);g.lineTo(fpos-12-fs,29);g.lineTo(fpos,32);g.closePath();g.fill();}})();
+  requestAnimationFrame(frame);
+}
+function go(){requestAnimationFrame(frame);}
+if(document.readyState==='complete')go();else window.addEventListener('load',go);
+})();
+</script>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="15" style="--paginate:true;--theme:default;" data-marpit-pagination-total="17">
 <h1 id="%E0%B9%80%E0%B8%8A%E0%B9%87%E0%B8%84%E0%B8%9C%E0%B9%88%E0%B8%B2%E0%B8%99-acceptance--%E0%B8%AA%E0%B9%88%E0%B8%87%E0%B8%87%E0%B8%B2%E0%B8%99">เช็คผ่าน (acceptance) + ส่งงาน</h1>
@@ -246,6 +498,8 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 <li>[ ] step 2: ขับยานแตะ <strong>ขอบซ้าย+ขวา</strong> ไม่หลุดจอ</li>
 <li>[ ] ชี้ได้ว่าบรรทัดไหนคือ เร่ง/ลื่น/จำกัด/clamp</li>
 </ul>
+<p><img src="img/shooter_s10_acceptance.png" alt="" style="width:300px;" /><br />
+<sub>รูปส่งงานควรหน้าตาประมาณนี้: ยานชิดขอบ + HUD ครบ</sub></p>
 </div>
 <div style="flex:1">
 <p><strong>ส่งงาน (commit/PR)</strong></p>

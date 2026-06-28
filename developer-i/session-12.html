@@ -41,8 +41,10 @@
 ยิงโดน = +1 คะแนน · หลุดพื้น = เสีย 1 ชีวิต · ชีวิตหมด = GAME OVER
 </div>
 </div>
+<p style="text-align:center;margin:8px 0;"><img src="img/shooter_gameplay.gif" width="440" /></p>
+<div style="text-align:center;font-size:0.74em;margin-top:-4px">ลูปจริงวนซ้ำ: ศัตรูร่วง → เลเซอร์ยิงโดน → Score +1 → หลุดพื้น = Lives ลด → GAME OVER</div>
 <blockquote>
-<p><strong>visible win:</strong> กด A แล้วเลเซอร์พุ่งขึ้น ยิงโดนศัตรูได้คะแนน +1 ถ้าศัตรูหลุดลงล่างชีวิตจะลด เมื่อชีวิตหมดจะขึ้น <strong>GAME OVER</strong> สีแดงกลางจอ</p>
+<p><strong>visible win:</strong> กด A แล้วเลเซอร์พุ่งขึ้น ยิงโดนศัตรูได้คะแนน +1 ถ้าศัตรูหลุดลงล่างชีวิตจะลด เมื่อชีวิตหมดจะขึ้น <strong>GAME OVER</strong> สีแดงกลางจอ — อย่างในคลิปบนนี้ที่วนเล่นอยู่</p>
 </blockquote>
 <p><strong>MVP-2:</strong> Shooter ที่เล่นจบรอบได้ พอถึงตรงนี้เราก็มีครบทั้ง Snake / Flappy / Shooter</p>
 </section>
@@ -100,10 +102,22 @@
 spawn ศัตรู · ศัตรูตก · ชน · นับคะแนน · นับชีวิต · จบเกม
 </div>
 </div>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code>[ engine 70% ] ─── verb พร้อมใช้ ───►  [ กติกาในหัวเรา 30% ] = เกมของน้อง ๆ
-</code></pre>
+<svg viewBox="0 0 760 96" width="100%" font-family="sans-serif" font-size="14">
+  <rect x="10" y="22" width="518" height="48" rx="8" fill="#E8F5E9" stroke="#4CAF50" stroke-width="2" />
+  <text x="269" y="42" text-anchor="middle" font-weight="bold" fill="#2E7D32">engine ให้มา</text>
+  <text x="269" y="60" text-anchor="middle" fill="#2E7D32">70% — verb พร้อมใช้</text>
+  <rect x="538" y="22" width="212" height="48" rx="8" fill="#FFF3E0" stroke="#FF9800" stroke-width="2" />
+  <text x="644" y="42" text-anchor="middle" font-weight="bold" fill="#E65100">กติกาในหัวเรา</text>
+  <text x="644" y="60" text-anchor="middle" fill="#E65100">30% — เกมของน้อง ๆ</text>
+  <text x="10" y="16" font-size="11" fill="#777">0%</text>
+  <text x="500" y="16" font-size="11" fill="#777">70%</text>
+  <text x="734" y="16" font-size="11" fill="#777">100%</text>
+  <path d="M450 86 H 620" stroke="#555" stroke-width="2" marker-end="url(#sb)" />
+  <text x="535" y="84" text-anchor="middle" font-size="12" fill="#555">verb ส่งต่อ</text>
+  <defs><marker id="sb" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 z" fill="#555" /></marker></defs>
+</svg>
 <blockquote>
-<p>30% คือ &quot;กติกาในหัว&quot; เป็นส่วนที่น้อง ๆ <strong>เป็นเจ้าของ</strong> เอง engine แค่ยื่นเครื่องมือให้</p>
+<p>30% คือ &quot;กติกาในหัว&quot; เป็นส่วนที่น้อง ๆ <strong>เป็นเจ้าของ</strong> เอง engine แค่ยื่นเครื่องมือให้ — สังเกตแถบ: ฝั่งเขียวกว้างกว่า เพราะ engine แบกงานหนักให้ 70% แล้ว</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="7" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="7" style="--paginate:true;--theme:default;" data-marpit-pagination-total="21">
@@ -161,8 +175,38 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
                 bullet.move_to(<span class="hljs-number">0</span>, -<span class="hljs-number">50</span>); bullet.hide()   <span class="hljs-comment"># กระสุนกลับบ่อ</span>
                 respawn_enemy(index); <span class="hljs-keyword">break</span>             <span class="hljs-comment"># อย่าลืม break!</span>
 </code></pre>
+<svg viewBox="0 0 760 150" width="100%" font-family="sans-serif" font-size="12.5">
+  <rect x="8" y="58" width="104" height="36" rx="8" fill="#E3F2FD" stroke="#2196F3" />
+  <text x="60" y="74" text-anchor="middle">ศัตรูตัวนี้</text>
+  <text x="60" y="88" text-anchor="middle">เลื่อนลง</text>
+  <path d="M112 76 H 150" stroke="#555" stroke-width="1.5" marker-end="url(#fa)" />
+  <polygon points="210,52 264,76 210,100 156,76" fill="#FFF8E1" stroke="#FFC107" />
+  <text x="210" y="73" text-anchor="middle">หลุด</text>
+  <text x="210" y="87" text-anchor="middle">พื้น?</text>
+  <path d="M210 100 V 128" stroke="#4CAF50" stroke-width="1.5" marker-end="url(#fa)" />
+  <text x="222" y="118" fill="#4CAF50">ใช่</text>
+  <rect x="120" y="128" width="180" height="20" rx="6" fill="#FFEBEE" stroke="#F44336" />
+  <text x="210" y="142" text-anchor="middle" font-size="11.5">lives−1 · respawn · ≤0 → GAME OVER</text>
+  <path d="M264 76 H 312" stroke="#555" stroke-width="1.5" marker-end="url(#fa)" />
+  <text x="288" y="68" text-anchor="middle" fill="#FF9800">ไม่</text>
+  <rect x="312" y="58" width="118" height="36" rx="8" fill="#E0F7FA" stroke="#00BCD4" />
+  <text x="371" y="74" text-anchor="middle">วนกระสุน</text>
+  <text x="371" y="88" text-anchor="middle">ทุกนัด</text>
+  <path d="M430 76 H 468" stroke="#555" stroke-width="1.5" marker-end="url(#fa)" />
+  <polygon points="524,52 578,76 524,100 470,76" fill="#FFF8E1" stroke="#FFC107" />
+  <text x="524" y="73" text-anchor="middle">นัดนี้</text>
+  <text x="524" y="87" text-anchor="middle">โดน?</text>
+  <path d="M578 76 H 620" stroke="#4CAF50" stroke-width="1.5" marker-end="url(#fa)" />
+  <text x="599" y="68" text-anchor="middle" fill="#4CAF50">โดน</text>
+  <rect x="620" y="56" width="132" height="40" rx="8" fill="#E8F5E9" stroke="#4CAF50" />
+  <text x="686" y="72" text-anchor="middle">score+1 · respawn</text>
+  <text x="686" y="88" text-anchor="middle" font-weight="bold">break</text>
+  <path d="M524 100 V 118 H 371 V 94" fill="none" stroke="#888" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#fa)" />
+  <text x="430" y="114" text-anchor="middle" font-size="11" fill="#888">ไม่โดน → นัดถัดไป</text>
+  <defs><marker id="fa" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0 0 L6 3 L0 6 z" fill="#555" /></marker></defs>
+</svg>
 <blockquote>
-<p>จุดที่พลาดบ่อย: ลืมประกาศ <code>global ship_x, ship_speed, score, lives, fire_cooldown</code> ที่บรรทัดแรกของ <code>on_frame</code> และลืม <code>break</code> หลังชน อย่าลืมนะ</p>
+<p>จุดที่พลาดบ่อย: ลืมประกาศ <code>global ship_x, ship_speed, score, lives, fire_cooldown</code> ที่บรรทัดแรกของ <code>on_frame</code> และลืม <code>break</code> หลังชน อย่าลืมนะ — ตามผังด้านบนทีละกล่อง โค้ดก็เดินตามนี้เป๊ะ</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="21">
@@ -171,11 +215,11 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 <blockquote>
 <p><strong>เสียงในคาบนี้</strong> — Shooter ใช้เสียงตอนยิงกระสุน (<code>fire</code>) ตอนยิงโดนศัตรู (<code>hit</code>) และตอน GAME OVER (กดเล่นฟังได้จริง):</p>
 </blockquote>
-<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
-<span><b>sfx_shoot_fire</b><br /><audio controls src="img/sfx_shoot_fire.mp3" style="height:30px;width:160px"></audio></span>
-<span><b>sfx_shoot_hit</b><br /><audio controls src="img/sfx_shoot_hit.mp3" style="height:30px;width:160px"></audio></span>
-<span><b>sfx_game_over</b><br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:160px"></audio></span>
-<span style="min-width:180px">ฟังครบ 21 ตัว + รูปคลื่น/ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
+<div style="display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap;font-size:0.72em;margin:8px 0">
+<span style="text-align:center"><b>sfx_shoot_fire</b> <span style="color:#4CAF50">(สั้น)</span><br /><img src="img/sfx_shoot_fire.png" width="170" style="border-radius:4px;margin:2px 0" /><br /><audio controls src="img/sfx_shoot_fire.mp3" style="height:30px;width:170px"></audio></span>
+<span style="text-align:center"><b>sfx_shoot_hit</b> <span style="color:#4CAF50">(สั้น)</span><br /><img src="img/sfx_shoot_hit.png" width="170" style="border-radius:4px;margin:2px 0" /><br /><audio controls src="img/sfx_shoot_hit.mp3" style="height:30px;width:170px"></audio></span>
+<span style="text-align:center"><b>sfx_game_over</b> <span style="color:#FF9800">(ยาว)</span><br /><img src="img/sfx_game_over.png" width="170" style="border-radius:4px;margin:2px 0" /><br /><audio controls src="img/sfx_game_over.mp3" style="height:30px;width:170px"></audio></span>
+<span style="min-width:170px;padding-bottom:4px">รูปคลื่นบนปุ่มเล่นคือ "หน้าตา" ของเสียง — `fire`/`hit` แหลมแล้วเงียบไว ส่วน `game_over` ลากยาว<br />ฟังครบ 21 ตัว + ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
 <blockquote>
 <p>เสียงสั้น-คม (<code>fire</code>/<code>hit</code> ราว 1–2 KB) ทำหน้าที่เป็น feedback ทันใจทุกครั้งที่ยิง ส่วน <code>game_over</code> ยาวกว่าเพื่อปิดจังหวะรอบเกม — ลองฟังเทียบความสั้น-ยาวกับบทบาทของมันในเกม</p>

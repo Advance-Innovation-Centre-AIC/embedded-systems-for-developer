@@ -32,8 +32,19 @@
 วาดแท่งคะแนนใหม่ทุกครั้งที่มีโหวต
 </div>
 </div>
+<svg viewBox="0 0 560 64" width="58%" style="margin:8px auto 0;display:block">
+<rect x="6" y="14" width="180" height="40" rx="9" fill="#eafaf0" stroke="#2a7" stroke-width="2" />
+<text x="96" y="38" text-anchor="middle" font-size="14" font-weight="bold">voter</text>
+<rect x="374" y="14" width="180" height="40" rx="9" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+<text x="464" y="38" text-anchor="middle" font-size="14" font-weight="bold">tally</text>
+<line x1="186" y1="34" x2="372" y2="34" stroke="#444" stroke-width="3" marker-end="url(#bd)" />
+<text x="279" y="24" text-anchor="middle" font-size="12" fill="#333">publish "A" → poll/q1</text>
+<defs><marker id="bd" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6 Z" fill="#444" /></marker></defs>
+</svg>
 <p>ใช้ที่ไหนได้บ้าง: โหวตในคลาส, quiz live, แบบสอบถามความเห็น, นับมือในที่ประชุม — แนวคิดเดียวกับ <strong>Slido / Mentimeter</strong> เป๊ะ ๆ</p>
 <p><strong>สิ่งที่อยากเห็นตอนจบ:</strong> กดโหวตจากบอร์ดหนึ่ง แล้วแท่งบนอีกบอร์ดขยับขึ้นทันที</p>
+<p><img src="img/poll_tally_screen.png" alt="" style="width:300px;" /><br />
+<sub>หน้าจอ tally จริงบนบอร์ด BENTO — ตัวเลขใน <code>dict</code> กลายเป็นความสูงแท่งของ A/B/C/D · ที่มา: BENTO game console (course asset)</sub></p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="3" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="3" style="--paginate:true;--theme:default;" data-marpit-pagination-total="11">
 <h1 id="%E0%B9%84%E0%B8%94%E0%B8%AD%E0%B8%B0%E0%B9%81%E0%B8%81%E0%B8%A3%E0%B8%A1-pubsub--topic-%E0%B9%80%E0%B8%94%E0%B8%B5%E0%B8%A2%E0%B8%A7-%E0%B9%84%E0%B8%94%E0%B9%89%E0%B8%A2%E0%B8%B4%E0%B8%99%E0%B8%81%E0%B8%B1%E0%B8%99%E0%B8%AB%E0%B8%A1%E0%B8%94">ไดอะแกรม pub/sub — topic เดียว ได้ยินกันหมด</h1>
@@ -162,6 +173,8 @@
 <li>เปิดไฟล์ใน BENTO IDE → กด <strong>Program to Device</strong> ทีละบอร์ด</li>
 <li>โหวตจากบอร์ด voter แล้วดูแท่งบน tally ขยับ</li>
 </ol>
+<p><img src="img/poll_two_boards.png" alt="" style="width:680px;" /><br />
+<sub>สองบอร์ดต่อ WiFi เดียวกันแล้ว (มุมซ้ายบนขึ้น Wi-Fi ต่อแล้ว): ซ้าย = voter กด A ส่ง · ขวา = tally แท่งขึ้นตามโหวต · ที่มา: BENTO game console (course asset)</sub></p>
 <p>หน้าจอ tally ที่ควรเห็น: ทุกครั้งที่โหวตเข้ามา แท่งของตัวเลือกนั้นเด้งสูงขึ้น <strong>ทันที</strong> ไม่ต้องรีเฟรช</p>
 <p><img src="img/poll_live_anim.gif" alt="" style="width:560px;" /></p>
 <blockquote>

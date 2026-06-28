@@ -15,7 +15,7 @@
 <blockquote>
 <p>คาถาประจำคาบ: <strong>&quot;อ่าน input → กรองให้นิ่ง → เปลี่ยน state → แสดงผล&quot;</strong></p>
 </blockquote>
-<p>3 ชม. · 2–3 คน / 1 บอร์ด · ช่วง A — พื้นฐาน</p>
+<p>2–3 คน / 1 บอร์ด · ช่วง A — พื้นฐาน</p>
 </section>
 </foreignObject><foreignObject width="1280" height="720" data-marpit-advanced-background="pseudo"><section data-paginate="true" data-class="cover" data-theme="default" lang="en-US" class="cover" data-marpit-pagination="1" style="" data-marpit-pagination-total="19" data-marpit-advanced-background="pseudo"></section></foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="2" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="2" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B9%80%E0%B8%9B%E0%B9%89%E0%B8%B2%E0%B8%AB%E0%B8%A1%E0%B8%B2%E0%B8%A2%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%99%E0%B8%B5%E0%B9%89">เป้าหมายของคาบนี้</h1>
@@ -71,6 +71,9 @@
 <li>หน้าสัมผัสโลหะตอนกดมัน <strong>เด้ง (contact bounce)</strong> อ่านได้ HIGH/LOW รัว ๆ ไม่กี่ ms ก่อนนิ่ง</li>
 </ul>
 <p><img src="img/hw_button.png" alt="" style="width:760px;" /></p>
+<p>แล้วปุ่มที่เราเรียก <code>gpio.button(0)</code> อยู่ตรงไหนบนบอร์ดจริง? คือ <strong>USER BUTTON 1 (SW2)</strong> มุมซ้ายล่าง ถัดจากช่องไฟ VIN — หาให้เจอก่อนจะได้กดถูกตัวตอนแล็บ:</p>
+<p><img src="img/s02_sw1_closeup.png" alt="" style="width:520px;" /></p>
+<p><sub>ที่มา: รูปบอร์ดจากคู่มือ Infineon KIT_PSE84_EVAL (Figure 2 — Baseboard Top View) · ครอปเฉพาะส่วน USER BTN1 แล้วใส่คำอธิบายเพิ่ม</sub></p>
 <blockquote>
 <p>นี่คือเหตุผลที่เราต้อง <strong>debounce</strong> ในโค้ด — มันคือการกรอง bounce ทางไฟฟ้าจริง ๆ ไม่ให้ 1 การกดนับเป็นหลายครั้ง</p>
 </blockquote>
@@ -141,6 +144,39 @@
 </tr>
 </tbody>
 </table>
+<p>ถ้ามองเป็นภาพ LED จริงสองดวง จะเห็นว่าแต่ละ state คือ &quot;ลายไฟ&quot; ที่ไม่ซ้ำกัน — ค่า <code>(a, b)</code> ในตารางก็คือคู่ on/off นี้เป๊ะ ๆ:</p>
+<svg width="760" height="248" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="15">
+  <defs>
+    <filter id="glowA" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <text x="40"  y="34" font-weight="bold" fill="#444">state</text>
+  <text x="300" y="34" font-weight="bold" fill="#2e7d32" text-anchor="middle">led_a</text>
+  <text x="300" y="52" fill="#777" text-anchor="middle" font-size="12">(เขียว)</text>
+  <text x="430" y="34" font-weight="bold" fill="#c62828" text-anchor="middle">led_b</text>
+  <text x="430" y="52" fill="#777" text-anchor="middle" font-size="12">(แดง)</text>
+  <text x="560" y="34" font-weight="bold" fill="#444">(a, b)</text>
+  <line x1="30" y1="62" x2="720" y2="62" stroke="#ccc" stroke-width="1" />
+  <rect x="34" y="76" width="150" height="36" rx="9" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="109" y="100" text-anchor="middle" fill="#2e7d32" font-weight="bold">GREEN</text>
+  <circle cx="300" cy="94" r="16" fill="#43d164" stroke="#2e7d32" stroke-width="2" filter="url(#glowA)" />
+  <circle cx="430" cy="94" r="16" fill="#2a2a2a" stroke="#888" stroke-width="2" />
+  <text x="560" y="100" font-family="monospace" fill="#333">(True, False)</text>
+  <rect x="34" y="124" width="150" height="36" rx="9" fill="#fff8e1" stroke="#f9a825" stroke-width="2" />
+  <text x="109" y="148" text-anchor="middle" fill="#b8860b" font-weight="bold">YELLOW</text>
+  <circle cx="300" cy="142" r="16" fill="#43d164" stroke="#2e7d32" stroke-width="2" filter="url(#glowA)" />
+  <circle cx="430" cy="142" r="16" fill="#ff4d4d" stroke="#c62828" stroke-width="2" filter="url(#glowA)" />
+  <text x="560" y="148" font-family="monospace" fill="#333">(True, True)</text>
+  <rect x="34" y="172" width="150" height="36" rx="9" fill="#ffebee" stroke="#c62828" stroke-width="2" />
+  <text x="109" y="196" text-anchor="middle" fill="#c62828" font-weight="bold">RED</text>
+  <circle cx="300" cy="190" r="16" fill="#2a2a2a" stroke="#888" stroke-width="2" />
+  <circle cx="430" cy="190" r="16" fill="#ff4d4d" stroke="#c62828" stroke-width="2" filter="url(#glowA)" />
+  <text x="560" y="196" font-family="monospace" fill="#333">(False, True)</text>
+  <circle cx="46" cy="230" r="8" fill="#43d164" stroke="#2e7d32" />
+  <text x="62" y="235" font-size="12.5" fill="#555">= ติด (on)</text>
+  <circle cx="168" cy="230" r="8" fill="#2a2a2a" stroke="#888" />
+  <text x="184" y="235" font-size="12.5" fill="#555">= ดับ (off)</text>
+  <text x="300" y="235" font-size="12.5" fill="#888">2 ดวง เข้ารหัสได้ 3 สถานะแยกกันชัด</text>
+</svg>
 <p>เก็บเป็น dictionary ไว้ ทำให้โค้ดอ่านง่ายและเพิ่ม state ใหม่ทีหลังได้สบาย:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-comment"># ตารางว่าแต่ละ state ควรเปิด LED ดวงไหนบ้าง (led_a, led_b)</span>
 LED_PATTERN = {
@@ -241,6 +277,9 @@ show(state)
 <li>กด <strong>SW1</strong> บนบอร์ดทีละครั้ง — สังเกต LED และข้อความ <code>STATE =</code> ใน console</li>
 </ol>
 <p><img src="img/program_steps.png" alt="" style="width:840px;" /></p>
+<p>หน้าจอ BENTO IDE จริงเป็นแบบนี้ — <strong>①</strong> คือปุ่ม <strong>Program to Device</strong> ที่แถบเครื่องมือ (ข้อ 2) กดแล้วดูที่ <strong>②</strong> ช่อง console จะขึ้น <code>Saved /main.py</code> แล้ว <code>Restarting device...</code> (ข้อ 3):</p>
+<p><img src="img/s02_ide_program.png" alt="" style="width:760px;" /></p>
+<p><sub>ที่มา: ภาพหน้าจอ BENTO IDE (course asset) · ในภาพเป็นอีกตัวอย่างหนึ่ง แต่ปุ่มและลำดับ console เหมือนกันทุกแล็บ — สำหรับคาบนี้ console จะขึ้น <code>กดปุ่ม SW1 เพื่อเปลี่ยนไฟจราจร</code></sub></p>
 <p>สิ่งที่ควรเห็น:</p>
 <ul>
 <li>กด 1 ครั้ง = ขยับ 1 สถานะ ไม่กระโดดข้าม ไม่วิ่งรัว</li>

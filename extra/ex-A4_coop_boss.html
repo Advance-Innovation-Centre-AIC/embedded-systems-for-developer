@@ -131,11 +131,16 @@
 <span><b>shoot_explode</b><br /><audio controls src="img/sfx_shoot_explode.mp3" style="height:30px;width:160px"></audio></span>
 <span style="min-width:180px">ฟังครบ 21 ตัว + รูปคลื่น/ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
+<p>เสียงไม่ได้มีแค่ &quot;ดัง&quot; — มันมี <strong>รูปร่าง</strong> ดูเสียงระเบิดตอนบอสล้มเป็น spectrogram (แกนนอน=เวลา แกนตั้ง=ความถี่ สีสว่าง=ดัง) จะเห็นพลังงานปะทุเป็นชั้น ๆ แล้วค่อยจางหายไป:</p>
+<p><img src="img/sfx_shoot_explode_spec.png" alt="" style="width:560px;" /><br />
+<sub>ที่มา: spectrogram ของเสียง <code>shoot_explode</code> สร้างจาก bento_sfx (BENTO course asset)</sub></p>
 <p>ลองสลับเสียงระเบิดไปใส่ตอน &quot;BOSS DOWN!&quot; เพื่อให้จังหวะปิดเกมหนักแน่นขึ้น — ทุกจอจะได้ยินพร้อมกันเพราะวาดจากเลขก้อนเดียวกัน</p>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="13">
 <h1 id="%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B8%A3%E0%B8%B1%E0%B8%99--%E0%B8%95%E0%B9%89%E0%B8%AD%E0%B8%87%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%81%E0%B8%B5%E0%B9%88%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94">วิธีรัน + ต้องใช้กี่บอร์ด</h1>
-<p><strong>วิธีรัน:</strong> เปิด <code>codes/ex_a4_coop_boss.py</code> ใน BENTO IDE แล้วกด <strong>Program to Device</strong> — โค้ดเดียวกันนี้ลงได้ทุกบอร์ด</p>
+<p><strong>วิธีรัน:</strong> เปิด <code>codes/ex_a4_coop_boss.py</code> ใน BENTO IDE แล้วกด <strong>Program to Device</strong> (ปุ่มเขียวมุมซ้ายบน) — โค้ดเดียวกันนี้ลงได้ทุกบอร์ด</p>
+<p><img src="img/Bento_IDE_Program_to_Device.png" alt="" style="width:560px;" /><br />
+<sub>ปุ่ม <b>Program to Device</b> มุมซ้ายบนของ BENTO IDE — กดแล้วเซฟเป็น <code>main.py</code> ลงบอร์ดและรันทันที (เห็น &quot;Programming main.py to device&quot; ใน Terminal) · ที่มา: BENTO IDE (course asset)</sub></p>
 <div style="display:flex;gap:16px;margin-top:8px">
 <div style="flex:1;border:3px solid #2a7;border-radius:12px;padding:14px;background:#eafaf0">
 <b>อย่างน้อย 2 บอร์ด</b><br />
@@ -192,6 +197,31 @@ HP บอส = 500, ยิงทีละ 10<br />
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="13" style="--paginate:true;--theme:default;" data-marpit-pagination-total="13">
 <h1 id="%E0%B9%80%E0%B8%8A%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%A1%E0%B9%82%E0%B8%A2%E0%B8%87%E0%B8%A3%E0%B8%B2%E0%B8%81%E0%B8%90%E0%B8%B2%E0%B8%99">เชื่อมโยงรากฐาน</h1>
 <p>เกม co-op เกมเดียวนี้ ร้อยวิชาพื้นฐานเข้าด้วยกันหมด — ลองมองทะลุเกมไปที่วิศวกรรมข้างใต้:</p>
+<svg viewBox="0 0 800 230" width="100%">
+
+<ellipse cx="400" cy="115" rx="92" ry="40" fill="#fff3d6" stroke="#e90" stroke-width="3" />
+<text x="400" y="110" text-anchor="middle" font-size="15" font-weight="bold">เกม Co-op</text>
+<text x="400" y="130" text-anchor="middle" font-size="13">ยิง Boss ร่วมกัน</text>
+
+<line x1="312" y1="100" x2="150" y2="55" stroke="#27a" stroke-width="2.5" />
+<line x1="312" y1="130" x2="150" y2="180" stroke="#2a7" stroke-width="2.5" />
+<line x1="492" y1="115" x2="640" y2="115" stroke="#c39" stroke-width="2.5" />
+
+<rect x="20" y="22" width="200" height="66" rx="10" fill="#e8f0ff" stroke="#27a" stroke-width="2" />
+<text x="120" y="44" text-anchor="middle" font-size="14" font-weight="bold" fill="#27a">Python</text>
+<text x="120" y="63" text-anchor="middle" font-size="11">string-parse · edge-detect</text>
+<text x="120" y="79" text-anchor="middle" font-size="11">update() = callback</text>
+
+<rect x="20" y="148" width="200" height="66" rx="10" fill="#eafaf0" stroke="#2a7" stroke-width="2" />
+<text x="120" y="170" text-anchor="middle" font-size="14" font-weight="bold" fill="#1a7a4a">Algorithms</text>
+<text x="120" y="189" text-anchor="middle" font-size="11">single source of truth</text>
+<text x="120" y="205" text-anchor="middle" font-size="11">สเกล 1/N</text>
+
+<rect x="640" y="78" width="150" height="74" rx="10" fill="#fde8f3" stroke="#c39" stroke-width="2" />
+<text x="715" y="100" text-anchor="middle" font-size="13" font-weight="bold" fill="#a02a6a">Embedded /</text>
+<text x="715" y="117" text-anchor="middle" font-size="13" font-weight="bold" fill="#a02a6a">Networking</text>
+<text x="715" y="137" text-anchor="middle" font-size="11">GPIO → pub/sub</text>
+</svg>
 <div style="display:flex;gap:14px;margin-top:10px">
 <div style="flex:1;border:2px solid #27a;border-radius:10px;padding:10px 12px">
 <b>Python</b><br />
