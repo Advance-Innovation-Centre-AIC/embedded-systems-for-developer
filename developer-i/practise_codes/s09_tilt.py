@@ -11,7 +11,7 @@
 
 import bentogame as game
 import sensors          # ชุดเซนเซอร์บนบอร์ด (ต้อง init ก่อนใช้)
-import bmi270           # ตัว accelerometer/gyro คุยผ่าน I2C
+# bmi270 อยู่ใต้ sensors แล้ว — เรียก sensors.bmi270.acceleration() ได้เลย
 import time
 
 game.start()            # เคลียร์จอ + เตรียมระบบ
@@ -32,7 +32,7 @@ while True:
         game.clear()
         break
 
-    # เติม: อ่านความเร่ง 3 แกนด้วย bmi270.acceleration() -> คืน (ax, ay, az) หน่วย m/s²
+    # เติม: อ่านความเร่ง 3 แกนด้วย sensors.bmi270.acceleration() -> คืน (ax, ay, az) หน่วย m/s²
     ax, ay, az = (0.0, 0.0, 0.0)
     # แปลงเป็น g (วางราบ แกนหนึ่ง ≈ 1.0) — บรรทัดนี้ให้ไว้แล้ว
     ax, ay, az = ax/9.81, ay/9.81, az/9.81

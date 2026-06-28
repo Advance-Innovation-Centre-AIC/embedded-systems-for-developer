@@ -49,3 +49,12 @@ for note in melody:
     time.sleep_ms(NOTE_MS + 20)
 
 print("จบแล็บเสียง — ลองแก้ melody / wave / NOTE_MS ดูว่าผลลัพธ์เปลี่ยนยังไง")
+
+# --- เมนูเสียงสำเร็จรูปทั้งหมด 21 เสียง (หยิบไปใส่เกมได้เลย) ---
+# วิธีง่ายสุด: import bentogame as game  แล้ว  game.sfx("ชื่อ")
+#   Snake : "eat"  "turn"  "die"
+#   Flappy: "flap"  "point"  "fall"
+#   Pong  : "wall"  "paddle"  "pong_score"  "win"  "lose"
+#   Shoot : "fire"  "hit"  "explode"  "lose_life"
+#   UI    : "start"  "select"  "back"  "deny"  "move"  "gameover"
+# (หรือเรียกตรง ๆ แบบส่วนที่ 1: ui.sfx(ui.SFX_SNAKE_EAT) ก็ได้เหมือนกัน)

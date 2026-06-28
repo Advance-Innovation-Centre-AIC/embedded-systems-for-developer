@@ -283,11 +283,11 @@ def tilt(deadzone=0.18):
     global _tilt_inited
     steering = Keys({})
     try:
-        import sensors, bmi270
+        import sensors
         if not _tilt_inited:
             sensors.init()
             _tilt_inited = True
-        accel_x, accel_y, accel_z = bmi270.acceleration()
+        accel_x, accel_y, accel_z = sensors.bmi270.acceleration()
     except Exception:
         return steering
     steering.right = accel_x > deadzone
