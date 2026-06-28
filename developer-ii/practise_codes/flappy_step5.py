@@ -58,7 +58,7 @@ def play_round(mode_index):
         #      (เก็บไว้ใน last_clock[0]) แล้วหารพันให้เป็นวินาที เผื่อ clamp ค่าสูงสุดกันเฟรมค้าง
         #   2) อ่านปุ่ม: game.keys() ถ้ากดกระโดด (.a หรือ .up) ตั้ง velocity = flap แล้ว game.sfx("flap")
         #   3) ฟิสิกส์: เพิ่ม velocity ด้วย gravity*dt, เพิ่ม y ด้วย velocity*dt, กันทะลุเพดาน/พื้น
-        #      ตกพื้น (y เกิน game.HEIGHT - bird.h) ให้ game.sfx("die") แล้ว return False ; วาดนกด้วย bird.move_to(...)
+        #      ตกพื้น (y เกิน game.HEIGHT - bird.h) ให้ game.sfx("fall") แล้ว return False ; วาดนกด้วย bird.move_to(...)
         #   4) วน pipes แต่ละท่อ: เลื่อน x ด้วย speed*dt, ท่อที่หลุดซ้ายให้รีไซเคิลไปขวาสุด (ปรับ gap_top
         #      + .resize() ใหม่), ขยับท่อด้วย .move_to(); ถ้า game.hit(bird, ท่อ) ให้ตาย; ถ้านกผ่านท่อ (ยัง
         #      ไม่ scored) ให้ score+=1, game.sfx("point"), อัปเดต best_score แล้ว hud_label.set(...)

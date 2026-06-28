@@ -9,9 +9,9 @@
 #   เพื่อกันนับแต้มซ้ำท่อเดิม จบคาบนี้เราจะได้เกม Flappy ที่เล่นได้จริงทั้งเกม
 #
 # ส่วนที่คุณจะได้เขียนเองคาบนี้ (กติกาแพ้/ชนะ):
-#     - ชนท่อบนหรือท่อล่าง (AABB) → GAME OVER + เสียง "die"
+#     - ชนท่อบนหรือท่อล่าง (AABB) → GAME OVER + เสียง "fall"
 #     - ท่อเลื่อนพ้นตัวนกครั้งแรก → +1 แต้ม + เสียง "point" (กัน scored ซ้ำ)
-# 70% core ที่เพิ่ม: game.hit() (ชน AABB), game.sfx("point"/"die")
+# 70% core ที่เพิ่ม: game.hit() (ชน AABB), game.sfx("point"/"fall")
 #   (bentogame.py:355,64)
 # C step == Python step บนจอ: c_track/flappy_step4.c (flappy_hit_pipe :231)
 # อ้างอิง: reference/flappy_full.py:54-60
@@ -54,7 +54,7 @@ def on_each_frame():
     bird_y += bird_velocity
     if bird_y < 0: bird_y, bird_velocity = 0, 0
     if bird_y > game.HEIGHT - bird.h:
-        game.sfx("die")
+        game.sfx("fall")
         game.Text("GAME OVER", 320, 180, game.RED); return False
     bird.move_to(bird.x, bird_y)
 
