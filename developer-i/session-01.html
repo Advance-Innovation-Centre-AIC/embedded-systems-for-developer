@@ -104,12 +104,35 @@
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="25">
+<h1 id="%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87-vscode--git-cheat-sheet-%E0%B9%80%E0%B8%95%E0%B8%A3%E0%B8%B5%E0%B8%A2%E0%B8%A1%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%A1%E0%B8%B7%E0%B8%AD">ติดตั้ง VSCode + Git Cheat Sheet (เตรียมเครื่องมือ)</h1>
+<p>ก่อนแตะบอร์ด เริ่มจากเครื่องมือฝั่งคอมก่อน: ติดตั้ง <strong>VSCode</strong> ครั้งเดียว (ดูคลิป) แล้วใช้ <strong>Terminal ใน VSCode</strong> รันคำสั่ง Git — <strong>กดที่ภาพ cheat sheet เพื่อขยายดูรายละเอียด</strong>:</p>
+<div style="display:flex;gap:14px;align-items:flex-start;margin-top:6px">
+<div style="flex:0 0 36%">
+<iframe width="100%" height="200" src="https://www.youtube.com/embed/a5K_mm7Lw1w" title="ติดตั้ง VSCode" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
+<div><small>คลิปติดตั้ง VSCode (ทำตามครั้งเดียว)</small></div>
+</div>
+<div style="flex:1">
+<a href="img/git_cheatsheet.png" target="_blank"><img src="img/git_cheatsheet.png" width="100%" style="border:1px solid #ccc;border-radius:6px" /></a>
+<div><small>กดที่ภาพเพื่อเปิดเต็มจอ (zoom) · เครดิต: อ.JoM</small></div>
+</div>
+</div>
+<p>คำสั่ง Git ที่จะใช้บ่อย (หน้าถัดไปเราลงมือ fork → clone จริง):</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git status                 <span class="hljs-comment"># ดูว่ามีไฟล์อะไรเปลี่ยน</span>
+git add team.md            <span class="hljs-comment"># เลือกไฟล์ที่จะบันทึก</span>
+git commit -m <span class="hljs-string">&quot;first commit&quot;</span>
+git push                   <span class="hljs-comment"># ส่งขึ้น GitHub</span>
+</code></pre>
+<blockquote>
+<p>วันนี้ขอแค่ clone + commit แรกให้ผ่าน — ส่วน branch / PR / CI เราจะใช้บ่อยขึ้นใน Block E (DevOps)</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="25">
 <h1 id="onboarding--%E0%B9%80%E0%B8%84%E0%B8%A3%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B8%A1%E0%B8%B7%E0%B8%AD-2-%E0%B8%95%E0%B8%B1%E0%B8%A7-%E0%B8%84%E0%B8%99%E0%B8%A5%E0%B8%B0%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2%E0%B8%97%E0%B8%B5%E0%B9%88">Onboarding — เครื่องมือ 2 ตัว (คนละหน้าที่)</h1>
-<p>ก่อนแตะบอร์ด เราเตรียมเครื่องมือ 2 ตัว ทำครั้งเดียวพอ — <strong>อย่าสับสนหน้าที่กัน</strong>:</p>
+<p>ติดตั้ง VSCode + ดู Git Cheat Sheet หน้าที่แล้วเรียบร้อย — ทีนี้แยกหน้าที่เครื่องมือ 2 ตัวให้ชัด <strong>อย่าสับสนกัน</strong>:</p>
 <div style="display:flex;gap:16px;margin:8px 0">
 <div style="flex:1;border:2px solid #1565c0;border-radius:10px;padding:12px;background:#e3f2fd">
 <b>VSCode</b> — แก้โค้ด + ใช้ <b>Git ผ่าน CLI</b> (fork / clone / commit / push)<br />
-<small>ติดตั้งครั้งเดียว ดูคลิป + Git Cheat Sheet หน้าถัดไป</small>
+<small>เครื่องมือฝั่งคอม สำหรับเก็บ/ส่งโค้ดขึ้น GitHub</small>
 </div>
 <div style="flex:1;border:2px solid #ef6c00;border-radius:10px;padding:12px;background:#fff3e0">
 <b>BENTO IDE</b> — <b>Web App</b> สำหรับ MicroPython<br />
@@ -131,29 +154,6 @@
 </ol>
 <blockquote>
 <p>ถ้าใครติดขั้นตอนไหน ยกมือเลย อาจารย์กับเพื่อนช่วยกันได้ ไม่ต้องเกร็ง</p>
-</blockquote>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="25">
-<h1 id="%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B8%B1%E0%B9%89%E0%B8%87-vscode--git-cheat-sheet">ติดตั้ง VSCode + Git Cheat Sheet</h1>
-<p>ติดตั้ง VSCode ครั้งเดียว (ดูคลิป) แล้วใช้ <strong>Terminal ใน VSCode</strong> รันคำสั่ง Git — <strong>กดที่ภาพ cheat sheet เพื่อขยายดูรายละเอียด</strong>:</p>
-<div style="display:flex;gap:14px;align-items:flex-start;margin-top:6px">
-<div style="flex:0 0 36%">
-<iframe width="100%" height="200" src="https://www.youtube.com/embed/a5K_mm7Lw1w" title="ติดตั้ง VSCode" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>
-<div><small>คลิปติดตั้ง VSCode (ทำตามครั้งเดียว)</small></div>
-</div>
-<div style="flex:1">
-<a href="img/git_cheatsheet.png" target="_blank"><img src="img/git_cheatsheet.png" width="100%" style="border:1px solid #ccc;border-radius:6px" /></a>
-<div><small>กดที่ภาพเพื่อเปิดเต็มจอ (zoom) · เครดิต: อ.JoM</small></div>
-</div>
-</div>
-<p>ลองฝึกใน Terminal จริงวันนี้:</p>
-<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-bash">git status                 <span class="hljs-comment"># ดูว่ามีไฟล์อะไรเปลี่ยน</span>
-git add team.md            <span class="hljs-comment"># เลือกไฟล์ที่จะบันทึก</span>
-git commit -m <span class="hljs-string">&quot;first commit&quot;</span>
-git push                   <span class="hljs-comment"># ส่งขึ้น GitHub</span>
-</code></pre>
-<blockquote>
-<p>วันนี้ขอแค่ clone + commit แรกให้ผ่าน — ส่วน branch / PR / CI เราจะใช้บ่อยขึ้นใน Block E (DevOps)</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="11" style="--paginate:true;--theme:default;" data-marpit-pagination-total="25">
