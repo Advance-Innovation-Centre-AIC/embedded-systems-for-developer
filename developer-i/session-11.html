@@ -167,9 +167,9 @@ bullets = [game.Box(<span class="hljs-number">0</span>, -<span class="hljs-numbe
     <span class="hljs-keyword">return</span> <span class="hljs-literal">None</span>                                 <span class="hljs-comment"># บ่อเต็ม (ยิงครบ 6 นัด) — ยังไม่ให้ยิง</span>
 </code></pre>
 <p><svg viewBox="0 0 700 60" width="80%"><rect x="10" y="10" width="680" height="40" rx="8" fill="#E8F5E9" stroke="#4CAF50" /><text x="350" y="36" text-anchor="middle" font-family="sans-serif" font-size="15">สร้าง <tspan font-weight="bold">ครั้งเดียว</tspan> ก่อนลูป — ไม่เคยสร้างกระสุนใหม่ใน on_frame อีกเลย</text></svg></p>
-</section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
-<h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-3--%E0%B8%95%E0%B8%B2%E0%B8%99%E0%B9%89%E0%B8%AD%E0%B8%87-%E0%B9%86-%E0%B9%80%E0%B8%82%E0%B8%B5%E0%B8%A2%E0%B8%99-30-%E0%B8%A2%E0%B8%B4%E0%B8%87--%E0%B9%80%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%82%E0%B8%B6%E0%B9%89%E0%B8%99">ขั้น 3 — ตาน้อง ๆ เขียน 30%: ยิง + เลื่อนขึ้น</h1>
+<blockquote>
+<p><strong>ทฤษฎี → โค้ด:</strong> <code>find_free_bullet()</code> (<code>shooter_step3.py:30-34</code>) วน list หานัดแรกที่ว่าง = <strong>linear search <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></strong> ต่อการยิง 1 ครั้ง โดย <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo></mrow><annotation encoding="application/x-tex">n=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.4306em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span></span></span></span> <code>MAX_BULLETS</code> = 6 บ่อเล็กมากจึงคุ้มกว่าการ <code>game.Box(...)</code> ใหม่ (alloc) ทุกนัด ถ้าคืน <code>None</code> แปลว่าบ่อเต็ม (ยิงครบ 6 นัดค้างจอ) — เฟรมนั้นยังไม่ให้ยิง</p>
+</blockquote>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-comment"># ยิง (มี cooldown กันยิงรัว)</span>
     fire_cooldown = <span class="hljs-built_in">max</span>(<span class="hljs-number">0</span>, fire_cooldown - <span class="hljs-number">1</span>)
     <span class="hljs-keyword">if</span> (keys.a <span class="hljs-keyword">or</span> keys.up) <span class="hljs-keyword">and</span> fire_cooldown == <span class="hljs-number">0</span>:
@@ -192,7 +192,7 @@ bullets = [game.Box(<span class="hljs-number">0</span>, -<span class="hljs-numbe
 <p><strong>ผลขั้นนี้:</strong> กด A/UP แล้วเลเซอร์ฟ้าพุ่งขึ้นพร้อมเสียงยิง ยิงต่อเนื่องได้สูงสุด 6 นัด และกดรัวก็ไม่ทะลักเพราะมี cooldown คุมอยู่ — สังเกตแถบ cooldown ในภาพ ต้องวิ่งกลับถึงศูนย์ก่อนถึงจะยิงนัดถัดไปได้</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="9" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="9" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B8%9F%E0%B8%B4%E0%B8%AA%E0%B8%B4%E0%B8%81%E0%B8%AA%E0%B9%8C%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B8%E0%B8%99--cooldown">ฟิสิกส์กระสุน + cooldown</h1>
 <p><strong>เลื่อนกระสุน (ขึ้น = y ลด):</strong></p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mi>y</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>y</mi><mi>t</mi></msub><mo>−</mo><msub><mi>v</mi><mtext>bullet</mtext></msub><mo separator="true">,</mo><mspace width="2em"/><msub><mi>v</mi><mtext>bullet</mtext></msub><mo>=</mo><mn>9</mn><mtext> px/frame</mtext></mrow><annotation encoding="application/x-tex">y_{t+1} = y_t - v_{\text{bullet}}, \qquad v_{\text{bullet}} = 9 \ \text{px/frame} 
@@ -205,7 +205,7 @@ bullets = [game.Box(<span class="hljs-number">0</span>, -<span class="hljs-numbe
 <p>กราฟนี้คือสมการ cooldown ที่วาดออกมา: ค่าเริ่มที่ 8 ลดทีละ 1 ทุกเฟรม พอแตะ 0 ถึงยิงได้ (จุดแดง) แล้วเด้งกลับเป็น 8 ใหม่ — ฟันเลื่อยซ้ำ ๆ แบบนี้คือสิ่งที่กันไม่ให้กดรัวแล้วกระสุนทะลักออกมาทีเดียวหมดบ่อ ถ้าลอง cooldown จาก 8 เหลือ 4 เส้นจะถี่ขึ้นเท่าตัว ยิงเร็วขึ้นแต่บ่อ 6 นัดก็หมดเร็วขึ้น ลองปรับเล่นดูได้</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="11" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="10" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="10" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-4--%E0%B8%9A%E0%B9%88%E0%B8%AD%E0%B8%A8%E0%B8%B1%E0%B8%95%E0%B8%A3%E0%B8%B9--%E0%B8%A3%E0%B8%B5%E0%B9%84%E0%B8%8B%E0%B9%80%E0%B8%84%E0%B8%B4%E0%B8%A5">ขั้น 4 — บ่อศัตรู + รีไซเคิล</h1>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">import</span> random
 MAX_ENEMIES = <span class="hljs-number">6</span>
@@ -255,7 +255,7 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 <p>ที่เราให้แต่ละตัวเร็วต่างกันด้วย <code>random.uniform</code> แล้วสุ่มสีใหม่ตอน respawn ก็เพื่อให้ศัตรูดูมีชีวิต ไม่ตกลงมาเป็นแถวเดียวกันน่าเบื่อ — ในรูปจะเห็นว่าศัตรูแต่ละตัว<strong>เกิดที่ความสูง (y ติดลบ) ต่างกัน</strong>ในแถบสุ่ม แล้ว<strong>ลูกศรความเร็วยาวไม่เท่ากัน</strong> ตัวที่ v มากตกถึงจอก่อน</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="12" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="11" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="11" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B8%82%E0%B8%B1%E0%B9%89%E0%B8%99-4--%E0%B8%A8%E0%B8%B1%E0%B8%95%E0%B8%A3%E0%B8%B9%E0%B8%95%E0%B8%81-%E2%86%92-%E0%B8%8A%E0%B8%99-%E2%86%92-%E0%B8%84%E0%B8%B0%E0%B9%81%E0%B8%99%E0%B8%99-%E2%86%92-%E0%B8%8A%E0%B8%B5%E0%B8%A7%E0%B8%B4%E0%B8%95">ขั้น 4 — ศัตรูตก → ชน → คะแนน → ชีวิต</h1>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python">    <span class="hljs-keyword">for</span> index, enemy <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(enemies):
         enemy.move_to(enemy.x, enemy.y + enemy_speed[index])  <span class="hljs-comment"># ตกลง</span>
@@ -317,7 +317,7 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 <p>จุดที่น้อง ๆ พลาดบ่อยคือลืมประกาศ <code>global ship_x, ship_speed, score, lives, fire_cooldown</code> ไว้บรรทัดแรกของ <code>on_frame</code> อย่าลืมนะ — โครงในรูปคือ <strong>วนศัตรู → หลุดพื้นไหม → ถ้าไม่ ก็วนเช็คทุกนัดว่าโดนไหม → โดนแล้ว <code>break</code></strong> ทันที (อย่ายิงนัดเดียวได้หลายคะแนน) เป็น control flow ที่ซ้อนกันหนาที่สุดของคาบนี้</p>
 </blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="13" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="12" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="12" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="%E0%B9%80%E0%B8%AA%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%A1-shooter">เสียงของเกม Shooter</h1>
 <p>โค้ดคาบนี้เรียก <code>game.sfx()</code> อยู่ 3 จังหวะ — ตอนกด A ยิงเลเซอร์ (<code>fire</code>), ตอนกระสุนโดนศัตรู (<code>hit</code>), และตอนชีวิตหมดขึ้น GAME OVER (<code>gameover</code>) เสียงทั้งสามนี้คือ feedback ที่ทำให้ผู้เล่นรู้ทันทีว่ายิงออก โดนเป้า หรือแพ้ โดยไม่ต้องอ่านตัวเลขบนจอ</p>
 <blockquote>
@@ -330,7 +330,7 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 <span style="min-width:180px">ฟังครบ 21 ตัว + รูปคลื่น/ซูม/spectrogram → <a href="img/sound_video_demo.html"><b>Sound Explorer</b></a></span>
 </div>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="13" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="13" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="aabb-collision--%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%AA%E0%B8%B8%E0%B8%99-%C3%97-%E0%B8%A8%E0%B8%B1%E0%B8%95%E0%B8%A3%E0%B8%B9">AABB collision — กระสุน × ศัตรู</h1>
 <p><code>game.hit(bullet, enemy)</code> คืน True เมื่อกล่อง <strong>ซ้อนทับ</strong> ทั้งแกน x และ y:</p>
 <p><span is="marp-span" data-auto-scaling="downscale-only" class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><msub><mtext>overlap</mtext><mi>x</mi></msub><mo>:</mo><mtext> </mtext><msub><mi>b</mi><mi>x</mi></msub><mo>&lt;</mo><msub><mi>e</mi><mi>x</mi></msub><mo>+</mo><msub><mi>e</mi><mi>w</mi></msub><mtext> </mtext><mo>∧</mo><mtext> </mtext><msub><mi>e</mi><mi>x</mi></msub><mo>&lt;</mo><msub><mi>b</mi><mi>x</mi></msub><mo>+</mo><msub><mi>b</mi><mi>w</mi></msub></mrow><annotation encoding="application/x-tex">\text{overlap}_x:\ b_x &lt; e_x + e_w \ \wedge\ e_x &lt; b_x + b_w 
@@ -342,8 +342,15 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 <blockquote>
 <p>ภาพช่วยให้เห็นว่าทำไมต้องเช็คทั้งสองแกน: ฝั่งซ้ายกล่องซ้อนกันทั้ง x และ y → ชน, ฝั่งขวาซ้อนแค่แกน x แต่ y มีช่องว่าง → ยังไม่ชน นี่คือคำสั่งเดียวกับที่เราเคยใช้ตรวจชนในเกม Catch / Snake / Flappy / Pong มาแล้ว เกมแต่ละเกมเขียนต่างกัน แต่คณิตเบื้องหลังเป็นเรื่องเดิมที่น้อง ๆ รู้อยู่แล้ว</p>
 </blockquote>
+<blockquote>
+<p><strong>ทฤษฎี → โค้ด (bridge):</strong> <code>game.hit()</code> คือ engine ห่ออสมการ 4 ตัวข้างบนไว้ ต้นฉบับที่เขียนเป็น Python จริง ๆ อยู่ในเกมเต็มที่ <code>full_games/shooter_full.py:48-50</code> — ฟังก์ชัน <code>overlap()</code>:</p>
+<pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">overlap</span>(<span class="hljs-params">ax, ay, aw, ah, ox, oy, ow, oh</span>):
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">not</span> (ax + aw &lt; ox <span class="hljs-keyword">or</span> ax &gt; ox + ow <span class="hljs-keyword">or</span> ay + ah &lt; oy <span class="hljs-keyword">or</span> ay &gt; oy + oh)   <span class="hljs-comment"># :50</span>
+</code></pre>
+<p>สังเกตว่ามันเขียนเป็น <strong>&quot;NOT แยกกัน&quot;</strong> (De Morgan): แทนที่จะพิสูจน์ว่า <em>ซ้อนกัน</em> มันพิสูจน์ว่า <em>ไม่ซ้อน</em> (อยู่คนละฝั่งซ้าย/ขวา/บน/ล่าง) แล้ว <code>not</code> กลับผล — ได้ผลลัพธ์เดียวกับ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext>overlap</mtext><mi>x</mi></msub><mo>∧</mo><msub><mtext>overlap</mtext><mi>y</mi></msub></mrow><annotation encoding="application/x-tex">\text{overlap}_x \wedge \text{overlap}_y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.9386em;vertical-align:-0.2441em;"></span><span class="mord"><span class="mord text"><span class="mord">overlap</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2441em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0747em;vertical-align:-0.3802em;"></span><span class="mord"><span class="mord text"><span class="mord">overlap</span></span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.0573em;"><span style="top:-2.4559em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.0359em;">y</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3802em;"><span></span></span></span></span></span></span></span></span></span> เป๊ะ (คาบ 12 จะเรียก <code>overlap()</code> นี้ตรง ๆ ที่ <code>:237</code> กระสุน×ศัตรู และ <code>:250</code> ยาน×ศัตรู)</p>
+</blockquote>
 </section>
-</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="15" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="14" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="14" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
 <h1 id="state-machine-%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%81%E0%B8%A1">State machine ของเกม</h1>
 <svg viewBox="0 0 760 200" width="100%" font-family="sans-serif" font-size="14">
   <rect x="40" y="80" width="130" height="50" rx="25" fill="#E3F2FD" stroke="#2196F3" />
@@ -362,6 +369,49 @@ enemy_speed = [random.uniform(<span class="hljs-number">2.5</span>, <span class=
 </svg>
 <blockquote>
 <p><code>return False</code> จาก <code>on_frame</code> = บอก <code>game.run()</code> ให้หยุดลูป นี่คือวิธีจบเกมแบบสะอาด ๆ</p>
+</blockquote>
+</section>
+</foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="15" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="15" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">
+<h1 id="%E0%B8%97%E0%B8%B1%E0%B9%89%E0%B8%87-on_frame-%E0%B9%83%E0%B8%99%E0%B8%AB%E0%B8%99%E0%B8%B6%E0%B9%88%E0%B8%87%E0%B9%80%E0%B8%9F%E0%B8%A3%E0%B8%A1--%E0%B9%84%E0%B8%AB%E0%B8%A5%E0%B8%A2%E0%B8%B1%E0%B8%87%E0%B9%84%E0%B8%87-%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%AD%E0%B8%9A%E0%B8%84%E0%B8%A3%E0%B8%9A">ทั้ง on_frame ในหนึ่งเฟรม · ไหลยังไง (ประกอบครบ)</h1>
+<p>ผังก่อนหน้าโฟกัสแค่ท่อนศัตรู — ผังนี้คือ <strong>on_frame ทั้งก้อน</strong> ตามลำดับจริง: ขับยาน → ยิง+cooldown → เลื่อนกระสุน → วนศัตรู แล้ว <code>game.run()</code> วนซ้ำให้เอง 30 ครั้ง/วินาที</p>
+<div style="text-align:center">
+<svg width="940" height="215" viewBox="0 0 940 215" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="ar2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="15" y="14" font-size="11" fill="#607d8b">notation: เริ่ม/จบ = เทา · อ่าน/วาด = เขียว · กระบวนการ = ฟ้า · ศัตรู = ส้ม · ตัดสินใจ = ข้าวหลามตัดม่วง · (บรรทัดอ้าง shooter_step3/step4.py)</text>
+  
+  <g font-size="13.5" text-anchor="middle">
+    <rect x="8"   y="40" width="104" height="48" rx="22" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" /><text x="60"  y="60" font-weight="700" fill="#455a64">on_frame</text><text x="60" y="77" font-size="10" fill="#999">:36</text>
+    <rect x="140" y="40" width="120" height="48" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="200" y="60" font-weight="700" fill="#2e7d32">อ่าน keys</text><text x="200" y="77" font-size="10" fill="#999">game.keys() :38</text>
+    <rect x="290" y="40" width="160" height="48" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="370" y="60" font-weight="700" fill="#1565c0">ยาน: เร่ง/ไถล+clamp</text><text x="370" y="77" font-size="10" fill="#999">step3 :42-46</text>
+    <rect x="480" y="40" width="120" height="48" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="540" y="60" font-weight="700" fill="#2e7d32">ship.move_to</text><text x="540" y="77" font-size="10" fill="#999">:47</text>
+    <polygon points="680,38 738,64 680,90 622,64" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" /><text x="680" y="61" font-size="12" font-weight="700" fill="#6a1b9a">ยิง?</text><text x="680" y="76" font-size="9" fill="#6a1b9a">A/UP·cd=0 :51</text>
+  </g>
+  <line x1="112" y1="64" x2="136" y2="64" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  <line x1="260" y1="64" x2="286" y2="64" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  <line x1="450" y1="64" x2="476" y2="64" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  <line x1="600" y1="64" x2="620" y2="64" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  
+  <g font-size="13.5" text-anchor="middle">
+    <rect x="590" y="150" width="175" height="48" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="677" y="170" font-weight="700" fill="#1565c0">หยิบนัด+show+sfx</text><text x="677" y="187" font-size="10" fill="#999">cd=8 · step3 :52-57</text>
+    <rect x="370" y="150" width="175" height="48" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="457" y="170" font-weight="700" fill="#1565c0">เลื่อนกระสุน+คืนบ่อ</text><text x="457" y="187" font-size="10" fill="#999">step3 :60-64</text>
+    <rect x="120" y="150" width="220" height="48" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" /><text x="230" y="169" font-weight="700" fill="#e65100">วนศัตรู (6): ตก → หลุด?/โดน?</text><text x="230" y="187" font-size="10" fill="#999">step4 :71-89 (ผังละเอียดข้างบน)</text>
+    <rect x="8" y="150" width="96" height="48" rx="22" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" /><text x="56" y="170" font-weight="700" fill="#455a64">RETURN</text><text x="56" y="187" font-size="10" fill="#999">/ False=จบ</text>
+  </g>
+  
+  <line x1="680" y1="90" x2="677" y2="148" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" /><text x="694" y="120" font-size="11" fill="#2e7d32">Yes</text>
+  <path d="M622,64 C520,64 470,110 462,148" fill="none" stroke="#607d8b" stroke-width="2.2" marker-end="url(#ar2)" /><text x="512" y="120" font-size="11" fill="#c62828">No</text>
+  <line x1="590" y1="174" x2="547" y2="174" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  <line x1="370" y1="174" x2="342" y2="174" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  <line x1="120" y1="174" x2="106" y2="174" stroke="#607d8b" stroke-width="2.4" marker-end="url(#ar2)" />
+  
+  <path d="M56,150 C56,112 60,100 60,90" fill="none" stroke="#9e9e9e" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#ar2)" />
+  <text x="150" y="212" font-size="11" fill="#9e9e9e">game.run(on_frame, fps=30) เรียกซ้ำทุกเฟรม (:67) จนกว่าจะ return False</text>
+</svg>
+</div>
+<blockquote>
+<p>เส้น <strong>No</strong> = เฟรมที่ไม่ได้ยิง (กดอยู่ระหว่าง cooldown หรือไม่กด A) ก็ข้ามท่อนยิงไปเลื่อนกระสุนต่อ — cooldown ที่ <code>:50</code> นับถอยหลังทุกเฟรมไม่ว่าจะยิงหรือไม่</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="16" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="16" style="--paginate:true;--theme:default;" data-marpit-pagination-total="19">

@@ -529,6 +529,7 @@ if(document.readyState==='complete')go();else window.addEventListener('load',go)
 <p><strong>ฝั่ง Algorithm / ฟิสิกส์</strong></p>
 <ul>
 <li><strong>Euler integration</strong> — <code>x += v</code> และ <code>v += a</code> คือการประมาณการเคลื่อนที่ทีละเฟรม รากฐานเดียวกับฟิสิกส์เอนจินจริง</li>
+<li><strong>1D kinematics</strong> — <code>shooter_step2.py</code> เคลื่อนที่บน<strong>แกน x แกนเดียว</strong> (<code>ship_x += ship_speed</code> ที่ <code>shooter_step2.py:32</code>) จึงเป็น &quot;จลนศาสตร์ 1 มิติ&quot; ต่างจากลูก Pong ที่วิ่ง 2 แกน (2D); สมการเดียวกันเป๊ะ แค่ที่นี่ใช้แกนเดียว</li>
 <li><strong>โมเมนตัม + แรงเสียดทาน</strong> — คูณ <code>×FRICTION</code> ทุกเฟรม = ความเร็วลดแบบ exponential คือสมการการสลายตัวที่เจอในฟิสิกส์/DSP</li>
 </ul>
 <p><strong>ฝั่ง Python</strong></p>
@@ -551,7 +552,7 @@ if(document.readyState==='complete')go();else window.addEventListener('load',go)
 <h1 id="%E0%B8%AA%E0%B8%A3%E0%B8%B8%E0%B8%9B--%E0%B8%84%E0%B8%B2%E0%B8%9A%E0%B8%AB%E0%B8%99%E0%B9%89%E0%B8%B2--%E0%B8%97%E0%B8%B3%E0%B9%80%E0%B8%AD%E0%B8%87-30">สรุป + คาบหน้า + ทำเอง 30%</h1>
 <ul>
 <li><strong>เกมที่ 3 โครงคุ้นมือแล้ว:</strong> ไม่มี API ใหม่เลย ทุกคำสั่งเราเคยใช้ใน Catch/Pong คือบทพิสูจน์ 70/30 ของเรา</li>
-<li><strong>velocity คือการทบทวนไม้ตี Pong:</strong> accel/friction/clamp ชุดเดียวกัน เปลี่ยนแค่แกน</li>
+<li><strong>velocity คือการทบทวนไม้ตี Pong:</strong> accel/friction/clamp ชุดเดียวกัน เปลี่ยนแค่แกน — Shooter เป็น <strong>1D kinematics</strong> (แกน x เดียว) ส่วน Pong เป็น 2D (x และ y)</li>
 <li><strong>เก็บตำแหน่งเป็น float เสมอ</strong> เมื่อต้องสะสมความเร็วที่เป็นเศษส่วน — นี่คือกับดักอันดับหนึ่งของคาบนี้</li>
 </ul>
 <div style="margin-top:14px;background:#fff8e1;border:2px solid #ef6c00;border-radius:10px;padding:14px">
