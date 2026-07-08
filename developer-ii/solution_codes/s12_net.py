@@ -1,4 +1,4 @@
-# s13_net.py — เน็ต/IoT: ส่งคะแนนขึ้น Leaderboard ผ่าน MQTT
+# s12_net.py — เน็ต/IoT: ส่งคะแนนขึ้น Leaderboard ผ่าน MQTT
 #
 # วิธีรัน: เปิดไฟล์นี้ใน BENTO IDE แล้วกด "Program to Device"
 #
