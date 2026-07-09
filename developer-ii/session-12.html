@@ -89,7 +89,7 @@
   <rect x="372" y="100" width="180" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
   <text x="462" y="122" font-size="14" text-anchor="middle" font-weight="bold" fill="#1b5e20">Python (CM33)</text>
   <text x="462" y="138" font-size="11" text-anchor="middle" fill="#3a6a3a">คุมเกม (logic)</text>
-  <defs><marker markerUnits="userSpaceOnUse" id="a12" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#999" /></marker></defs>
+  <defs><marker id="a12" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#999" /></marker></defs>
 </svg>
 <blockquote>
 <p>ตลับเกมมี Super FX ช่วยวาด <img class="emoji" draggable="false" alt="↔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.2/assets/svg/2194.svg" data-marp-twemoji=""/> บอร์ดเรามี C core (CM55) ช่วยวาด — coprocessor ตัวเดียวกันคนละยุค</p>
@@ -311,7 +311,7 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 <p>โครงทั้งไฟล์เป็นผังเดียวแบบนี้: เส้น <strong>ทึบ</strong> = 70% + ช่องที่โครงให้มาแล้ว (รันได้เลย) · กล่อง/รูปสี่เหลี่ยมข้าวหลามตัด <strong>เส้นประ</strong> = 30% ที่กลุ่มต้องเติมเอง (Issue #2 — ยังไม่เฉลย)</p>
 <div style="text-align:center">
 <svg viewBox="0 0 940 210" width="100%" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="s12t" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker id="s12t" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   <g font-size="13" text-anchor="middle">
     <rect x="6" y="88" width="160" height="46" rx="10" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" /><text x="86" y="107" font-weight="700" fill="#455a64">init · STATE (ครั้งเดียว)</text><text x="86" y="125" font-size="11" fill="#999">title·Box·Text·score=0 :23-31</text>
     <rect x="196" y="88" width="170" height="46" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="281" y="107" font-weight="700" fill="#1565c0">game.run(update, fps)</text><text x="281" y="125" font-size="11" fill="#999">:72</text>
@@ -731,7 +731,7 @@ game.run(update, fps=FPS)
 </ul>
 <div style="text-align:center">
 <svg width="820" height="112" viewBox="0 0 820 112" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="arS12" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker></defs>
+  <defs><marker id="arS12" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker></defs>
   <line x1="60" y1="56" x2="770" y2="56" stroke="#cfd8dc" stroke-width="3" />
   <g text-anchor="middle">
     <circle cx="140" cy="56" r="8" fill="#607d8b" />
@@ -760,7 +760,7 @@ game.run(update, fps=FPS)
 <p>เทคนิคในเฉลยนี้ไม่ใช่ของเล่นในคาบ มันคือสิ่งที่ซอฟต์แวร์จริงใช้ทุกวัน:</p>
 <div style="text-align:center">
 <svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="s12u" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker id="s12u" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   
   <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
   <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">callback loop · game.run(update, fps)</text>
@@ -815,7 +815,7 @@ game.run(update, fps=FPS)
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาเกมของกลุ่มได้:</p>
 <div style="text-align:center">
 <svg width="840" height="220" viewBox="0 0 840 220" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="s12x" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker id="s12x" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   
   <text x="185" y="22" font-size="13" font-weight="700" fill="#455a64" text-anchor="middle">เฉลยวันนี้ · mygame.py</text>
   <rect x="20" y="30" width="330" height="170" rx="10" fill="#ffffff" stroke="#cfd8dc" stroke-width="2" />

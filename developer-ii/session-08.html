@@ -331,7 +331,7 @@
   <line x1="550" y1="88" x2="598" y2="88" stroke="#333" stroke-width="2" marker-end="url(#a)" />
   <path d="M675 116 L675 150 L85 150 L85 118" fill="none" stroke="#888" stroke-width="2" stroke-dasharray="5,4" marker-end="url(#a)" />
   <text x="320" y="170" fill="#888">ทำซ้ำ 50 ครั้ง/วินาที (fps=50)</text>
-  <defs><marker markerUnits="userSpaceOnUse" id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><polygon points="0,0 8,3 0,6" fill="#333" /></marker></defs>
+  <defs><marker id="a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#333" /></marker></defs>
 </svg>
 <blockquote>
 <p>ฟิสิกส์ทั้งเกมเกิดจากการ <strong>&quot;ทำซ้ำเล็ก ๆ เร็ว ๆ&quot;</strong> ไม่มีสูตรลับอะไรเลย มีแค่ 2 บรรทัดที่วนซ้ำกันไป</p>
@@ -342,7 +342,7 @@
 <p>ผังก่อนหน้าเป็นลูปแบบย่อ — นี่คือ <strong>ทั้งเฟรมจริง</strong> รวมกิ่ง <em>กระพือ</em> และกิ่ง <em>ชนเพดาน / ตกพื้น</em> · สัญกรณ์: มนเทา = เริ่ม/จบ · เขียว = อ่าน/วาด · น้ำเงิน = เซ็ตค่า · ส้ม = ฟิสิกส์ · <b>ข้าวหลามตัดม่วง = ตัดสินใจ</b></p>
 <div style="text-align:center">
 <svg width="940" height="156" viewBox="0 0 940 156" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="s8a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker id="s8a" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   <g font-size="14" text-anchor="middle">
     <rect x="8" y="66" width="120" height="46" rx="10" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" /><text x="68" y="88" font-weight="700" fill="#455a64">1 เฟรม</text><text x="68" y="104" font-size="11" fill="#607d8b">game.run :46</text>
     <rect x="148" y="66" width="120" height="46" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="208" y="88" font-weight="700" fill="#2e7d32">อ่าน keys</text><text x="208" y="104" font-size="11" fill="#999">:33</text>
@@ -365,7 +365,7 @@
   <line x1="760" y1="131" x2="785" y2="131" stroke="#607d8b" stroke-width="2.4" marker-end="url(#s8a)" />
 </svg>
 <svg width="940" height="204" viewBox="0 0 940 204" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="s8b" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker id="s8b" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   <g font-size="14" text-anchor="middle">
     <rect x="8" y="72" width="130" height="44" rx="10" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" /><text x="73" y="99" font-weight="700" fill="#455a64">(จากฟิสิกส์)</text>
     <polygon points="250,64 306,94 250,124 194,94" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" /><text x="250" y="92" font-size="12" font-weight="700" fill="#6a1b9a">y &lt; 0? เพดาน</text><text x="250" y="108" font-size="11" fill="#7b5e9a">:39</text>
@@ -652,7 +652,7 @@ game.run(on_each_frame, fps=<span class="hljs-number">50</span>)                
 <p><strong>ที่ไป:</strong> <code>bird_y</code> ที่วันนี้เป็นค่าคงที่ 180.0 คือ <strong>ตัวแปรตัวเดียว</strong> ที่คาบหน้าจะมีชีวิต พอเราเติม <code>bird_velocity += GRAVITY</code> แล้ว <code>bird_y += bird_velocity</code> (สไลด์ <strong>&quot;ฟิสิกส์ของคาบนี้&quot;</strong>) บรรทัด <code>move_to</code> เดิมจะทำให้นกตกเองโดยไม่ต้องแตะอะไรอีก ส่วน <code>score_label</code> ที่โชว์ 0 เฉย ๆ วันนี้ จะกลายเป็นคะแนนจริงตอนใส่ท่อในคาบ 9 จนครบเป็น <code>full_games/flappy_full.py</code></p>
 <div style="text-align:center">
 <svg width="820" height="112" viewBox="0 0 820 112" font-family="DejaVu Sans, sans-serif">
-  <defs><marker markerUnits="userSpaceOnUse" id="arF8" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker></defs>
+  <defs><marker id="arF8" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker></defs>
   <line x1="70" y1="56" x2="760" y2="56" stroke="#cfd8dc" stroke-width="3" />
   <g text-anchor="middle">
     <circle cx="150" cy="56" r="8" fill="#607d8b" />
@@ -687,7 +687,7 @@ game.run(on_each_frame, fps=<span class="hljs-number">50</span>)                
 <p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือลำดับการทำงานที่วิศวกรจริงใช้ทุกวัน:</p>
 <div style="text-align:center">
 <svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
-<defs><marker markerUnits="userSpaceOnUse" id="s8u1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+<defs><marker id="s8u1" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
 <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
 <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">แผงหน้าปัด HMI — โชว์ "0" ก่อนต่อเซนเซอร์</text>
 <path d="M56,100 A34,34 0 0 1 124,100" fill="none" stroke="#90caf9" stroke-width="8" />
@@ -756,7 +756,7 @@ game.run(on_each_frame, fps=<span class="hljs-number">50</span>)                
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของที่พิมพ์เองวันนี้:</p>
 <div style="text-align:center">
 <svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
-<defs><marker markerUnits="userSpaceOnUse" id="s8Dn" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker></defs>
+<defs><marker id="s8Dn" markerUnits="userSpaceOnUse" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
 <text x="14" y="22" font-size="13" font-weight="700" fill="#1565c0">วันนี้ — bird_y คงที่ (นกนิ่ง)</text>
 <line x1="120" y1="46" x2="720" y2="46" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4,4" />
 <rect x="140" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
