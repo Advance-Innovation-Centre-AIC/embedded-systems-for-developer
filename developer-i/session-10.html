@@ -715,9 +715,65 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="24" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="24" style="--paginate:true;--theme:default;" data-marpit-pagination-total="25">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--%E0%B8%A7%E0%B8%B2%E0%B8%87-object-%E0%B8%99%E0%B8%B4%E0%B9%88%E0%B8%87--state--game-loop">ใช้จริงที่ไหน — วาง object นิ่ง + state + game loop</h1>
 <p>ท่าของ step 1 (วางของนิ่งให้ครบ → เก็บ state แยกจาก UI → ปล่อยลูปคงที่หมุน) ไม่ใช่แค่แบบฝึกหัด มันคือวิธีทำงานของระบบจริงหลายอย่าง:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arU10a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">แดชบอร์ดรถ / จอเครื่องมือแพทย์</text>
+  <path d="M46,98 A38,38 0 0 1 122,98" fill="none" stroke="#1565c0" stroke-width="3" />
+  <line x1="84" y1="98" x2="106" y2="70" stroke="#1565c0" stroke-width="2.5" />
+  <circle cx="84" cy="98" r="3.5" fill="#1565c0" />
+  <text x="84" y="111" font-size="10" fill="#777" text-anchor="middle">หน้าปัด</text>
+  <rect x="168" y="46" width="244" height="38" rx="6" fill="#ffffff" stroke="#1565c0" />
+  <text x="180" y="70" font-size="14" fill="#1565c0">Score: 0   Lives: 3</text>
+  <text x="290" y="105" font-size="11" fill="#777" text-anchor="middle">ค่าจริงอยู่ใน state → label อ่านมาโชว์</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">firmware bring-up / HMI</text>
+  <rect x="470" y="42" width="72" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" />
+  <rect x="470" y="74" width="150" height="9" rx="3" fill="#ffffff" stroke="#2e7d32" />
+  <rect x="552" y="42" width="68" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" />
+  <text x="545" y="99" font-size="10" fill="#607d8b">ภาพนิ่งก่อน (on_frame pass)</text>
+  <rect x="704" y="47" width="86" height="30" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="747" y="66" font-size="11" fill="#2e7d32" text-anchor="middle">sensor</text>
+  <line x1="702" y1="62" x2="626" y2="62" stroke="#607d8b" stroke-width="2" marker-end="url(#arU10a)" />
+  <text x="658" y="105" font-size="11" fill="#777" text-anchor="middle">วาง widget ครบก่อน แล้วต่อ sensor ทีหลัง</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">fixed timestep · game loop</text>
+  <text x="28" y="168" font-size="11" fill="#607d8b">game.run(fps=30) · 30 Hz</text>
+  <line x1="40" y1="188" x2="410" y2="188" stroke="#ef6c00" stroke-width="2" />
+  <line x1="60" y1="180" x2="60" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="96" y1="180" x2="96" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="132" y1="180" x2="132" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="168" y1="180" x2="168" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="204" y1="180" x2="204" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="240" y1="180" x2="240" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="276" y1="180" x2="276" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="312" y1="180" x2="312" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="348" y1="180" x2="348" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <line x1="384" y1="180" x2="384" y2="196" stroke="#ef6c00" stroke-width="2" />
+  <text x="222" y="222" font-size="11" fill="#777" text-anchor="middle">ทุก tick = 1 เฟรม — เหมือน Unity FixedUpdate / server tick</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">แยก data ออกจากการแสดงผล</text>
+  <rect x="470" y="162" width="132" height="46" rx="6" fill="#ffffff" stroke="#6a1b9a" />
+  <text x="536" y="182" font-size="12" fill="#6a1b9a" text-anchor="middle">data</text>
+  <text x="536" y="199" font-size="11" fill="#999" text-anchor="middle">score, lives</text>
+  <line x1="604" y1="185" x2="672" y2="185" stroke="#607d8b" stroke-width="2" marker-end="url(#arU10a)" />
+  <text x="638" y="178" font-size="10" fill="#777" text-anchor="middle">อ่านมาแสดง</text>
+  <rect x="674" y="162" width="160" height="46" rx="6" fill="#f3e5f5" stroke="#6a1b9a" />
+  <text x="754" y="182" font-size="12" fill="#6a1b9a" text-anchor="middle">view · HUD</text>
+  <text x="754" y="199" font-size="11" fill="#999" text-anchor="middle">game.Text</text>
+  <text x="640" y="226" font-size="11" fill="#777" text-anchor="middle">แก้ตัวแปร → UI ตามเอง</text>
+</svg>
+</div>
 <ul>
-<li><strong>แดชบอร์ดรถยนต์ / จอเครื่องมือแพทย์</strong> — HUD <code>Score: 0   Lives: 3</code> ที่เราวาง (<code>:21</code>) คือหลักเดียวกับหน้าปัดที่โชว์ความเร็ว/ชีพจร: ค่าจริงเก็บใน state (<code>score, lives</code> ที่ <code>:20</code>) แล้ว label อ่านมาแสดง วิศวกรวาง layout ให้นิ่งครบก่อน ค่อย feed ค่า realtime เข้าไปทีหลัง</li>
-<li><strong>firmware bring-up / HMI</strong> — ตอนขึ้นจอใหม่ วิศวกร embedded วาง widget ให้ครบและรันได้ก่อน (ภาพนิ่ง) แล้วค่อยต่อ sensor เข้ามา เหมือน <code>on_frame()</code> ที่ <code>pass</code> ไว้ก่อน (<code>:26-27</code>) เป็นวิธี de-risk ให้เห็นว่าจอทำงานก่อนจะไปเดาบั๊กของ logic</li>
+<li><strong>แดชบอร์ดรถยนต์ / จอเครื่องมือแพทย์</strong> — HUD <code>Score: 0   Lives: 3</code> ที่เราวาง (<code>:21</code>) คือหลักเดียวกับหน้าปัดที่โชว์ความเร็ว/ชีพจร: ค่าจริงเก็บใน state (<code>score, lives</code> ที่ <code>:20</code>) แล้ว label อ่านมาแสดง วาง layout ให้นิ่งครบก่อน ค่อย feed ค่า realtime ทีหลัง</li>
+<li><strong>firmware bring-up / HMI</strong> — ขึ้นจอใหม่ วิศวกร embedded วาง widget ให้ครบและรันได้ก่อน (ภาพนิ่ง) แล้วค่อยต่อ sensor เหมือน <code>on_frame()</code> ที่ <code>pass</code> ไว้ก่อน (<code>:26-27</code>) เป็นการ de-risk ให้เห็นว่าจอทำงานก่อนไปเดาบั๊กของ logic</li>
 <li><strong>fixed timestep ของเกมเอนจินจริง</strong> — <code>game.run(on_frame, fps=30)</code> (<code>:29</code>) คือ fixed-rate update loop แบบเดียวกับ <code>FixedUpdate</code> ของ Unity หรือ tick ของเซิร์ฟเวอร์เกม และการเก็บพิกัดเป็น float เพื่อสะสมเศษ (<code>:19</code>) เป็นมาตรฐานของฟิสิกส์เอนจินทุกตัว</li>
 <li><strong>แยก data ออกจากการแสดงผล (model–view)</strong> — <code>score, lives</code> (<code>:20</code>) เป็นข้อมูล ส่วน <code>hud</code> เป็นการแสดงผล แอปจริงทำแบบนี้เพื่อให้ &quot;แก้ที่ตัวแปรแล้ว UI ตามเอง&quot; ไม่ต้องไล่แก้ทั้งสองที่</li>
 </ul>
@@ -728,6 +784,35 @@ game.run(on_frame, fps=<span class="hljs-number">30</span>)                    <
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="25" style="--paginate:true;--theme:default;" data-marpit-pagination-total="25">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหางานจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn10" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+    <marker id="arR10" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#607d8b">แบบตัวแปรแยก — เพิ่มยานทีละชุด</text>
+  <rect x="120" y="34" width="120" height="36" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="180" y="57" font-size="12" fill="#1565c0" text-anchor="middle">ship, ship_x</text>
+  <rect x="252" y="34" width="120" height="36" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="312" y="57" font-size="12" fill="#1565c0" text-anchor="middle">ship2, ship2_x</text>
+  <rect x="384" y="34" width="120" height="36" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="444" y="57" font-size="12" fill="#1565c0" text-anchor="middle">ship3, ship3_x</text>
+  <text x="518" y="57" font-size="12" fill="#607d8b">…เพิ่มเรื่อย ๆ</text>
+  <text x="312" y="92" font-size="11" fill="#ef6c00" text-anchor="middle">ยิ่งเพิ่มยิ่งซ้ำโค้ด — แก้ logic ทีต้องไล่ทุกตัวแปร</text>
+  
+  <line x1="420" y1="102" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn10)" />
+  <text x="436" y="119" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบ list + loop — เก็บยานทั้งหมดไว้ที่เดียว</text>
+  <rect x="120" y="162" width="250" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="245" y="184" font-size="12" fill="#2e7d32" text-anchor="middle">ships = [ship, ship2, ship3, …]</text>
+  <line x1="372" y1="179" x2="398" y2="179" stroke="#607d8b" stroke-width="2" marker-end="url(#arR10)" />
+  <rect x="400" y="162" width="240" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="520" y="184" font-size="12" fill="#2e7d32" text-anchor="middle">for s in ships:  อัปเดตทีเดียว</text>
+  <text x="428" y="214" font-size="11" fill="#2e7d32" text-anchor="middle">เพิ่มยานแค่ append เข้า list — logic เขียนครั้งเดียว ใช้ได้ทุกลำ</text>
+</svg>
+</div>
 <ul>
 <li><strong>ยานสองลำ (ผู้เล่น 2 คน)</strong> — ถ้าจอต้องมียานสองลำ จะออกแบบตัวแปรยังไงไม่ให้ปนกัน ต้องมี <code>ship2</code> กับ <code>ship2_x</code> แยกอีกชุด หรือเก็บยานทั้งหมดเป็น list แล้ววนจัดการทีเดียวดีกว่า</li>
 <li><strong>HUD ที่โตขึ้น</strong> — ถ้าต้องโชว์ทั้ง <code>score</code>, <code>lives</code>, และเวลาที่เหลือ จะวาง <code>game.Text</code> หลายป้ายยังไงบนจอเล็กให้อ่านง่าย ค่าไหนควรอยู่มุมไหน และควรผูกแต่ละป้ายกับ state ตัวไหน</li>

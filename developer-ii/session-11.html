@@ -603,24 +603,113 @@ mqtt.disconnect()
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="25" style="--paginate:true;--theme:default;" data-marpit-pagination-total="26">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--pubsub--%E0%B9%82%E0%B8%9B%E0%B8%A3%E0%B9%82%E0%B8%95%E0%B8%84%E0%B8%AD%E0%B8%A5%E0%B8%82%E0%B9%89%E0%B8%AD%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1--publish-%E0%B8%95%E0%B8%AD%E0%B8%99%E0%B8%88%E0%B8%B3%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99">ใช้จริงที่ไหน — pub/sub · โปรโตคอลข้อความ · publish-ตอนจำเป็น</h1>
 <p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกในห้อง มันคือสิ่งที่ระบบจริงข้างนอกใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="u1" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="30" font-size="13" font-weight="700" fill="#1565c0">เซนเซอร์โรงงาน/ฟาร์ม → คลาวด์</text>
+  <rect x="28" y="48" width="74" height="34" rx="6" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" />
+  <text x="65" y="69" font-size="11" fill="#1565c0" text-anchor="middle">เซนเซอร์</text>
+  <line x1="110" y1="65" x2="300" y2="65" stroke="#b0bec5" stroke-width="2" />
+  <rect x="128" y="51" width="12" height="14" rx="2" fill="#1565c0" />
+  <rect x="172" y="51" width="12" height="14" rx="2" fill="#1565c0" />
+  <rect x="216" y="51" width="12" height="14" rx="2" fill="#1565c0" />
+  <rect x="260" y="51" width="12" height="14" rx="2" fill="#1565c0" />
+  <line x1="302" y1="65" x2="318" y2="65" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+  <rect x="322" y="48" width="94" height="34" rx="8" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" />
+  <text x="369" y="69" font-size="10" fill="#1565c0" text-anchor="middle">broker/cloud</text>
+  <text x="28" y="102" font-size="11" fill="#777">publish เป็นช่วง ๆ — ส่งเท่าที่มีค่าจริง</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="30" font-size="13" font-weight="700" fill="#2e7d32">บ้านอัจฉริยะ · topic เป็นชั้น</text>
+  <rect x="464" y="52" width="76" height="30" rx="6" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="502" y="71" font-size="12" fill="#2e7d32" text-anchor="middle">home/</text>
+  <line x1="540" y1="67" x2="612" y2="56" stroke="#2e7d32" stroke-width="1.5" />
+  <line x1="540" y1="67" x2="612" y2="86" stroke="#2e7d32" stroke-width="1.5" />
+  <rect x="612" y="44" width="214" height="24" rx="6" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="620" y="60" font-size="11" fill="#2e7d32">home/livingroom/light</text>
+  <rect x="612" y="74" width="214" height="24" rx="6" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="620" y="90" font-size="11" fill="#2e7d32">home/kitchen/temp</text>
+  <text x="464" y="106" font-size="11" fill="#777">แต่ละอุปกรณ์มี topic ของตัวเอง</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="148" font-size="13" font-weight="700" fill="#ef6c00">เกมหลายผู้เล่น · broker กระจายให้ทุกเครื่อง</text>
+  <text x="68" y="164" font-size="10" fill="#777" text-anchor="middle">publish 1 ครั้ง</text>
+  <rect x="28" y="170" width="80" height="42" rx="8" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="68" y="195" font-size="12" fill="#ef6c00" text-anchor="middle">broker</text>
+  <rect x="298" y="158" width="118" height="20" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="357" y="172" font-size="11" fill="#ef6c00" text-anchor="middle">ผู้เล่น A</text>
+  <rect x="298" y="184" width="118" height="20" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="357" y="198" font-size="11" fill="#ef6c00" text-anchor="middle">ผู้เล่น B</text>
+  <rect x="298" y="210" width="118" height="20" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="357" y="224" font-size="11" fill="#ef6c00" text-anchor="middle">ผู้เล่น C</text>
+  <line x1="108" y1="188" x2="296" y2="168" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+  <line x1="108" y1="191" x2="296" y2="194" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+  <line x1="108" y1="194" x2="296" y2="220" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="148" font-size="13" font-weight="700" fill="#6a1b9a">กองรถ · client_id ต้องไม่ซ้ำ</text>
+  <rect x="464" y="158" width="124" height="20" rx="6" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="472" y="172" font-size="11" fill="#6a1b9a">รถ · car-01</text>
+  <rect x="464" y="184" width="124" height="20" rx="6" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="472" y="198" font-size="11" fill="#6a1b9a">รถ · car-02</text>
+  <rect x="464" y="210" width="124" height="20" rx="6" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="472" y="224" font-size="11" fill="#6a1b9a">รถ · car-03</text>
+  <rect x="742" y="176" width="98" height="40" rx="8" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="791" y="200" font-size="11" fill="#6a1b9a" text-anchor="middle">ศูนย์กลาง</text>
+  <text x="655" y="184" font-size="10" fill="#777" text-anchor="middle">GPS</text>
+  <line x1="588" y1="168" x2="740" y2="194" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+  <line x1="588" y1="194" x2="740" y2="196" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+  <line x1="588" y1="220" x2="740" y2="198" stroke="#607d8b" stroke-width="2" marker-end="url(#u1)" />
+</svg>
+</div>
 <ul>
-<li><strong>เซนเซอร์โรงงาน / ฟาร์มส่งค่าขึ้นคลาวด์</strong> — เครื่องวัดอุณหภูมิ ความชื้น การสั่น publish ค่าขึ้น broker เป็นช่วง ๆ ตรงกับท่า &quot;publish ตอน GAME OVER ไม่ใช่ทุกเฟรม&quot; ของเรา ส่งเท่าที่มีค่าจริง ไม่ถล่ม broker ด้วยข้อมูลซ้ำ</li>
-<li><strong>บ้านอัจฉริยะ (Home Assistant / MQTT)</strong> — ปลั๊กไฟ หลอดไฟ เซนเซอร์ประตู แต่ละอย่างมี topic ของตัวเอง เช่น <code>home/livingroom/light</code> ตรงกับหลัก &quot;ทั้งห้องตกลง <code>TOPIC</code> ให้ตรงกัน&quot; ที่เราเพิ่งทำ ต่างกันแค่ตั้งชื่อ topic เป็นชั้น ๆ</li>
-<li><strong>เกมหลายผู้เล่น / สถานะเรียลไทม์</strong> — ตำแหน่งผู้เล่น คะแนน สถานะห้อง sync ผ่าน broker กลาง ทุกเครื่อง subscribe แล้วเห็นพร้อมกัน คือ pub/sub decoupling ตัวเดียวกับ leaderboard ของเราขยายขนาด</li>
-<li><strong>กองรถ / โลจิสติกส์ติดตามพิกัด</strong> — รถแต่ละคัน publish GPS ด้วย <code>client_id</code> ไม่ซ้ำ ศูนย์กลาง subscribe ดูทั้งกอง ตรงกับกฎ &quot;id ต้องไม่ซ้ำ&quot; ที่ถ้าซ้ำจะเตะกันหลุด — ในงานจริงนี่คือเรื่องคอขาดบาดตาย</li>
+<li><strong>เซนเซอร์โรงงาน/ฟาร์มส่งค่าขึ้นคลาวด์</strong> — วัดอุณหภูมิ/ความชื้น/การสั่น publish ขึ้น broker เป็นช่วง ๆ ตรงกับหลัก &quot;publish ตอน GAME OVER ไม่ใช่ทุกเฟรม&quot; — ส่งเท่าที่มีค่าจริง ไม่ถล่ม broker</li>
+<li><strong>บ้านอัจฉริยะ (Home Assistant / MQTT)</strong> — ปลั๊ก หลอดไฟ เซนเซอร์ประตู แต่ละอย่างมี topic ของตัวเอง เช่น <code>home/livingroom/light</code> ตรงกับหลัก &quot;ทั้งห้องตกลง <code>TOPIC</code> ให้ตรงกัน&quot; — ต่างแค่ตั้งชื่อ topic เป็นชั้น ๆ</li>
+<li><strong>เกมหลายผู้เล่น / สถานะเรียลไทม์</strong> — ตำแหน่งผู้เล่น คะแนน สถานะห้อง sync ผ่าน broker กลาง ทุกเครื่อง subscribe เห็นพร้อมกัน คือ pub/sub decoupling ตัวเดียวกับ leaderboard ขยายขนาด</li>
+<li><strong>กองรถ / โลจิสติกส์ติดตามพิกัด</strong> — รถแต่ละคัน publish GPS ด้วย <code>client_id</code> ไม่ซ้ำ ศูนย์กลาง subscribe ดูทั้งกอง ตรงกับกฎ &quot;id ต้องไม่ซ้ำ&quot; — ซ้ำเมื่อไรเตะกันหลุด งานจริงคือเรื่องคอขาดบาดตาย</li>
 </ul>
 <blockquote>
-<p>ห้าอย่างข้างบนไม่มีอันไหนเป็นของสมมติเลย ทุกอันวางอยู่บนสามท่าเดิมของเราวันนี้ pub/sub · โปรโตคอลข้อความ · ส่งเท่าที่จำเป็น เปลี่ยนแค่ payload กับ topic เท่านั้นเอง</p>
+<p>สี่อย่างข้างบนไม่มีอันไหนเป็นของสมมติเลย ทุกอันวางอยู่บนสามท่าเดิมของเราวันนี้ pub/sub · โปรโตคอลข้อความ · ส่งเท่าที่จำเป็น เปลี่ยนแค่ payload กับ topic เท่านั้นเอง</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="26" style="--paginate:true;--theme:default;" data-marpit-pagination-total="26">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="aR" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker id="aD" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="22" font-size="13" font-weight="700" fill="#607d8b">แบบแบน — split(":") อ่านตามตำแหน่ง</text>
+  <rect x="120" y="34" width="110" height="30" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="175" y="54" font-size="12" fill="#1565c0" text-anchor="middle">board-01</text>
+  <text x="236" y="55" font-size="15" fill="#607d8b" text-anchor="middle">:</text>
+  <rect x="246" y="34" width="70" height="30" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="281" y="54" font-size="12" fill="#1565c0" text-anchor="middle">1250</text>
+  <line x1="320" y1="49" x2="356" y2="49" stroke="#607d8b" stroke-width="2" marker-end="url(#aR)" />
+  <text x="338" y="42" font-size="10" fill="#777" text-anchor="middle">+ฟิลด์</text>
+  <rect x="360" y="34" width="250" height="30" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="485" y="54" font-size="12" fill="#1565c0" text-anchor="middle">board-01:1250:42:3</text>
+  <text x="485" y="84" font-size="11" fill="#ef6c00" text-anchor="middle">เพิ่ม time/level → ตำแหน่งเลื่อน ฝั่งรับนับผิดง่าย</text>
+  
+  <line x1="420" y1="98" x2="420" y2="124" stroke="#607d8b" stroke-width="2" marker-end="url(#aD)" />
+  <text x="436" y="116" font-size="11" fill="#777">เปลี่ยนวิธีคิด: อ่านตามชื่อ ไม่ใช่ตำแหน่ง</text>
+  
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบมีคีย์ — JSON อ่านตามชื่อฟิลด์</text>
+  <rect x="120" y="162" width="600" height="32" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="132" y="183" font-size="12" fill="#2e7d32">{"name":"board-01","score":1250,"time":42,"level":3}</text>
+  <text x="120" y="214" font-size="11" fill="#2e7d32">เพิ่มฟิลด์ใหม่ได้ ฝั่งเดิมไม่พัง — อ่านด้วยคีย์ ไม่ใช่ตำแหน่ง</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้าต้องส่งมากกว่าคะแนน</strong> — อยากส่งเวลาที่ใช้ ด่านที่ถึง และชื่อจริงไปพร้อมกันในข้อความเดียว รูปแบบ <code>&quot;ชื่อ:คะแนน&quot;</code> จะพอไหม จะออกแบบ payload ใหม่ยังไงให้ฝั่งรับยังแยกคืนได้ง่าย (ลองมองไปทาง JSON)</li>
-<li><strong>ถ้าเน็ตหลุดกลางเกม</strong> — WiFi ห้องหลุดตอนกำลังจะ publish จะออกแบบให้เกมไม่ crash ยังไง เก็บคะแนนที่ค้างไว้ส่งซ้ำตอนเน็ตกลับมาได้ไหม (ใบ้: <code>try/except</code> + คิวเก็บคะแนน ตรงกับงาน 30%)</li>
-<li><strong>ถ้ามี 30 บอร์ดยิงคะแนนพร้อมกัน</strong> — กระดานจะรกมาก จะกรอง/จัดอันดับให้เหลือ Top 5 ที่หน้าจอยังไง เก็บใน <code>best = {}</code> (ชื่อ→คะแนนสูงสุด) แล้วเรียงยังไงให้ไม่ต้องคำนวณใหม่ทุกข้อความ</li>
-<li><strong>สะพานสู่คาบหน้า (Capstone ออกแบบเกมเอง)</strong> — ถ้ากลุ่มน้องจะฝัง leaderboard เข้าเกมที่ออกแบบเอง แต่ในห้องมีหลายกลุ่มทำคนละเกม จะออกแบบ <code>TOPIC</code> ยังไงให้คะแนนเกมของแต่ละกลุ่ม <strong>ไม่ปนกัน</strong> (ใบ้: ตั้ง topic เป็นชั้น เช่น <code>tesaiot/class/&lt;ชื่อเกม&gt;/leaderboard</code>) นี่คือสิ่งที่เกม Capstone ของน้องจะต้องตัดสินใจ</li>
+<li><strong>ถ้าต้องส่งมากกว่าคะแนน</strong> — อยากส่งเวลา ด่านที่ถึง และชื่อจริงในข้อความเดียว รูปแบบ <code>&quot;ชื่อ:คะแนน&quot;</code> จะพอไหม ออกแบบ payload ใหม่ยังไงให้ฝั่งรับแยกคืนง่าย (ลองมองไปทาง JSON)</li>
+<li><strong>ถ้าเน็ตหลุดกลางเกม</strong> — WiFi หลุดตอนกำลังจะ publish จะกันเกมไม่ให้ crash ยังไง เก็บคะแนนที่ค้างไว้ส่งซ้ำตอนเน็ตกลับได้ไหม (ใบ้: <code>try/except</code> + คิวเก็บคะแนน ตรงกับงาน 30%)</li>
+<li><strong>ถ้ามี 30 บอร์ดยิงคะแนนพร้อมกัน</strong> — กระดานจะรกมาก จะกรอง/จัดอันดับให้เหลือ Top 5 ยังไง เก็บใน <code>best = {}</code> (ชื่อ→คะแนนสูงสุด) แล้วเรียงยังไงไม่ต้องคำนวณใหม่ทุกข้อความ</li>
+<li><strong>สะพานสู่คาบหน้า (Capstone ออกแบบเกมเอง)</strong> — หลายกลุ่มทำคนละเกม จะออกแบบ <code>TOPIC</code> ยังไงให้คะแนนแต่ละกลุ่ม <strong>ไม่ปนกัน</strong> (ใบ้: topic เป็นชั้น เช่น <code>tesaiot/class/&lt;ชื่อเกม&gt;/leaderboard</code>) — นี่คือสิ่งที่เกม Capstone ต้องตัดสินใจ</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูกวันนี้ ขอแค่คิดต่อจากโค้ดที่พิมพ์เอง ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นวิศวกรเครือข่าย ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

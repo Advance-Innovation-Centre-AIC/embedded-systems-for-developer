@@ -561,11 +561,69 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="26" style="--paginate:true;--theme:default;" data-marpit-pagination-total="27">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--collision-check--bounds--state-transition">ใช้จริงที่ไหน — collision check · bounds · state transition</h1>
 <p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่ระบบจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="u5a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">หุ่นยนต์กวาดพื้น / AGV · เช็คช่องถัดไปก่อนขยับ</text>
+  <rect x="40" y="44" width="26" height="26" rx="4" fill="#ffffff" stroke="#90caf9" />
+  <rect x="68" y="44" width="26" height="26" rx="4" fill="#ffffff" stroke="#90caf9" />
+  <rect x="96" y="44" width="26" height="26" rx="4" fill="#ffffff" stroke="#90caf9" />
+  <rect x="124" y="44" width="26" height="26" rx="4" fill="#ffffff" stroke="#90caf9" />
+  <rect x="152" y="44" width="26" height="26" rx="4" fill="#ffffff" stroke="#90caf9" />
+  <rect x="40" y="44" width="26" height="26" rx="4" fill="#1565c0" />
+  <circle cx="53" cy="57" r="6" fill="#ffffff" />
+  <rect x="68" y="44" width="26" height="26" rx="4" fill="none" stroke="#1565c0" stroke-width="2" stroke-dasharray="4 3" />
+  <rect x="124" y="44" width="26" height="26" rx="4" fill="#cfd8dc" stroke="#607d8b" />
+  <text x="81" y="84" font-size="10" fill="#1565c0" text-anchor="middle">ช่องถัดไป</text>
+  <text x="137" y="84" font-size="10" fill="#607d8b" text-anchor="middle">ผนัง</text>
+  <text x="196" y="52" font-size="12" fill="#455a64">ก่อนขยับล้อจริง:</text>
+  <text x="196" y="70" font-size="11" fill="#607d8b">คำนวณตำแหน่งถัดไป</text>
+  <text x="196" y="86" font-size="11" fill="#607d8b">แล้วถามว่า "ชนไหม?"</text>
+  <text x="28" y="106" font-size="11" fill="#777">= ท่า "เช็ค next_head ก่อนขยับ" บนแผนที่ห้อง</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">Bounds check · 0 ≤ index &lt; SIZE</text>
+  <rect x="476" y="44" width="28" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" /><text x="490" y="61" font-size="12" fill="#2e7d32" text-anchor="middle">0</text>
+  <rect x="506" y="44" width="28" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" /><text x="520" y="61" font-size="12" fill="#2e7d32" text-anchor="middle">1</text>
+  <rect x="536" y="44" width="28" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" /><text x="550" y="61" font-size="12" fill="#2e7d32" text-anchor="middle">2</text>
+  <rect x="566" y="44" width="28" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" /><text x="580" y="61" font-size="12" fill="#2e7d32" text-anchor="middle">3</text>
+  <rect x="596" y="44" width="28" height="26" rx="4" fill="#ffffff" stroke="#2e7d32" /><text x="610" y="61" font-size="12" fill="#2e7d32" text-anchor="middle">4</text>
+  <line x1="632" y1="40" x2="632" y2="74" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="3 3" />
+  <rect x="644" y="44" width="28" height="26" rx="4" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="4 3" />
+  <text x="658" y="62" font-size="13" fill="#ef6c00" text-anchor="middle">✗</text>
+  <text x="658" y="84" font-size="10" fill="#ef6c00" text-anchor="middle">index = SIZE</text>
+  <text x="550" y="88" font-size="10" fill="#2e7d32" text-anchor="middle">ปลอดภัย: 0 … SIZE−1</text>
+  <text x="464" y="106" font-size="11" fill="#777">หลุดขอบแม้ช่องเดียว = อ่านนอก array → HardFault จริง</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">เมนู/สถานะเครื่องใช้ไฟฟ้า · state machine</text>
+  <rect x="30" y="158" width="92" height="32" rx="8" fill="#ffffff" stroke="#ef6c00" stroke-width="2" /><text x="76" y="178" font-size="11" fill="#e65100" text-anchor="middle">idle / พร้อม</text>
+  <rect x="168" y="158" width="104" height="32" rx="8" fill="#ffffff" stroke="#ef6c00" stroke-width="2" /><text x="220" y="178" font-size="11" fill="#e65100" text-anchor="middle">กำลังทำงาน</text>
+  <rect x="318" y="158" width="100" height="32" rx="8" fill="#ffffff" stroke="#ef6c00" stroke-width="2" /><text x="368" y="178" font-size="11" fill="#e65100" text-anchor="middle">เสร็จ/ผิดพลาด</text>
+  <line x1="122" y1="174" x2="166" y2="174" stroke="#607d8b" stroke-width="2" marker-end="url(#u5a)" />
+  <line x1="272" y1="174" x2="316" y2="174" stroke="#607d8b" stroke-width="2" marker-end="url(#u5a)" />
+  <path d="M368,190 L368,208 L76,208 L76,190" fill="none" stroke="#607d8b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#u5a)" />
+  <text x="222" y="204" font-size="10" fill="#777" text-anchor="middle">cancel / return → กลับ idle</text>
+  <text x="28" y="226" font-size="11" fill="#777">return False = transition ออกจากสถานะ "กำลังเล่น"</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">ตรวจการชน (hitbox/collider) · Unity/Godot</text>
+  <rect x="486" y="158" width="90" height="44" rx="6" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" /><text x="500" y="172" font-size="11" fill="#6a1b9a">วัตถุ A</text>
+  <rect x="548" y="176" width="90" height="44" rx="6" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" /><text x="592" y="214" font-size="11" fill="#6a1b9a">วัตถุ B</text>
+  <rect x="548" y="176" width="28" height="26" fill="#6a1b9a" fill-opacity="0.35" />
+  <text x="562" y="193" font-size="10" fill="#4a148c" text-anchor="middle">ชน!</text>
+  <text x="656" y="176" font-size="11" fill="#455a64">พื้นที่ซ้อนกัน</text>
+  <text x="656" y="192" font-size="11" fill="#455a64">= เกิดการชน</text>
+  <text x="464" y="226" font-size="11" fill="#777">ตำแหน่งวัตถุซ้อนกัน = next_head in snake_body ฉบับจิ๋ว</text>
+</svg>
+</div>
 <ul>
-<li><strong>หุ่นยนต์กวาดพื้น / รถ AGV ในโรงงาน</strong> — ก่อนขยับล้อจริง เฟิร์มแวร์คำนวณตำแหน่งถัดไปแล้วถามว่าจะชนผนัง/ชนสิ่งกีดขวางไหม ตรงกับท่า &quot;เช็ค <code>next_head</code> ก่อนขยับ&quot; ของเราเป๊ะ ต่างแค่กริดของมันคือแผนที่ห้อง ไม่ใช่ช่อง Snake</li>
-<li><strong>Bounds checking กัน buffer overflow บน MCU</strong> — โค้ด C ที่เขียน array บนบอร์ดที่ไม่มี OS คอยจับ ต้องเช็ค <code>0 ≤ index &lt; SIZE</code> เองก่อนทุกครั้ง เหมือน <code>&gt;= GRID_COLS</code> วันนี้ พลาดเมื่อไรคือ HardFault ของจริง ไม่ใช่แค่ป้าย GAME OVER</li>
-<li><strong>เมนู/สถานะของเครื่องใช้ไฟฟ้า</strong> — ไมโครเวฟ เครื่องซักผ้า ตู้เอทีเอ็ม ล้วนเป็น state machine: idle → กำลังทำงาน → เสร็จ/ผิดพลาด <code>return False</code> ที่พาเราออกจาก &quot;กำลังเล่น&quot; คือ transition อันเดียวกับปุ่ม cancel ที่พาเครื่องกลับ idle</li>
-<li><strong>ตรวจการชนในเกมเอนจินจริง (Unity/Godot)</strong> — ระบบ hitbox/collider เบื้องหลังคือการเทียบตำแหน่งวัตถุกับสิ่งอื่น <code>next_head in snake_body</code> คือเวอร์ชันจิ๋วสุดของ broad-phase collision บนกริด</li>
+<li><strong>หุ่นยนต์กวาดพื้น / รถ AGV ในโรงงาน</strong> — ก่อนขยับล้อจริง เฟิร์มแวร์คำนวณตำแหน่งถัดไปแล้วถามว่าจะชนผนัง/สิ่งกีดขวางไหม ตรงกับท่า &quot;เช็ค <code>next_head</code> ก่อนขยับ&quot; เป๊ะ ต่างแค่กริดคือแผนที่ห้อง ไม่ใช่ช่อง Snake</li>
+<li><strong>Bounds checking กัน buffer overflow บน MCU</strong> — โค้ด C บนบอร์ดที่ไม่มี OS คอยจับ ต้องเช็ค <code>0 ≤ index &lt; SIZE</code> เองทุกครั้ง เหมือน <code>&gt;= GRID_COLS</code> วันนี้ พลาดเมื่อไรคือ HardFault ของจริง ไม่ใช่แค่ป้าย GAME OVER</li>
+<li><strong>เมนู/สถานะของเครื่องใช้ไฟฟ้า</strong> — ไมโครเวฟ เครื่องซักผ้า ตู้เอทีเอ็ม ล้วนเป็น state machine: idle → ทำงาน → เสร็จ/ผิดพลาด <code>return False</code> ที่พาเราออกจาก &quot;กำลังเล่น&quot; คือ transition เดียวกับปุ่ม cancel ที่พาเครื่องกลับ idle</li>
+<li><strong>ตรวจการชนในเกมเอนจินจริง (Unity/Godot)</strong> — ระบบ hitbox/collider เบื้องหลังคือการเทียบตำแหน่งวัตถุกับสิ่งอื่น <code>next_head in snake_body</code> คือ broad-phase collision บนกริดฉบับจิ๋วสุด</li>
 </ul>
 <blockquote>
 <p>ห้าบรรทัดในบล็อก <code>if</code> วันนี้ ไม่มีบรรทัดไหนเป็นของสมมติเลย ทุกบรรทัดมีเครื่องจริงในโลกที่ทำงานด้วยหลักการเดียวกันอยู่</p>
@@ -574,11 +632,41 @@
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="27" style="--paginate:true;--theme:default;" data-marpit-pagination-total="27">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="226" viewBox="0 0 840 226" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="t5a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker id="t5g" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2e7d32" /></marker>
+  </defs>
+  <text x="16" y="22" font-size="13" font-weight="700" fill="#607d8b">ตอนนี้ — แพ้แล้วจบเลย (มีสถานะเดียว)</text>
+  <rect x="150" y="34" width="120" height="36" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="210" y="57" font-size="13" fill="#1565c0" text-anchor="middle">กำลังเล่น</text>
+  <line x1="270" y1="52" x2="356" y2="52" stroke="#607d8b" stroke-width="2" marker-end="url(#t5a)" />
+  <text x="313" y="44" font-size="11" fill="#ef6c00" text-anchor="middle">แพ้</text>
+  <rect x="358" y="34" width="196" height="36" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="456" y="57" font-size="13" fill="#e65100" text-anchor="middle">จบเกม · return False</text>
+  <text x="566" y="57" font-size="12" fill="#607d8b">← ไปต่อไม่ได้</text>
+  <text x="456" y="88" font-size="11" fill="#777" text-anchor="middle">ออกจากลูปทันที — ไม่มีที่ไปต่อ</text>
+  <line x1="420" y1="98" x2="420" y2="122" stroke="#607d8b" stroke-width="2.4" marker-end="url(#t5a)" />
+  <text x="436" y="114" font-size="12" font-weight="700" fill="#455a64">เปลี่ยนวิธีคิด: เพิ่ม "สถานะ" ให้เกม</text>
+  <text x="16" y="150" font-size="13" font-weight="700" fill="#2e7d32">ต่อยอด — แพ้ → เมนู → เริ่มใหม่ (หลายสถานะ)</text>
+  <rect x="70" y="160" width="110" height="36" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="125" y="183" font-size="12" fill="#1565c0" text-anchor="middle">กำลังเล่น</text>
+  <line x1="180" y1="178" x2="226" y2="178" stroke="#607d8b" stroke-width="2" marker-end="url(#t5a)" />
+  <rect x="230" y="160" width="130" height="36" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="295" y="183" font-size="12" fill="#e65100" text-anchor="middle">GAME OVER</text>
+  <line x1="360" y1="178" x2="426" y2="178" stroke="#607d8b" stroke-width="2" marker-end="url(#t5a)" />
+  <rect x="430" y="160" width="170" height="36" rx="8" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="515" y="183" font-size="12" fill="#6a1b9a" text-anchor="middle">เมนูเลือกความยาก</text>
+  <path d="M600,178 L620,178 L620,212 L125,212 L125,196" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#t5g)" />
+  <text x="360" y="208" font-size="11" fill="#2e7d32" text-anchor="middle">วนกลับมาเล่นใหม่ได้ — state machine โตขึ้น</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้ากำแพงไม่ใช่ขอบจอ จะออกแบบยังไง</strong> — อยากมี &quot;สิ่งกีดขวาง&quot; กลางสนามให้งูหลบ (เก็บเป็นลิสต์ <code>walls</code> ของ <code>[col, row]</code>) เงื่อนไขแพ้จะเพิ่มอีกกี่ตัวใน <code>or</code> และมันหน้าตาเหมือน <code>next_head in snake_body</code> แค่ไหน?</li>
-<li><strong>ถ้าอยากให้ทะลุขอบไปโผล่อีกฝั่ง (wrap-around) แทนที่จะตาย</strong> — ต้องแก้บล็อก <code>if</code> เป็นการคำนวณ col/row ใหม่ด้วย <code>%</code> อย่างไร แล้วเงื่อนไขแพ้จะเหลือแค่ &quot;ชนตัวเอง&quot; อย่างเดียวใช่ไหม? ลองคิดว่าเกมจะยากขึ้นหรือง่ายลง</li>
-<li><strong>ถ้าอยากนับ &quot;รอดมากี่วินาที&quot; ตอนแพ้</strong> — จะเก็บ <code>frames_alive</code> ไว้ตรงไหน แล้วแปลงเป็นวินาทีด้วย <code>fps=9</code> ยังไง เอาไปโชว์บนป้าย GAME OVER คู่กับ Score ได้ไหม?</li>
-<li><strong>ถ้าตอนแพ้แล้วไม่จบเลย แต่ไปหน้าเมนูเลือกความยากก่อนเริ่มใหม่</strong> — แทนที่จะ <code>return False</code> ทีเดียว น้องจะเพิ่ม &quot;สถานะ&quot; อะไรให้เกมบ้าง? คำถามนี้แหละคือสิ่งที่คาบหน้า (Snake #5: Sprite + เมนูเลือกความยาก) ต้องใช้ — ลองร่างสถานะของเกมทั้งหมดไว้ก่อน แล้วคาบหน้าเราจะต่อจากตรงนั้น</li>
+<li><strong>ถ้ากำแพงไม่ใช่ขอบจอ จะออกแบบยังไง</strong> — อยากมี &quot;สิ่งกีดขวาง&quot; กลางสนามให้งูหลบ (เก็บเป็นลิสต์ <code>walls</code> ของ <code>[col, row]</code>) เงื่อนไขแพ้จะเพิ่มอีกกี่ตัวใน <code>or</code> และหน้าตาเหมือน <code>next_head in snake_body</code> แค่ไหน?</li>
+<li><strong>ถ้าอยากให้ทะลุขอบไปโผล่อีกฝั่ง (wrap-around) แทนที่จะตาย</strong> — ต้องแก้บล็อก <code>if</code> ให้คำนวณ col/row ใหม่ด้วย <code>%</code> อย่างไร แล้วเงื่อนไขแพ้จะเหลือแค่ &quot;ชนตัวเอง&quot; อย่างเดียวใช่ไหม? เกมจะยากขึ้นหรือง่ายลง</li>
+<li><strong>ถ้าอยากนับ &quot;รอดมากี่วินาที&quot; ตอนแพ้</strong> — จะเก็บ <code>frames_alive</code> ไว้ตรงไหน แปลงเป็นวินาทีด้วย <code>fps=9</code> ยังไง แล้วโชว์บนป้าย GAME OVER คู่กับ Score?</li>
+<li><strong>ถ้าตอนแพ้แล้วไม่จบเลย แต่ไปหน้าเมนูเลือกความยากก่อนเริ่มใหม่</strong> — แทนที่จะ <code>return False</code> ทีเดียว น้องจะเพิ่ม &quot;สถานะ&quot; อะไรให้เกมบ้าง? นี่คือสิ่งที่คาบหน้า (Snake #5: Sprite + เมนูเลือกความยาก) ต้องใช้ — ลองร่างสถานะของเกมทั้งหมดไว้ก่อน แล้วคาบหน้าต่อจากตรงนั้น</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากบล็อก <code>if</code> ที่พิมพ์เองวันนี้ — ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นวิศวกร ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

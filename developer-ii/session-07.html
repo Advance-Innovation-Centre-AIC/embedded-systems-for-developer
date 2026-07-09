@@ -766,11 +766,62 @@ vy = <span class="hljs-number">0.0</span>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="33" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="33" style="--paginate:true;--theme:default;" data-marpit-pagination-total="34">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--integration--sampling--sensor-fusion">ใช้จริงที่ไหน — integration · sampling · sensor fusion</h1>
 <p>สองบรรทัด <code>v += a·dt</code>, <code>pos += v·dt</code> ที่เราเขียนวันนี้ ไม่ใช่ของสมมติในห้องเรียน มันคือเครื่องมือที่งานจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">นำทางด้วย IMU · dead reckoning</text>
+  <rect x="34" y="56" width="40" height="24" rx="6" fill="#ffffff" stroke="#1565c0" />
+  <text x="54" y="72" font-size="12" fill="#1565c0" text-anchor="middle">a</text>
+  <text x="89" y="52" font-size="10" fill="#607d8b" text-anchor="middle">∫dt</text>
+  <line x1="74" y1="68" x2="104" y2="68" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="104" y="56" width="40" height="24" rx="6" fill="#ffffff" stroke="#1565c0" />
+  <text x="124" y="72" font-size="12" fill="#1565c0" text-anchor="middle">v</text>
+  <text x="159" y="52" font-size="10" fill="#607d8b" text-anchor="middle">∫dt</text>
+  <line x1="144" y1="68" x2="174" y2="68" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="174" y="56" width="48" height="24" rx="6" fill="#ffffff" stroke="#1565c0" />
+  <text x="198" y="72" font-size="12" fill="#1565c0" text-anchor="middle">pos</text>
+  <line x1="222" y1="66" x2="300" y2="56" stroke="#ef6c00" stroke-width="1.6" stroke-dasharray="4 3" />
+  <text x="358" y="60" font-size="11" fill="#ef6c00" text-anchor="middle">drift สะสม</text>
+  <text x="352" y="92" font-size="11" fill="#777" text-anchor="middle">แก้ด้วย sensor fusion</text>
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">physics engine · integrate ทุกเฟรม</text>
+  <rect x="464" y="40" width="250" height="62" rx="4" fill="#ffffff" stroke="#a5d6a7" />
+  <line x1="468" y1="100" x2="710" y2="100" stroke="#a5d6a7" stroke-width="1.5" />
+  <path d="M472,58 Q486,100 500,100 Q527,56 555,100 Q577,74 600,100 Q619,86 638,100" fill="none" stroke="#2e7d32" stroke-width="2" />
+  <circle cx="472" cy="58" r="5" fill="#2e7d32" />
+  <text x="792" y="58" font-size="12" fill="#2e7d32" text-anchor="middle">Unity · Box2D</text>
+  <text x="792" y="78" font-size="12" fill="#2e7d32" text-anchor="middle">Godot</text>
+  <text x="792" y="98" font-size="11" fill="#777" text-anchor="middle">v += a·dt ทุกเฟรม</text>
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">control loop · sampling จังหวะคงที่</text>
+  <line x1="40" y1="186" x2="410" y2="186" stroke="#ffcc80" stroke-width="2" />
+  <rect x="60" y="162" width="8" height="24" fill="#ef6c00" />
+  <rect x="108" y="162" width="8" height="24" fill="#ef6c00" />
+  <rect x="156" y="162" width="8" height="24" fill="#ef6c00" />
+  <rect x="204" y="162" width="8" height="24" fill="#ef6c00" />
+  <rect x="252" y="162" width="8" height="24" fill="#ef6c00" />
+  <rect x="300" y="162" width="8" height="24" fill="#ef6c00" />
+  <rect x="348" y="162" width="8" height="24" fill="#ef6c00" />
+  <line x1="64" y1="200" x2="112" y2="200" stroke="#607d8b" stroke-width="1.4" />
+  <text x="88" y="197" font-size="11" fill="#607d8b" text-anchor="middle">20 ms</text>
+  <text x="220" y="218" font-size="11" fill="#777" text-anchor="middle">dt คงที่ → integration แม่น + คุมแม่น</text>
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">เอียง-บังคับ · deadzone กัน noise</text>
+  <line x1="470" y1="188" x2="850" y2="188" stroke="#ce93d8" stroke-width="2" />
+  <rect x="614" y="168" width="92" height="40" rx="4" fill="#6a1b9a" fill-opacity="0.14" stroke="#6a1b9a" stroke-dasharray="3 2" />
+  <text x="660" y="164" font-size="11" fill="#6a1b9a" text-anchor="middle">deadzone</text>
+  <line x1="566" y1="188" x2="524" y2="188" stroke="#2e7d32" stroke-width="2" />
+  <text x="540" y="178" font-size="11" fill="#2e7d32" text-anchor="middle">เอียงซ้าย</text>
+  <line x1="754" y1="188" x2="796" y2="188" stroke="#2e7d32" stroke-width="2" />
+  <text x="780" y="178" font-size="11" fill="#2e7d32" text-anchor="middle">เอียงขวา</text>
+  <text x="660" y="224" font-size="11" fill="#777" text-anchor="middle">noise จิ๋ว ๆ ในโซนนี้ = ถือว่านิ่ง อย่าป้อนเข้าฟิสิกส์</text>
+</svg>
+</div>
 <ul>
-<li><strong>นำทางด้วย IMU (dead reckoning)</strong> — โดรน, จรวด, มือถือ integrate ความเร่งจาก accelerometer เป็นความเร็ว แล้ว integrate อีกทีเป็นตำแหน่ง เหมือน <code>:51-52</code> ต่อ <code>:59</code> เป๊ะ · แต่ของจริง noise สะสมจนตำแหน่ง drift เลยต้องรวม gyroscope ด้วย <strong>sensor fusion</strong> (complementary/Kalman filter) — ตรงกับหมายเหตุ &quot;นอกขอบเขตคาบนี้&quot; ที่เราจงใจยังไม่แตะ deadzone ของเรา (<code>:45-48</code>) คือรุ่นเด็กที่สุดของการจัดการ noise ตัวนั้น</li>
-<li><strong>physics engine ของเกมจริง</strong> — Unity, Box2D, Godot รันลูป integrate ทุกเฟรมแบบเดียวกับที่เราเขียน แค่ใช้ Euler รุ่นปรับปรุง (semi-implicit / Verlet) กับ friction/damping ที่ละเอียดกว่า หลักคือ <code>:51-59</code> ตัวเดียวกับสไลด์ &quot;แนวคิดหลัก: treat tilt as ACCELERATION&quot;</li>
-<li><strong>control loop ในหุ่นยนต์และมอเตอร์</strong> — ระบบควบคุมอ่านเซนเซอร์เป็นจังหวะคงที่แล้วคำนวณคำสั่งใหม่ทุกรอบ ตรงกับสไลด์ &quot;Timer ต่อยอด — อ่านเซนเซอร์จังหวะคงที่&quot; ที่ <code>machine.Timer</code> ยิง <code>sample()</code> ทุก 20 ms · <code>dt</code> คงที่ = การควบคุมแม่น เป็นเหตุผลเดียวกับที่ฟิสิกส์เนียนขึ้น</li>
-<li><strong>เครื่องเล่นเอียง-บังคับจริง</strong> — เขาวงกตลูกเหล็ก (สไลด์ &quot;จินตนาการ&quot;), จอย Wii/มือถือที่เอียงคุมเกม ล้วนอ่าน accelerometer แล้วต้องมี deadzone กัน noise ก่อนป้อนเข้าฟิสิกส์ ไม่งั้นตัวละครไหลเองทั้งที่วางนิ่ง — ปัญหาเดียวกับ <code>:45-48</code> ของเรา</li>
+<li><strong>นำทางด้วย IMU (dead reckoning)</strong> — โดรน, จรวด, มือถือ integrate ความเร่งเป็นความเร็วแล้ว integrate อีกทีเป็นตำแหน่ง เหมือน <code>:51-52</code> ต่อ <code>:59</code> เป๊ะ · ของจริง noise สะสมจนตำแหน่ง drift จึงต้องรวม gyroscope ด้วย <strong>sensor fusion</strong> (complementary/Kalman filter) — deadzone ของเรา (<code>:45-48</code>) คือรุ่นเด็กที่สุดของการจัดการ noise นั้น</li>
+<li><strong>physics engine ของเกมจริง</strong> — Unity, Box2D, Godot รันลูป integrate ทุกเฟรมแบบเดียวกับเรา แค่ใช้ Euler รุ่นปรับปรุง (semi-implicit / Verlet) กับ friction/damping ที่ละเอียดกว่า หลักคือ <code>:51-59</code> ตัวเดิม</li>
+<li><strong>control loop ในหุ่นยนต์และมอเตอร์</strong> — อ่านเซนเซอร์จังหวะคงที่แล้วคำนวณคำสั่งใหม่ทุกรอบ เหมือน <code>machine.Timer</code> ยิง <code>sample()</code> ทุก 20 ms · <code>dt</code> คงที่ = ควบคุมแม่น เหตุผลเดียวกับที่ฟิสิกส์เนียนขึ้น</li>
+<li><strong>เครื่องเล่นเอียง-บังคับจริง</strong> — เขาวงกตลูกเหล็ก, จอย Wii/มือถือเอียงคุมเกม ล้วนอ่าน accelerometer แล้วต้องมี deadzone กัน noise ก่อนป้อนเข้าฟิสิกส์ ไม่งั้นตัวละครไหลเองทั้งที่วางนิ่ง — ปัญหาเดียวกับ <code>:45-48</code></li>
 </ul>
 <blockquote>
 <p>ห้าชิ้นในลูปวันนี้ไม่มีชิ้นไหนเป็นของเล่น ทุกชิ้นมีเครื่องจริงในโลกทำงานด้วยหลักการเดียวกันอยู่ ต่างแค่สเกลและความประณีต</p>
@@ -779,9 +830,35 @@ vy = <span class="hljs-number">0.0</span>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="34" style="--paginate:true;--theme:default;" data-marpit-pagination-total="34">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="224" viewBox="0 0 840 224" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="t7ext" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  <rect x="310" y="88" width="220" height="52" rx="10" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="420" y="110" font-size="13" font-weight="700" fill="#455a64" text-anchor="middle">เครื่องยนต์วันนี้</text>
+  <text x="420" y="128" font-size="12" fill="#607d8b" text-anchor="middle">v += a·dt · pos += v·dt</text>
+  <line x1="326" y1="90" x2="230" y2="50" stroke="#607d8b" stroke-width="2" marker-end="url(#t7ext)" />
+  <line x1="514" y1="90" x2="610" y2="50" stroke="#607d8b" stroke-width="2" marker-end="url(#t7ext)" />
+  <line x1="326" y1="138" x2="230" y2="176" stroke="#607d8b" stroke-width="2" marker-end="url(#t7ext)" />
+  <line x1="514" y1="138" x2="610" y2="176" stroke="#607d8b" stroke-width="2" marker-end="url(#t7ext)" />
+  <rect x="24" y="18" width="200" height="52" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="124" y="40" font-size="13" font-weight="700" fill="#1565c0" text-anchor="middle">ลูกแก้วสองใบ</text>
+  <text x="124" y="58" font-size="11" fill="#607d8b" text-anchor="middle">ชนแล้วแลกโมเมนตัม</text>
+  <rect x="616" y="18" width="200" height="52" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="716" y="40" font-size="13" font-weight="700" fill="#2e7d32" text-anchor="middle">พื้นหลายโซน</text>
+  <text x="716" y="58" font-size="11" fill="#607d8b" text-anchor="middle">FRICTION ต่างตามตำแหน่ง</text>
+  <rect x="24" y="154" width="200" height="52" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="124" y="176" font-size="13" font-weight="700" fill="#ef6c00" text-anchor="middle">เขาวงกต</text>
+  <text x="124" y="194" font-size="11" fill="#607d8b" text-anchor="middle">วางกำแพง Box ให้เด้งชน</text>
+  <rect x="616" y="154" width="200" height="52" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="716" y="174" font-size="13" font-weight="700" fill="#6a1b9a" text-anchor="middle">Flappy (คาบหน้า)</text>
+  <text x="716" y="192" font-size="11" fill="#607d8b" text-anchor="middle">แกนเดียว + gravity + กระพือ</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้าลูกแก้วมีสองใบ</strong> จะออกแบบการชนกันเองยังไง ให้เด้งแล้ว <strong>แลกโมเมนตัม</strong> กัน (ใบ้: เช็กระยะสองก้อน แล้วสลับ/ปรับ <code>vx, vy</code> ของทั้งคู่) — นี่คือก้าวแรกของ collision ระหว่างวัตถุ ที่ Pinball กับเกมบิลเลียดใช้</li>
-<li><strong>ถ้าพื้นมีหลายโซน</strong> เช่นกลางจอเป็นน้ำแข็ง ขอบเป็นพรม จะทำ <code>FRICTION</code> ให้ <strong>ต่างกันตามตำแหน่งลูกแก้ว</strong> ยังไง (ใบ้: เลือกค่า friction จาก <code>ball.x, ball.y</code> ก่อน <code>:55-56</code>) — เขาวงกตจริงเล่นกับพื้นต่างผิวแบบนี้</li>
+<li><strong>ถ้าลูกแก้วมีสองใบ</strong> จะออกแบบการชนให้เด้งแล้ว <strong>แลกโมเมนตัม</strong> กันยังไง (ใบ้: เช็กระยะสองก้อน แล้วสลับ/ปรับ <code>vx, vy</code> ของทั้งคู่) — ก้าวแรกของ collision ระหว่างวัตถุ ที่ Pinball กับบิลเลียดใช้</li>
+<li><strong>ถ้าพื้นมีหลายโซน</strong> กลางจอเป็นน้ำแข็ง ขอบเป็นพรม จะทำ <code>FRICTION</code> ให้ <strong>ต่างกันตามตำแหน่งลูกแก้ว</strong> ยังไง (ใบ้: เลือกค่า friction จาก <code>ball.x, ball.y</code> ก่อน <code>:55-56</code>) — เขาวงกตจริงเล่นกับพื้นต่างผิวแบบนี้</li>
 <li><strong>ถ้าอยากได้เขาวงกต</strong> วาง <code>game.Box</code> เป็นกำแพงกลางจอ แล้วเช็กชนให้ลูกแก้วเด้ง (กลับทิศ <code>v</code> เหมือน <code>:62-65</code> แต่เทียบกับกำแพงแทนขอบจอ) จะจัดด่านให้ยากขึ้นเรื่อย ๆ ด้วยข้อมูลอย่างเดียว ไม่แตะลูปได้ไหม</li>
 <li><strong>ถ้าตัด friction ทิ้ง เหลือแกน y แล้วให้ <code>a</code> เป็นค่าคงที่ลงล่าง ส่วนปุ่มกระพือเซต <code>v</code> เด้งขึ้น</strong> จะได้เกมอะไร ลองร่างโครงลูปดูตั้งแต่วันนี้ — นี่คือ <strong>Flappy Bird ของคาบหน้า</strong> เครื่องยนต์ตัวเดียวกับที่น้องเพิ่งพิมพ์เป๊ะ ต่างแค่ที่มาของความเร่ง</li>
 </ul>

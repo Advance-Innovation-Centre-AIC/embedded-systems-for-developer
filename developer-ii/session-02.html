@@ -725,11 +725,79 @@ game.run(update, fps=<span class="hljs-number">9</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--grid--tile--%E0%B8%8A%E0%B9%88%E0%B8%AD%E0%B8%87%E0%B9%80%E0%B8%9B%E0%B9%87%E0%B8%99%E0%B9%80%E0%B8%A5%E0%B8%82">ใช้จริงที่ไหน — grid + tile + ช่องเป็นเลข</h1>
 <p>เทคนิควันนี้ไม่ใช่แบบฝึกหัดลอย ๆ มันคือวิธีที่ระบบจริงใช้วาดภาพและจัดโลกกันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+<defs>
+<marker id="arU2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+<pattern id="pgO" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0 L0 0 0 22" fill="none" stroke="#ffcc80" stroke-width="1" /></pattern>
+<pattern id="pgP" width="16" height="16" patternUnits="userSpaceOnUse"><path d="M16 0 L0 0 0 16" fill="none" stroke="#e1bee7" stroke-width="1" /></pattern>
+</defs>
+<rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+<text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">Tile-based rendering · tilemap</text>
+<rect x="34" y="44" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="44" y="58" font-size="10" fill="#455a64" text-anchor="middle">3</text>
+<rect x="54" y="44" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="64" y="58" font-size="10" fill="#455a64" text-anchor="middle">3</text>
+<rect x="74" y="44" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="84" y="58" font-size="10" fill="#455a64" text-anchor="middle">7</text>
+<rect x="94" y="44" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="104" y="58" font-size="10" fill="#455a64" text-anchor="middle">3</text>
+<rect x="34" y="64" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="44" y="78" font-size="10" fill="#455a64" text-anchor="middle">3</text>
+<rect x="54" y="64" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="64" y="78" font-size="10" fill="#455a64" text-anchor="middle">7</text>
+<rect x="74" y="64" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="84" y="78" font-size="10" fill="#455a64" text-anchor="middle">7</text>
+<rect x="94" y="64" width="20" height="20" fill="#ffffff" stroke="#1565c0" stroke-width="1" /><text x="104" y="78" font-size="10" fill="#455a64" text-anchor="middle">3</text>
+<line x1="120" y1="64" x2="150" y2="64" stroke="#607d8b" stroke-width="2" marker-end="url(#arU2)" />
+<rect x="156" y="44" width="20" height="20" fill="#1565c0" stroke="#1565c0" stroke-width="1" />
+<rect x="176" y="44" width="20" height="20" fill="#1565c0" stroke="#1565c0" stroke-width="1" />
+<rect x="196" y="44" width="20" height="20" fill="#90caf9" stroke="#1565c0" stroke-width="1" />
+<rect x="216" y="44" width="20" height="20" fill="#1565c0" stroke="#1565c0" stroke-width="1" />
+<rect x="156" y="64" width="20" height="20" fill="#1565c0" stroke="#1565c0" stroke-width="1" />
+<rect x="176" y="64" width="20" height="20" fill="#90caf9" stroke="#1565c0" stroke-width="1" />
+<rect x="196" y="64" width="20" height="20" fill="#90caf9" stroke="#1565c0" stroke-width="1" />
+<rect x="216" y="64" width="20" height="20" fill="#1565c0" stroke="#1565c0" stroke-width="1" />
+<text x="250" y="58" font-size="11" fill="#777">เลข = ช่องอ้าง tile</text>
+<text x="250" y="76" font-size="11" fill="#777">เก็บเลข ไม่เก็บพิกเซล</text>
+<rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+<text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">จอ / LED matrix = กริดพิกเซล</text>
+<line x1="476" y1="68" x2="676" y2="68" stroke="#a5d6a7" stroke-width="1.5" stroke-dasharray="3" />
+<line x1="576" y1="42" x2="576" y2="96" stroke="#a5d6a7" stroke-width="1.5" stroke-dasharray="3" />
+<text x="576" y="40" font-size="10" fill="#2e7d32" text-anchor="middle">col</text>
+<text x="470" y="71" font-size="10" fill="#2e7d32" text-anchor="end">row</text>
+<circle cx="486" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="516" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="546" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="576" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="606" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="636" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="666" cy="50" r="5" fill="#c8e6c9" stroke="#a5d6a7" />
+<circle cx="486" cy="68" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="516" cy="68" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="546" cy="68" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="576" cy="68" r="6" fill="#2e7d32" /><circle cx="606" cy="68" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="636" cy="68" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="666" cy="68" r="5" fill="#c8e6c9" stroke="#a5d6a7" />
+<circle cx="486" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="516" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="546" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="576" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="606" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="636" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" /><circle cx="666" cy="86" r="5" fill="#c8e6c9" stroke="#a5d6a7" />
+<text x="700" y="62" font-size="11" fill="#777">ช่อง (col,row)</text>
+<text x="700" y="80" font-size="11" fill="#777">→ พิกเซลบนจอ</text>
+<text x="464" y="108" font-size="11" fill="#777">สั่งไฟช่องใด = col × CELL_PX บนฮาร์ดแวร์จริง</text>
+<rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+<text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">หาเส้นทางบนตาราง · pathfinding</text>
+<rect x="30" y="158" width="176" height="66" fill="url(#pgO)" stroke="#ffcc80" />
+<rect x="53" y="203" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="75" y="203" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="75" y="181" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="97" y="181" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="119" y="181" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="119" y="159" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="141" y="159" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="163" y="159" width="20" height="20" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1" />
+<rect x="31" y="203" width="20" height="20" fill="#ef6c00" /><text x="41" y="217" font-size="11" fill="#fff" text-anchor="middle">A</text>
+<rect x="185" y="159" width="20" height="20" fill="#ef6c00" /><text x="195" y="173" font-size="11" fill="#fff" text-anchor="middle">B</text>
+<text x="228" y="176" font-size="11" fill="#777">หุ่นยนต์ · GPS · AI เกมกระดาน</text>
+<text x="228" y="196" font-size="11" fill="#777">มองโลกเป็นช่อง (int)</text>
+<text x="228" y="216" font-size="11" fill="#777">คิดการเดินทีละช่อง</text>
+<rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+<text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">วาด pixel art / tilemap editor</text>
+<rect x="466" y="158" width="128" height="64" fill="url(#pgP)" stroke="#e1bee7" />
+<rect x="515" y="159" width="14" height="14" fill="#6a1b9a" /><rect x="531" y="159" width="14" height="14" fill="#6a1b9a" />
+<rect x="499" y="175" width="14" height="14" fill="#6a1b9a" /><rect x="515" y="175" width="14" height="14" fill="#ce93d8" /><rect x="531" y="175" width="14" height="14" fill="#6a1b9a" /><rect x="547" y="175" width="14" height="14" fill="#6a1b9a" />
+<rect x="499" y="191" width="14" height="14" fill="#6a1b9a" /><rect x="515" y="191" width="14" height="14" fill="#6a1b9a" /><rect x="531" y="191" width="14" height="14" fill="#6a1b9a" /><rect x="547" y="191" width="14" height="14" fill="#6a1b9a" />
+<rect x="515" y="207" width="14" height="14" fill="#6a1b9a" /><rect x="531" y="207" width="14" height="14" fill="#6a1b9a" />
+<text x="612" y="172" font-size="11" fill="#777">ตาราง + เลือกสีให้ช่อง</text>
+<text x="612" y="192" font-size="11" fill="#777">= 1 sprite</text>
+<text x="612" y="212" font-size="11" fill="#777">งู 3 ช่องเขียว = pixel art</text>
+</svg>
+</div>
 <ul>
-<li><strong>Tile-based rendering ในเกมจริง</strong> — เกมบน NES/GBA/มือถือจำนวนมากวาดฉากจาก tile ซ้ำ ๆ ที่อ้างด้วยเลขช่องในตาราง (tilemap) เหมือน <code>snake_body</code> ที่เก็บช่องแล้วค่อยวาด ตรงกับสไลด์ <strong>NES PPU</strong> และแนวคิด <strong>&quot;งูคือ list ของช่อง&quot;</strong> — เก็บเลข ไม่เก็บพิกเซล ประหยัดทั้ง memory และเวลา</li>
-<li><strong>จอและ LED matrix เป็นกริดของพิกเซล</strong> — ป้าย LED, จอ OLED, ตัวจอเกมเราเอง ล้วนเป็น &quot;ตารางของช่องเปล่งแสง&quot; การสั่งไฟที่ช่อง <code>(col, row)</code> ใด ๆ ก็คือสูตร <strong>ช่อง → พิกเซล</strong> (<code>col * CELL_PX</code>) ที่เราคูณวันนี้ ขยายเป็นจริงบนฮาร์ดแวร์</li>
-<li><strong>การหาเส้นทางบนตาราง (grid pathfinding)</strong> — หุ่นยนต์คลังสินค้า, GPS, AI ในเกมกระดาน มองโลกเป็นช่องตาราง (int) แล้วคิดการเดินทีละช่อง เหมือนที่เราเก็บงูเป็นช่องเพราะ &quot;การเดิน/ชนคิดบนช่องง่ายกว่า&quot; จากสไลด์ <strong>&quot;ทำไมต้องทีละช่อง&quot;</strong> — เมื่อโลกเป็นช่อง อัลกอริทึมเดินก็ตรงไปตรงมา</li>
-<li><strong>โปรแกรมวาด pixel art / tilemap editor</strong> — เครื่องมือทำ sprite และ tilemap ทำงานบน &quot;ตารางของช่อง + เลือกสี&quot; ตรงกับสไลด์ <strong>&quot;pixel art ก็คือกริดของช่อง&quot;</strong> ที่เราดูไป งู 3 ช่องเขียวของเราคือ pixel art ชิ้นเล็กที่สุดชิ้นหนึ่ง</li>
+<li><strong>Tile-based rendering ในเกมจริง</strong> — เกมบน NES/GBA/มือถือวาดฉากจาก tile ซ้ำ ๆ ที่อ้างด้วยเลขช่องในตาราง (tilemap) เหมือน <code>snake_body</code> ที่เก็บช่องแล้วค่อยวาด ตรงกับสไลด์ <strong>NES PPU</strong> — เก็บเลข ไม่เก็บพิกเซล ประหยัดทั้ง memory และเวลา</li>
+<li><strong>จอและ LED matrix เป็นกริดของพิกเซล</strong> — ป้าย LED, จอ OLED, จอเกมเราเอง ล้วนเป็น &quot;ตารางของช่องเปล่งแสง&quot; การสั่งไฟที่ช่อง <code>(col, row)</code> ก็คือสูตร <strong>ช่อง → พิกเซล</strong> (<code>col * CELL_PX</code>) ที่เราคูณวันนี้ ขยายจริงบนฮาร์ดแวร์</li>
+<li><strong>การหาเส้นทางบนตาราง (grid pathfinding)</strong> — หุ่นยนต์คลังสินค้า, GPS, AI เกมกระดาน มองโลกเป็นช่องตาราง (int) แล้วเดินทีละช่อง เหมือนที่เราเก็บงูเป็นช่องเพราะ &quot;การเดิน/ชนคิดบนช่องง่ายกว่า&quot; — เมื่อโลกเป็นช่อง อัลกอริทึมเดินก็ตรงไปตรงมา</li>
+<li><strong>โปรแกรมวาด pixel art / tilemap editor</strong> — เครื่องมือทำ sprite และ tilemap ทำงานบน &quot;ตารางของช่อง + เลือกสี&quot; ตรงกับสไลด์ <strong>&quot;pixel art ก็คือกริดของช่อง&quot;</strong> งู 3 ช่องเขียวของเราคือ pixel art ชิ้นเล็กที่สุดชิ้นหนึ่ง</li>
 </ul>
 <blockquote>
 <p>ห้าสไลด์แนวคิดที่เราเรียนวันนี้ ไม่มีอันไหนเป็นของสมมติ ทุกอันมีระบบจริงที่วางภาพและวางโลกด้วย &quot;ช่องเป็นเลข&quot; แบบเดียวกันทำงานอยู่</p>
@@ -738,11 +806,38 @@ game.run(update, fps=<span class="hljs-number">9</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="31" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>เอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้ และข้อสุดท้ายคือสะพานไปคาบหน้า:</p>
+<div style="text-align:center">
+<svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
+<defs>
+<marker id="arT2" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+</defs>
+<text x="14" y="22" font-size="13" font-weight="700" fill="#607d8b">วันนี้ — งูเป็น list ของช่อง (ภาพนิ่ง)</text>
+<rect x="150" y="32" width="62" height="32" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="181" y="52" font-size="12" fill="#1565c0" text-anchor="middle">[6,8]</text>
+<rect x="214" y="32" width="62" height="32" rx="6" fill="#90caf9" stroke="#1565c0" stroke-width="2" /><text x="245" y="52" font-size="12" fill="#0d3c61" text-anchor="middle">[5,8]</text>
+<rect x="278" y="32" width="62" height="32" rx="6" fill="#90caf9" stroke="#1565c0" stroke-width="2" /><text x="309" y="52" font-size="12" fill="#0d3c61" text-anchor="middle">[4,8]</text>
+<text x="181" y="80" font-size="11" fill="#1565c0" text-anchor="middle">หัว = idx 0</text>
+<text x="309" y="80" font-size="11" fill="#607d8b" text-anchor="middle">หาง</text>
+<text x="360" y="52" font-size="11" fill="#777">เก็บเป็นช่อง (int) — ยังไม่ขยับ</text>
+<line x1="300" y1="92" x2="300" y2="118" stroke="#607d8b" stroke-width="2" marker-end="url(#arT2)" />
+<text x="316" y="110" font-size="12" fill="#455a64">เปลี่ยนวิธีคิด: state เปลี่ยนทุกเฟรม → งูเลื้อย</text>
+<text x="14" y="140" font-size="13" font-weight="700" fill="#2e7d32">คาบหน้า — เดินขวา: แทรกหัวใหม่ + ตัดหาง</text>
+<rect x="150" y="150" width="62" height="32" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2.5" /><text x="181" y="170" font-size="12" fill="#2e7d32" text-anchor="middle">[7,8]</text>
+<rect x="214" y="150" width="62" height="32" rx="6" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2" /><text x="245" y="170" font-size="12" fill="#1b5e20" text-anchor="middle">[6,8]</text>
+<rect x="278" y="150" width="62" height="32" rx="6" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2" /><text x="309" y="170" font-size="12" fill="#1b5e20" text-anchor="middle">[5,8]</text>
+<rect x="342" y="150" width="62" height="32" rx="6" fill="#eeeeee" stroke="#9e9e9e" stroke-width="2" stroke-dasharray="4" /><text x="373" y="170" font-size="12" fill="#9e9e9e" text-anchor="middle">[4,8]</text>
+<line x1="348" y1="156" x2="398" y2="176" stroke="#9e9e9e" stroke-width="1.5" /><line x1="398" y1="156" x2="348" y2="176" stroke="#9e9e9e" stroke-width="1.5" />
+<text x="181" y="197" font-size="11" fill="#2e7d32" text-anchor="middle">แทรกหัว (idx 0)</text>
+<text x="373" y="197" font-size="11" fill="#9e9e9e" text-anchor="middle">ตัดหาง (pop)</text>
+<text x="430" y="164" font-size="11" fill="#607d8b">insert หัว + pop ท้าย</text>
+<text x="430" y="182" font-size="11" fill="#2e7d32">โค้ดวาด (ชั้น 3) ไม่ต้องแก้เลย</text>
+<text x="420" y="216" font-size="12" fill="#455a64" text-anchor="middle">ผลลัพธ์: snake_body = [[7,8],[6,8],[5,8]] — งูขยับ 1 ช่อง</text>
+</svg>
+</div>
 <ul>
-<li><strong>ออกแบบสนามที่ไม่ใช่สี่เหลี่ยมเปล่า</strong> — ถ้าอยากมีกำแพงหรือสิ่งกีดขวางในสนาม จะเก็บ &quot;ช่องกำแพง&quot; ไว้ยังไง ให้ใช้แนวคิดเดียวกับ <code>snake_body</code> (list ของช่อง) ได้ไหม แล้วตอนวาดจะวนสร้าง <code>game.Box</code> จาก list-comp เหมือนตัวงูเลยหรือเปล่า</li>
-<li><strong>ธีมสีจากค่าคงที่เดียว</strong> — ตอนนี้สีงู/อาหารกระจายเป็น <code>game.GB_DARK / GB_LIGHT / GB_LIGHTEST</code> ถ้าอยากสลับธีมทั้งเกมด้วยการแก้ที่เดียว จะจัดโครงตัวแปรสียังไง (นึกถึงวิธีที่ <code>CELL_PX</code> คุมขนาดทั้งจอจากเลขเดียว)</li>
-<li><strong>กริดหยาบ-ละเอียด</strong> — ถ้าเปลี่ยน <code>CELL_PX</code> จาก 26 เป็น 20 หรือ 40 จำนวนช่อง (<code>GRID_COLS/ROWS</code>) กับความรู้สึกตอนเล่นจะเปลี่ยนไปทางไหน ช่องเล็กลง = เกมยากขึ้นหรือง่ายขึ้น ลองเดาก่อนแล้วค่อยรันจริงเทียบ</li>
-<li><strong>สะพานไปคาบหน้า — เตรียมให้งูเดิน</strong> — คาบหน้าเราจะให้งูเลื้อยด้วยการ <strong>แทรกช่องใหม่ที่หัว (index 0) แล้วตัดช่องท้ายทิ้ง</strong> ลองคิดล่วงหน้าบนกระดาษ: ถ้าหัวอยู่ <code>[6, 8]</code> แล้วงูจะเดินไปทางขวา ช่องใหม่ที่ต้องแทรกหน้า <code>snake_body</code> คือช่องอะไร แล้วจะเขียนโค้ดแทรก/ตัดยังไงโดยไม่ต้องแตะโค้ดวาด (ชั้น 3) เลย</li>
+<li><strong>ออกแบบสนามที่ไม่ใช่สี่เหลี่ยมเปล่า</strong> — ถ้าอยากมีกำแพง/สิ่งกีดขวาง จะเก็บ &quot;ช่องกำแพง&quot; ยังไง ใช้แนวคิดเดียวกับ <code>snake_body</code> (list ของช่อง) ได้ไหม แล้ววาดด้วย list-comp จาก <code>game.Box</code> เหมือนตัวงูเลยหรือเปล่า</li>
+<li><strong>ธีมสีจากค่าคงที่เดียว</strong> — ตอนนี้สีงู/อาหารกระจายเป็น <code>game.GB_DARK / GB_LIGHT / GB_LIGHTEST</code> ถ้าอยากสลับธีมทั้งเกมด้วยการแก้ที่เดียว จะจัดโครงตัวแปรสียังไง (นึกถึง <code>CELL_PX</code> ที่คุมทั้งจอจากเลขเดียว)</li>
+<li><strong>กริดหยาบ-ละเอียด</strong> — ถ้าเปลี่ยน <code>CELL_PX</code> จาก 26 เป็น 20 หรือ 40 จำนวนช่อง (<code>GRID_COLS/ROWS</code>) กับความรู้สึกตอนเล่นจะเปลี่ยนไปทางไหน ช่องเล็กลง = ยากขึ้นหรือง่ายขึ้น ลองเดาก่อนแล้วรันจริงเทียบ</li>
+<li><strong>สะพานไปคาบหน้า — เตรียมให้งูเดิน</strong> — คาบหน้าเราจะให้งูเลื้อยด้วยการ <strong>แทรกช่องใหม่ที่หัว (index 0) แล้วตัดช่องท้ายทิ้ง</strong> ลองคิดบนกระดาษ: ถ้าหัวอยู่ <code>[6, 8]</code> แล้วเดินไปทางขวา ช่องใหม่ที่แทรกหน้า <code>snake_body</code> คือช่องอะไร แล้วเขียนแทรก/ตัดยังไงโดยไม่ต้องแตะโค้ดวาด (ชั้น 3)</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากช่องที่เราวาดเองวันนี้ — โดยเฉพาะข้อสุดท้าย ถ้าคิดออกก่อน คาบหน้างูจะเลื้อยในหัวน้องก่อนเลื้อยบนจอ</p>

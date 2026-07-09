@@ -837,9 +837,62 @@ SPEED = <span class="hljs-number">120.0</span>     <span class="hljs-comment"># 
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--%E0%B9%80%E0%B8%AD%E0%B8%B5%E0%B8%A2%E0%B8%87%E0%B8%84%E0%B8%A7%E0%B8%B2%E0%B8%A1%E0%B9%80%E0%B8%A3%E0%B9%88%E0%B8%87-%E2%86%92-%E0%B8%84%E0%B8%B3%E0%B8%AA%E0%B8%B1%E0%B9%88%E0%B8%87">ใช้จริงที่ไหน — เอียง/ความเร่ง → คำสั่ง</h1>
 <p>โค้ด map ค่าความเร่งสั้น ๆ ที่น้องเพิ่งเขียน คือหัวใจเดียวกับของพวกนี้ ทุกอันมีเครื่องจริงในโลก:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arU9" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">เอียงเครื่อง = พวงมาลัย</text>
+  <line x1="34" y1="98" x2="150" y2="64" stroke="#1565c0" stroke-width="3" />
+  <circle cx="116" cy="74" r="9" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <line x1="116" y1="74" x2="140" y2="67" stroke="#607d8b" stroke-width="2" marker-end="url(#arU9)" />
+  <text x="56" y="110" font-size="11" fill="#777">เอียง ax</text>
+  <line x1="186" y1="66" x2="234" y2="66" stroke="#607d8b" stroke-width="2" marker-end="url(#arU9)" />
+  <text x="210" y="58" font-size="11" fill="#607d8b" text-anchor="middle">map</text>
+  <text x="335" y="54" font-size="12" font-weight="700" fill="#1565c0" text-anchor="middle">ทิศ + ความเร็ว</text>
+  <rect x="250" y="62" width="170" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" />
+  <text x="335" y="83" font-size="10" fill="#1565c0" text-anchor="middle" font-family="monospace">box.move(ax·SPEED, ay·SPEED)</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="12" font-weight="700" fill="#2e7d32">ตรวจล้ม / นับก้าว · |a| = √(ax²+ay²+az²)</text>
+  <line x1="486" y1="82" x2="840" y2="82" stroke="#a5d6a7" stroke-width="1.5" />
+  <text x="466" y="86" font-size="10" fill="#607d8b">1g</text>
+  <line x1="486" y1="56" x2="840" y2="56" stroke="#ef6c00" stroke-width="1.3" stroke-dasharray="5 3" />
+  <text x="690" y="52" font-size="10" fill="#ef6c00">threshold</text>
+  <path d="M486,82 L506,79 L524,85 L542,79 L560,84 L580,80 L600,82 L612,50 L626,98 L648,82 L840,82" fill="none" stroke="#2e7d32" stroke-width="2.5" />
+  <text x="614" y="46" font-size="11" font-weight="700" fill="#ef6c00" text-anchor="middle">ล้ม!</text>
+  <text x="600" y="109" font-size="11" fill="#777" text-anchor="middle">เดินแกว่งใกล้ 1g · ล้ม = หลุด threshold</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">โดรน / หุ่นทรงตัว · วนลูปคุมมอเตอร์</text>
+  <rect x="24" y="162" width="92" height="34" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="70" y="183" font-size="11" fill="#ef6c00" text-anchor="middle">อ่านเอียง</text>
+  <line x1="116" y1="179" x2="148" y2="179" stroke="#607d8b" stroke-width="2" marker-end="url(#arU9)" />
+  <rect x="150" y="162" width="70" height="34" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="185" y="183" font-size="11" fill="#ef6c00" text-anchor="middle">map</text>
+  <line x1="220" y1="179" x2="256" y2="179" stroke="#607d8b" stroke-width="2" marker-end="url(#arU9)" />
+  <rect x="258" y="162" width="98" height="34" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="307" y="183" font-size="11" fill="#ef6c00" text-anchor="middle">มอเตอร์</text>
+  <path d="M307,196 C307,212 70,212 70,196" fill="none" stroke="#607d8b" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#arU9)" />
+  <text x="188" y="224" font-size="11" fill="#777" text-anchor="middle">read → map → สั่ง ทุกไม่กี่ ms</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">กันกระแทก HDD / ถุงลม · จับตกอิสระ</text>
+  <text x="468" y="170" font-size="10" fill="#607d8b">1g</text>
+  <line x1="486" y1="206" x2="840" y2="206" stroke="#ef6c00" stroke-width="1.3" stroke-dasharray="5 3" />
+  <text x="492" y="202" font-size="10" fill="#ef6c00">≈ 0 g (ตกอิสระ)</text>
+  <path d="M486,166 L575,166 L636,210 L720,210" fill="none" stroke="#6a1b9a" stroke-width="2.5" />
+  <line x1="636" y1="150" x2="636" y2="214" stroke="#6a1b9a" stroke-width="1" stroke-dasharray="3 3" />
+  <text x="648" y="156" font-size="11" font-weight="700" fill="#6a1b9a">trigger</text>
+  <rect x="700" y="176" width="150" height="30" rx="6" fill="#f3e5f5" stroke="#6a1b9a" />
+  <text x="775" y="196" font-size="11" fill="#6a1b9a" text-anchor="middle">พักหัวอ่าน · กางถุงลม</text>
+</svg>
+</div>
 <ul>
-<li><strong>สมาร์ตโฟนหมุนจออัตโนมัติ + เกมแข่งรถเอียงบังคับ</strong> (Asphalt, Real Racing) — อ่าน ax/ay แล้ว map เป็นทิศ ตรงกับ pose <code>box.move(ax * SPEED, ay * SPEED)</code> (<code>:45</code>) เป๊ะ เอียงเครื่องเป็นพวงมาลัย</li>
-<li><strong>สายรัดข้อมือนับก้าว / ตรวจการล้ม</strong> — ใช้ <strong>magnitude</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{ax^2+ay^2+az^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2822em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.9178em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
+<li><strong>สมาร์ตโฟนหมุนจอ + เกมแข่งรถเอียงบังคับ</strong> (Asphalt) — อ่าน ax/ay แล้ว map เป็นทิศ ตรงกับ <code>box.move(ax * SPEED, ay * SPEED)</code> (<code>:45</code>) เอียงเครื่องเป็นพวงมาลัย</li>
+<li><strong>สายรัดข้อมือนับก้าว / ตรวจล้ม</strong> — ใช้ <strong>magnitude</strong> <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mrow><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><mi>a</mi><msup><mi>z</mi><mn>2</mn></msup></mrow></msqrt></mrow><annotation encoding="application/x-tex">\sqrt{ax^2+ay^2+az^2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2822em;"></span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9578em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.0359em;">y</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord mathnormal">a</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.044em;">z</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.7401em;"><span style="top:-2.989em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span><span style="top:-2.9178em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width="400em" height="1.28em" viewBox="0 0 400000 1296" preserveAspectRatio="xMinYMin slice"><path d="M263,681c0.7,0,18,39.7,52,119
 c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
 c340,-704.7,510.7,-1060.3,512,-1067
 l0 -0
@@ -849,9 +902,9 @@ s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,
 c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
 s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
 c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
-M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2822em;"><span></span></span></span></span></span></span></span></span> จากสไลด์ &quot;เช็กความถูกต้อง ≈ 1g&quot;: เดินปกติแกว่งใกล้ 1g ล้มจะกระชากหลุดจาก 1g มาก เป็น threshold แบบเดียวกับที่เราตัด noise ด้วย <code>DEADZONE</code></li>
-<li><strong>โดรน/หุ่นยนต์ทรงตัวเอง</strong> — วนลูปอ่านความเอียง → map → สั่งมอเตอร์ปรับ ทุกไม่กี่มิลลิวินาที คือ game loop <code>read → update → wait</code> อันเดียวกับ <code>time.sleep_ms(30)</code> (<code>:47</code>) ของเรา แค่ actuator เป็นมอเตอร์แทนกล่อง</li>
-<li><strong>ฮาร์ดดิสก์กันกระแทก / เซนเซอร์ถุงลมรถ</strong> — จับความเร่งที่หลุด threshold (ตกอิสระ = magnitude ตกใกล้ 0) แล้วสั่งพักหัวอ่าน/กางถุงลมทันที เป็น deadzone กลับด้าน: สนใจเฉพาะตอนค่า <strong>หลุด</strong> ช่วงปกติ</li>
+M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2822em;"><span></span></span></span></span></span></span></span></span>: เดินปกติแกว่งใกล้ 1g ล้มกระชากหลุดจาก 1g มาก เป็น threshold แบบเดียวกับที่ตัด noise ด้วย <code>DEADZONE</code></li>
+<li><strong>โดรน / หุ่นยนต์ทรงตัว</strong> — วนลูปอ่านเอียง → map → สั่งมอเตอร์ ทุกไม่กี่มิลลิวินาที คือ game loop <code>read → update → wait</code> อันเดียวกับ <code>time.sleep_ms(30)</code> (<code>:47</code>) แค่ actuator เป็นมอเตอร์แทนกล่อง</li>
+<li><strong>ฮาร์ดดิสก์กันกระแทก / ถุงลมรถ</strong> — จับความเร่งที่หลุด threshold (ตกอิสระ = magnitude ใกล้ 0) แล้วสั่งพักหัวอ่าน / กางถุงลมทันที เป็น deadzone กลับด้าน: สนใจเฉพาะตอนค่า <strong>หลุด</strong> ช่วงปกติ</li>
 </ul>
 <blockquote>
 <p>สี่กรณีนี้ ไม่มีอันไหนเป็นของสมมติเลย ทุกอันมีอุปกรณ์จริงในกระเป๋าน้องที่ทำงานด้วยหลักการเดียวกับโค้ดวันนี้อยู่</p>
@@ -860,11 +913,50 @@ M1001 80h400000v40h-400000z"/></svg></span></span></span><span class="vlist-s">�
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="31" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองหยิบสักข้อไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn2" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="22" font-size="13" font-weight="700" fill="#607d8b">แบบวันนี้ — box.move(ax·SPEED) : ตำแหน่ง = ค่าเอียงตรง ๆ</text>
+  <line x1="470" y1="34" x2="470" y2="74" stroke="#9e9e9e" stroke-width="1.5" stroke-dasharray="5 3" />
+  <text x="476" y="32" font-size="10" fill="#607d8b">ปล่อยมือ ax=0</text>
+  <line x1="120" y1="64" x2="760" y2="64" stroke="#cfd8dc" stroke-width="1.5" />
+  <rect x="150" y="52" width="12" height="12" fill="#1565c0" />
+  <rect x="192" y="52" width="12" height="12" fill="#1565c0" />
+  <rect x="244" y="52" width="12" height="12" fill="#1565c0" />
+  <rect x="312" y="52" width="12" height="12" fill="#1565c0" />
+  <rect x="402" y="52" width="12" height="12" fill="#1565c0" />
+  <rect x="486" y="52" width="12" height="12" fill="#1565c0" />
+  <text x="512" y="62" font-size="10" fill="#ef6c00">หยุด</text>
+  <text x="420" y="92" font-size="11" fill="#ef6c00" text-anchor="middle">ปล่อยมือ = หยุดกึก ไม่มีแรงเฉื่อย</text>
+  
+  <line x1="420" y1="100" x2="420" y2="122" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn2)" />
+  <text x="436" y="116" font-size="11" fill="#777">เปลี่ยนวิธีคิด: ตำแหน่ง → ความเร็ว (vx)</text>
+  
+  <text x="14" y="142" font-size="13" font-weight="700" fill="#2e7d32">คาบหน้า — เอียง 'บวกเพิ่ม' vx : ยานมีแรงเฉื่อย ไหลต่อ</text>
+  <line x1="470" y1="152" x2="470" y2="192" stroke="#9e9e9e" stroke-width="1.5" stroke-dasharray="5 3" />
+  <text x="476" y="150" font-size="10" fill="#2e7d32">ปล่อยมือ ax=0</text>
+  <line x1="120" y1="182" x2="760" y2="182" stroke="#cfd8dc" stroke-width="1.5" />
+  <rect x="150" y="170" width="12" height="12" fill="#2e7d32" />
+  <rect x="192" y="170" width="12" height="12" fill="#2e7d32" />
+  <rect x="244" y="170" width="12" height="12" fill="#2e7d32" />
+  <rect x="312" y="170" width="12" height="12" fill="#2e7d32" />
+  <rect x="402" y="170" width="12" height="12" fill="#2e7d32" />
+  <rect x="486" y="170" width="12" height="12" fill="#2e7d32" fill-opacity="0.85" />
+  <rect x="540" y="170" width="12" height="12" fill="#2e7d32" fill-opacity="0.65" />
+  <rect x="584" y="170" width="12" height="12" fill="#2e7d32" fill-opacity="0.5" />
+  <rect x="616" y="170" width="12" height="12" fill="#2e7d32" fill-opacity="0.38" />
+  <rect x="636" y="170" width="12" height="12" fill="#2e7d32" fill-opacity="0.28" />
+  <text x="430" y="214" font-size="11" fill="#2e7d32" text-anchor="middle">ปล่อยมือแล้วยังไหลต่อ แล้วค่อย ๆ ช้าลง (แรงเฉื่อย)</text>
+</svg>
+</div>
 <ul>
-<li><strong>จับการเขย่า (shake)</strong> — ถ้าอยากให้ &quot;เขย่าบอร์ดแรง ๆ = เริ่มเกมใหม่&quot; จะใช้ <strong>magnitude</strong> จากสไลด์เช็ก 1g มาตั้ง threshold ยังไง ค่าปกติวางนิ่ง ≈ 1g เขย่าจะพุ่งเกิน 2g ลองออกแบบเงื่อนไขให้ไวพอแต่ไม่ลั่นเอง</li>
-<li><strong>ทำค่าให้ลื่นด้วย EMA</strong> — จากสไลด์ต่อยอด EMA ลองใส่ low-pass filter หลังบรรทัด <code>:36</code> แล้วหา <code>ALPHA</code> ที่ลื่นแต่ไม่หน่วงจนคุมยาก จูนยังไงให้พอดี เขียนค่าที่เลือก + เหตุผลลงใบงาน</li>
-<li><strong>เกมเขาวงกตลูกแก้ว</strong> — เปลี่ยนกล่องเป็นลูกแก้ว เติม &quot;หลุม&quot; ที่ห้ามตก (จากสไลด์ &quot;เอียงคุมเกม&quot;) จะเก็บตำแหน่งหลุมหลาย ๆ จุดยังไง แล้วเช็กว่าลูกแก้วทับหลุมไหนในแต่ละเฟรม</li>
-<li><strong>สะพานสู่คาบหน้า (Shooter: บังคับมีน้ำหนัก)</strong> — วันนี้กล่องหยุดทันทีที่วางราบ เพราะเราคูณ ax <strong>ตรง ๆ</strong> ไม่เก็บความเร็วไว้ คาบหน้ายานต้อง <strong>มีแรงเฉื่อย</strong> ไหลต่อแม้ปล่อยมือ ลองคิดล่วงหน้า: ถ้าเก็บตัวแปร <code>vx</code> (ความเร็ว) ไว้ แล้วให้ความเอียงไป <strong>บวกเพิ่ม</strong> <code>vx</code> แทนที่จะกำหนดตำแหน่งตรง ๆ กล่องจะเคลื่อนต่างจากวันนี้ยังไง</li>
+<li><strong>จับการเขย่า (shake)</strong> — อยากให้ &quot;เขย่าแรง ๆ = เริ่มเกมใหม่&quot; จะใช้ <strong>magnitude</strong> มาตั้ง threshold ยังไง วางนิ่ง ≈ 1g เขย่าพุ่งเกิน 2g ออกแบบเงื่อนไขให้ไวพอแต่ไม่ลั่นเอง</li>
+<li><strong>ทำค่าให้ลื่นด้วย EMA</strong> — ใส่ low-pass filter หลังบรรทัด <code>:36</code> แล้วหา <code>ALPHA</code> ที่ลื่นแต่ไม่หน่วงจนคุมยาก เขียนค่าที่เลือก + เหตุผลลงใบงาน</li>
+<li><strong>เกมเขาวงกตลูกแก้ว</strong> — เปลี่ยนกล่องเป็นลูกแก้ว เติม &quot;หลุม&quot; ที่ห้ามตก จะเก็บตำแหน่งหลุมหลาย ๆ จุดยังไง แล้วเช็กว่าลูกแก้วทับหลุมไหนในแต่ละเฟรม</li>
+<li><strong>สะพานสู่คาบหน้า (Shooter: บังคับมีน้ำหนัก)</strong> — วันนี้กล่องหยุดทันทีที่วางราบ เพราะคูณ ax <strong>ตรง ๆ</strong> ไม่เก็บความเร็ว คาบหน้ายานต้อง <strong>มีแรงเฉื่อย</strong> ไหลต่อแม้ปล่อยมือ ถ้าเก็บ <code>vx</code> (ความเร็ว) ไว้ แล้วให้ความเอียง <strong>บวกเพิ่ม</strong> <code>vx</code> แทนกำหนดตำแหน่งตรง ๆ กล่องจะเคลื่อนต่างจากวันนี้ยังไง</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องถูกตั้งแต่แรก ขอแค่คิดต่อจากสี่จังหวะที่พิมพ์เองวันนี้ — ตรงนั้นแหละที่น้องเริ่มเป็นวิศวกรเซนเซอร์ ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

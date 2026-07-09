@@ -758,11 +758,53 @@ game.run(update, fps=FPS)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="28" style="--paginate:true;--theme:default;" data-marpit-pagination-total="29">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--callback-loop--collision--reuse-first">ใช้จริงที่ไหน — callback loop · collision · reuse-first</h1>
 <p>เทคนิคในเฉลยนี้ไม่ใช่ของเล่นในคาบ มันคือสิ่งที่ซอฟต์แวร์จริงใช้ทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="s12u" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">callback loop · game.run(update, fps)</text>
+  <path d="M380,58 C380,40 60,40 60,58" fill="none" stroke="#607d8b" stroke-width="2" marker-end="url(#s12u)" />
+  <text x="220" y="46" font-size="11" fill="#607d8b" text-anchor="middle">วนซ้ำทุกเฟรม</text>
+  <line x1="52" y1="76" x2="392" y2="76" stroke="#90caf9" stroke-width="2" />
+  <line x1="60" y1="70" x2="60" y2="82" stroke="#1565c0" stroke-width="2" /><circle cx="60" cy="64" r="3.5" fill="#1565c0" />
+  <line x1="124" y1="70" x2="124" y2="82" stroke="#1565c0" stroke-width="2" /><circle cx="124" cy="64" r="3.5" fill="#1565c0" />
+  <line x1="188" y1="70" x2="188" y2="82" stroke="#1565c0" stroke-width="2" /><circle cx="188" cy="64" r="3.5" fill="#1565c0" />
+  <line x1="252" y1="70" x2="252" y2="82" stroke="#1565c0" stroke-width="2" /><circle cx="252" cy="64" r="3.5" fill="#1565c0" />
+  <line x1="316" y1="70" x2="316" y2="82" stroke="#1565c0" stroke-width="2" /><circle cx="316" cy="64" r="3.5" fill="#1565c0" />
+  <line x1="380" y1="70" x2="380" y2="82" stroke="#1565c0" stroke-width="2" /><circle cx="380" cy="64" r="3.5" fill="#1565c0" />
+  <text x="222" y="104" font-size="11" fill="#777" text-anchor="middle">update() 30 ครั้ง/วินาที = 30 Hz</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">hit-testing · game.hit(a, b)</text>
+  <text x="562" y="40" font-size="10" fill="#607d8b" text-anchor="middle">player</text>
+  <text x="662" y="48" font-size="10" fill="#607d8b" text-anchor="middle">target</text>
+  <rect x="540" y="44" width="88" height="44" rx="4" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <rect x="608" y="54" width="88" height="44" rx="4" fill="#ffffff" stroke="#2e7d32" stroke-width="2" />
+  <rect x="608" y="54" width="20" height="34" fill="#2e7d32" fill-opacity="0.30" />
+  <text x="658" y="110" font-size="11" fill="#777" text-anchor="middle">กล่องทับกัน = ชน (AABB overlap)</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">super-loop ของเฟิร์มแวร์</text>
+  <rect x="26" y="164" width="108" height="32" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="2" /><text x="80" y="184" font-size="12" fill="#ef6c00" text-anchor="middle">อ่าน input</text>
+  <line x1="134" y1="180" x2="158" y2="180" stroke="#607d8b" stroke-width="2" marker-end="url(#s12u)" />
+  <rect x="160" y="164" width="112" height="32" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="2" /><text x="216" y="184" font-size="12" fill="#ef6c00" text-anchor="middle">อัปเดต state</text>
+  <line x1="272" y1="180" x2="296" y2="180" stroke="#607d8b" stroke-width="2" marker-end="url(#s12u)" />
+  <rect x="298" y="164" width="94" height="32" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="2" /><text x="345" y="184" font-size="12" fill="#ef6c00" text-anchor="middle">วาดผล</text>
+  <path d="M345,196 L345,214 L80,214 L80,198" fill="none" stroke="#607d8b" stroke-width="2" marker-end="url(#s12u)" />
+  <text x="214" y="210" font-size="11" fill="#777" text-anchor="middle">วนใหม่ทุกเฟรม</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">reuse-first · 70/30 บน framework</text>
+  <rect x="500" y="160" width="316" height="28" rx="6" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" /><text x="658" y="178" font-size="12" fill="#6a1b9a" text-anchor="middle">30% ตรรกะเฉพาะงาน (เราเขียน)</text>
+  <rect x="500" y="196" width="316" height="28" rx="6" fill="#d1c4e9" stroke="#6a1b9a" stroke-width="2" /><text x="658" y="214" font-size="12" fill="#4a148c" text-anchor="middle">70% framework / BSP / RTOS (reuse)</text>
+</svg>
+</div>
 <ul>
-<li><strong>fixed-timestep game / animation loop</strong> — <code>game.run(update, fps=FPS)</code> ที่เรียก <code>update()</code> 30 ครั้ง/วินาที คือหัวใจเดียวกับ game engine จริง (Unity <code>Update()</code>, Godot <code>_process</code>) และ animation frame บนเว็บ ตรงกับ <strong>ช่อง loop</strong> ที่เราแกะ :64</li>
-<li><strong>hit-testing บน UI</strong> — <code>game.hit(player, target)</code> คือ AABB overlap ตัวเดียวกับที่เฟรมเวิร์ก UI ใช้ตัดสินว่า &quot;นิ้วแตะโดนปุ่มไหน&quot; บนจอสัมผัส และที่เกม/หุ่นยนต์ใช้ตรวจการชน ตรงกับ <strong>ช่อง 3 Win/Lose</strong> :51</li>
-<li><strong>event loop ของเฟิร์มแวร์</strong> — โครง &quot;อ่าน input → อัปเดต state → วาดผล → วนใหม่&quot; คือ super-loop ที่ระบบ embedded จริงรันตลอด (คล้าย heartbeat LED ที่เต้นเบื้องหลัง) เกมเราคือ event loop ตัวจิ๋ว ตรงกับ <strong>ช่อง 2 Tick</strong> :33</li>
-<li><strong>สร้างของบน framework ที่มีอยู่</strong> — วิศวกรจริงแทบไม่เขียนทุกอย่างจากศูนย์ เขาต่อยอดบน BSP/RTOS/ไลบรารี แล้วเขียนแค่ &quot;ตรรกะเฉพาะงาน&quot; คือหลัก 70/30 ที่ <code>mygame.py</code> สอน ตรงกับ <strong>กฎทอง</strong> ของคาบ</li>
+<li><strong>fixed-timestep game loop</strong> — <code>game.run(update, fps=FPS)</code> เรียก <code>update()</code> 30 ครั้ง/วินาที คือหัวใจเดียวกับ game engine จริง (Unity <code>Update()</code>, Godot <code>_process</code>) ตรงกับ <strong>ช่อง loop</strong> :64</li>
+<li><strong>hit-testing บน UI</strong> — <code>game.hit(player, target)</code> คือ AABB overlap ตัวเดียวกับที่เฟรมเวิร์ก UI ใช้ตัดสินว่า &quot;นิ้วแตะโดนปุ่มไหน&quot; บนจอสัมผัส ตรงกับ <strong>ช่อง 3 Win/Lose</strong> :51</li>
+<li><strong>event loop ของเฟิร์มแวร์</strong> — โครง &quot;อ่าน input → อัปเดต state → วาดผล → วนใหม่&quot; คือ super-loop ที่ระบบ embedded จริงรันตลอด เกมเราคือ event loop ตัวจิ๋ว ตรงกับ <strong>ช่อง 2 Tick</strong> :33</li>
+<li><strong>สร้างของบน framework ที่มีอยู่</strong> — วิศวกรจริงแทบไม่เขียนทุกอย่างจากศูนย์ เขาต่อยอดบน BSP/RTOS/ไลบรารี แล้วเขียนแค่ &quot;ตรรกะเฉพาะงาน&quot; คือหลัก 70/30 ที่ <code>mygame.py</code> สอน ตรงกับ <strong>กฎทอง</strong></li>
 </ul>
 <blockquote>
 <p>เขียนเกมเล็ก ๆ จบหนึ่งไฟล์วันนี้ น้องได้ฝึกโครงเดียวกับที่ทีมพัฒนาเกมและทีมเฟิร์มแวร์มืออาชีพใช้ ต่างกันแค่ขนาด ไม่ใช่หลักการ</p>
@@ -771,9 +813,30 @@ game.run(update, fps=FPS)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="29" style="--paginate:true;--theme:default;" data-marpit-pagination-total="29">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาเกมของกลุ่มได้:</p>
+<div style="text-align:center">
+<svg width="840" height="220" viewBox="0 0 840 220" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="s12x" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <text x="185" y="22" font-size="13" font-weight="700" fill="#455a64" text-anchor="middle">เฉลยวันนี้ · mygame.py</text>
+  <rect x="20" y="30" width="330" height="170" rx="10" fill="#ffffff" stroke="#cfd8dc" stroke-width="2" />
+  <rect x="32" y="44" width="306" height="46" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="46" y="72" font-size="12" fill="#1565c0">1) State — player + target</text>
+  <rect x="32" y="96" width="306" height="46" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="46" y="124" font-size="12" fill="#2e7d32">2) Tick — อ่านปุ่ม → player.move</text>
+  <rect x="32" y="148" width="306" height="46" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" /><text x="46" y="176" font-size="12" fill="#ef6c00">3) Win/Lose — hit(target) → +1 แต้ม</text>
+  
+  <text x="421" y="98" font-size="13" font-weight="700" fill="#6a1b9a" text-anchor="middle">เปลี่ยนแค่ 30%</text>
+  <line x1="360" y1="115" x2="482" y2="115" stroke="#607d8b" stroke-width="3" marker-end="url(#s12x)" />
+  <text x="421" y="140" font-size="11" fill="#777" text-anchor="middle">engine 70% เดิม</text>
+  
+  <text x="655" y="22" font-size="13" font-weight="700" fill="#6a1b9a" text-anchor="middle">เกมของกลุ่ม (30% ใหม่)</text>
+  <rect x="490" y="30" width="330" height="170" rx="10" fill="#ffffff" stroke="#cfd8dc" stroke-width="2" />
+  <rect x="502" y="44" width="306" height="46" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" /><text x="516" y="72" font-size="12" fill="#1565c0">1) State — player + <tspan fill="#6a1b9a" font-weight="700">ศัตรู / เหรียญ</tspan></text>
+  <rect x="502" y="96" width="306" height="46" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="516" y="124" font-size="12" fill="#2e7d32">2) Tick — <tspan fill="#6a1b9a" font-weight="700">grid (row,col) หรือ v+=a</tspan></text>
+  <rect x="502" y="148" width="306" height="46" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" /><text x="516" y="176" font-size="12" fill="#ef6c00">3) Win/Lose — <tspan fill="#6a1b9a" font-weight="700">hit(enemy) → แพ้</tspan></text>
+</svg>
+</div>
 <ul>
 <li><strong>เพิ่มศัตรูที่ทำให้แพ้</strong> — ถ้าอยากมีของที่ชนแล้ว <em>แพ้</em> (ไม่ใช่ได้แต้ม) จะออกแบบยังไง? (ใบ้: เพิ่ม <code>game.Box</code> อีกใบใน State แล้วเพิ่ม <code>if game.hit(player, enemy): return False</code> ในช่อง 3 — ตรงข้ามกับ <code>target</code>)</li>
-<li><strong>สลับ physics เป็น grid</strong> — ถ้าเปลี่ยนเกมนี้เป็นแนว grid (เดินทีละช่องแบบ Snake) จะแก้ช่องไหนบ้าง? ตำแหน่งจะเก็บเป็น (row, col) แทนพิกเซลไหม แล้ว <code>_move_target</code> จะใช้สูตรดัชนี <code>row*COLS+col</code> แทน <code>%</code> ไหม</li>
+<li><strong>สลับ physics เป็น grid</strong> — ถ้าเปลี่ยนเกมนี้เป็นแนว grid (เดินทีละช่องแบบ Snake) จะแก้ช่องไหนบ้าง? ตำแหน่งเก็บเป็น (row, col) แทนพิกเซลไหม แล้ว <code>_move_target</code> ใช้สูตรดัชนี <code>row*COLS+col</code> แทน <code>%</code> ไหม</li>
 <li><strong>ระดับความยากด้วยค่าคงที่ 3 ตัว</strong> — อยากให้เกม &quot;ยากขึ้นแบบรู้สึกได้&quot; โดยแตะแค่หัวไฟล์ จะขยับ <code>PLAYER_SPEED</code> / <code>FPS</code> / <code>WIN_SCORE</code> ตัวไหน โดยไม่แตะลูปเลย?</li>
 <li><strong>(สะพานไปคาบ 13)</strong> หยิบ <strong>ใบออกแบบ + GitHub Issue ของกลุ่ม</strong> มาวางข้าง <code>mygame.py</code> แล้วถามตัวเอง: ช่อง 1/2/3 ของเกมกลุ่มต่างจากเฉลยนี้ตรงไหน? เขียน 3 บรรทัดแรกของช่อง 1 (State) ของกลุ่มลงใบงาน คาบหน้าเราจะเอามันขึ้นจอจริง</li>
 </ul>

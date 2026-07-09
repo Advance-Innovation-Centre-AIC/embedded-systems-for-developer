@@ -648,11 +648,61 @@ game.run(on_each_frame, fps=<span class="hljs-number">60</span>)                
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="27" style="--paginate:true;--theme:default;" data-marpit-pagination-total="28">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--integrate--reflect-%E0%B9%83%E0%B8%99%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87">ใช้จริงที่ไหน — integrate + reflect ในของจริง</h1>
 <p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือหลักที่เครื่องจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arO5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#ef6c00" /></marker>
+    <marker id="arP5" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6a1b9a" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">ฟิสิกส์เอนจินเกม · Unity / Godot</text>
+  <line x1="70" y1="100" x2="410" y2="100" stroke="#90caf9" stroke-width="2" />
+  <path d="M80,46 L200,98 L320,46" fill="none" stroke="#1565c0" stroke-width="2.5" />
+  <circle cx="80" cy="46" r="5" fill="#1565c0" />
+  <circle cx="140" cy="72" r="5" fill="#1565c0" />
+  <circle cx="200" cy="98" r="5" fill="#1565c0" />
+  <circle cx="260" cy="72" r="5" fill="#1565c0" />
+  <circle cx="320" cy="46" r="5" fill="#1565c0" />
+  <text x="150" y="42" font-size="11" fill="#607d8b">pos += vel</text>
+  <text x="336" y="96" font-size="11" fill="#777">ตรวจชน + ตอบสนอง</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">โลโก้ DVD / ป้าย LED เด้งขอบจอ</text>
+  <rect x="464" y="38" width="266" height="64" rx="4" fill="#ffffff" stroke="#66bb6a" stroke-width="2" />
+  <path d="M478,96 L596,44 L714,96" fill="none" stroke="#2e7d32" stroke-width="2.5" />
+  <rect x="588" y="42" width="18" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="597" y="51" font-size="8" fill="#2e7d32" text-anchor="middle">DVD</text>
+  <text x="748" y="66" font-size="11" fill="#777">ชนขอบ</text>
+  <text x="748" y="84" font-size="12" fill="#ef6c00">v = -v</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">หุ่นยนต์ดูดฝุ่น · ชนแล้วเลี้ยว</text>
+  <rect x="352" y="152" width="8" height="66" fill="#ef6c00" />
+  <circle cx="86" cy="196" r="14" fill="#ffffff" stroke="#ef6c00" stroke-width="2" />
+  <circle cx="86" cy="196" r="4" fill="#ef6c00" />
+  <line x1="104" y1="190" x2="342" y2="166" stroke="#ef6c00" stroke-width="2.5" marker-end="url(#arO5)" />
+  <line x1="344" y1="176" x2="150" y2="214" stroke="#ef6c00" stroke-width="2.5" marker-end="url(#arO5)" />
+  <text x="170" y="160" font-size="11" fill="#607d8b">เดินชน</text>
+  <text x="210" y="226" font-size="11" fill="#777" text-anchor="middle">เจอกำแพง → กลับทิศเดินต่อ</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">เรดาร์ · โซนาร์ · ray tracing</text>
+  <line x1="486" y1="204" x2="838" y2="204" stroke="#ce93d8" stroke-width="2.5" />
+  <line x1="662" y1="204" x2="662" y2="158" stroke="#6a1b9a" stroke-width="1.5" stroke-dasharray="4" />
+  <line x1="566" y1="160" x2="656" y2="201" stroke="#6a1b9a" stroke-width="2.5" marker-end="url(#arP5)" />
+  <line x1="662" y1="204" x2="758" y2="160" stroke="#6a1b9a" stroke-width="2.5" marker-end="url(#arP5)" />
+  <text x="620" y="184" font-size="12" fill="#6a1b9a">θ</text>
+  <text x="694" y="184" font-size="12" fill="#6a1b9a">θ</text>
+  <text x="668" y="168" font-size="10" fill="#999">normal</text>
+  <text x="662" y="226" font-size="11" fill="#777" text-anchor="middle">มุมตกกระทบ = มุมสะท้อน</text>
+</svg>
+</div>
 <ul>
-<li><strong>ฟิสิกส์เอนจินเกม</strong> (Unity, Godot, Box2D) — ทุกเฟรมอัปเดตตำแหน่งวัตถุด้วย <code>pos += vel</code> แล้วตรวจชนและตอบสนอง คือ <strong>integrate + reflect</strong> ชุดเดียวกับที่เราเขียน เพียงแต่ทำกับวัตถุนับพันและมีมวล/แรงเสียดทานเพิ่ม รากคือสไลด์ &quot;ฟิสิกส์ #1&quot; กับ &quot;ฟิสิกส์ #2&quot;</li>
-<li><strong>โลโก้ DVD / ป้าย LED เลื่อนเด้งขอบจอ</strong> — ภาพเด้งมุมจอที่เราเคยเห็นตามป้ายโฆษณาและ screensaver คือ <code>if ชนขอบ: v = -v</code> ตรงตัวกับคาถา &quot;พลิกเครื่องหมายของแกนที่ชน&quot; และเงื่อนกันหลุดซ้าย/ขวาใน <code>:47-48</code> ของเรา</li>
-<li><strong>หุ่นยนต์ดูดฝุ่นแบบชนแล้วเลี้ยว</strong> — เจอกำแพงก็เปลี่ยนทิศเดินต่อ แนวคิดคือ reflect เวกเตอร์การเคลื่อนที่ ต่างจากเราตรงมันอ่านค่าจากเซนเซอร์ชนจริง แทนการเทียบพิกัดกับขอบจอ แต่ตรรกะ &quot;ชน → กลับทิศ&quot; คือบล็อก reflect เดียวกัน</li>
-<li><strong>เรดาร์ โซนาร์ และ ray tracing ในกราฟิก</strong> — คลื่นและแสงสะท้อนพื้นผิวตาม &quot;มุมตกกระทบ = มุมสะท้อน&quot; รอบเส้นตั้งฉาก (normal) คือกฎเป๊ะเดียวกับสไลด์ &quot;ทำไมพลิกแค่แกนเดียว&quot; ที่ทำให้ <code>ball_vy = -ball_vy</code> สมจริงโดยไม่ต้องใช้ sin/cos</li>
+<li><strong>ฟิสิกส์เอนจินเกม</strong> (Unity, Godot, Box2D) — ทุกเฟรมอัปเดตตำแหน่งด้วย <code>pos += vel</code> แล้วตรวจชนและตอบสนอง คือ <strong>integrate + reflect</strong> ชุดเดียวกับที่เราเขียน เพียงแต่ทำกับวัตถุนับพันและมีมวล/แรงเสียดทานเพิ่ม</li>
+<li><strong>โลโก้ DVD / ป้าย LED เด้งขอบจอ</strong> — ภาพเด้งมุมจอตาม screensaver คือ <code>if ชนขอบ: v = -v</code> ตรงตัวกับคาถา &quot;พลิกเครื่องหมายของแกนที่ชน&quot; และเงื่อนกันหลุดซ้าย/ขวาใน <code>:47-48</code> ของเรา</li>
+<li><strong>หุ่นยนต์ดูดฝุ่นชนแล้วเลี้ยว</strong> — เจอกำแพงก็เปลี่ยนทิศเดินต่อ คือ reflect เวกเตอร์การเคลื่อนที่ ต่างตรงมันอ่านจากเซนเซอร์ชนจริงแทนการเทียบพิกัดขอบจอ แต่ตรรกะ &quot;ชน → กลับทิศ&quot; คือบล็อก reflect เดียวกัน</li>
+<li><strong>เรดาร์ โซนาร์ และ ray tracing</strong> — คลื่นและแสงสะท้อนพื้นผิวตาม &quot;มุมตกกระทบ = มุมสะท้อน&quot; รอบเส้นตั้งฉาก (normal) คือกฎเดียวกับสไลด์ &quot;ทำไมพลิกแค่แกนเดียว&quot; ที่ทำให้ <code>ball_vy = -ball_vy</code> สมจริงโดยไม่ต้องใช้ sin/cos</li>
 </ul>
 <blockquote>
 <p>ห้าบรรทัดฟิสิกส์ที่เราเขียนวันนี้ ไม่มีบรรทัดไหนเป็นของเล่น มันคือแกนเดียวกับเอนจินเกม หุ่นยนต์ และการจำลองคลื่นในโลกจริง</p>
@@ -661,11 +711,38 @@ game.run(on_each_frame, fps=<span class="hljs-number">60</span>)                
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="28" style="--paginate:true;--theme:default;" data-marpit-pagination-total="28">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn5" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+    <marker id="arS2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#2e7d32">วันนี้ — กำแพงอยู่นิ่ง (ทำเสร็จแล้ว)</text>
+  <path d="M200,44 L360,86 L520,44 L660,86" fill="none" stroke="#2e7d32" stroke-width="2.5" />
+  <circle cx="360" cy="86" r="5" fill="#2e7d32" />
+  <circle cx="660" cy="86" r="5" fill="#2e7d32" />
+  <rect x="140" y="90" width="560" height="10" rx="2" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="420" y="118" font-size="12" fill="#455a64" text-anchor="middle">ชนกำแพง → vy = -vy · กำแพงไม่ขยับ</text>
+  
+  <line x1="420" y1="126" x2="420" y2="148" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn5)" />
+  <text x="436" y="142" font-size="11" fill="#777">เปลี่ยนวิธีคิด — กำแพงที่ขยับได้</text>
+  
+  <text x="14" y="170" font-size="13" font-weight="700" fill="#1565c0">คาบหน้า — ไม้ตีที่ผู้เล่นเลื่อนได้</text>
+  <path d="M210,178 L388,200 L566,178" fill="none" stroke="#1565c0" stroke-width="2.5" />
+  <circle cx="388" cy="200" r="5" fill="#1565c0" />
+  <rect x="344" y="202" width="90" height="10" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <line x1="340" y1="207" x2="316" y2="207" stroke="#607d8b" stroke-width="1.5" marker-end="url(#arS2)" />
+  <line x1="438" y1="207" x2="462" y2="207" stroke="#607d8b" stroke-width="1.5" marker-end="url(#arS2)" />
+  <text x="474" y="211" font-size="11" fill="#607d8b">เลื่อนซ้าย/ขวา</text>
+  <text x="600" y="188" font-size="11" fill="#ef6c00">พลาด → เสียแต้ม</text>
+</svg>
+</div>
 <ul>
-<li><strong>เร่งลูกทุกครั้งที่เด้ง</strong> — ถ้าอยากให้ลูกเร็วขึ้นทีละนิดทุกครั้งที่ชนกำแพง จะเพิ่มขนาด <code>|v|</code> ยังไงโดยยังรักษา <strong>ทิศ (มุม)</strong> เดิมไว้ ลองคิดว่าจะคูณทั้ง <code>ball_vx</code> และ <code>ball_vy</code> ด้วยตัวเลขเท่ากัน หรือแยกจัดการแต่ละแกน แบบไหนมุมไม่เพี้ยน</li>
-<li><strong>ลูกบอลหลายลูกพร้อมกัน</strong> — ถ้าอยากมี 5 ลูกวิ่งพร้อมกัน จะเก็บสถานะยังไงให้ไม่ต้องสร้างตัวแปร <code>ball_x1, ball_x2, ...</code> ยาวเป็นหางว่าว (ใบ้: <code>list</code> ของ tuple <code>(x, y, vx, vy)</code> แล้ววนด้วย <code>for</code>) นี่คือการต่อยอดเวกเตอร์สองแกนไปเป็นหลายวัตถุ</li>
-<li><strong>กำแพงเอียง</strong> — ถ้ากำแพงไม่ตั้งฉากกับแกน (เอียง 30 องศา) การพลิกเครื่องหมายแกนเดียวยังพอไหม ลองคิดว่าทำไมกรณีตั้งฉากถึงง่ายเป็นพิเศษ แล้วกรณีเอียงต้องรู้อะไรเพิ่ม (ใบ้: เส้นตั้งฉาก normal ของกำแพง)</li>
-<li><strong>เตรียมรับไม้ตี (สะพานสู่คาบหน้า)</strong> — คาบหน้าเราจะเพิ่มไม้ตีที่ผู้เล่นขยับซ้าย/ขวาได้ ลองออกแบบล่วงหน้า: การเช็ก &quot;ลูกชนไม้ตี&quot; ต่างจากเช็ก &quot;ลูกชนกำแพง&quot; ตรงไหน ในเมื่อไม้ตีมีตำแหน่งที่ขยับได้ตลอด แล้วเสียง <code>game.sfx(&quot;paddle&quot;)</code> ควรดังตอนไหน</li>
+<li><strong>เร่งลูกทุกครั้งที่เด้ง</strong> — อยากให้ลูกเร็วขึ้นทีละนิดทุกครั้งที่ชนกำแพง จะเพิ่มขนาด <code>|v|</code> ยังไงโดยยังรักษา <strong>ทิศ (มุม)</strong> เดิม ลองคิด: คูณทั้ง <code>ball_vx</code> และ <code>ball_vy</code> ด้วยตัวเลขเท่ากัน หรือแยกจัดการแต่ละแกน แบบไหนมุมไม่เพี้ยน</li>
+<li><strong>ลูกบอลหลายลูกพร้อมกัน</strong> — อยากมี 5 ลูกวิ่งพร้อมกัน จะเก็บสถานะยังไงไม่ให้สร้างตัวแปร <code>ball_x1, ball_x2, ...</code> ยาวเป็นหางว่าว (ใบ้: <code>list</code> ของ tuple <code>(x, y, vx, vy)</code> แล้ววนด้วย <code>for</code>) — ต่อยอดเวกเตอร์สองแกนไปเป็นหลายวัตถุ</li>
+<li><strong>กำแพงเอียง</strong> — ถ้ากำแพงไม่ตั้งฉากกับแกน (เอียง 30 องศา) การพลิกเครื่องหมายแกนเดียวยังพอไหม ทำไมกรณีตั้งฉากถึงง่ายเป็นพิเศษ แล้วกรณีเอียงต้องรู้อะไรเพิ่ม (ใบ้: เส้นตั้งฉาก normal ของกำแพง)</li>
+<li><strong>เตรียมรับไม้ตี (สะพานสู่คาบหน้า)</strong> — คาบหน้าเราจะเพิ่มไม้ตีที่ผู้เล่นขยับซ้าย/ขวาได้ ลองออกแบบล่วงหน้า: การเช็ก &quot;ลูกชนไม้ตี&quot; ต่างจาก &quot;ลูกชนกำแพง&quot; ตรงไหน ในเมื่อไม้ตีขยับได้ตลอด แล้วเสียง <code>game.sfx(&quot;paddle&quot;)</code> ควรดังตอนไหน</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากเวกเตอร์ที่พิมพ์เองวันนี้ — ตรงนั้นแหละคือจุดที่น้องเริ่มออกแบบฟิสิกส์เกมเอง ไม่ใช่แค่พิมพ์ตามเฉลย</p>

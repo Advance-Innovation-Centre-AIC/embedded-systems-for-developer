@@ -660,12 +660,51 @@ MODES = [
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="29" style="--paginate:true;--theme:default;" data-marpit-pagination-total="30">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--delta-time--ticks--numerical-integration">ใช้จริงที่ไหน — delta-time · ticks · numerical integration</h1>
-<p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่ระบบจริงใช้กันทุกวัน แต่ละข้อโยงกลับไปหาสิ่งที่เราทำในคาบนี้:</p>
+<p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่ระบบจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">เอนจินเกม · Time.deltaTime</text>
+  <text x="28" y="54" font-size="11" fill="#607d8b">60 fps</text>
+  <line x1="72" y1="50" x2="330" y2="50" stroke="#1565c0" stroke-width="1.5" />
+  <g stroke="#1565c0" stroke-width="1.5"><line x1="72" y1="45" x2="72" y2="55" /><line x1="90" y1="45" x2="90" y2="55" /><line x1="108" y1="45" x2="108" y2="55" /><line x1="126" y1="45" x2="126" y2="55" /><line x1="144" y1="45" x2="144" y2="55" /><line x1="162" y1="45" x2="162" y2="55" /><line x1="180" y1="45" x2="180" y2="55" /><line x1="198" y1="45" x2="198" y2="55" /><line x1="216" y1="45" x2="216" y2="55" /><line x1="234" y1="45" x2="234" y2="55" /><line x1="252" y1="45" x2="252" y2="55" /><line x1="270" y1="45" x2="270" y2="55" /><line x1="288" y1="45" x2="288" y2="55" /><line x1="306" y1="45" x2="306" y2="55" /><line x1="324" y1="45" x2="324" y2="55" /></g>
+  <circle cx="330" cy="50" r="4" fill="#1565c0" />
+  <text x="28" y="80" font-size="11" fill="#607d8b">30 fps</text>
+  <line x1="72" y1="76" x2="330" y2="76" stroke="#1565c0" stroke-width="1.5" />
+  <g stroke="#1565c0" stroke-width="1.5"><line x1="72" y1="71" x2="72" y2="81" /><line x1="108" y1="71" x2="108" y2="81" /><line x1="144" y1="71" x2="144" y2="81" /><line x1="180" y1="71" x2="180" y2="81" /><line x1="216" y1="71" x2="216" y2="81" /><line x1="252" y1="71" x2="252" y2="81" /><line x1="288" y1="71" x2="288" y2="81" /><line x1="324" y1="71" x2="324" y2="81" /></g>
+  <circle cx="330" cy="76" r="4" fill="#1565c0" />
+  <line x1="338" y1="42" x2="338" y2="84" stroke="#607d8b" stroke-width="1.5" stroke-dasharray="4 3" />
+  <text x="222" y="106" font-size="11" fill="#777" text-anchor="middle">เฟรมต่างกัน · ×dt แล้วระยะเท่ากันทุกเครื่อง</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">RTOS system tick · งานเป็นคาบ</text>
+  <line x1="472" y1="70" x2="832" y2="70" stroke="#2e7d32" stroke-width="1.5" />
+  <g stroke="#2e7d32" stroke-width="1.5"><line x1="472" y1="65" x2="472" y2="75" /><line x1="492" y1="65" x2="492" y2="75" /><line x1="512" y1="65" x2="512" y2="75" /><line x1="532" y1="65" x2="532" y2="75" /><line x1="552" y1="65" x2="552" y2="75" /><line x1="572" y1="65" x2="572" y2="75" /><line x1="592" y1="65" x2="592" y2="75" /><line x1="612" y1="65" x2="612" y2="75" /><line x1="632" y1="65" x2="632" y2="75" /><line x1="652" y1="65" x2="652" y2="75" /><line x1="672" y1="65" x2="672" y2="75" /><line x1="692" y1="65" x2="692" y2="75" /><line x1="712" y1="65" x2="712" y2="75" /><line x1="732" y1="65" x2="732" y2="75" /><line x1="752" y1="65" x2="752" y2="75" /><line x1="772" y1="65" x2="772" y2="75" /><line x1="792" y1="65" x2="792" y2="75" /><line x1="812" y1="65" x2="812" y2="75" /><line x1="832" y1="65" x2="832" y2="75" /></g>
+  <g fill="#2e7d32"><rect x="484" y="44" width="12" height="22" rx="3" /><rect x="580" y="44" width="12" height="22" rx="3" /><rect x="676" y="44" width="12" height="22" rx="3" /><rect x="772" y="44" width="12" height="22" rx="3" /></g>
+  <text x="490" y="40" font-size="10" fill="#2e7d32" text-anchor="middle">task</text>
+  <text x="656" y="106" font-size="11" fill="#777" text-anchor="middle">ticks_diff วัดคาบ → ปล่อยงานตรงจังหวะทุก N tick</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">ลูปควบคุม PID · ×dt</text>
+  <line x1="70" y1="158" x2="400" y2="158" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="5 3" />
+  <text x="404" y="162" font-size="10" fill="#777">setpoint</text>
+  <line x1="70" y1="216" x2="400" y2="216" stroke="#ffcc99" stroke-width="1.5" />
+  <path d="M72,216 C120,216 152,150 210,150 C272,150 300,158 400,158" fill="none" stroke="#ef6c00" stroke-width="2.5" />
+  <text x="222" y="226" font-size="11" fill="#777" text-anchor="middle">integral·derivative คูณ/หารด้วย dt จริง — dt เพี้ยน = แกว่ง</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">ฟิสิกส์/หุ่นยนต์ · v += a·dt</text>
+  <path d="M480,205 Q570,150 660,150 Q750,150 840,205" fill="none" stroke="#ce93d8" stroke-width="1.5" />
+  <g fill="#6a1b9a"><circle cx="480" cy="205" r="4" /><circle cx="525" cy="181" r="4" /><circle cx="570" cy="164" r="4" /><circle cx="615" cy="153" r="4" /><circle cx="660" cy="150" r="4" /><circle cx="705" cy="153" r="4" /><circle cx="750" cy="164" r="4" /><circle cx="795" cy="181" r="4" /><circle cx="840" cy="205" r="4" /></g>
+  <text x="656" y="226" font-size="11" fill="#777" text-anchor="middle">x += v·dt ทีละก้าว — Euler integration</text>
+</svg>
+</div>
 <ul>
-<li><strong>เอนจินเกมทุกตัว</strong> — Unity มี <code>Time.deltaTime</code>, Unreal มี <code>DeltaSeconds</code>, Godot มี <code>delta</code> ในฟังก์ชัน <code>_process()</code> ทั้งหมดคือตัวเดียวกับ <code>dt</code> ของเรา คูณเข้ากับการเคลื่อนที่เพื่อให้เกมลื่นเท่ากันทุกเครื่อง ตรงกับสไลด์ &quot;delta-time คืออะไร&quot; เป๊ะ ต่างแค่เขาอ่านเวลาจาก GPU frame timer เราอ่านจาก <code>time.ticks_ms()</code></li>
-<li><strong>RTOS scheduler / งานเป็นคาบ</strong> — <code>ticks_ms()</code> ที่เราเรียกคือการอ่าน <strong>system tick</strong> ตัวเดียวกับที่ FreeRTOS ใช้จัดคิวงาน นับ timeout ตั้ง periodic task การวัด <code>dt = ticks_diff(...)</code> คือหัวใจของการทำงานตามเวลาจริง — โยงกับสไลด์ &quot;วัดเวลาจริงด้วย ticks_ms + ticks_diff&quot;</li>
-<li><strong>ลูปควบคุม PID (มอเตอร์ / อุณหภูมิ / โดรน)</strong> — สูตร PID มีพจน์ integral และ derivative ที่ต้องคูณ/หารด้วย <code>dt</code> จริง ถ้า <code>dt</code> เพี้ยน ตัวคุมจะแกว่ง หลักเดียวกับที่เราคูณ <code>gravity * dt</code> ในสไลด์ &quot;ฟิสิกส์ delta-time&quot; นี่คือ <strong>numerical integration (Euler)</strong> ที่เราเรียนไปตัวจริง ๆ</li>
-<li><strong>จำลองฟิสิกส์ / หุ่นยนต์ / รถอัตโนมัติ</strong> — <code>v += a*dt</code>, <code>x += v*dt</code> คือก้าวเดินของ physics engine และ simulation ทุกตัว ค่าที่เราตั้งในตาราง <code>MODES</code> (grav px/s²) ก็คือหน่วยความเร่งจริง ๆ แบบเดียวกับที่วิศวกรใส่ในโมเดล</li>
+<li><strong>เอนจินเกมทุกตัว</strong> — Unity มี <code>Time.deltaTime</code>, Unreal มี <code>DeltaSeconds</code>, Godot มี <code>delta</code> ใน <code>_process()</code> ล้วนคือ <code>dt</code> ตัวเดียวกับเรา คูณกับการเคลื่อนที่ให้เกมลื่นเท่ากันทุกเครื่อง ต่างแค่เขาอ่านเวลาจาก GPU frame timer เราอ่านจาก <code>time.ticks_ms()</code></li>
+<li><strong>RTOS scheduler / งานเป็นคาบ</strong> — <code>ticks_ms()</code> คือการอ่าน <strong>system tick</strong> ตัวเดียวกับที่ FreeRTOS ใช้จัดคิวงาน นับ timeout ตั้ง periodic task การวัด <code>dt = ticks_diff(...)</code> คือหัวใจของการทำงานตามเวลาจริง</li>
+<li><strong>ลูปควบคุม PID (มอเตอร์ / อุณหภูมิ / โดรน)</strong> — พจน์ integral และ derivative ต้องคูณ/หารด้วย <code>dt</code> จริง ถ้า <code>dt</code> เพี้ยน ตัวคุมจะแกว่ง หลักเดียวกับที่เราคูณ <code>gravity * dt</code> — คือ <strong>numerical integration (Euler)</strong> ตัวจริง</li>
+<li><strong>จำลองฟิสิกส์ / หุ่นยนต์ / รถอัตโนมัติ</strong> — <code>v += a*dt</code>, <code>x += v*dt</code> คือก้าวเดินของ physics engine ทุกตัว ค่า grav (px/s²) ในตาราง <code>MODES</code> ก็คือหน่วยความเร่งจริงแบบเดียวกับที่วิศวกรใส่ในโมเดล</li>
 </ul>
 <blockquote>
 <p>เห็นไหมว่าสี่ข้อนี้ไม่มีข้อไหนเป็นของสมมติ ตั้งแต่เกม AAA ยันตัวคุมมอเตอร์ในโรงงาน ล้วนคูณ <code>dt</code> ด้วยเหตุผลเดียวกับที่เราทำวันนี้</p>
@@ -674,11 +713,39 @@ MODES = [
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="30">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn2" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#607d8b">แบบบล็อก — time.sleep_ms(180)</text>
+  <rect x="120" y="36" width="70" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="155" y="57" font-size="11" fill="#1565c0" text-anchor="middle">อ่านปุ่ม</text>
+  <rect x="196" y="36" width="424" height="34" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="408" y="57" font-size="12" fill="#455a64" text-anchor="middle">time.sleep_ms(180) — เกมหยุดนิ่ง</text>
+  <rect x="626" y="36" width="70" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="661" y="57" font-size="11" fill="#1565c0" text-anchor="middle">อ่านปุ่ม</text>
+  <text x="408" y="92" font-size="11" fill="#ef6c00" text-anchor="middle">กดปุ่มช่วงนี้ → ตกหล่น จอไม่อัปเดต</text>
+  
+  <line x1="420" y1="102" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn2)" />
+  <text x="436" y="119" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบจำเวลา — ticks_diff (ไม่บล็อก)</text>
+  <rect x="120" y="162" width="616" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="132" y="183" font-size="12" fill="#2e7d32">ทุกวนรอบ: อ่านปุ่ม + วาดจอ — ไม่หยุดเลย</text>
+  <rect x="300" y="162" width="8" height="34" fill="#2e7d32" />
+  <rect x="480" y="162" width="8" height="34" fill="#2e7d32" />
+  <rect x="660" y="162" width="8" height="34" fill="#2e7d32" />
+  <text x="484" y="156" font-size="11" fill="#2e7d32" text-anchor="middle">ขยับ 1 ช่อง เมื่อครบ 150 ms</text>
+  <text x="428" y="216" font-size="11" fill="#2e7d32" text-anchor="middle">ปุ่มกดตอนไหนก็รับได้ — Snake เดินตามจังหวะ</text>
+</svg>
+</div>
 <ul>
-<li><strong>หน่วงเวลาแบบไม่บล็อกเกม</strong> — ตอนนี้เมนูใช้ <code>time.sleep_ms(180)</code> กันปุ่มเด้ง ซึ่งหยุดทุกอย่างระหว่างหน่วง ถ้าต้องรับปุ่มไปพร้อมกับอัปเดตจอ จะเปลี่ยนมาใช้ <code>ticks_diff</code> จำ &quot;เวลากดล่าสุด&quot; แทนยังไง ให้เมนูตอบสนองลื่นโดยไม่ค้าง</li>
-<li><strong>ปรับความยากอัตโนมัติ (dynamic difficulty)</strong> — แทนที่จะให้ผู้เล่นเลือก EASY/NORMAL/HARD เอง ถ้าอยากให้เกม <strong>ค่อย ๆ เร่ง</strong> เมื่อแต้มสูงขึ้น จะดึงค่าจากตาราง <code>MODES</code> มาไล่ระดับ หรือจะคำนวณ <code>speed</code> จาก <code>score</code> ตรง ๆ ดี ข้อดีข้อเสียต่างกันยังไง</li>
-<li><strong>best score ที่ไม่หายตอนปิดเครื่อง</strong> — ตอนนี้ <code>best_score</code> หายเมื่อรีบูต ถ้าอยากให้สถิติค้างข้ามการปิดเปิดบอร์ด จะเก็บลงไฟล์ (persistent storage) ตอนไหน อ่านกลับมาตอนไหน แล้วจะกันไฟล์เสียหากดับไฟกลางคันยังไง</li>
-<li><strong>เตรียมสู่ Snake (คาบหน้า)</strong> — Snake ขยับ &quot;ทีละช่องกริด&quot; ตามจังหวะ ไม่ใช่ลื่นต่อเนื่องแบบนก ลองออกแบบล่วงหน้า: จะใช้ <code>dt</code>/<code>ticks_diff</code> ที่เราเพิ่งเรียน คุม &quot;ทุกกี่มิลลิวินาทีขยับหนึ่งช่อง&quot; ยังไง และจะทำให้ &quot;ยิ่งกินยิ่งเร็ว&quot; ด้วยแนวคิดตาราง <code>MODES</code> วันนี้ได้ไหม</li>
+<li><strong>หน่วงเวลาแบบไม่บล็อกเกม</strong> — เมนูใช้ <code>time.sleep_ms(180)</code> กันปุ่มเด้ง ซึ่งหยุดทุกอย่างระหว่างหน่วง ถ้าต้องรับปุ่มพร้อมอัปเดตจอ จะเปลี่ยนมาใช้ <code>ticks_diff</code> จำ &quot;เวลากดล่าสุด&quot; แทนยังไงให้ลื่นโดยไม่ค้าง</li>
+<li><strong>ปรับความยากอัตโนมัติ (dynamic difficulty)</strong> — แทนที่ผู้เล่นเลือก EASY/NORMAL/HARD เอง ถ้าอยากให้เกม <strong>ค่อย ๆ เร่ง</strong> เมื่อแต้มสูงขึ้น จะไล่ระดับจากตาราง <code>MODES</code> หรือคำนวณ <code>speed</code> จาก <code>score</code> ตรง ๆ ดี ข้อดีข้อเสียต่างกันยังไง</li>
+<li><strong>best score ที่ไม่หายตอนปิดเครื่อง</strong> — <code>best_score</code> หายเมื่อรีบูต ถ้าอยากให้สถิติค้างข้ามการปิดเปิดบอร์ด จะเก็บลงไฟล์ (persistent storage) ตอนไหน อ่านกลับตอนไหน แล้วกันไฟล์เสียตอนดับไฟกลางคันยังไง</li>
+<li><strong>เตรียมสู่ Snake (คาบหน้า)</strong> — Snake ขยับ &quot;ทีละช่องกริด&quot; ตามจังหวะ ไม่ลื่นต่อเนื่องแบบนก ลองออกแบบล่วงหน้า: จะใช้ <code>dt</code>/<code>ticks_diff</code> คุม &quot;ทุกกี่มิลลิวินาทีขยับหนึ่งช่อง&quot; ยังไง และจะทำ &quot;ยิ่งกินยิ่งเร็ว&quot; ด้วยแนวคิดตาราง <code>MODES</code> ได้ไหม</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากสามบรรทัด <code>dt</code> ที่พิมพ์เองวันนี้ — ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นวิศวกร ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

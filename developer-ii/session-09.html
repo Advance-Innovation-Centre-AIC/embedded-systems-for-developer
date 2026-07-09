@@ -677,11 +677,67 @@ pipes = []
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="26" style="--paginate:true;--theme:default;" data-marpit-pagination-total="27">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--object-pool--euler--procedural">ใช้จริงที่ไหน — object pool · Euler · procedural</h1>
 <p>เทคนิคสามอย่างของคาบนี้ ไม่ใช่ลูกเล่นของเล่น มันคือของที่เครื่องจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="poolA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#1565c0" /></marker>
+    <marker id="ringA" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#2e7d32" /></marker>
+  </defs>
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">บ่อกระสุน / particle pool</text>
+  <rect x="34" y="44" width="26" height="22" rx="6" fill="#1565c0" stroke="#1565c0" stroke-width="2" />
+  <rect x="66" y="44" width="26" height="22" rx="6" fill="#1565c0" stroke="#1565c0" stroke-width="2" />
+  <rect x="98" y="44" width="26" height="22" rx="6" fill="#1565c0" stroke="#1565c0" stroke-width="2" />
+  <rect x="130" y="44" width="26" height="22" rx="6" fill="#ffffff" stroke="#1565c0" stroke-width="2" />
+  <rect x="162" y="44" width="26" height="22" rx="6" fill="#ffffff" stroke="#1565c0" stroke-width="2" />
+  <path d="M175,70 C200,96 22,96 47,70" fill="none" stroke="#1565c0" stroke-width="2" stroke-dasharray="5" marker-end="url(#poolA)" />
+  <text x="111" y="108" font-size="11" fill="#1565c0" text-anchor="middle">หมดอายุ → คืนบ่อ ใช้ซ้ำ</text>
+  <text x="208" y="44" font-size="11" fill="#607d8b">สร้างครั้งเดียว</text>
+  <text x="208" y="64" font-size="11" fill="#607d8b">หยิบ/คืน ใช้ซ้ำ</text>
+  <text x="208" y="88" font-size="11" fill="#777">≡ ท่อ 3 อัน recycle</text>
+  <text x="208" y="106" font-size="11" fill="#777">(ไม่ new ทุกเฟรม)</text>
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">Ring buffer · head/tail วนทับ</text>
+  <circle cx="512" cy="68" r="28" fill="#ffffff" stroke="#2e7d32" stroke-width="2" />
+  <circle cx="512" cy="68" r="13" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1" />
+  <path d="M512,34 a34,34 0 1,1 -1,0" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="6" marker-end="url(#ringA)" />
+  <text x="512" y="110" font-size="10" fill="#777" text-anchor="middle">≡ ท่อวนซ้าย→ขวา</text>
+  <text x="566" y="46" font-size="12" font-weight="700" fill="#2e7d32">tail → เขียน</text>
+  <text x="566" y="63" font-size="11" fill="#777">(UART/ADC)</text>
+  <text x="566" y="86" font-size="12" font-weight="700" fill="#1565c0">head → อ่าน</text>
+  <text x="566" y="103" font-size="11" fill="#777">เต็ม → วนทับช่องเก่า</text>
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">Euler · v += a·dt · x += v·dt</text>
+  <path d="M50,160 L94,162 L138,169 L182,180 L226,196 L270,216" fill="none" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5" />
+  <circle cx="50" cy="160" r="4.5" fill="#ef6c00" />
+  <circle cx="94" cy="162" r="4.5" fill="#ef6c00" />
+  <circle cx="138" cy="169" r="4.5" fill="#ef6c00" />
+  <circle cx="182" cy="180" r="4.5" fill="#ef6c00" />
+  <circle cx="226" cy="196" r="4.5" fill="#ef6c00" />
+  <circle cx="270" cy="216" r="4.5" fill="#ef6c00" />
+  <text x="60" y="202" font-size="10" fill="#607d8b">แต่ละก้าว = 1 เฟรม</text>
+  <text x="298" y="172" font-size="12" font-weight="700" fill="#ef6c00">x += v</text>
+  <text x="352" y="172" font-size="11" fill="#777">ตำแหน่ง</text>
+  <text x="298" y="194" font-size="12" font-weight="700" fill="#ef6c00">v += a</text>
+  <text x="352" y="194" font-size="11" fill="#777">ความเร็ว</text>
+  <text x="298" y="218" font-size="10" fill="#777">≡ นกตก · โดรน dead-reckoning</text>
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">Procedural · random สุ่มด่าน</text>
+  <rect x="478" y="158" width="24" height="12" fill="#6a1b9a" /><rect x="478" y="196" width="24" height="20" fill="#6a1b9a" />
+  <rect x="516" y="158" width="24" height="24" fill="#6a1b9a" /><rect x="516" y="208" width="24" height="8" fill="#6a1b9a" />
+  <rect x="554" y="158" width="24" height="4" fill="#6a1b9a" /><rect x="554" y="188" width="24" height="28" fill="#6a1b9a" />
+  <rect x="592" y="158" width="24" height="18" fill="#6a1b9a" /><rect x="592" y="202" width="24" height="14" fill="#6a1b9a" />
+  <text x="547" y="228" font-size="10" fill="#777" text-anchor="middle">ช่องสุ่มต่างกันทุกท่อ</text>
+  <text x="632" y="170" font-size="12" font-weight="700" fill="#6a1b9a">gap สุ่มทุกท่อ</text>
+  <text x="632" y="190" font-size="11" fill="#777">random.randint(60,…)</text>
+  <text x="632" y="212" font-size="11" fill="#777">≡ ด่าน roguelike ไม่ซ้ำ</text>
+</svg>
+</div>
 <ul>
-<li><strong>บ่อกระสุน / particle pool ในเกมจริง</strong> — เกมยิงหรือระบบเอฟเฟกต์บนคอนโซล/มือถือ เตรียมกระสุนหรือประกายไฟไว้จำนวนคงที่ แล้วหยิบมาใช้ซ้ำแทนการสร้าง-ทิ้ง ตรงกับท่อ 3 อันที่เรา recycle เป๊ะ ต่างแค่จำนวนกับสิ่งที่เก็บใน dict</li>
-<li><strong>Ring buffer รับสตรีมเซนเซอร์บน MCU</strong> — ข้อมูลจาก UART/ADC/ไมโครโฟนไหลเข้ามาไม่รู้จบ แต่ RAM มีจำกัด เฟิร์มแวร์จริงใช้บัฟเฟอร์วงกลมขนาดคงที่ head/tail วนทับ คือความคิดเดียวกับ &quot;ท่อหลุดซ้าย → กลับขวาสุด&quot; ในสไลด์ ring buffer</li>
-<li><strong>Euler integration ในหุ่นยนต์/โดรน/ฟิสิกส์ซิม</strong> — การประมาณตำแหน่งจากความเร็ว ความเร็วจากความเร่ง ด้วย <code>v += a·dt; x += v·dt</code> คือหัวใจของ dead-reckoning และตัวจำลองฟิสิกส์ ตรงกับ <code>bird_velocity += GRAVITY; bird_y += bird_velocity</code> ของนกเรา</li>
-<li><strong>Procedural generation สุ่มด่าน/แผนที่</strong> — เกมแนว roguelike หรือด่านที่ไม่ซ้ำ ใช้ตัวสุ่มแบบมีขอบเขตสร้างเนื้อหาสด ๆ ตรงกับ <code>random.randint(60, ...)</code> ที่สุ่ม <code>gap_top</code> ใหม่ทุกครั้งที่ท่อวนกลับ</li>
+<li><strong>บ่อกระสุน / particle pool ในเกมจริง</strong> — เกมยิง/ระบบเอฟเฟกต์เตรียมกระสุนหรือประกายไฟไว้จำนวนคงที่ แล้วหยิบใช้ซ้ำแทนการสร้าง-ทิ้ง ตรงกับท่อ 3 อันที่เรา recycle ต่างแค่จำนวนกับสิ่งที่เก็บใน dict</li>
+<li><strong>Ring buffer รับสตรีมเซนเซอร์บน MCU</strong> — ข้อมูลจาก UART/ADC ไหลเข้าไม่รู้จบ แต่ RAM จำกัด เฟิร์มแวร์ใช้บัฟเฟอร์วงกลมขนาดคงที่ head/tail วนทับ — ความคิดเดียวกับ &quot;ท่อหลุดซ้าย → กลับขวาสุด&quot;</li>
+<li><strong>Euler integration ในหุ่นยนต์/โดรน</strong> — ประมาณตำแหน่งจากความเร็ว ความเร็วจากความเร่ง ด้วย <code>v += a·dt; x += v·dt</code> คือหัวใจของ dead-reckoning ตรงกับ <code>bird_velocity += GRAVITY; bird_y += bird_velocity</code> ของนกเรา</li>
+<li><strong>Procedural generation สุ่มด่าน/แผนที่</strong> — เกม roguelike ใช้ตัวสุ่มแบบมีขอบเขตสร้างด่านไม่ซ้ำสด ๆ ตรงกับ <code>random.randint(60, ...)</code> ที่สุ่ม <code>gap_top</code> ใหม่ทุกครั้งที่ท่อวนกลับ</li>
 </ul>
 <blockquote>
 <p>ทั้งสี่ตัวอย่างไม่มีอันไหนเป็นของสมมติ ท่อในเกมของน้องวันนี้ ใช้หลักการเดียวกับบัฟเฟอร์ในเราเตอร์ กับตัวประมาณตำแหน่งในโดรน</p>
@@ -690,11 +746,35 @@ pipes = []
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="27" style="--paginate:true;--theme:default;" data-marpit-pagination-total="27">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="tdDn" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="14" y="22" font-size="13" font-weight="700" fill="#ef6c00">ผูกกับเฟรม — v += GRAVITY (ทุกเฟรม)</text>
+  <text x="14" y="46" font-size="12" fill="#607d8b">ระยะนกตกใน 1 วินาที:</text>
+  <text x="30" y="66" font-size="11" fill="#455a64">50 fps</text>
+  <rect x="88" y="56" width="360" height="14" rx="4" fill="#90caf9" stroke="#1565c0" stroke-width="1.5" />
+  <text x="30" y="92" font-size="11" fill="#455a64">30 fps</text>
+  <rect x="88" y="82" width="212" height="14" rx="4" fill="#90caf9" stroke="#1565c0" stroke-width="1.5" />
+  <text x="470" y="66" font-size="12" font-weight="700" fill="#ef6c00">ระยะตกไม่เท่ากัน</text>
+  <text x="470" y="90" font-size="11" fill="#607d8b">fps ตก → นกตกช้าลง ไม่ยุติธรรม</text>
+  <line x1="420" y1="104" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#tdDn)" />
+  <text x="436" y="120" font-size="12" fill="#777">เปลี่ยนวิธีคิด</text>
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">ปลดออกจากเฟรม — v += GRAVITY * dt</text>
+  <text x="30" y="182" font-size="11" fill="#455a64">50 fps</text>
+  <rect x="88" y="172" width="300" height="14" rx="4" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="30" y="208" font-size="11" fill="#455a64">30 fps</text>
+  <rect x="88" y="198" width="300" height="14" rx="4" fill="#a5d6a7" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="410" y="188" font-size="12" font-weight="700" fill="#2e7d32">ระยะตกเท่ากันทุก fps</text>
+  <text x="410" y="210" font-size="11" fill="#607d8b">dt ชดเชยเฟรมที่หายไป — frame-rate independent</text>
+</svg>
+</div>
 <ul>
-<li><strong>ความยากที่เพิ่มขึ้นเรื่อย ๆ</strong> — ถ้าอยากให้ท่อมาเร็วขึ้นหรือช่องแคบลงเมื่อแต้มสูงขึ้น จะเก็บ &quot;ระดับความยาก&quot; ไว้ที่ตัวแปรไหน แล้วแก้ตรงไหนโดยไม่พังโครง recycle ที่มีอยู่</li>
-<li><strong>เปลี่ยนท่อเป็นบ่อศัตรู</strong> — ถ้าจับ pattern <code>add_pipe</code> + recycle มาทำ &quot;บ่อศัตรู 10 ตัว&quot; ในเกมยิง จะต้องเปลี่ยนอะไรใน dict บ้าง แล้วเงื่อนไข &quot;หลุดจอ&quot; ควรเป็นด้านไหน</li>
-<li><strong>สุ่มช่องให้เล่นได้จริง</strong> — ตอนนี้ <code>gap_top</code> สุ่มอิสระทุกท่อ ท่อติดกันอาจกระโดดจากบนสุดไปล่างสุดจนเล่นไม่ทัน จะจำกัดช่วงสุ่มให้อิงกับท่อก่อนหน้ายังไง ให้ยากแต่ยังยุติธรรม</li>
-<li><strong>สะพานไปคาบหน้า: ปลดฟิสิกส์ออกจาก fps</strong> — ตอนนี้ทั้งเกมผูกกับ <code>game.run(..., fps=50)</code> ถ้าบอร์ดช้าลงเหลือ 30 fps นกจะตกช้าลงทันทีเพราะบวก <code>GRAVITY</code> น้อยครั้งลง คาบหน้าเราจะทำ <strong>delta-time</strong> ให้ความเร็วคงที่ไม่ว่าเฟรมเร็วช้า ลองคิดล่วงหน้า: <code>SPEED</code> กับ <code>GRAVITY</code> ควรถูกคูณด้วยอะไรในแต่ละเฟรม</li>
+<li><strong>ความยากที่เพิ่มขึ้นเรื่อย ๆ</strong> — ถ้าอยากให้ท่อมาเร็วขึ้นหรือช่องแคบลงเมื่อแต้มสูง จะเก็บ &quot;ระดับความยาก&quot; ไว้ที่ตัวแปรไหน แล้วแก้ตรงไหนโดยไม่พังโครง recycle</li>
+<li><strong>เปลี่ยนท่อเป็นบ่อศัตรู</strong> — ถ้าจับ pattern <code>add_pipe</code> + recycle มาทำ &quot;บ่อศัตรู 10 ตัว&quot; ในเกมยิง ต้องเปลี่ยนอะไรใน dict บ้าง แล้วเงื่อนไข &quot;หลุดจอ&quot; ควรเป็นด้านไหน</li>
+<li><strong>สุ่มช่องให้เล่นได้จริง</strong> — ตอนนี้ <code>gap_top</code> สุ่มอิสระทุกท่อ ท่อติดกันอาจกระโดดจากบนสุดไปล่างสุดจนเล่นไม่ทัน จะจำกัดช่วงสุ่มให้อิงท่อก่อนหน้ายังไง ให้ยากแต่ยุติธรรม</li>
+<li><strong>สะพานไปคาบหน้า: ปลดฟิสิกส์ออกจาก fps</strong> — ตอนนี้ทั้งเกมผูกกับ <code>game.run(..., fps=50)</code> ถ้าบอร์ดช้าลงเหลือ 30 fps นกจะตกช้าลงเพราะบวก <code>GRAVITY</code> น้อยครั้งลง คาบหน้าเราจะทำ <strong>delta-time</strong> ให้ความเร็วคงที่ไม่ว่าเฟรมเร็วช้า ลองคิดล่วงหน้า: <code>SPEED</code> กับ <code>GRAVITY</code> ควรคูณด้วยอะไรในแต่ละเฟรม</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ เขียนไอเดียของน้องลงใบงานด้วยคำพูดตัวเอง ยังไม่ต้องเขียนโค้ดครบก็ได้ ขอแค่ออกแบบให้เห็นภาพ — ตรงนั้นแหละคือคะแนน และคือของที่จะติดตัวไปคาบหน้า</p>

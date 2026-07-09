@@ -732,12 +732,68 @@ status.text(<span class="hljs-string">&quot;จบแล้ว เก่งม�
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="34" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="34" style="--paginate:true;--theme:default;" data-marpit-pagination-total="35">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--gpio-output--blink--duty-cycle">ใช้จริงที่ไหน — GPIO output · blink · duty cycle</h1>
-<p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่เฟิร์มแวร์จริงใช้กันทุกวัน:</p>
+<p>เทคนิควันนี้ไม่ใช่แบบฝึกหัดลอย ๆ มันคือสิ่งที่เฟิร์มแวร์จริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">ไฟสถานะเครื่องใช้ไฟฟ้า</text>
+  <text x="28" y="55" font-size="11" fill="#607d8b">ช้า</text>
+  <rect x="70" y="46" width="40" height="12" fill="#1565c0" />
+  <rect x="150" y="46" width="40" height="12" fill="#1565c0" />
+  <rect x="230" y="46" width="40" height="12" fill="#1565c0" />
+  <rect x="310" y="46" width="40" height="12" fill="#1565c0" />
+  <text x="362" y="56" font-size="11" fill="#777">standby</text>
+  <text x="28" y="90" font-size="11" fill="#607d8b">เร็ว</text>
+  <rect x="70"  y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="98"  y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="126" y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="154" y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="182" y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="210" y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="238" y="81" width="14" height="12" fill="#1565c0" />
+  <rect x="266" y="81" width="14" height="12" fill="#1565c0" />
+  <text x="362" y="91" font-size="11" fill="#777">error</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">Heartbeat / watchdog · 1 Hz</text>
+  <path d="M470,92 L470,58 L533,58 L533,92 L596,92 L596,58 L659,58 L659,92 L722,92 L722,58 L785,58 L785,92 L848,92"
+        fill="none" stroke="#2e7d32" stroke-width="2.5" />
+  <text x="656" y="110" font-size="11" fill="#777" text-anchor="middle">liveness — ไฟหยุดเต้น = เฟิร์มแวร์ค้าง</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">หรี่ไฟด้วย PWM · duty cycle</text>
+  <text x="28" y="167" font-size="11" fill="#607d8b">20%</text>
+  <rect x="70" y="158" width="200" height="11" rx="3" fill="#ffffff" stroke="#ef6c00" />
+  <rect x="70" y="158" width="40" height="11" rx="3" fill="#ef6c00" />
+  <circle cx="300" cy="163" r="9" fill="#ef6c00" fill-opacity="0.22" />
+  <text x="320" y="167" font-size="11" fill="#777">หรี่</text>
+  <text x="28" y="191" font-size="11" fill="#607d8b">50%</text>
+  <rect x="70" y="182" width="200" height="11" rx="3" fill="#ffffff" stroke="#ef6c00" />
+  <rect x="70" y="182" width="100" height="11" rx="3" fill="#ef6c00" />
+  <circle cx="300" cy="187" r="9" fill="#ef6c00" fill-opacity="0.55" />
+  <text x="320" y="191" font-size="11" fill="#777">กลาง</text>
+  <text x="28" y="215" font-size="11" fill="#607d8b">90%</text>
+  <rect x="70" y="206" width="200" height="11" rx="3" fill="#ffffff" stroke="#ef6c00" />
+  <rect x="70" y="206" width="180" height="11" rx="3" fill="#ef6c00" />
+  <circle cx="300" cy="211" r="9" fill="#ef6c00" />
+  <text x="320" y="215" font-size="11" fill="#777">สว่าง</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">รหัสวินิจฉัย (blink codes)</text>
+  <line x1="470" y1="196" x2="850" y2="196" stroke="#ce93d8" stroke-width="2" />
+  <rect x="480" y="170" width="14" height="26" fill="#6a1b9a" />
+  <rect x="512" y="170" width="14" height="26" fill="#6a1b9a" />
+  <rect x="544" y="170" width="48" height="26" fill="#6a1b9a" />
+  <text x="480" y="164" font-size="11" fill="#607d8b">สั้น · สั้น · ยาว</text>
+  <text x="656" y="220" font-size="11" fill="#777" text-anchor="middle">จำนวน + ความยาว = ข้อความ (เช่น error 3)</text>
+</svg>
+</div>
 <ul>
-<li><strong>ไฟสถานะเครื่องใช้ไฟฟ้า</strong> — เราเตอร์ WiFi, เครื่องซักผ้า, ที่ชาร์จ ใช้ <strong>จังหวะกะพริบสื่อสถานะ</strong>: ติดนิ่ง = ทำงานปกติ, กะพริบช้า = standby/กำลังเชื่อมต่อ, กะพริบเร็ว = error ตรงกับท่า 1–2 ของเราเป๊ะ — จังหวะเดียวกันแต่คนละความหมาย</li>
-<li><strong>Heartbeat / watchdog LED ในเฟิร์มแวร์</strong> — ระบบ embedded จริงมัก โยน LED ดวงหนึ่งให้กะพริบ 1 Hz อยู่เบื้องหลัง เพื่อบอกว่า &quot;ระบบยังไม่แฮงก์&quot; (liveness) ถ้าไฟหยุดกะพริบเมื่อไร ช่างรู้ทันทีว่าเฟิร์มแวร์ค้าง นี่คือท่า 1 ที่ทำงานจริงในโรงงาน</li>
-<li><strong>หรี่ไฟด้วย PWM</strong> — ไฟหน้าปัดรถยนต์, แบ็คไลต์จอมือถือ, ไฟเพดานหรี่ได้ ใช้หลักเดียวกับ duty cycle ท่า 1 แต่สลับ on/off <strong>เร็วระดับกิโลเฮิรตซ์</strong> จนตาเห็นเป็นความสว่างต่อเนื่อง ปรับ duty มาก = สว่าง, duty น้อย = หรี่ blink ช้า ๆ ของเราคือ PWM ความถี่ต่ำนั่นเอง</li>
-<li><strong>รหัสวินิจฉัยด้วยการกะพริบ (blink codes)</strong> — ไฟ check-engine ในรถ, ไฟ/เสียง error code ตอนบูตเมนบอร์ด เข้ารหัสความผิดพลาดเป็น &quot;จำนวนครั้งที่กะพริบ&quot; ตรงกับท่า 4 (SOS/มอร์ส): ไฟดวงเดียวส่งข้อความได้ด้วยความยาว-จำนวนของการติด</li>
+<li><strong>ไฟสถานะเครื่องใช้ไฟฟ้า</strong> — เราเตอร์ WiFi, เครื่องซักผ้า, ที่ชาร์จ ใช้ <strong>จังหวะกะพริบสื่อสถานะ</strong>: ติดนิ่ง = ปกติ, ช้า = standby/กำลังเชื่อมต่อ, เร็ว = error จังหวะเดียวกับท่า 1–2 แต่คนละความหมาย</li>
+<li><strong>Heartbeat / watchdog LED</strong> — ระบบ embedded จริงมักโยน LED ดวงหนึ่งให้กะพริบ 1 Hz อยู่เบื้องหลัง บอกว่า &quot;ระบบยังไม่แฮงก์&quot; (liveness) ถ้าไฟหยุดกะพริบ ช่างรู้ทันทีว่าเฟิร์มแวร์ค้าง นี่คือท่า 1 ที่ทำงานจริงในโรงงาน</li>
+<li><strong>หรี่ไฟด้วย PWM</strong> — ไฟหน้าปัดรถยนต์, แบ็คไลต์จอมือถือ ใช้หลัก duty cycle เดียวกับท่า 1 แต่สลับ on/off <strong>เร็วระดับกิโลเฮิรตซ์</strong> จนตาเห็นเป็นความสว่างต่อเนื่อง duty มาก = สว่าง, duty น้อย = หรี่ blink ช้า ๆ ของเราคือ PWM ความถี่ต่ำ</li>
+<li><strong>รหัสวินิจฉัยด้วยการกะพริบ (blink codes)</strong> — ไฟ check-engine ในรถ, error code ตอนบูตเมนบอร์ด เข้ารหัสความผิดพลาดเป็น &quot;จำนวนครั้งที่กะพริบ&quot; ตรงกับท่า 4 (SOS/มอร์ส): ไฟดวงเดียวส่งข้อความได้ด้วยความยาว-จำนวนของการติด</li>
 </ul>
 <blockquote>
 <p>เห็นไหมว่าห้าท่าที่เราเล่นวันนี้ ไม่มีท่าไหนเป็นของสมมติเลย ทุกท่ามีเครื่องจริงในโลกที่ทำงานด้วยหลักการเดียวกันอยู่</p>
@@ -746,11 +802,39 @@ status.text(<span class="hljs-string">&quot;จบแล้ว เก่งม�
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="35" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="35" style="--paginate:true;--theme:default;" data-marpit-pagination-total="35">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#607d8b">แบบบล็อก — time.sleep_ms()</text>
+  <rect x="120" y="36" width="70" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="155" y="57" font-size="11" fill="#1565c0" text-anchor="middle">toggle</text>
+  <rect x="196" y="36" width="424" height="34" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="408" y="57" font-size="12" fill="#455a64" text-anchor="middle">time.sleep_ms(500) — CPU หยุดนิ่ง</text>
+  <rect x="626" y="36" width="70" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="661" y="57" font-size="11" fill="#1565c0" text-anchor="middle">toggle</text>
+  <text x="408" y="92" font-size="11" fill="#ef6c00" text-anchor="middle">กดปุ่มช่วงนี้ → ตกหล่นหมด อ่านไม่ได้เลย</text>
+  
+  <line x1="420" y1="102" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn)" />
+  <text x="436" y="119" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบไม่บล็อก — จำเวลาที่ผ่านไป</text>
+  <rect x="120" y="162" width="616" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="132" y="183" font-size="12" fill="#2e7d32">ทุกวนรอบ: อ่านปุ่ม + วาดเกม — ไม่หยุดเลย</text>
+  <rect x="300" y="162" width="8" height="34" fill="#2e7d32" />
+  <rect x="480" y="162" width="8" height="34" fill="#2e7d32" />
+  <rect x="660" y="162" width="8" height="34" fill="#2e7d32" />
+  <text x="484" y="156" font-size="11" fill="#2e7d32" text-anchor="middle">toggle เมื่อครบ 500 ms</text>
+  <text x="428" y="216" font-size="11" fill="#2e7d32" text-anchor="middle">ปุ่มกดตอนไหนก็รับได้ — เกมยังเดินอยู่</text>
+</svg>
+</div>
 <ul>
 <li><strong>ออกแบบภาษาไฟ 5 สถานะ</strong> — ถ้าต้องใช้ LED ดวงเดียวสื่อ 5 สถานะ (พร้อม / ทำงาน / กำลังรอ / เตือน / พัง) จะออกแบบจังหวะแต่ละสถานะให้ <strong>แยกออกจากกันด้วยตาเปล่า</strong> ยังไง ลองเล่นกับสามตัวแปร: ความถี่, duty cycle, และจำนวนครั้งต่อชุด</li>
-<li><strong>LED ดวงเดียวส่งข้อมูลได้แค่ไหน</strong> — ถ้ามองว่า ติด = 1, ดับ = 0 แล้วส่งทีละบิตทุก 100 ms จะได้ความเร็วกี่ bit ต่อวินาที? แล้วถ้าใช้ไฟ 3 ดวงส่งพร้อมกันล่ะ ได้เท่าไร นี่คือคำถามเดียวกับที่วิศวกรสื่อสารต้องตอบ</li>
-<li><strong>ภาษาไฟของทีมเอง</strong> — ให้ไฟวิ่ง knight-rider (ท่า 5) เปลี่ยนทิศหรือความเร็วตามเหตุการณ์ เช่น วิ่งเร็วขึ้นเมื่อใกล้แพ้ในเกม จังหวะไฟกลายเป็นส่วนหนึ่งของการเล่นได้ไหม</li>
-<li><strong>จังหวะที่ไม่บล็อกเกม</strong> — ตอนนี้ <code>time.sleep_ms</code> หยุด <strong>ทุกอย่าง</strong> ระหว่างหน่วง ในเกมจริงเราหยุดไม่ได้เพราะต้องรับปุ่มไปด้วย ลองคิดว่าจะ &quot;จำเวลาที่ผ่านไป&quot; แทนการ <code>sleep</code> ยังไง เพื่อให้ heartbeat ท่า 3 เต้นไปพร้อมกับเกมที่ยังเดินอยู่ — คำถามนี้จะพาเราเข้าสู่ non-blocking timing ที่ game loop จริงต้องใช้</li>
+<li><strong>LED ดวงเดียวส่งข้อมูลได้แค่ไหน</strong> — ถ้ามองว่า ติด = 1, ดับ = 0 ส่งทีละบิตทุก 100 ms จะได้กี่ bit ต่อวินาที? แล้วถ้าใช้ไฟ 3 ดวงส่งพร้อมกันล่ะ นี่คือคำถามเดียวกับที่วิศวกรสื่อสารต้องตอบ</li>
+<li><strong>ภาษาไฟของทีมเอง</strong> — ให้ไฟวิ่ง knight-rider (ท่า 5) เปลี่ยนทิศหรือความเร็วตามเหตุการณ์ เช่น วิ่งเร็วขึ้นเมื่อใกล้แพ้ จังหวะไฟกลายเป็นส่วนหนึ่งของการเล่นได้ไหม</li>
+<li><strong>จังหวะที่ไม่บล็อกเกม</strong> — ตอนนี้ <code>time.sleep_ms</code> หยุด <strong>ทุกอย่าง</strong> ระหว่างหน่วง แต่ในเกมจริงหยุดไม่ได้เพราะต้องรับปุ่มไปด้วย ลองคิดว่าจะ &quot;จำเวลาที่ผ่านไป&quot; แทนการ <code>sleep</code> ยังไง ให้ heartbeat ท่า 3 เต้นไปพร้อมกับเกมที่ยังเดินอยู่ — นี่คือ non-blocking timing ที่ game loop จริงต้องใช้</li>
 </ul>
 <blockquote>
 <p>อยากให้ลองเลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากของที่พิมพ์เองวันนี้ — ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นวิศวกร ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

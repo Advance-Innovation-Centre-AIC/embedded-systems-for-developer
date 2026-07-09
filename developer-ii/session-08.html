@@ -685,10 +685,66 @@ game.run(on_each_frame, fps=<span class="hljs-number">50</span>)                
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="29" style="--paginate:true;--theme:default;" data-marpit-pagination-total="30">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99-%E0%B8%A7%E0%B8%B2%E0%B8%87-ui-%E0%B8%99%E0%B8%B4%E0%B9%88%E0%B8%87%E0%B8%81%E0%B9%88%E0%B8%AD%E0%B8%99--%E0%B9%80%E0%B8%9F%E0%B8%A3%E0%B8%A1%E0%B8%A5%E0%B8%B9%E0%B8%9B--%E0%B8%99%E0%B8%B1%E0%B9%88%E0%B8%87%E0%B8%A3%E0%B9%89%E0%B8%B2%E0%B8%99%E0%B8%84%E0%B9%88%E0%B8%B2">ใช้จริงที่ไหน: วาง UI นิ่งก่อน + เฟรมลูป + นั่งร้านค่า</h1>
 <p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือลำดับการทำงานที่วิศวกรจริงใช้ทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+<defs><marker id="s8u1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+<rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+<text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">แผงหน้าปัด HMI — โชว์ "0" ก่อนต่อเซนเซอร์</text>
+<path d="M56,100 A34,34 0 0 1 124,100" fill="none" stroke="#90caf9" stroke-width="8" />
+<line x1="90" y1="100" x2="63" y2="80" stroke="#1565c0" stroke-width="2.5" />
+<circle cx="90" cy="100" r="3" fill="#1565c0" />
+<text x="90" y="112" font-size="11" fill="#607d8b" text-anchor="middle">0</text>
+<rect x="180" y="46" width="234" height="22" rx="4" fill="#ffffff" stroke="#90caf9" />
+<text x="190" y="61" font-size="11" fill="#607d8b">Temp</text>
+<text x="402" y="61" font-size="11" fill="#1565c0" text-anchor="end" font-weight="700">0</text>
+<rect x="180" y="76" width="234" height="22" rx="4" fill="#ffffff" stroke="#90caf9" />
+<text x="190" y="91" font-size="11" fill="#607d8b">RPM</text>
+<text x="402" y="91" font-size="11" fill="#1565c0" text-anchor="end" font-weight="700">0</text>
+<rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+<text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">จอ refresh — วาดทั้งเฟรมซ้ำ 30–60 fps</text>
+<rect x="470" y="44" width="72" height="46" rx="4" fill="#ffffff" stroke="#a5d6a7" />
+<rect x="497" y="60" width="14" height="14" rx="2" fill="#2e7d32" />
+<rect x="566" y="44" width="72" height="46" rx="4" fill="#ffffff" stroke="#a5d6a7" />
+<rect x="593" y="60" width="14" height="14" rx="2" fill="#2e7d32" />
+<rect x="662" y="44" width="72" height="46" rx="4" fill="#ffffff" stroke="#a5d6a7" />
+<rect x="689" y="60" width="14" height="14" rx="2" fill="#2e7d32" />
+<rect x="758" y="44" width="72" height="46" rx="4" fill="#ffffff" stroke="#a5d6a7" />
+<rect x="785" y="60" width="14" height="14" rx="2" fill="#2e7d32" />
+<line x1="542" y1="67" x2="566" y2="67" stroke="#607d8b" stroke-width="2" marker-end="url(#s8u1)" />
+<line x1="638" y1="67" x2="662" y2="67" stroke="#607d8b" stroke-width="2" marker-end="url(#s8u1)" />
+<line x1="734" y1="67" x2="758" y2="67" stroke="#607d8b" stroke-width="2" marker-end="url(#s8u1)" />
+<text x="650" y="107" font-size="11" fill="#777" text-anchor="middle">ค่าเท่าเดิมก็วาดใหม่ทุกเฟรม</text>
+<rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+<text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">นั่งร้าน UI — ค่าปลอม 0 / — ก่อน backend</text>
+<rect x="30" y="158" width="176" height="64" rx="5" fill="#ffffff" stroke="#ffcc80" />
+<rect x="40" y="166" width="54" height="12" rx="2" fill="#ffe0b2" />
+<rect x="140" y="165" width="56" height="14" rx="3" fill="none" stroke="#ef6c00" stroke-dasharray="4,3" />
+<text x="168" y="176" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">0</text>
+<rect x="40" y="187" width="54" height="12" rx="2" fill="#ffe0b2" />
+<rect x="140" y="186" width="56" height="14" rx="3" fill="none" stroke="#ef6c00" stroke-dasharray="4,3" />
+<text x="168" y="197" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">—</text>
+<rect x="40" y="208" width="54" height="12" rx="2" fill="#ffe0b2" />
+<rect x="140" y="207" width="56" height="14" rx="3" fill="none" stroke="#ef6c00" stroke-dasharray="4,3" />
+<text x="168" y="218" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">—</text>
+<text x="226" y="182" font-size="11" fill="#607d8b">mockup โชว์ค่าปลอม</text>
+<text x="226" y="200" font-size="11" fill="#607d8b">ทดสอบ layout ได้ก่อน</text>
+<text x="226" y="218" font-size="11" fill="#777">ข้อมูลจริงค่อยมาทีหลัง</text>
+<rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+<text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">ทางออกสู่สถานะรู้แน่ — return False</text>
+<rect x="466" y="172" width="120" height="44" rx="6" fill="#ffffff" stroke="#ab47bc" />
+<text x="526" y="192" font-size="11" fill="#6a1b9a" text-anchor="middle" font-weight="700">game loop</text>
+<text x="526" y="207" font-size="10" fill="#999" text-anchor="middle">on_each_frame</text>
+<line x1="586" y1="194" x2="654" y2="194" stroke="#607d8b" stroke-width="2" marker-end="url(#s8u1)" />
+<text x="620" y="186" font-size="10" fill="#6a1b9a" text-anchor="middle">return False</text>
+<rect x="654" y="172" width="160" height="44" rx="6" fill="#f3e5f5" stroke="#6a1b9a" />
+<text x="734" y="192" font-size="11" fill="#6a1b9a" text-anchor="middle" font-weight="700">สถานะปลอดภัย</text>
+<text x="734" y="207" font-size="10" fill="#999" text-anchor="middle">ปิดมอเตอร์ · ดับไฟ</text>
+</svg>
+</div>
 <ul>
-<li><strong>หน้าจอ HMI / แผงหน้าปัดก่อนต่อเซนเซอร์:</strong> วิศวกรวาง layout (ตำแหน่งเข็ม ป้ายตัวเลข) ให้ครบและโชว์ &quot;ค่า 0&quot; ก่อน แล้วค่อยต่อสายเซนเซอร์จริงทีหลัง เหมือนที่เราวาง <code>bird</code> + <code>score_label</code> (&quot;0&quot;) ไว้ก่อนใส่ฟิสิกส์ (เห็นหน้าจอถูกก่อน ค่อยเถียงกับข้อมูล)</li>
-<li><strong>จอ refresh ที่วาดซ้ำทุกเฟรมแม้ภาพไม่เปลี่ยน:</strong> เครื่องมือแพทย์ dashboard รถ เกมคอนโซล วาดทั้งเฟรมใหม่ 30–60 ครั้งต่อวินาที ต่อให้ค่ายังเท่าเดิม ตรงกับ <code>move_to(bird.x, bird_y)</code> ทุกเฟรมของเรา เป็น pipeline เดียวกับที่เกร็ด Game Boy พูดถึง refresh ทั้งเฟรม</li>
-<li><strong>placeholder / นั่งร้านในงานพัฒนา:</strong> mockup ที่โชว์ค่าปลอม (0, &quot;—&quot;) ก่อนต่อ backend จริง ทำให้ทีมเห็นภาพรวมและทดสอบ layout ได้ก่อนข้อมูลจริงมา <code>score = 0</code> ที่ยังไม่มีใครนับของเราคือ placeholder แบบเดียวกันเป๊ะ</li>
+<li><strong>หน้าจอ HMI / แผงหน้าปัดก่อนต่อเซนเซอร์:</strong> วิศวกรวาง layout ให้ครบแล้วโชว์ &quot;ค่า 0&quot; ก่อน ค่อยต่อสายเซนเซอร์จริงทีหลัง เหมือนที่เราวาง <code>bird</code> + <code>score_label</code> (&quot;0&quot;) ไว้ก่อนใส่ฟิสิกส์ — เห็นหน้าจอถูกก่อน ค่อยเถียงกับข้อมูล</li>
+<li><strong>จอ refresh ที่วาดซ้ำทุกเฟรมแม้ภาพไม่เปลี่ยน:</strong> เครื่องมือแพทย์ dashboard รถ เกมคอนโซล วาดทั้งเฟรมใหม่ 30–60 ครั้ง/วินาที ต่อให้ค่าเท่าเดิม ตรงกับ <code>move_to(bird.x, bird_y)</code> ทุกเฟรมของเรา — pipeline เดียวกับที่เกร็ด Game Boy พูดถึง refresh ทั้งเฟรม</li>
+<li><strong>placeholder / นั่งร้านในงานพัฒนา:</strong> mockup โชว์ค่าปลอม (0, &quot;—&quot;) ก่อนต่อ backend ทำให้ทีมทดสอบ layout ได้ก่อนข้อมูลจริงมา <code>score = 0</code> ที่ยังไม่มีใครนับคือ placeholder แบบเดียวกันเป๊ะ</li>
 <li><strong>ทางออกที่คืนเครื่องสู่สถานะรู้แน่ (known state):</strong> <code>game.keys().start</code> แล้ว <code>return False</code> คือการออกจากลูปอย่างเป็นระเบียบ ระบบ embedded จริงต้องมีทางออกที่คืนเครื่องสู่สถานะปลอดภัยเสมอ (ปิดมอเตอร์ ดับไฟ) ไม่ปล่อยค้างกลางอากาศ</li>
 </ul>
 <blockquote>
@@ -698,9 +754,35 @@ game.run(on_each_frame, fps=<span class="hljs-number">50</span>)                
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="30">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของที่พิมพ์เองวันนี้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+<defs><marker id="s8Dn" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker></defs>
+<text x="14" y="22" font-size="13" font-weight="700" fill="#1565c0">วันนี้ — bird_y คงที่ (นกนิ่ง)</text>
+<line x1="120" y1="46" x2="720" y2="46" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="4,4" />
+<rect x="140" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+<rect x="240" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+<rect x="340" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+<rect x="440" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+<rect x="540" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+<rect x="640" y="40" width="12" height="12" rx="2" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+<text x="420" y="74" font-size="11" fill="#607d8b" text-anchor="middle">ทุกเฟรมนกอยู่ y=180 เท่าเดิม — ภาพนิ่ง</text>
+<line x1="420" y1="86" x2="420" y2="116" stroke="#607d8b" stroke-width="2" marker-end="url(#s8Dn)" />
+<text x="436" y="98" font-size="11" fill="#777">เพิ่มตัวแปรเดียว: bird_velocity</text>
+<text x="436" y="113" font-size="11" fill="#777">v += g แล้ว y += v (ฟิสิกส์ 2 บรรทัด)</text>
+<text x="14" y="140" font-size="13" font-weight="700" fill="#2e7d32">พรุ่งนี้ — bird_y += bird_velocity (นกตกเอง)</text>
+<path d="M146,154 Q450,158 646,192" fill="none" stroke="#a5d6a7" stroke-width="2" />
+<rect x="140" y="148" width="12" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+<rect x="240" y="150" width="12" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+<rect x="340" y="155" width="12" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+<rect x="440" y="163" width="12" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+<rect x="540" y="174" width="12" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+<rect x="640" y="186" width="12" height="12" rx="2" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+<text x="420" y="214" font-size="11" fill="#2e7d32" text-anchor="middle">แค่บวก v เข้า y ทุกเฟรม นกร่วงเร็วขึ้นเอง</text>
+</svg>
+</div>
 <ul>
-<li><strong>นกขยับเบา ๆ ตอนนิ่ง (idle bob):</strong> ถ้าอยากให้จอไม่ดูตายสนิท จะทำให้นกลอยแกว่งขึ้น-ลงนิด ๆ ยังไง โดย <strong>ยังไม่ใส่ฟิสิกส์จริง</strong>? (ใบ้: ให้ <code>bird_y</code> แกว่งด้วย <code>sin</code> ของเลขเฟรม ค่ายังไม่ต้องสะสมเหมือนแรงโน้มถ่วง)</li>
-<li><strong>สามระดับความยากที่เปลี่ยนแค่จุดเริ่ม:</strong> ถ้าอยากมีนกเริ่มสูง/กลาง/ต่ำ โดยแตะแค่ <code>bird_y</code> เริ่มต้น จะออกแบบให้ผู้เล่นเลือกก่อนเข้าเกมยังไง โดยไม่ไปยุ่งกับโครง <code>on_each_frame</code>?</li>
+<li><strong>นกขยับเบา ๆ ตอนนิ่ง (idle bob):</strong> จะทำให้นกลอยแกว่งขึ้น-ลงนิด ๆ ให้จอไม่ดูตายสนิท ยังไง โดย <strong>ยังไม่ใส่ฟิสิกส์จริง</strong>? (ใบ้: ให้ <code>bird_y</code> แกว่งด้วย <code>sin</code> ของเลขเฟรม ไม่ต้องสะสมเหมือนแรงโน้มถ่วง)</li>
+<li><strong>สามระดับความยากที่เปลี่ยนแค่จุดเริ่ม:</strong> อยากมีนกเริ่มสูง/กลาง/ต่ำ โดยแตะแค่ <code>bird_y</code> เริ่มต้น จะออกแบบให้ผู้เล่นเลือกก่อนเข้าเกมยังไง โดยไม่ยุ่งกับโครง <code>on_each_frame</code>?</li>
 <li><strong>พื้นหลัง/พื้นดินก่อนใส่ท่อ:</strong> ถ้าจะเพิ่ม <code>Box</code> เป็นพื้นดิน ควรวาดมันในลูปทุกเฟรม หรือวางครั้งเดียวนอกลูป เพราะอะไร? (โยงกับเรื่อง <code>move_to</code> ทุกเฟรมที่เราเพิ่งคุยกัน)</li>
 <li><strong>(สะพานสู่คาบหน้า)</strong> ตอนนี้ <code>bird_y</code> เป็นค่าคงที่ คาบหน้าเราต้องเพิ่ม <code>bird_velocity</code> แล้วทำให้ทั้งคู่เปลี่ยนใน <code>on_each_frame</code> ลองคิดล่วงหน้า: ทำไมสองตัวนี้ต้องประกาศ <code>global</code> ในฟังก์ชัน แล้วถ้าลืมจะเกิดอะไรกับนก? (เปิดสไลด์ <strong>&quot;กับดักที่เจอบ่อย&quot;</strong> ทวนได้)</li>
 </ul>

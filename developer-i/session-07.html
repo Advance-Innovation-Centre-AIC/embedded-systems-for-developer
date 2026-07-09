@@ -803,24 +803,91 @@ WIN_SCORE = <span class="hljs-number">7</span>          <span class="hljs-commen
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="28" style="--paginate:true;--theme:default;" data-marpit-pagination-total="29">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--tracker-rule--deadzone--state-machine">ใช้จริงที่ไหน — tracker rule · deadzone · state machine</h1>
 <p>กฎ AI สามบรรทัดกับของที่ห้อมล้อมมันในคาบนี้ ไม่ใช่ของสมมติ มันคือหลักที่ระบบจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="s7uArr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">เทอร์โมสตัท / แอร์ · hysteresis</text>
+  <rect x="70" y="52" width="250" height="22" fill="#bbdefb" fill-opacity="0.5" />
+  <line x1="70" y1="63" x2="320" y2="63" stroke="#1565c0" stroke-width="1" stroke-dasharray="4 3" />
+  <path d="M70,80 L110,46 L150,80 L190,46 L230,80 L270,46 L310,80" fill="none" stroke="#1565c0" stroke-width="2" />
+  <text x="326" y="60" font-size="10" fill="#607d8b">เป้า</text>
+  <text x="326" y="73" font-size="10" fill="#607d8b">± deadzone</text>
+  <text x="28" y="102" font-size="11" fill="#777">เกินแถบ→เปิด · ต่ำกว่า→ปิด · ไม่มีแถบ=สั่น</text>
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">กล้องตามหน้า / กิมบอลกันสั่น</text>
+  <rect x="470" y="40" width="118" height="62" rx="4" fill="#ffffff" stroke="#2e7d32" stroke-width="2" />
+  <line x1="529" y1="52" x2="529" y2="90" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="509" y1="71" x2="549" y2="71" stroke="#a5d6a7" stroke-width="1" />
+  <circle cx="499" cy="58" r="9" fill="#2e7d32" />
+  <line x1="508" y1="63" x2="523" y2="70" stroke="#607d8b" stroke-width="2" marker-end="url(#s7uArr)" />
+  <text x="604" y="58" font-size="11" fill="#455a64">target = กลางเฟรม</text>
+  <text x="604" y="76" font-size="11" fill="#455a64">มอเตอร์ขยับเข้าหาทีละก้าว</text>
+  <text x="604" y="98" font-size="10" fill="#777">sense → decide → act (องศาแทนพิกเซล)</text>
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">ศัตรู / NPC ไล่ตามผู้เล่น</text>
+  <text x="28" y="164" font-size="11" fill="#455a64">target = player_y — tracker rule เดิม + อ้อมสิ่งกีดขวาง</text>
+  <circle cx="80" cy="196" r="11" fill="#2e7d32" />
+  <text x="80" y="222" font-size="10" fill="#777" text-anchor="middle">ผู้เล่น</text>
+  <rect x="344" y="184" width="24" height="24" rx="4" fill="#ef6c00" />
+  <text x="356" y="222" font-size="10" fill="#777" text-anchor="middle">ศัตรู</text>
+  <line x1="340" y1="196" x2="96" y2="196" stroke="#607d8b" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#s7uArr)" />
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">state machine ในเครื่องจริง</text>
+  <rect x="470" y="162" width="96" height="34" rx="8" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" />
+  <text x="518" y="183" font-size="11" fill="#6a1b9a" text-anchor="middle">รอ</text>
+  <rect x="602" y="162" width="96" height="34" rx="8" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" />
+  <text x="650" y="183" font-size="11" fill="#6a1b9a" text-anchor="middle">ทำงาน</text>
+  <rect x="734" y="162" width="96" height="34" rx="8" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" />
+  <text x="782" y="183" font-size="11" fill="#6a1b9a" text-anchor="middle">เตือน</text>
+  <line x1="566" y1="179" x2="600" y2="179" stroke="#607d8b" stroke-width="2" marker-end="url(#s7uArr)" />
+  <line x1="698" y1="179" x2="732" y2="179" stroke="#607d8b" stroke-width="2" marker-end="url(#s7uArr)" />
+  <text x="650" y="222" font-size="11" fill="#777" text-anchor="middle">ไฟจราจร / ตู้กดน้ำ — ครั้งละ 1 สถานะ เหมือน start / play / over</text>
+</svg>
+</div>
 <ul>
-<li><strong>เทอร์โมสตัท / แอร์คุมอุณหภูมิ</strong> — อ่านอุณหภูมิ เทียบเป้า แล้วสั่งเปิด/ปิดคอมเพรสเซอร์ คือ sense → decide → act ตัวเดียวกับกฎไม้ AI ของเรา และมันมี <strong>deadzone (hysteresis)</strong> เป๊ะแบบ <code>±6</code> ของเรา ถ้าไม่มี คอมเพรสเซอร์จะเปิด-ปิดถี่ ๆ (สั่น) เหมือนไม้ไม่มี deadzone ที่กระตุกกลางจอ</li>
-<li><strong>กล้องตามหน้า / กิมบอลกันสั่น</strong> — มอเตอร์หมุนกล้องให้ &quot;กลางเฟรมตรงกับใบหน้า&quot; คือ <code>target_y = ...</code> แล้วขยับเข้าหาทีละก้าว ต่างจากไม้เราแค่หมุนเป็นองศาแทนพิกเซล ตรงกับสไลด์ &quot;AI Tracker&quot;</li>
-<li><strong>NPC / ศัตรูในเกมจริง</strong> — มอนสเตอร์ที่วิ่งเข้าหาผู้เล่นในเกมยุคใหม่ พื้นฐานคือ tracker rule เดียวกับที่เราเขียน แค่เพิ่มการหาทางอ้อมสิ่งกีดขวาง ต่อยอดจากสไลด์ &quot;AI_SPEED — เลขตัวเดียวที่เปลี่ยนความฉลาด&quot;</li>
-<li><strong>state machine ในเครื่องจริง</strong> — ไฟจราจร, ตู้กดน้ำ, เมนูเครื่องใช้ไฟฟ้า ล้วนคุมด้วยสถานะครั้งละหนึ่ง มีทางออกไปสถานะถัดไป เหมือน start / play / over ในสไลด์ &quot;state machine — เกมอยู่ช่วงไหน&quot; ที่เราใช้ปิดเกมด้วย <code>return False</code></li>
+<li><strong>เทอร์โมสตัท / แอร์</strong> — อ่านอุณหภูมิ เทียบเป้า สั่งเปิด/ปิดคอมเพรสเซอร์ คือ sense → decide → act ตัวเดียวกับไม้ AI และมี <strong>deadzone (hysteresis)</strong> เป๊ะแบบ <code>±6</code> ของเรา ถ้าไม่มี คอมเพรสเซอร์เปิด-ปิดถี่ ๆ (สั่น) เหมือนไม้ไม่มี deadzone</li>
+<li><strong>กล้องตามหน้า / กิมบอลกันสั่น</strong> — มอเตอร์หมุนกล้องให้ &quot;กลางเฟรมตรงกับใบหน้า&quot; คือ <code>target_y = ...</code> แล้วขยับเข้าหาทีละก้าว ต่างจากไม้เราแค่หมุนเป็นองศาแทนพิกเซล</li>
+<li><strong>NPC / ศัตรูในเกมจริง</strong> — มอนสเตอร์ที่วิ่งเข้าหาผู้เล่น พื้นฐานคือ tracker rule เดียวกับที่เราเขียน แค่เพิ่มการหาทางอ้อมสิ่งกีดขวาง</li>
+<li><strong>state machine ในเครื่องจริง</strong> — ไฟจราจร, ตู้กดน้ำ, เมนูเครื่องใช้ไฟฟ้า คุมด้วยสถานะครั้งละหนึ่ง มีทางออกไปสถานะถัดไป เหมือน start / play / over ที่เราใช้ปิดเกมด้วย <code>return False</code></li>
 </ul>
 <blockquote>
-<p>ห้าอย่างที่เราแตะวันนี้ ไม่มีอันไหนเป็นของเล่น เทอร์โมสตัทในบ้าน กล้องในมือถือ ศัตรูในเกมโปรด ทำงานด้วยหลักเดียวกับไม้ AI ที่น้องเพิ่งเขียน</p>
+<p>สี่อย่างที่เราแตะวันนี้ ไม่มีอันไหนเป็นของเล่น เทอร์โมสตัทในบ้าน กล้องในมือถือ ศัตรูในเกมโปรด ทำงานด้วยหลักเดียวกับไม้ AI ที่น้องเพิ่งเขียน</p>
 </blockquote>
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="29" style="--paginate:true;--theme:default;" data-marpit-pagination-total="29">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="224" viewBox="0 0 840 224" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="s7tArr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <text x="14" y="26" font-size="13" font-weight="700" fill="#1565c0">แบบตอบสนอง — ไล่ ball_y ปัจจุบัน</text>
+  <line x1="520" y1="36" x2="520" y2="98" stroke="#cfd8dc" stroke-width="3" />
+  <circle cx="120" cy="82" r="8" fill="#1565c0" />
+  <line x1="128" y1="78" x2="212" y2="52" stroke="#607d8b" stroke-width="2" marker-end="url(#s7tArr)" />
+  <line x1="128" y1="82" x2="512" y2="82" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="5 4" />
+  <rect x="514" y="70" width="8" height="24" fill="#1565c0" />
+  <circle cx="520" cy="52" r="6" fill="#ffffff" stroke="#1565c0" stroke-width="2" />
+  <text x="536" y="58" font-size="11" fill="#455a64">ไม้เล็ง y ปัจจุบัน</text>
+  <text x="536" y="76" font-size="11" fill="#ef6c00">→ ตามหลัง พลาดลูกที่พุ่งขึ้น</text>
+  <line x1="300" y1="104" x2="300" y2="122" stroke="#607d8b" stroke-width="2" marker-end="url(#s7tArr)" />
+  <text x="316" y="117" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  <text x="14" y="146" font-size="13" font-weight="700" fill="#2e7d32">แบบทำนาย — เล็งจุดที่ลูกจะไปถึง</text>
+  <line x1="520" y1="150" x2="520" y2="196" stroke="#cfd8dc" stroke-width="3" />
+  <circle cx="120" cy="186" r="8" fill="#2e7d32" />
+  <line x1="128" y1="182" x2="512" y2="152" stroke="#2e7d32" stroke-width="2" marker-end="url(#s7tArr)" />
+  <circle cx="520" cy="150" r="6" fill="#2e7d32" />
+  <rect x="514" y="138" width="8" height="24" fill="#2e7d32" />
+  <text x="536" y="150" font-size="11" fill="#2e7d32">เล็งจุดที่ลูกจะไปถึง</text>
+  <text x="536" y="168" font-size="11" fill="#2e7d32">→ รอรับพอดี ทันเสมอ</text>
+  <text x="420" y="210" font-size="11" fill="#777" text-anchor="middle">= ระบบนำวิถี / รถอัตโนมัติ ที่เล็งจุดในอนาคต ไม่ใช่ตำแหน่งปัจจุบัน</text>
+</svg>
+</div>
 <ul>
-<li><strong>AI ที่พลาดเป็น</strong> — ถ้าอยากให้ AI &quot;เผลอ&quot; ไม่ขยับสัก 1 ใน 10 เฟรม เพื่อให้คนเล่นมีลุ้น จะเสียบตรงไหนของกฎสามบรรทัด และจะทำให้ EASY พลาดบ่อยกว่า HARD ได้ยังไงโดยไม่แตะโครงเดิม?</li>
+<li><strong>AI ที่พลาดเป็น</strong> — ถ้าอยากให้ AI &quot;เผลอ&quot; ไม่ขยับสัก 1 ใน 10 เฟรม จะเสียบตรงไหนของกฎสามบรรทัด และทำให้ EASY พลาดบ่อยกว่า HARD ได้ยังไงโดยไม่แตะโครงเดิม?</li>
 <li><strong>AI ที่ทำนายล่วงหน้า</strong> — ตอนนี้ไม้ไล่ <code>ball_y</code> ปัจจุบัน จึงตามหลังลูกเสมอ ถ้าให้มัน <strong>เดา</strong> ว่าลูกจะไปถึงขอบขวาที่ตำแหน่งไหนแล้วรอไว้ก่อน จะคำนวณยังไง? (นี่คือคำถามเดียวกับระบบนำวิถีและรถอัตโนมัติที่ต้องเล็งจุดในอนาคต)</li>
 <li><strong>ความยากที่ปรับตัวเอง</strong> — ถ้าอยากให้เกมดู <code>player_score</code> กับ <code>ai_score</code> แล้วค่อย ๆ เร่ง/ลด <code>ai_speed</code> ให้สูสีตลอด (rubber-band) จะออกแบบเงื่อนไขยังไงให้ไม่โกงจนคนเล่นจับได้?</li>
-<li><strong>เสียงที่เล่าเรื่องเกม</strong> — วันนี้เราเรียก <code>game.sfx(&quot;win&quot;)</code> / <code>game.sfx(&quot;lose&quot;)</code> ตอนจบเกม ถ้าอยากให้ <strong>เสียง</strong> สื่ออารมณ์มากขึ้น เช่น แรลลี่ยิ่งยาวเสียงตีลูกยิ่งสูงขึ้น จะออกแบบยังไง? คาบหน้า &quot;เสียงเกม: sfx + tone&quot; เราจะลงลึกเรื่องนี้ ลองคิดล่วงหน้าไว้ก่อน</li>
+<li><strong>เสียงที่เล่าเรื่องเกม</strong> — วันนี้เราเรียก <code>game.sfx(&quot;win&quot;)</code> / <code>game.sfx(&quot;lose&quot;)</code> ตอนจบเกม ถ้าอยากให้ <strong>เสียง</strong> สื่ออารมณ์มากขึ้น เช่น แรลลี่ยิ่งยาวเสียงตีลูกยิ่งสูงขึ้น จะออกแบบยังไง? คาบหน้า &quot;เสียงเกม: sfx + tone&quot; จะลงลึกเรื่องนี้</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากกฎ AI ที่พิมพ์เองวันนี้ ตรงนั้นแหละคือจุดที่น้องเริ่มออกแบบ AI เป็น ไม่ใช่แค่พิมพ์ตามเฉลย</p>

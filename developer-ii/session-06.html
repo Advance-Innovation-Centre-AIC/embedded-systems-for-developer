@@ -675,11 +675,63 @@ HEAD_SPRITE_FOR = {(<span class="hljs-number">1</span>, <span class="hljs-number
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="29" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="29" style="--paginate:true;--theme:default;" data-marpit-pagination-total="30">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--object-pool--frame-table--grid%E2%86%92pixel">ใช้จริงที่ไหน — object pool · frame table · grid→pixel</h1>
 <p>เทคนิคสามอย่างของเฉลยวันนี้ไม่ใช่ของเล่นในห้องเรียน มันคือสิ่งที่ซอฟต์แวร์จริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="s6ua" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">object pool ในเกมเอนจิน (Unity/Unreal)</text>
+  <text x="40" y="46" font-size="10" fill="#607d8b">show() = ใช้อยู่</text>
+  <rect x="40" y="50" width="18" height="18" rx="4" fill="#1565c0" />
+  <rect x="62" y="50" width="18" height="18" rx="4" fill="#1565c0" />
+  <rect x="84" y="50" width="18" height="18" rx="4" fill="#1565c0" />
+  <text x="150" y="46" font-size="10" fill="#607d8b">hide() = คืน pool</text>
+  <rect x="150" y="50" width="18" height="18" rx="4" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <rect x="172" y="50" width="18" height="18" rx="4" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <rect x="194" y="50" width="18" height="18" rx="4" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <rect x="216" y="50" width="18" height="18" rx="4" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <text x="28" y="98" font-size="11" fill="#777">จองล่วงหน้า → activate/deactivate ไม่ขอ object ใหม่กลางเกม</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">recycle view (RecyclerView / UITableView)</text>
+  <rect x="470" y="38" width="78" height="66" rx="6" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <rect x="478" y="46" width="62" height="9" rx="2" fill="#a5d6a7" />
+  <rect x="478" y="59" width="62" height="9" rx="2" fill="#a5d6a7" />
+  <rect x="478" y="72" width="62" height="9" rx="2" fill="#a5d6a7" />
+  <rect x="478" y="85" width="62" height="9" rx="2" fill="#a5d6a7" />
+  <path d="M560,50 C610,50 610,94 560,94" fill="none" stroke="#607d8b" stroke-width="2" marker-end="url(#s6ua)" />
+  <text x="620" y="66" font-size="11" fill="#607d8b">แถวพ้นจอ →</text>
+  <text x="620" y="82" font-size="11" fill="#607d8b">ใช้ view เดิมซ้ำ</text>
+  <text x="464" y="108" font-size="11" fill="#777">วาดแค่แถวที่เห็น · หมุนเวียนของจำกัด — เหมือนปล้องงูในลัง</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">animation state · ตารางเฟรม (sprite atlas)</text>
+  <rect x="34" y="156" width="40" height="38" rx="5" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" /><text x="54" y="207" font-size="10" fill="#607d8b" text-anchor="middle">_r</text>
+  <rect x="80" y="156" width="40" height="38" rx="5" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" /><text x="100" y="207" font-size="10" fill="#607d8b" text-anchor="middle">_l</text>
+  <rect x="126" y="156" width="40" height="38" rx="5" fill="#ffe0b2" stroke="#ef6c00" stroke-width="3" /><text x="146" y="207" font-size="10" fill="#ef6c00" text-anchor="middle" font-weight="700">_u</text>
+  <rect x="172" y="156" width="40" height="38" rx="5" fill="#ffffff" stroke="#ef6c00" stroke-width="1.5" /><text x="192" y="207" font-size="10" fill="#607d8b" text-anchor="middle">_d</text>
+  <line x1="146" y1="150" x2="146" y2="154" stroke="#607d8b" stroke-width="2" />
+  <text x="240" y="172" font-size="11" fill="#607d8b">dict lookup:</text>
+  <text x="240" y="189" font-size="11" fill="#607d8b">ทิศ (0,-1) → _u</text>
+  <text x="28" y="224" font-size="11" fill="#777">แบบเดียวกับ HEAD_SPRITE_FOR — ไม่หมุน/คำนวณภาพสด</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">grid → pixel · LED matrix / tilemap</text>
+  <rect x="470" y="156" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="486" y="156" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="502" y="156" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="518" y="156" width="16" height="16" fill="#ffffff" stroke="#ce93d8" />
+  <rect x="470" y="172" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="486" y="172" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="502" y="172" width="16" height="16" fill="#6a1b9a" stroke="#ce93d8" /><rect x="518" y="172" width="16" height="16" fill="#ffffff" stroke="#ce93d8" />
+  <rect x="470" y="188" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="486" y="188" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="502" y="188" width="16" height="16" fill="#ffffff" stroke="#ce93d8" /><rect x="518" y="188" width="16" height="16" fill="#ffffff" stroke="#ce93d8" />
+  <text x="470" y="220" font-size="11" fill="#6a1b9a">(col,row)=(2,1)</text>
+  <line x1="540" y1="182" x2="592" y2="182" stroke="#607d8b" stroke-width="2" marker-end="url(#s6ua)" />
+  <text x="566" y="176" font-size="10" fill="#777" text-anchor="middle">× CELL_PX</text>
+  <text x="600" y="187" font-size="12" fill="#6a1b9a" font-weight="700">(32, 16) px</text>
+  <text x="600" y="212" font-size="11" fill="#777">พิกัดตรรกะ ≠ พิกัดจอ</text>
+</svg>
+</div>
 <ul>
-<li><strong>Object pool ในเกมเอนจินจริง</strong> — Unity/Unreal เวลามีกระสุนหรือศัตรูเกิด-ดับเป็นพัน ๆ ตัว จะไม่ขอ object ใหม่ทุกครั้ง แต่ทำ <strong>object pooling</strong>: จองไว้ล่วงหน้าแล้ว activate/deactivate ตรงกับ <code>game.pool</code> + <code>show()/hide()</code> ในสไลด์ &quot;ภาพในใจของ pool&quot; ของเราเป๊ะ เพราะการขอหน่วยความจำใหม่กลางเกมทำให้เฟรมกระตุก</li>
-<li><strong>List ที่ recycle view บนมือถือ</strong> — แอปที่เลื่อนรายการยาว ๆ (Android RecyclerView, iOS UITableView) วาดแถวจริงแค่เท่าที่เห็นบนจอ แล้วหมุนเวียน view เดิมเมื่อเลื่อน หลักคิดเดียวกับปล้องงูในลัง: มีของจำกัด หยิบมาใช้ซ้ำ ไม่สร้างใหม่ทุกแถว</li>
-<li><strong>Animation state ด้วยตารางเฟรม</strong> — ตัวละครในเกม 2D จริงเลือกเฟรมเดิน/ยืน/กระโดดจาก <strong>sprite atlas</strong> ด้วยตารางแบบเดียวกับ <code>HEAD_SPRITE_FOR</code> แทนการหมุนหรือคำนวณภาพสด นี่คือ animation state machine เวอร์ชันเล็กที่สุด ตรงกับสไลด์ &quot;หัวหันทิศ = dict lookup&quot;</li>
-<li><strong>grid→pixel ในจอ LED / tilemap</strong> — ป้าย LED matrix, เกมแบบ tile (Tiled editor) และ framebuffer ทุกตัวแปลง &quot;ช่อง&quot; เป็น &quot;พิกเซล&quot; ด้วยการคูณขนาดช่องเป๊ะ ๆ เหมือน <code>col × CELL_PX</code> ในสไลด์ &quot;grid → pixel&quot; ของเรา — พิกัดตรรกะกับพิกัดจอเป็นคนละระบบเสมอ</li>
+<li><strong>Object pool ในเกมเอนจินจริง</strong> — Unity/Unreal เวลากระสุน/ศัตรูเกิด-ดับเป็นพัน ๆ ตัว ไม่ขอ object ใหม่ทุกครั้ง แต่ทำ <strong>object pooling</strong>: จองล่วงหน้าแล้ว activate/deactivate ตรงกับ <code>game.pool</code> + <code>show()/hide()</code> เป๊ะ เพราะขอหน่วยความจำใหม่กลางเกมทำให้เฟรมกระตุก</li>
+<li><strong>recycle view บนมือถือ</strong> — รายการยาว ๆ (Android RecyclerView, iOS UITableView) วาดแถวจริงแค่เท่าที่เห็น แล้วหมุนเวียน view เดิมเมื่อเลื่อน หลักคิดเดียวกับปล้องงูในลัง: ของจำกัด หยิบมาใช้ซ้ำ ไม่สร้างใหม่ทุกแถว</li>
+<li><strong>Animation state ด้วยตารางเฟรม</strong> — ตัวละครเกม 2D เลือกเฟรมเดิน/ยืน/กระโดดจาก <strong>sprite atlas</strong> ด้วยตารางแบบเดียวกับ <code>HEAD_SPRITE_FOR</code> แทนหมุนหรือคำนวณภาพสด นี่คือ animation state machine เวอร์ชันเล็กที่สุด</li>
+<li><strong>grid→pixel ในจอ LED / tilemap</strong> — ป้าย LED matrix, เกม tile (Tiled editor), framebuffer ทุกตัวแปลง &quot;ช่อง&quot; เป็น &quot;พิกเซล&quot; ด้วยการคูณขนาดช่อง เหมือน <code>col × CELL_PX</code> — พิกัดตรรกะกับพิกัดจอเป็นคนละระบบเสมอ</li>
 </ul>
 <blockquote>
 <p>ห้ามมองว่า Snake เป็นแค่แบบฝึกหัด สามเทคนิคนี้คือของที่วิศวกรเกมและ embedded ใช้ทำมาหากินจริง เราแค่เจอมันในตัวที่เล็กพอจะเข้าใจทั้งหมดได้</p>
@@ -688,11 +740,42 @@ HEAD_SPRITE_FOR = {(<span class="hljs-number">1</span>, <span class="hljs-number
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="30">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>เอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="224" viewBox="0 0 840 224" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="s6td" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker><marker id="s6tu" markerWidth="9" markerHeight="9" refX="4" refY="2" orient="auto"><path d="M0,7 L8,7 L4,0 Z" fill="#2e7d32" /></marker></defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#1565c0">แบบเดิม — หัวงูขยับด้วย step คงที่ (Snake)</text>
+  <line x1="120" y1="60" x2="486" y2="60" stroke="#90caf9" stroke-width="2" />
+  <rect x="120" y="52" width="16" height="16" rx="3" fill="#1565c0" />
+  <rect x="190" y="52" width="16" height="16" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="260" y="52" width="16" height="16" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="330" y="52" width="16" height="16" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="400" y="52" width="16" height="16" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="470" y="52" width="16" height="16" rx="3" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5" />
+  <text x="500" y="65" font-size="11" fill="#1565c0">+step (เท่ากันทุกเฟรม)</text>
+  <text x="120" y="88" font-size="11" fill="#777">ระยะเท่ากันทุกเฟรม → ความเร็วคงที่ ไม่มีตัวแปร velocity</text>
+  
+  <line x1="420" y1="100" x2="420" y2="124" stroke="#607d8b" stroke-width="2" marker-end="url(#s6td)" />
+  <text x="436" y="117" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบใหม่ — นกขยับด้วยความเร็วที่เปลี่ยนทุกเฟรม  v += g (Flappy)</text>
+  <path d="M120,160 L178,164 L236,173 L294,187 L352,206" fill="none" stroke="#2e7d32" stroke-width="2" stroke-dasharray="5 4" />
+  <circle cx="120" cy="160" r="4" fill="#2e7d32" />
+  <circle cx="178" cy="164" r="4" fill="#2e7d32" />
+  <circle cx="236" cy="173" r="4" fill="#2e7d32" />
+  <circle cx="294" cy="187" r="4" fill="#2e7d32" />
+  <circle cx="352" cy="206" r="4" fill="#2e7d32" />
+  <text x="150" y="205" font-size="11" fill="#2e7d32">v += g → ตกเร็วขึ้นเรื่อย ๆ</text>
+  <line x1="470" y1="205" x2="470" y2="160" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#s6tu)" />
+  <text x="486" y="180" font-size="11" fill="#2e7d32">กด A → v ตีขึ้น (เด้ง)</text>
+  <text x="486" y="196" font-size="11" fill="#777">โครง on_each_frame() เดิมรับได้ — แค่เพิ่มตัวแปร v</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้าต้องเพิ่มโหมดที่ 4 &quot;INSANE&quot;</strong> จะออกแบบยังไงให้แก้ที่เดียวจบ (ใบ้: <code>DIFFICULTY_MODES</code> เป็น list ถ้าเพิ่ม tuple เข้าไป เมนู <code>% len</code> จะรับเองไหม ต้องแตะ <code>choose_mode()</code> อีกไหม)</li>
-<li><strong>ถ้าอยากเก็บ Best ไว้แม้ปิดเครื่อง</strong> จะออกแบบยังไง ตอนนี้ <code>best_score</code> หายทุกครั้งที่รีบูต ลองคิดว่าจะเขียนค่าลงไฟล์บนบอร์ดแล้วอ่านกลับตอนเปิดเกมยังไง (นี่คือ persistence ที่ high-score table ของทุกเกมจริงมี)</li>
-<li><strong>ถ้าให้ลำตัวงูมีเฟรมหลายแบบ</strong> เช่น ตัวโค้งตรงหัวเลี้ยว จะต่อยอด <code>HEAD_SPRITE_FOR</code> เป็นตารางเฟรมลำตัวที่ดูทั้งทิศเข้าและทิศออกของแต่ละปล้องได้ไหม (นี่คือสิ่งที่ <code>snake_sprite_full.py</code> ทำ)</li>
-<li><strong>บริดจ์ไปคาบหน้า:</strong> Flappy Bird ใช้ฟิสิกส์แรงโน้มถ่วง <code>v += g</code> นกจะตกเองทุกเฟรมแล้วเด้งขึ้นเมื่อกดปุ่ม ลองคิดล่วงหน้า ถ้าหัวงูวันนี้ขยับด้วย <code>step</code> คงที่ แล้วนกพรุ่งนี้ต้องขยับด้วย <strong>ความเร็วที่เปลี่ยนทุกเฟรม</strong> โครง <code>on_each_frame()</code> เดิมของเราจะรองรับได้ไหม ต้องเพิ่มตัวแปรอะไรเข้าไปบ้าง</li>
+<li><strong>ถ้าต้องเพิ่มโหมดที่ 4 &quot;INSANE&quot;</strong> จะออกแบบยังไงให้แก้ที่เดียวจบ (ใบ้: <code>DIFFICULTY_MODES</code> เป็น list เพิ่ม tuple เข้าไป เมนู <code>% len</code> จะรับเองไหม ต้องแตะ <code>choose_mode()</code> อีกไหม)</li>
+<li><strong>ถ้าอยากเก็บ Best ไว้แม้ปิดเครื่อง</strong> ตอนนี้ <code>best_score</code> หายทุกครั้งที่รีบูต จะเขียนค่าลงไฟล์บนบอร์ดแล้วอ่านกลับตอนเปิดเกมยังไง (นี่คือ persistence ที่ high-score table ของทุกเกมจริงมี)</li>
+<li><strong>ถ้าให้ลำตัวงูมีเฟรมหลายแบบ</strong> เช่น ตัวโค้งตรงหัวเลี้ยว จะต่อยอด <code>HEAD_SPRITE_FOR</code> เป็นตารางเฟรมลำตัวที่ดูทั้งทิศเข้า/ออกของแต่ละปล้องได้ไหม (นี่คือสิ่งที่ <code>snake_sprite_full.py</code> ทำ)</li>
+<li><strong>บริดจ์ไปคาบหน้า:</strong> Flappy Bird ใช้ฟิสิกส์แรงโน้มถ่วง <code>v += g</code> นกตกเองทุกเฟรมแล้วเด้งขึ้นเมื่อกดปุ่ม ถ้าหัวงูวันนี้ขยับด้วย <code>step</code> คงที่ แต่นกพรุ่งนี้ต้องขยับด้วย <strong>ความเร็วที่เปลี่ยนทุกเฟรม</strong> โครง <code>on_each_frame()</code> เดิมจะรองรับได้ไหม ต้องเพิ่มตัวแปรอะไรเข้าไปบ้าง</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ เขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากเฉลยที่พิมพ์เองวันนี้ — ตรงนั้นคือจุดที่น้องเริ่มเป็นคนออกแบบเกม ไม่ใช่แค่คนพิมพ์ตาม</p>

@@ -725,11 +725,65 @@ bullets = [game.Box(<span class="hljs-number">0</span>, -<span class="hljs-numbe
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="25" style="--paginate:true;--theme:default;" data-marpit-pagination-total="26">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--object-pool--cooldown--%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A2%E0%B8%B7%E0%B8%A1-%E0%B8%84%E0%B8%B7%E0%B8%99">ใช้จริงที่ไหน — object pool · cooldown · การยืม-คืน</h1>
 <p>บ่อกระสุนกับ cooldown ที่เราเพิ่งเขียน ไม่ใช่ของเล่นในห้องเรียน มันคือ pattern ที่ระบบจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="ar11u" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">Object pool ในเกมเอนจิน</text>
+  <text x="28" y="60" font-size="11" fill="#607d8b">บ่อ</text>
+  <rect x="60"  y="48" width="26" height="18" rx="3" fill="#1565c0" />
+  <rect x="96"  y="48" width="26" height="18" rx="3" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="132" y="48" width="26" height="18" rx="3" fill="#1565c0" />
+  <rect x="168" y="48" width="26" height="18" rx="3" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="204" y="48" width="26" height="18" rx="3" fill="#1565c0" />
+  <rect x="240" y="48" width="26" height="18" rx="3" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" />
+  <text x="284" y="52" font-size="10" fill="#1565c0">■ ใช้อยู่</text>
+  <text x="284" y="68" font-size="10" fill="#607d8b">□ ว่าง</text>
+  <text x="28" y="100" font-size="11" fill="#777">ยิงพัน ๆ นัด → รีไซเคิลแทนสร้าง-ทำลาย (กัน GC กระตุก)</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">Buffer / DMA descriptor pool</text>
+  <rect x="474" y="42" width="24" height="16" rx="3" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <rect x="506" y="42" width="24" height="16" rx="3" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <rect x="538" y="42" width="24" height="16" rx="3" fill="#2e7d32" />
+  <rect x="570" y="42" width="24" height="16" rx="3" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <rect x="602" y="42" width="24" height="16" rx="3" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="550" y="38" font-size="9" fill="#2e7d32" text-anchor="middle">in use</text>
+  <path d="M626,58 C666,84 452,84 476,58" fill="none" stroke="#607d8b" stroke-width="1.6" marker-end="url(#ar11u)" />
+  <text x="464" y="100" font-size="11" fill="#777">จองคงที่ล่วงหน้า · กัน heap fragmentation บน SRAM</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">Cooldown / rate limiting</text>
+  <text x="56" y="166" font-size="10" fill="#607d8b">8</text>
+  <text x="56" y="208" font-size="10" fill="#607d8b">0</text>
+  <path d="M70,162 L150,204 M150,162 L230,204 M230,162 L310,204" fill="none" stroke="#ef6c00" stroke-width="2" />
+  <circle cx="150" cy="204" r="4" fill="#2e7d32" />
+  <circle cx="230" cy="204" r="4" fill="#2e7d32" />
+  <circle cx="310" cy="204" r="4" fill="#2e7d32" />
+  <text x="326" y="188" font-size="11" fill="#2e7d32">ถึง 0 = allow</text>
+  <text x="28" y="218" font-size="11" fill="#777">ปุ่มลิฟต์ · API rate limit · debounce ปุ่มบนบอร์ด</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">Connection pool (web / DB)</text>
+  <rect x="470" y="160" width="30" height="18" rx="4" fill="#6a1b9a" />
+  <rect x="506" y="160" width="30" height="18" rx="4" fill="#6a1b9a" />
+  <rect x="542" y="160" width="30" height="18" rx="4" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <rect x="578" y="160" width="30" height="18" rx="4" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <rect x="700" y="158" width="120" height="22" rx="4" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="760" y="173" font-size="11" fill="#6a1b9a" text-anchor="middle">request</text>
+  <path d="M614,164 H696" stroke="#607d8b" stroke-width="1.6" marker-end="url(#ar11u)" />
+  <text x="655" y="158" font-size="10" fill="#607d8b" text-anchor="middle">ยืม</text>
+  <path d="M696,176 H614" stroke="#607d8b" stroke-width="1.6" marker-end="url(#ar11u)" />
+  <text x="655" y="192" font-size="10" fill="#607d8b" text-anchor="middle">คืน</text>
+  <text x="464" y="218" font-size="11" fill="#777">ยืม-คืนแทนเปิดใหม่ · บ่อเต็ม → รอ (None)</text>
+</svg>
+</div>
 <ul>
-<li><strong>Object pool ในเกมเอนจินจริง</strong> — Unity/Unreal มี pooling API มาให้เลยสำหรับกระสุน อนุภาค (particle) และศัตรู เพราะเกม AAA ยิงเป็นพัน ๆ นัดต่อวินาที ถ้าสร้าง-ทำลายทุกนัด GC จะกระตุก ตรงกับบ่อกระสุนของเราเป๊ะ (คลิปในสไลด์ <strong>เชื่อมโยงรากฐาน</strong> อธิบายเรื่องนี้)</li>
-<li><strong>Buffer / memory pool ใน embedded driver</strong> — network stack อย่าง lwIP จอง <code>pbuf</code> ไว้เป็นบ่อ, DMA descriptor ring ก็จองจำนวนคงที่ล่วงหน้า เพื่อกัน <strong>heap fragmentation</strong> บน SRAM ที่มีจำกัด นี่คือเหตุผลตรง ๆ ในสไลด์ <strong>ทำไม embedded ต้องใช้ pool</strong></li>
-<li><strong>Cooldown / rate limiting</strong> — ปุ่มลิฟต์ที่กดรัวแล้วไม่ทำงานซ้ำ, API ที่จำกัดจำนวน request ต่อวินาที, การ debounce ปุ่มจริงบนบอร์ด ล้วนเป็น gate แบบเดียวกับ <code>fire_cooldown == 0</code> ที่กันการทำงานถี่เกิน</li>
-<li><strong>Connection pool</strong> — เว็บเซิร์ฟเวอร์กับฐานข้อมูลจอง connection ไว้ล่วงหน้าเป็นบ่อ แล้วยืม-คืนแทนการเปิดใหม่ทุก request ตอนบ่อเต็มก็รอ — ตรงกับ <code>find_free_bullet()</code> ที่คืน <code>None</code> เมื่อไม่มีนัดว่าง</li>
+<li><strong>Object pool ในเกมเอนจินจริง</strong> — Unity/Unreal มี pooling API สำหรับกระสุน อนุภาค (particle) ศัตรู เพราะเกม AAA ยิงเป็นพัน ๆ นัด/วินาที ถ้าสร้าง-ทำลายทุกนัด GC จะกระตุก — ตรงกับบ่อกระสุนของเราเป๊ะ</li>
+<li><strong>Buffer / memory pool ใน embedded driver</strong> — lwIP จอง <code>pbuf</code> เป็นบ่อ, DMA descriptor ring จองจำนวนคงที่ล่วงหน้า เพื่อกัน <strong>heap fragmentation</strong> บน SRAM ที่จำกัด</li>
+<li><strong>Cooldown / rate limiting</strong> — ปุ่มลิฟต์กดรัวแล้วไม่ทำซ้ำ, API จำกัด request/วินาที, debounce ปุ่มบนบอร์ด ล้วนเป็น gate แบบเดียวกับ <code>fire_cooldown == 0</code> ที่กันการทำงานถี่เกิน</li>
+<li><strong>Connection pool</strong> — เว็บ/ฐานข้อมูลจอง connection ล่วงหน้าเป็นบ่อ ยืม-คืนแทนการเปิดใหม่ทุก request บ่อเต็มก็รอ — ตรงกับ <code>find_free_bullet()</code> ที่คืน <code>None</code> เมื่อไม่มีนัดว่าง</li>
 </ul>
 <blockquote>
 <p>เห็นไหมว่าบ่อ 6 นัดในเกมยิง กับบ่อ connection ในเซิร์ฟเวอร์ธนาคาร ใช้วิธีคิดเดียวกันหมด ของที่ดูเหมือนแค่ทำเกมสนุก จริง ๆ คือทักษะวิศวกรรมที่กินได้ยาว</p>
@@ -738,11 +792,42 @@ bullets = [game.Box(<span class="hljs-number">0</span>, -<span class="hljs-numbe
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="26" style="--paginate:true;--theme:default;" data-marpit-pagination-total="26">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs><marker id="arTL11e" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#ef6c00">โตทีละนัด — สร้างใหม่ทุกครั้งใน loop</text>
+  <line x1="140" y1="34" x2="466" y2="34" stroke="#607d8b" stroke-width="1.5" stroke-dasharray="5 4" />
+  <text x="474" y="38" font-size="11" fill="#607d8b">RAM ceiling</text>
+  <rect x="150" y="60" width="20" height="12" fill="#ef6c00" />
+  <rect x="176" y="54" width="20" height="18" fill="#ef6c00" />
+  <rect x="202" y="48" width="20" height="24" fill="#ef6c00" />
+  <rect x="228" y="42" width="20" height="30" fill="#ef6c00" />
+  <rect x="254" y="36" width="20" height="36" fill="#ef6c00" />
+  <rect x="280" y="30" width="20" height="42" fill="#ef6c00" />
+  <text x="474" y="60" font-size="11" fill="#ef6c00">หน่วยความจำโตไม่หยุด → ค้าง</text>
+  <text x="230" y="92" font-size="11" fill="#ef6c00" text-anchor="middle">MAX_BULLETS += 1 ทุกนัด = alloc ใน loop</text>
+  
+  <line x1="420" y1="100" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arTL11e)" />
+  <text x="436" y="118" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">จองเพิ่มเป็นก้อน (chunk) ล่วงหน้า</text>
+  <rect x="150" y="162" width="130" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="215" y="184" font-size="12" fill="#2e7d32" text-anchor="middle">บ่อ 6 นัด</text>
+  <text x="298" y="186" font-size="16" font-weight="700" fill="#2e7d32">+</text>
+  <rect x="316" y="162" width="172" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="402" y="184" font-size="11" fill="#2e7d32" text-anchor="middle">+ อีก 6 (จองล่วงหน้า)</text>
+  <line x1="500" y1="179" x2="540" y2="179" stroke="#607d8b" stroke-width="2" marker-end="url(#arTL11e)" />
+  <text x="548" y="175" font-size="11" fill="#2e7d32">RAM ขยับเป็นขั้น</text>
+  <text x="548" y="191" font-size="11" fill="#2e7d32">แล้วคงที่ระหว่างก้อน</text>
+  <text x="420" y="216" font-size="11" fill="#777" text-anchor="middle">ไม่ alloc ทีละนัดใน loop → กันค้าง เพราะจำนวน widget คงที่ต่อก้อน</text>
+</svg>
+</div>
 <ul>
-<li><strong>บ่อที่ขยายได้</strong> — ถ้าตอนสู้บอสกระสุน 6 นัดไม่พอ จะออกแบบให้ upgrade เพิ่ม <code>MAX_BULLETS</code> ระหว่างเกมยังไง โดยไม่ให้ RAM พุ่งจนค้าง (ใบ้: จองเพิ่มเป็นก้อนล่วงหน้า ไม่ใช่ทีละนัดใน loop)</li>
-<li><strong>กระสุนหลายชนิดในบ่อเดียว</strong> — ถ้าอยากได้กระสุน 2 แบบ (เร็ว/แรง) จะเก็บทั้งสองชนิดในบ่อเดียวกัน หรือแยกเป็นสองบ่อ ข้อดีข้อเสียของแต่ละแบบต่างกันตรงไหน เวลาหา &quot;นัดว่าง&quot; จะยุ่งขึ้นแค่ไหน</li>
-<li><strong>cooldown ที่ปรับตามฝีมือ</strong> — ถ้าอยากให้ยิ่งคะแนนสูงยิ่งยิงเร็ว จะผูกสูตร <code>fire_cooldown</code> กับ <code>score</code> ยังไงให้ยังกันกดรัวได้อยู่ ไม่ใช่ปล่อยให้ cooldown เหลือ 0 จนกระสุนทะลัก</li>
-<li><strong>สู่คาบหน้า</strong> — คาบ 12 เราจะให้ยานตายเมื่อชนศัตรูด้วย <code>overlap()</code> ตัวเดียวกับที่วันนี้เช็คกระสุน×ศัตรู ถ้าต้องเช็คทั้ง <strong>กระสุน × ศัตรู</strong> และ <strong>ยาน × ศัตรู</strong> ในเฟรมเดียว จะจัดโครงลูปยังไงไม่ให้วนศัตรูซ้ำสองรอบ ลองร่างผังไว้ก่อนมาเรียน</li>
+<li><strong>บ่อที่ขยายได้</strong> — ตอนสู้บอสถ้ากระสุน 6 นัดไม่พอ จะเพิ่ม <code>MAX_BULLETS</code> ระหว่างเกมยังไงไม่ให้ RAM พุ่งจนค้าง (ใบ้: จองเพิ่มเป็นก้อนล่วงหน้า ไม่ใช่ทีละนัดใน loop)</li>
+<li><strong>กระสุนหลายชนิดในบ่อเดียว</strong> — กระสุน 2 แบบ (เร็ว/แรง) จะเก็บบ่อเดียวกัน หรือแยกสองบ่อ ข้อดีข้อเสียต่างกันตรงไหน แล้วการหา &quot;นัดว่าง&quot; จะยุ่งขึ้นแค่ไหน</li>
+<li><strong>cooldown ที่ปรับตามฝีมือ</strong> — อยากให้ยิ่ง <code>score</code> สูงยิ่งยิงเร็ว จะผูก <code>fire_cooldown</code> กับ <code>score</code> ยังไงให้ยังกันกดรัวได้ ไม่ปล่อยให้ cooldown เหลือ 0 จนกระสุนทะลัก</li>
+<li><strong>สู่คาบหน้า</strong> — คาบ 12 ยานจะตายเมื่อชนศัตรูด้วย <code>overlap()</code> ตัวเดียวกับที่วันนี้เช็คกระสุน×ศัตรู ถ้าต้องเช็คทั้ง <strong>กระสุน × ศัตรู</strong> และ <strong>ยาน × ศัตรู</strong> ในเฟรมเดียว จะจัดลูปยังไงไม่ให้วนศัตรูซ้ำสองรอบ ลองร่างผังไว้ก่อน</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากบ่อกระสุนที่พิมพ์เองวันนี้ ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นคนออกแบบระบบ ไม่ใช่แค่คนเติมช่องตามเฉลย</p>

@@ -459,11 +459,71 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="17" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--%E0%B8%8A%E0%B8%B1%E0%B9%89%E0%B8%99%E0%B8%A5%E0%B9%88%E0%B8%B2%E0%B8%87%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B9%81%E0%B8%A3%E0%B8%87%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B9%81%E0%B8%97%E0%B8%81-%E0%B9%83%E0%B8%99%E0%B8%A3%E0%B8%B0%E0%B8%9A%E0%B8%9A%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87">ใช้จริงที่ไหน — &quot;ชั้นล่างรับแรงกระแทก&quot; ในระบบจริง</h1>
 <p>เทคนิคของ engine วันนี้ไม่ได้อยู่แค่ในเกมฝึก มันคือหน้าที่ประจำของซอฟต์แวร์ชั้นล่างในระบบจริง:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arU" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker id="arUo" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ef6c00" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="30" font-size="13" font-weight="700" fill="#1565c0">HAL / driver — retry เมื่อ bus ไม่ว่าง</text>
+  <rect x="40" y="54" width="70" height="28" rx="6" fill="#ffffff" stroke="#1565c0" stroke-width="2" />
+  <text x="75" y="73" text-anchor="middle" font-size="12" fill="#1565c0">I2C ส่ง</text>
+  <rect x="176" y="54" width="66" height="28" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="209" y="73" text-anchor="middle" font-size="12" fill="#ef6c00">NAK</text>
+  <rect x="326" y="54" width="66" height="28" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="359" y="73" text-anchor="middle" font-size="12" fill="#2e7d32">ACK</text>
+  <path d="M110 68 H 174" stroke="#607d8b" stroke-width="2" marker-end="url(#arU)" />
+  <path d="M242 68 H 324" stroke="#607d8b" stroke-width="2" marker-end="url(#arU)" />
+  <path d="M209 54 C 209 40, 75 40, 75 54" fill="none" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="4 3" marker-end="url(#arUo)" />
+  <text x="142" y="38" text-anchor="middle" font-size="11" fill="#ef6c00">retry 15ms</text>
+  <text x="222" y="103" text-anchor="middle" font-size="11" fill="#777">NAK = bus ยังไม่ว่าง ไม่ใช่พัง</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="30" font-size="13" font-weight="700" fill="#2e7d32">object pool — จองล่วงหน้า + recycle</text>
+  <text x="470" y="50" font-size="11" fill="#2e7d32">ใช้งาน</text>
+  <rect x="470" y="56" width="24" height="24" rx="4" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" />
+  <rect x="500" y="56" width="24" height="24" rx="4" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" />
+  <rect x="530" y="56" width="24" height="24" rx="4" fill="#c8e6c9" stroke="#2e7d32" stroke-width="2" />
+  <text x="610" y="50" font-size="11" fill="#607d8b">จองไว้ (ซ่อน)</text>
+  <rect x="610" y="56" width="24" height="24" rx="4" fill="#ffffff" stroke="#2e7d32" stroke-width="1.6" stroke-dasharray="3 2" />
+  <rect x="640" y="56" width="24" height="24" rx="4" fill="#ffffff" stroke="#2e7d32" stroke-width="1.6" stroke-dasharray="3 2" />
+  <rect x="670" y="56" width="24" height="24" rx="4" fill="#ffffff" stroke="#2e7d32" stroke-width="1.6" stroke-dasharray="3 2" />
+  <rect x="700" y="56" width="24" height="24" rx="4" fill="#ffffff" stroke="#2e7d32" stroke-width="1.6" stroke-dasharray="3 2" />
+  <path d="M682 82 C 640 100, 520 100, 508 82" fill="none" stroke="#607d8b" stroke-width="1.8" marker-end="url(#arU)" />
+  <text x="660" y="106" text-anchor="middle" font-size="11" fill="#777">recycle — ไม่สร้างสไปรต์กลางเฟรม</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="148" font-size="13" font-weight="700" fill="#ef6c00">UI bridge — batch ข้ามไป native</text>
+  <text x="28" y="182" font-size="11" fill="#607d8b">JS/Dart</text>
+  <line x1="78" y1="164" x2="150" y2="172" stroke="#ef6c00" stroke-width="2" />
+  <line x1="78" y1="174" x2="150" y2="176" stroke="#ef6c00" stroke-width="2" />
+  <line x1="78" y1="184" x2="150" y2="182" stroke="#ef6c00" stroke-width="2" />
+  <line x1="78" y1="194" x2="150" y2="188" stroke="#ef6c00" stroke-width="2" />
+  <rect x="152" y="162" width="64" height="34" rx="6" fill="#ffe0b2" stroke="#ef6c00" stroke-width="2" />
+  <text x="184" y="183" text-anchor="middle" font-size="12" fill="#ef6c00">1 batch</text>
+  <line x1="286" y1="150" x2="286" y2="212" stroke="#9e9e9e" stroke-width="1.6" stroke-dasharray="4 3" />
+  <text x="286" y="210" text-anchor="middle" font-size="10" fill="#999">bridge</text>
+  <path d="M216 179 H 330" stroke="#607d8b" stroke-width="2" marker-end="url(#arU)" />
+  <rect x="332" y="162" width="88" height="34" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="376" y="183" text-anchor="middle" font-size="12" fill="#455a64">native UI</text>
+  <text x="222" y="224" text-anchor="middle" font-size="11" fill="#777">หลาย call รวมเป็นก้อนเดียว — อย่าข้าม bridge ถี่</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="148" font-size="13" font-weight="700" fill="#6a1b9a">debounce — จับ "ขอบขาขึ้น" ปุ่ม</text>
+  <path d="M470 196 H558 V172 H700 V196 H800" fill="none" stroke="#6a1b9a" stroke-width="2.5" />
+  <circle cx="558" cy="172" r="5" fill="#2e7d32" />
+  <text x="558" y="165" text-anchor="middle" font-size="11" fill="#2e7d32">↑ ยิงครั้งเดียว</text>
+  <text x="629" y="188" text-anchor="middle" font-size="10" fill="#6a1b9a">กดค้าง = ไม่ยิงซ้ำ</text>
+  <text x="640" y="222" text-anchor="middle" font-size="11" fill="#777">คีย์บอร์ด · รีโมท · ปุ่มลิฟต์ ใช้หลักเดียวกัน</text>
+</svg>
+</div>
 <ul>
-<li><strong>HAL / driver ของ RTOS จริง</strong> — retry + graceful fallback แบบ <code>_r()</code> / <code>Sprite</code> คืองานประจำของ HAL: I2C ส่งแล้วเจอ NAK จึง retry, sensor ไม่ตอบจึงคืนค่าเก่า ไม่ล้มทั้งระบบ ตรงกับ <strong>บทเรียน 1</strong> เป๊ะ</li>
-<li><strong>Game engine จริง (Unity / Godot) กับ object pooling</strong> — กระสุน ศัตรู particle ถูก pool ไว้แล้ว recycle ไม่ instantiate กลางเฟรม เพราะการจอง/คืนหน่วยความจำกลางเกมทำให้เฟรมกระตุก เหมือน <code>pool()</code> ของเรา (<strong>บทเรียน 2</strong>)</li>
-<li><strong>UI bridge บนมือถือ (React Native / Flutter)</strong> — สะพานระหว่างโค้ด JS/Dart กับ native UI ก็คือ IPC แบบเดียวกัน กฎ &quot;อย่าข้าม bridge ถี่เกิน&quot; และการ batch การอัปเดตหลายชิ้นเป็นก้อนเดียว คือ <strong>บทเรียน 2</strong> ในอีกโดเมน (จำนวน cross-boundary call ต่อเฟรมคือคอขวด)</li>
-<li><strong>Debounce ปุ่ม/สวิตช์ในเฟิร์มแวร์ทุกตัว</strong> — คีย์บอร์ด รีโมท ปุ่มลิฟต์ ใช้ edge detection แบบ <code>pressed_once()</code> เพื่อไม่ให้กดครั้งเดียวถูกนับหลายครั้ง คือ <strong>บทเรียน 4</strong> ในฮาร์ดแวร์ที่น้องจับอยู่ทุกวัน</li>
+<li><strong>HAL / driver ของ RTOS จริง</strong> — retry + graceful fallback แบบ <code>_r()</code> / <code>Sprite</code> คืองานประจำ: I2C เจอ NAK ก็ retry, sensor ไม่ตอบก็คืนค่าเก่า ไม่ล้มทั้งระบบ — <strong>บทเรียน 1</strong> เป๊ะ</li>
+<li><strong>Game engine จริง (Unity / Godot) — object pooling</strong> — กระสุน ศัตรู particle ถูก pool แล้ว recycle ไม่ instantiate กลางเฟรม เพราะจอง/คืนหน่วยความจำกลางเกมทำให้เฟรมกระตุก เหมือน <code>pool()</code> ของเรา (<strong>บทเรียน 2</strong>)</li>
+<li><strong>UI bridge บนมือถือ (React Native / Flutter)</strong> — สะพาน JS/Dart <img class="emoji" draggable="false" alt="↔" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@17.0.2/assets/svg/2194.svg" data-marp-twemoji=""/> native UI ก็คือ IPC แบบเดียวกัน กฎ &quot;อย่าข้าม bridge ถี่เกิน&quot; + batch หลายอัปเดตเป็นก้อนเดียว คือ <strong>บทเรียน 2</strong> อีกโดเมน (cross-boundary call ต่อเฟรมคือคอขวด)</li>
+<li><strong>Debounce ปุ่ม/สวิตช์ในเฟิร์มแวร์ทุกตัว</strong> — คีย์บอร์ด รีโมท ปุ่มลิฟต์ ใช้ edge detection แบบ <code>pressed_once()</code> กันกดครั้งเดียวถูกนับหลายครั้ง คือ <strong>บทเรียน 4</strong> ในฮาร์ดแวร์ที่น้องจับทุกวัน</li>
 </ul>
 <blockquote>
 <p>ไม่มีข้อไหนในสี่ข้อนี้เป็นของสมมติเลย engine เล็ก ๆ ที่เราถอดกันวันนี้ ใช้หลักการเดียวกับซอฟต์แวร์ระดับล้านผู้ใช้ ต่างแค่ขนาด ไม่ใช่แนวคิด</p>
@@ -472,9 +532,40 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="18" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหางานวิศวกรรมจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arV" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="16" y="24" font-size="13" font-weight="700" fill="#607d8b">ไม่มี engine — โค้ดเกมทุกไฟล์ต้องกันฮาร์ดแวร์เอง</text>
+  <rect x="124" y="34" width="184" height="46" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5 3" />
+  <rect x="138" y="46" width="72" height="22" rx="5" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" />
+  <text x="174" y="61" text-anchor="middle" font-size="11" fill="#1565c0">move_to</text>
+  <text x="220" y="52" font-size="10" fill="#ef6c00">try/except</text>
+  <text x="220" y="66" font-size="10" fill="#ef6c00">retry+fallback</text>
+  <rect x="330" y="34" width="184" height="46" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5 3" />
+  <rect x="344" y="46" width="72" height="22" rx="5" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" />
+  <text x="380" y="61" text-anchor="middle" font-size="11" fill="#1565c0">move_to</text>
+  <text x="426" y="52" font-size="10" fill="#ef6c00">try/except</text>
+  <text x="426" y="66" font-size="10" fill="#ef6c00">retry+fallback</text>
+  <rect x="536" y="34" width="184" height="46" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5 3" />
+  <rect x="550" y="46" width="72" height="22" rx="5" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.6" />
+  <text x="586" y="61" text-anchor="middle" font-size="11" fill="#1565c0">move_to</text>
+  <text x="632" y="52" font-size="10" fill="#ef6c00">try/except</text>
+  <text x="632" y="66" font-size="10" fill="#ef6c00">retry+fallback</text>
+  <text x="422" y="98" text-anchor="middle" font-size="11" fill="#ef6c00">boilerplate ซ้ำทุกการเรียก — โค้ดเกมรก อ่านยาก</text>
+  <line x1="420" y1="104" x2="420" y2="130" stroke="#607d8b" stroke-width="2" marker-end="url(#arV)" />
+  <text x="436" y="122" font-size="11" fill="#777">เปลี่ยนวิธีคิด — ดันความยุ่งยากลงชั้นล่าง</text>
+  <text x="16" y="150" font-size="13" font-weight="700" fill="#2e7d32">มี engine — โค้ดเกมสะอาด, engine แบกความจริง HW ไว้</text>
+  <rect x="124" y="160" width="592" height="28" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="136" y="179" font-size="12" fill="#2e7d32">โค้ดเกม 30%: game.Box(...).move_to(x, y) — เขียนเหมือนโลกอุดมคติ</text>
+  <rect x="124" y="190" width="592" height="30" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="136" y="209" font-size="12" fill="#455a64">engine: _r retry · fallback · pool · edge · budget — รับแรงกระแทกฮาร์ดแวร์</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้าต้องเพิ่ม guard ตัวที่เจ็ดให้ engine จะกันอะไร</strong> ลองไล่หา bug ที่ยังไม่มีใครกัน เช่น จอเต็มงบ 32 วิดเจ็ตพอดีแล้วเกมยังขอเพิ่ม จะออกแบบให้ engine &quot;รู้ตัวและปฏิเสธอย่างสุภาพ&quot; แทนที่จะพังยังไง (ใบ้: ดู <code>try/except</code> รอบ <code>game_over()</code> ที่ยอมให้ป้ายบางชิ้นไม่ขึ้นแต่ปุ่มยังทำงาน, <code>:1043-1060</code>)</li>
-<li><strong>ถ้า <code>pool()</code> ต้องแชร์ข้ามชนิดสไปรต์</strong> เกมที่มีศัตรูสามแบบ ถ้าจองแยก pool ละชนิดจะกินงบ 32 เร็ว จะออกแบบ pool รวมที่ &quot;ยืม-คืน&quot; ข้ามชนิดได้ยังไง โดยยังไม่สร้างสไปรต์กลางเฟรม</li>
+<li><strong>ถ้าต้องเพิ่ม guard ตัวที่เจ็ดให้ engine จะกันอะไร</strong> ลองหา bug ที่ยังไม่มีใครกัน เช่น จอเต็มงบ 32 วิดเจ็ตพอดีแล้วเกมยังขอเพิ่ม จะออกแบบให้ engine &quot;รู้ตัวและปฏิเสธอย่างสุภาพ&quot; แทนพังยังไง (ใบ้: <code>try/except</code> รอบ <code>game_over()</code> ที่ยอมให้ป้ายบางชิ้นไม่ขึ้นแต่ปุ่มยังทำงาน, <code>:1043-1060</code>)</li>
+<li><strong>ถ้า <code>pool()</code> ต้องแชร์ข้ามชนิดสไปรต์</strong> เกมที่มีศัตรูสามแบบ จองแยก pool ละชนิดจะกินงบ 32 เร็ว จะออกแบบ pool รวมที่ &quot;ยืม-คืน&quot; ข้ามชนิดยังไง โดยไม่สร้างสไปรต์กลางเฟรม</li>
 <li><strong>ถ้าต้องวัดว่าเฟรมไหนส่ง IPC เกินงบ</strong> จะแอบเพิ่มตัวนับใน <code>_r()</code> ให้รายงาน &quot;จำนวนจดหมายต่อเฟรม&quot; ออกมาดูได้ไหม แล้วใช้เลขจริงตัดสิน budget แทนการเดา (โยงบทเรียน 2: วัดก่อน แล้วค่อย optimize)</li>
 <li><strong>สะพานสู่ก้าวถัดไป — อ่าน engine เดียวกันในภาษา C</strong> หัวไฟล์ <code>bentogame.py</code> เขียนไว้ว่า sprite / move / input / collision map 1:1 ไปยัง C game SDK ของคอร์ส (<code>:9-10</code>) ลองเปิด SDK ฝั่ง C แล้วตามหา guard ทั้งหกที่เราถอดวันนี้ ตัวไหนหายไป (เพราะ C วาดบน CM55 ตรง ๆ ไม่มี IPC ต่อ object)? ตัวไหนยังอยู่แต่เปลี่ยนรูป? นี่คือการบ้านที่พาน้องข้ามจาก Python on-ramp ไปสู่ C จริง</li>
 </ul>

@@ -470,11 +470,70 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="17" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="17" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--abstraction-layer-%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B8%8B%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B8%AE%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B8%94%E0%B9%81%E0%B8%A7%E0%B8%A3%E0%B9%8C">ใช้จริงที่ไหน — abstraction layer ที่ซ่อนฮาร์ดแวร์</h1>
 <p>รูปแบบทั้งสี่ในไฟล์นี้ไม่ใช่ของเล่นในคอร์ส มันคือแกนของ firmware ระดับ production:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arU1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">Capability probe — ถามก่อนใช้</text>
+  <rect x="28" y="47" width="150" height="24" rx="6" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" />
+  <text x="103" y="63" text-anchor="middle" font-size="11" fill="#1565c0">hasattr(ui,"sfx")?</text>
+  <rect x="232" y="41" width="190" height="22" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="242" y="56" font-size="11" fill="#2e7d32">มี → ui.sfx() เล่นเสียง</text>
+  <rect x="232" y="75" width="190" height="22" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="1.5" />
+  <text x="242" y="90" font-size="11" fill="#455a64">ไม่มี → return เงียบ ไม่ crash</text>
+  <path d="M178 54 H 228" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+  <path d="M178 62 C 205 86, 210 86, 228 86" fill="none" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">Bounded retry — ลองซ้ำแบบมีเพดาน</text>
+  <rect x="470" y="48" width="70" height="28" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="505" y="66" text-anchor="middle" font-size="11" fill="#ef6c00">busy</text>
+  <rect x="574" y="48" width="70" height="28" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="609" y="66" text-anchor="middle" font-size="11" fill="#ef6c00">busy</text>
+  <rect x="678" y="48" width="70" height="28" rx="6" fill="#ffffff" stroke="#2e7d32" stroke-width="1.5" />
+  <text x="713" y="66" text-anchor="middle" font-size="11" fill="#2e7d32">OK</text>
+  <path d="M540 62 H 572" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+  <path d="M644 62 H 676" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+  <text x="592" y="44" text-anchor="middle" font-size="10" fill="#777">+15 ms</text>
+  <text x="464" y="101" font-size="11" fill="#607d8b">เพดาน ≤ 40 ครั้ง — ครบแล้วยอมให้ error เด้ง</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">Fixed-timestep — เดินตรงจังหวะ</text>
+  <text x="28" y="169" font-size="11" fill="#607d8b">เฟรมเบา</text>
+  <rect x="96" y="160" width="40" height="13" fill="#ef6c00" />
+  <rect x="136" y="160" width="200" height="13" fill="#ffffff" stroke="#ef6c00" stroke-width="1" />
+  <text x="28" y="193" font-size="11" fill="#607d8b">เฟรมหนัก</text>
+  <rect x="96" y="184" width="170" height="13" fill="#ef6c00" />
+  <rect x="266" y="184" width="70" height="13" fill="#ffffff" stroke="#ef6c00" stroke-width="1" />
+  <line x1="336" y1="152" x2="336" y2="202" stroke="#ef6c00" stroke-width="1" stroke-dasharray="3 3" />
+  <text x="343" y="169" font-size="10" fill="#777">compute</text>
+  <text x="343" y="193" font-size="10" fill="#777">+ sleep</text>
+  <text x="28" y="218" font-size="11" fill="#777">รวมต่อเฟรมเท่ากันเสมอ → fps นิ่ง</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">Graceful degradation — firmware ก้อนเดียว</text>
+  <rect x="464" y="160" width="92" height="50" rx="6" fill="#ffffff" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="510" y="182" text-anchor="middle" font-size="11" fill="#6a1b9a">1 binary</text>
+  <text x="510" y="198" text-anchor="middle" font-size="10" fill="#777">bentogame.py</text>
+  <rect x="620" y="156" width="238" height="18" rx="5" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1" />
+  <text x="628" y="169" font-size="10" fill="#6a1b9a">AI Kit — เสียง + sprite ครบ</text>
+  <rect x="620" y="178" width="238" height="18" rx="5" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1" />
+  <text x="628" y="191" font-size="10" fill="#6a1b9a">Eva — ไม่มี sprite ก็ซ่อนฟีเจอร์</text>
+  <rect x="620" y="200" width="238" height="18" rx="5" fill="#cfd8dc" stroke="#607d8b" stroke-width="1" />
+  <text x="628" y="213" font-size="10" fill="#455a64">Game — เหลือฟีเจอร์ตามที่มี</text>
+  <path d="M556 170 H 616" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+  <path d="M556 185 H 616" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+  <path d="M556 200 C 588 209, 594 209, 616 209" fill="none" stroke="#607d8b" stroke-width="2" marker-end="url(#arU1)" />
+</svg>
+</div>
 <ul>
-<li><strong>Capability probe = feature detection ในทุก OS/ไดรเวอร์</strong> — ก่อนโปรแกรมใช้ GPU/กล้อง/บลูทูธ มันถามระบบก่อนว่า &quot;มีของนี้ไหม&quot; แล้วปิดปุ่มที่ทำไม่ได้ ตรงกับ <code>_HAS_SOUND</code> / <code>_HAS_SPRITE</code> เป๊ะ — โปรแกรมเดียว binary เดียว รันได้หลายเครื่องที่สเปกไม่เท่ากัน</li>
-<li><strong>Bounded retry = หัวใจของ driver บัสทุกตัว</strong> — I2C/SPI/แฟลช/สแต็ก network เจอ &quot;อุปกรณ์ไม่ว่างชั่วคราว&quot; ตลอด โค้ดจริงจึง retry แบบมีเพดาน (บ่อยครั้งมี backoff เพิ่มเวลาแต่ละรอบ) เหมือน <code>_r()</code> ใน <strong>บทเรียน 1</strong> — ไม่ retry เลยคือเปราะ, retry ไม่มีเพดานคือค้างตาย</li>
-<li><strong>Fixed-timestep loop = game engine + งาน RTOS จริง</strong> — Unity/Unreal และ control loop ของหุ่นยนต์ ล้วนคุมให้ลูป &quot;เดินตรงจังหวะ&quot; ด้วยการวัดเวลาที่เหลือแล้วหลับพอดี เหมือน <code>run()</code> (<code>:999</code>) ใน <strong>บทเรียน 2</strong> — จังหวะที่นิ่งคือความต่างระหว่างเกมลื่นกับเกมกระตุก และระหว่างมอเตอร์นิ่งกับมอเตอร์สั่น</li>
-<li><strong>Graceful degradation = สินค้าตระกูลเดียวหลายรุ่น</strong> — เครื่องรุ่นท็อปกับรุ่นเริ่มต้นมักใช้ firmware ก้อนเดียวกัน รุ่นที่ไม่มีเซนเซอร์บางตัวก็แค่ซ่อนฟีเจอร์นั้น ไม่ต้องทำ firmware แยก คือหลักเดียวกับที่ <code>bentogame.py</code> รันได้ทั้ง AI Kit / Eva / Game Console / Dev Kit</li>
+<li><strong>Capability probe = feature detection ในทุก OS/ไดรเวอร์</strong> — ก่อนใช้ GPU/กล้อง/บลูทูธ โปรแกรมถามระบบก่อนว่า &quot;มีของนี้ไหม&quot; แล้วปิดปุ่มที่ทำไม่ได้ ตรงกับ <code>_HAS_SOUND</code> / <code>_HAS_SPRITE</code> เป๊ะ — binary เดียวรันได้หลายเครื่องที่สเปกไม่เท่ากัน</li>
+<li><strong>Bounded retry = หัวใจของ driver บัสทุกตัว</strong> — I2C/SPI/แฟลช/network เจอ &quot;อุปกรณ์ไม่ว่างชั่วคราว&quot; ตลอด โค้ดจริงจึง retry แบบมีเพดาน (มักมี backoff) เหมือน <code>_r()</code> ใน <strong>บทเรียน 1</strong> — ไม่ retry คือเปราะ, retry ไม่มีเพดานคือค้างตาย</li>
+<li><strong>Fixed-timestep loop = game engine + งาน RTOS จริง</strong> — Unity/Unreal และ control loop หุ่นยนต์ คุมลูปให้ &quot;เดินตรงจังหวะ&quot; ด้วยการวัดเวลาที่เหลือแล้วหลับพอดี เหมือน <code>run()</code> (<code>:999</code>) ใน <strong>บทเรียน 2</strong> — จังหวะนิ่งคือความต่างระหว่างเกมลื่นกับเกมกระตุก มอเตอร์นิ่งกับมอเตอร์สั่น</li>
+<li><strong>Graceful degradation = สินค้าตระกูลเดียวหลายรุ่น</strong> — รุ่นท็อปกับรุ่นเริ่มต้นมักใช้ firmware ก้อนเดียวกัน รุ่นที่ไม่มีเซนเซอร์บางตัวก็แค่ซ่อนฟีเจอร์นั้น ไม่ทำ firmware แยก คือหลักเดียวกับที่ <code>bentogame.py</code> รันได้ทั้ง AI Kit / Eva / Game Console / Dev Kit</li>
 </ul>
 <blockquote>
 <p>จำหลักไว้: layer ที่ดีเปลี่ยน &quot;ของยากข้างใต้&quot; ให้กลายเป็น &quot;ของง่ายข้างบน&quot; — ทั้งอุตสาหกรรมฝังตัวสร้างขึ้นบนความคิดนี้ ไม่ใช่แค่เกมของเรา</p>
@@ -483,11 +542,34 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="18" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="18" style="--paginate:true;--theme:default;" data-marpit-pagination-total="18">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>เอาโจทย์เหล่านี้ไปคิดต่อ ไม่มีคำตอบเดียว ทุกข้อเริ่มจากโค้ดที่น้องเพิ่งอ่านวันนี้:</p>
+<div style="text-align:center">
+<svg width="840" height="224" viewBox="0 0 840 224" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn2" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="14" y="22" font-size="13" font-weight="700" fill="#1565c0">วันนี้ — เราเป็น "ผู้ใช้" engine</text>
+  <rect x="120" y="32" width="320" height="30" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="280" y="52" text-anchor="middle" font-size="12" fill="#1565c0">box.move_to(x, y) — ผิวเรียบ 6 คำ</text>
+  <text x="452" y="52" font-size="11" fill="#777">เราแค่เรียกใช้</text>
+  <rect x="120" y="66" width="600" height="28" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="132" y="84" font-size="12" fill="#455a64">ข้างใต้ที่ถูกซ่อนไว้ให้: _r() retry · IPC ข้าม core · capability probe</text>
+  <line x1="420" y1="100" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn2)" />
+  <text x="436" y="118" font-size="11" fill="#777">เปลี่ยนบทบาท</text>
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">ก้าวต่อไป (คอร์ส C) — เราเป็น "ผู้เขียน" engine</text>
+  <rect x="120" y="162" width="180" height="30" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="210" y="182" text-anchor="middle" font-size="12" fill="#2e7d32">สร้าง _r() เอง</text>
+  <rect x="312" y="162" width="196" height="30" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="410" y="182" text-anchor="middle" font-size="12" fill="#2e7d32">capability probe เอง</text>
+  <rect x="520" y="162" width="200" height="30" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="620" y="182" text-anchor="middle" font-size="12" fill="#2e7d32">ตัดสิน ยอมได้ / ต้องเด้ง</text>
+  <text x="420" y="210" text-anchor="middle" font-size="11" fill="#2e7d32">ข้างใต้ผิวเรียบกลายเป็นงานของเรา — engine ไม่ใช่กล่องดำอีกต่อไป</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้าจะเพิ่ม &quot;ความสามารถใหม่&quot; เข้า engine</strong> เช่น สั่นมอเตอร์ (rumble) จะออกแบบ capability probe บวกทางลงเวลาบอร์ดไม่มีมอเตอร์ยังไง ให้เกมเก่าที่ไม่รู้จัก rumble ยังรันได้เหมือนเดิม</li>
+<li><strong>ถ้าจะเพิ่ม &quot;ความสามารถใหม่&quot; เข้า engine</strong> เช่น สั่นมอเตอร์ (rumble) จะออกแบบ capability probe + ทางลงเมื่อบอร์ดไม่มีมอเตอร์ยังไง ให้เกมเก่าที่ไม่รู้จัก rumble ยังรันได้เหมือนเดิม</li>
 <li><strong>ถ้า <code>_r()</code> ยังไม่พอ</strong> — บางคำสั่งต้อง retry นานกว่า บางคำสั่งห้ามรอเลย จะออกแบบให้ <code>_r()</code> รับ &quot;เพดาน/เงื่อนไข&quot; ต่างกันต่อการเรียกยังไง โดยไม่ทำให้โค้ดเกมข้างบนยุ่งขึ้น</li>
 <li><strong>ถ้าอยากวัดว่าเฟรมไหนหนัก</strong> — จะแอบเก็บสถิติ &quot;เฟรมนี้ส่ง IPC กี่ครั้ง / หลับเหลือกี่ ms&quot; ใน <code>run()</code> ออกมาโชว์เป็น HUD debug ได้ไหม โดยไม่กระทบจังหวะเกม (โยง <strong>บทเรียน 2</strong>: ก่อน optimize ต้องวัดให้เห็นก่อน)</li>
-<li><strong>ถ้าต้องเขียนชั้นเดียวกันนี้ด้วย C</strong> — ลองร่างว่า <code>Box.move_to</code> เวอร์ชัน C จะหน้าตายังไง ใครเป็นคนส่ง IPC ใครเป็นคน retry ใครกัน object ให้อยู่ในจอ นี่คือสิ่งที่คอร์สถัดไป (ฝั่ง C game SDK) จะให้น้องลงมือทำจริง วันนี้อ่าน engine ให้ขาด พรุ่งนี้จะได้สร้างมันเอง</li>
+<li><strong>ถ้าต้องเขียนชั้นเดียวกันนี้ด้วย C</strong> — ลองร่างว่า <code>Box.move_to</code> เวอร์ชัน C หน้าตายังไง ใครส่ง IPC ใคร retry ใครกัน object ให้อยู่ในจอ นี่คือสิ่งที่คอร์สถัดไป (ฝั่ง C game SDK) จะให้น้องลงมือทำจริง วันนี้อ่าน engine ให้ขาด พรุ่งนี้จะได้สร้างมันเอง</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ เขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; — คนที่เขียน engine เก่งไม่ได้เริ่มจากเขียนเป็น เริ่มจากอ่าน engine ของคนอื่นออกก่อน แล้วถามว่า &quot;ถ้าเราทำ จะทำต่างจากนี้ตรงไหน&quot;</p>

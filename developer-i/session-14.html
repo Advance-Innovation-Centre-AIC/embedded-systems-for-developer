@@ -816,11 +816,66 @@ game.run(update, fps=<span class="hljs-number">30</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="31" style="--paginate:true;--theme:default;" data-marpit-pagination-total="32">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--mvp--game-loop--aabb--respawn">ใช้จริงที่ไหน — MVP · game loop · AABB · respawn</h1>
 <p>เทคนิคในเกมกล่องวิ่งชนเป้า ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่วงการเกมและซอฟต์แวร์จริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arU14" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">prototype-first · MVP</text>
+  <rect x="42" y="46" width="92" height="44" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="88" y="66" font-size="11" fill="#455a64" text-anchor="middle">gray-box</text>
+  <text x="88" y="82" font-size="10" fill="#455a64" text-anchor="middle">เล่นจบได้</text>
+  <line x1="140" y1="68" x2="184" y2="68" stroke="#607d8b" stroke-width="2" marker-end="url(#arU14)" />
+  <text x="162" y="60" font-size="10" fill="#777" text-anchor="middle">แล้วค่อย</text>
+  <rect x="190" y="46" width="92" height="44" rx="6" fill="#bbdefb" stroke="#1565c0" stroke-width="2" />
+  <text x="236" y="66" font-size="11" fill="#0d47a1" text-anchor="middle">ใส่ศิลป์</text>
+  <text x="236" y="82" font-size="10" fill="#0d47a1" text-anchor="middle">v0.2</text>
+  <text x="362" y="64" font-size="11" fill="#777" text-anchor="middle">scope เล็ก</text>
+  <text x="362" y="80" font-size="11" fill="#777" text-anchor="middle">= 3 ช่อง</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">fixed-timestep loop · fps=30</text>
+  <line x1="474" y1="72" x2="844" y2="72" stroke="#2e7d32" stroke-width="2.5" />
+  <line x1="500" y1="64" x2="500" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <line x1="552" y1="64" x2="552" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <line x1="604" y1="64" x2="604" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <line x1="656" y1="64" x2="656" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <line x1="708" y1="64" x2="708" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <line x1="760" y1="64" x2="760" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <line x1="812" y1="64" x2="812" y2="80" stroke="#2e7d32" stroke-width="2" />
+  <text x="524" y="52" font-size="11" fill="#2e7d32" text-anchor="middle">update() ทุกเฟรม</text>
+  <text x="659" y="102" font-size="11" fill="#777" text-anchor="middle">เฟรมห่างเท่ากัน 1/30 วินาที · game.run()</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">AABB collision · game.hit()</text>
+  <rect x="44" y="158" width="82" height="46" rx="4" fill="#ffffff" stroke="#ef6c00" stroke-width="2" />
+  <text x="60" y="154" font-size="10" fill="#607d8b">player</text>
+  <rect x="96" y="176" width="82" height="46" rx="4" fill="#ffffff" stroke="#ef6c00" stroke-width="2" />
+  <text x="182" y="200" font-size="10" fill="#607d8b">target</text>
+  <rect x="96" y="176" width="30" height="28" fill="#ef6c00" fill-opacity="0.4" />
+  <text x="250" y="180" font-size="12" fill="#e65100">สี่เหลี่ยมทับกัน</text>
+  <text x="250" y="200" font-size="12" fill="#e65100">4 อสมการ = ชน</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">respawn · spawn สุ่ม (เผื่อขอบ)</text>
+  <rect x="480" y="158" width="180" height="60" rx="4" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" />
+  <rect x="492" y="166" width="156" height="44" rx="3" fill="none" stroke="#ce93d8" stroke-width="1.5" stroke-dasharray="5 4" />
+  <circle cx="522" cy="188" r="6" fill="#6a1b9a" fill-opacity="0.28" />
+  <text x="522" y="207" font-size="9" fill="#999" text-anchor="middle">เดิม</text>
+  <line x1="532" y1="187" x2="588" y2="185" stroke="#607d8b" stroke-width="2" marker-end="url(#arU14)" />
+  <circle cx="602" cy="184" r="7" fill="#6a1b9a" />
+  <text x="602" y="205" font-size="9" fill="#6a1b9a" text-anchor="middle">ใหม่</text>
+  <text x="686" y="182" font-size="11" fill="#777">ได้แต้ม →</text>
+  <text x="686" y="200" font-size="11" fill="#777">โผล่ที่สุ่มใหม่</text>
+</svg>
+</div>
 <ul>
-<li><strong>prototype-first / MVP ในสตูดิโอเกมจริง</strong> — ทีม AAA และ indie เริ่มจาก &quot;gray-box prototype&quot; ที่เล่นจบได้ก่อน (กล่องเทา ๆ ยังไม่มีกราฟิก) แล้วค่อยใส่ศิลป์ทีหลัง ตรงกับที่เราตัด scope เหลือ 3 ช่องให้เล่นจบในคาบเดียว (สไลด์ scope creep) — ของที่ยังไม่จำเป็นเก็บไว้ <code>v0.2</code></li>
-<li><strong>fixed-timestep game loop</strong> — <code>game.run(update, fps=30)</code> คือแนวคิดเดียวกับ <code>Update()</code> ใน Unity, <code>Tick()</code> ใน Unreal, <code>_process()</code> ใน Godot เอนจินเรียกฟังก์ชันเราซ้ำต่อเฟรม เราไม่เขียน <code>while</code> เอง โครงนี้ไม่เปลี่ยนไม่ว่าเกมจะใหญ่แค่ไหน</li>
-<li><strong>AABB collision</strong> — <code>game.hit</code> ที่ตรวจสี่เหลี่ยมทับกัน คือด่านแรกของ physics และ UI จริง: hit-test ปุ่มบนจอสัมผัส, ตัวละครชนกำแพง, hitbox กระสุน ล้วนเริ่มจาก 4 อสมการเดียวกับที่พิสูจน์คาบ 11–12 ก่อนจะไปถึง collision ที่แพงกว่า</li>
-<li><strong>respawn / procedural spawn</strong> — <code>random_spot()</code> ที่ย้ายเป้าไปที่ใหม่ คือ spawn logic ในเกมจริง: ไอเทมดรอป, ศัตรูเกิดสุ่ม, จุดเกิดผู้เล่นใหม่ ทุกที่ต้อง &quot;เผื่อขอบ&quot; ไม่ให้เกิดนอกโลกเกมแบบเดียวกับที่เราลบ 24px</li>
+<li><strong>prototype-first / MVP ในสตูดิโอเกมจริง</strong> — ทีม AAA และ indie เริ่มจาก &quot;gray-box prototype&quot; ที่เล่นจบได้ก่อน (ยังไม่มีกราฟิก) แล้วค่อยใส่ศิลป์ทีหลัง ตรงกับที่เราตัด scope เหลือ 3 ช่องให้เล่นจบในคาบเดียว — ของที่ยังไม่จำเป็นเก็บไว้ <code>v0.2</code></li>
+<li><strong>fixed-timestep game loop</strong> — <code>game.run(update, fps=30)</code> คือแนวคิดเดียวกับ <code>Update()</code> ใน Unity, <code>Tick()</code> ใน Unreal, <code>_process()</code> ใน Godot: เอนจินเรียกฟังก์ชันเราซ้ำต่อเฟรม เราไม่เขียน <code>while</code> เอง</li>
+<li><strong>AABB collision</strong> — <code>game.hit</code> ที่ตรวจสี่เหลี่ยมทับกัน คือด่านแรกของ physics และ UI จริง: hit-test ปุ่มบนจอสัมผัส, ตัวละครชนกำแพง, hitbox กระสุน ล้วนเริ่มจาก 4 อสมการเดียวกับที่พิสูจน์คาบ 11–12</li>
+<li><strong>respawn / procedural spawn</strong> — <code>random_spot()</code> ที่ย้ายเป้าไปที่ใหม่ คือ spawn logic ในเกมจริง: ไอเทมดรอป, ศัตรูเกิดสุ่ม, จุดเกิดผู้เล่นใหม่ ทุกที่ต้อง &quot;เผื่อขอบ&quot; ไม่ให้เกิดนอกจอ แบบที่เราลบ 24px</li>
 </ul>
 <blockquote>
 <p>ห้าอย่างที่ประกอบกันเป็นเกมเล็ก ๆ วันนี้ ไม่มีอันไหนเป็นของสมมติเลย — ทุกอันมีเอนจินเกมระดับโลกที่ทำงานด้วยหลักการเดียวกันอยู่จริง</p>
@@ -829,8 +884,43 @@ game.run(update, fps=<span class="hljs-number">30</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="32" style="--paginate:true;--theme:default;" data-marpit-pagination-total="32">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาเกมของกลุ่มเองและโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arT14" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="150" y="20" font-size="13" font-weight="700" fill="#1565c0" text-anchor="middle">1) State</text>
+  <text x="420" y="20" font-size="13" font-weight="700" fill="#2e7d32" text-anchor="middle">2) Tick</text>
+  <text x="690" y="20" font-size="13" font-weight="700" fill="#ef6c00" text-anchor="middle">3) Win / Lose</text>
+  <text x="14" y="58" font-size="12" font-weight="700" fill="#607d8b">วันนี้</text>
+  <rect x="40" y="30" width="220" height="46" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="150" y="52" font-size="12" fill="#0d47a1" text-anchor="middle">player · target</text>
+  <text x="150" y="68" font-size="10" fill="#607d8b" text-anchor="middle">สิ่งที่เกมจำ</text>
+  <rect x="310" y="30" width="220" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="420" y="52" font-size="12" fill="#1b5e20" text-anchor="middle">ขยับผู้เล่นตามปุ่ม</text>
+  <text x="420" y="68" font-size="10" fill="#2e7d32" text-anchor="middle">อัปเดตทุกเฟรม</text>
+  <rect x="580" y="30" width="220" height="46" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="690" y="52" font-size="12" fill="#e65100" text-anchor="middle">hit target → +แต้ม</text>
+  <text x="690" y="68" font-size="10" fill="#ef6c00" text-anchor="middle">ครบ GOAL → ชนะ</text>
+  <line x1="420" y1="82" x2="420" y2="106" stroke="#607d8b" stroke-width="2" marker-end="url(#arT14)" />
+  <text x="436" y="99" font-size="11" fill="#777">เปลี่ยนแค่ "ของ" ในช่องเดิม</text>
+  <text x="14" y="140" font-size="12" font-weight="700" fill="#607d8b">ต่อยอด</text>
+  <rect x="40" y="112" width="220" height="46" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" stroke-dasharray="6 4" />
+  <text x="150" y="134" font-size="12" fill="#0d47a1" text-anchor="middle">+ enemy · ทิศของเป้า</text>
+  <text x="150" y="150" font-size="10" fill="#607d8b" text-anchor="middle">จำเพิ่มอีกนิด</text>
+  <rect x="310" y="112" width="220" height="46" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" stroke-dasharray="6 4" />
+  <text x="420" y="134" font-size="12" fill="#1b5e20" text-anchor="middle">+ เป้าขยับหนี · ศัตรูเดิน</text>
+  <text x="420" y="150" font-size="10" fill="#2e7d32" text-anchor="middle">ยังอยู่ในเฟรมเดิม</text>
+  <rect x="580" y="112" width="220" height="46" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="6 4" />
+  <text x="690" y="132" font-size="11" fill="#e65100" text-anchor="middle">hit target → ชนะ</text>
+  <text x="690" y="150" font-size="11" fill="#e65100" text-anchor="middle">hit enemy → แพ้</text>
+  <rect x="40" y="172" width="760" height="28" rx="8" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="420" y="190" font-size="12" font-weight="700" fill="#455a64" text-anchor="middle">engine 70% · bentogame.py — ไม่แตะเลยสักบรรทัด</text>
+  <text x="420" y="214" font-size="11" fill="#777" text-anchor="middle">ทุกโจทย์ต่อยอด = เปลี่ยนแค่ของใน 3 ช่อง ส่วน 70% เหมือนเดิม</text>
+</svg>
+</div>
 <ul>
-<li><strong>ถ้าเป้าต้องขยับหนี</strong> — อยากให้ <code>target</code> เลื่อนหนีผู้เล่นแทนที่จะอยู่นิ่ง จะเพิ่มลง 3 ช่องไหน (State เก็บทิศของเป้า? Tick ขยับเป้าด้วย?) โดยไม่แตะ <code>bentogame.py</code> เลยจะออกแบบยังไง</li>
+<li><strong>ถ้าเป้าต้องขยับหนี</strong> — อยากให้ <code>target</code> เลื่อนหนีผู้เล่นแทนที่จะอยู่นิ่ง จะเพิ่มลง 3 ช่องไหน (State เก็บทิศของเป้า? Tick ขยับเป้าด้วย?) โดยไม่แตะ <code>bentogame.py</code> เลย</li>
 <li><strong>ถ้ามีทั้งชนะและแพ้</strong> — เพิ่ม &quot;ศัตรู&quot; ที่แตะแล้วแพ้ (อีกคู่ <code>game.hit</code>) จะออกแบบให้มี <code>return False</code> สองความหมาย (ชนะเมื่อครบ <code>GOAL</code> / แพ้เมื่อโดนศัตรู) ให้โค้ดยังอ่านง่ายได้ยังไง</li>
 <li><strong>ถ้าเปลี่ยนกล่องเป็นพิกเซลอาร์ต</strong> — สลับ <code>game.Box</code> เป็น <code>game.Sprite</code> ให้ตัวละครเป็นพิกเซลอาร์ตจริงแบบ 4 เกมบนเครื่อง โครง 3 ช่องต้องเปลี่ยนตรงไหนบ้าง และตรงไหนที่ไม่ต้องแตะเลย</li>
 <li><strong>ถ้าอยากให้เกมปล่อยเองอัตโนมัติ</strong> — วันนี้เราแนบ <code>mygame.py</code> เข้า Release ด้วยมือ ถ้าอยากให้ทุกครั้งที่ <code>git push</code> แล้วระบบ build + ปล่อย Release ให้เองโดยไม่ต้องแนบไฟล์มือ จะออกแบบขั้นตอนยังไง นี่คือ GitHub Actions / DevOps ตัวเต็มที่เรารอเปิดกันในคอร์ส Developer II</li>

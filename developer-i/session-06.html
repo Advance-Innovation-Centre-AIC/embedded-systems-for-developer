@@ -725,11 +725,56 @@ player_y, player_speed = <span class="hljs-built_in">float</span>(PADDLE_START_Y
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="27" style="--paginate:true;--theme:default;" data-marpit-pagination-total="28">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--accel--friction--clamp--aabb">ใช้จริงที่ไหน — accel · friction · clamp · AABB</h1>
 <p>สี่เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่ระบบจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="s6up" markerWidth="9" markerHeight="9" refX="4" refY="1" orient="auto"><path d="M0,8 L4,0 L8,8 Z" fill="#2e7d32" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">Motion profiling มอเตอร์/เซอร์โว</text>
+  <line x1="64" y1="102" x2="414" y2="102" stroke="#90a4ae" stroke-width="1.5" />
+  <line x1="64" y1="54" x2="414" y2="54" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.5" />
+  <text x="410" y="50" font-size="10" fill="#607d8b" text-anchor="end">= MAX_SPEED (clamp)</text>
+  <polyline fill="none" stroke="#1565c0" stroke-width="2.5" points="64,102 128,54 300,54 400,102" />
+  <text x="94" y="82" font-size="10" fill="#777" text-anchor="middle">เร่ง</text>
+  <text x="214" y="70" font-size="10" fill="#777" text-anchor="middle">คงที่</text>
+  <text x="356" y="82" font-size="10" fill="#777" text-anchor="middle">ชะลอ</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">Kinetic scrolling บนจอสัมผัส</text>
+  <line x1="500" y1="102" x2="852" y2="102" stroke="#a5d6a7" stroke-width="1.5" />
+  <line x1="500" y1="100" x2="500" y2="52" stroke="#2e7d32" stroke-width="2.5" marker-end="url(#s6up)" />
+  <text x="500" y="46" font-size="10" fill="#607d8b" text-anchor="middle">ปัดนิ้ว</text>
+  <polyline fill="none" stroke="#2e7d32" stroke-width="2.5" points="520,52 560,62 600,70 640,76 680,82 720,86 760,89 800,92 840,94" />
+  <text x="686" y="112" font-size="11" fill="#777" text-anchor="middle">ปล่อย → ไถลช้าลง (v *= FRICTION)</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">Saturation / clamp ในระบบควบคุม</text>
+  <line x1="64" y1="172" x2="414" y2="172" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="5 4" />
+  <text x="410" y="168" font-size="10" fill="#607d8b" text-anchor="end">กระแสสูงสุด</text>
+  <polyline fill="none" stroke="#ffb74d" stroke-width="2" stroke-dasharray="4 3" points="64,216 414,152" />
+  <text x="356" y="150" font-size="10" fill="#ef6c00" text-anchor="middle">PID อยากสั่งเกิน</text>
+  <polyline fill="none" stroke="#ef6c00" stroke-width="2.5" points="64,216 305,172 414,172" />
+  <text x="356" y="188" font-size="10" fill="#607d8b" text-anchor="middle">ถูก clamp</text>
+  <text x="220" y="226" font-size="11" fill="#777" text-anchor="middle">ชั้นความปลอดภัยของทุก actuator</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">AABB — hit-test ของ UI/เกม</text>
+  <rect x="520" y="160" width="84" height="54" rx="4" fill="#6a1b9a" fill-opacity="0.16" stroke="#6a1b9a" stroke-width="2" />
+  <rect x="580" y="180" width="84" height="46" rx="4" fill="#6a1b9a" fill-opacity="0.16" stroke="#6a1b9a" stroke-width="2" />
+  <rect x="580" y="180" width="24" height="34" fill="#6a1b9a" fill-opacity="0.5" />
+  <text x="534" y="176" font-size="11" fill="#6a1b9a" text-anchor="middle">A</text>
+  <text x="644" y="216" font-size="11" fill="#6a1b9a" text-anchor="middle">B</text>
+  <text x="716" y="182" font-size="11" fill="#777">ซ้อนทั้งแกน X และ Y</text>
+  <text x="716" y="200" font-size="11" fill="#777">= ชน (game.hit)</text>
+</svg>
+</div>
 <ul>
-<li><strong>Motion profiling ของมอเตอร์/เซอร์โว</strong> — แขนกล เครื่อง CNC เครื่องพิมพ์ 3 มิติ ไม่กระตุกออกตัวทันที แต่ <strong>เร่งความเร็วขึ้นทีละนิด</strong> (soft-start / S-curve) แล้ว <strong>ชะลอก่อนถึงเป้า</strong> คือ <code>ACCEL</code> กับ <code>FRICTION</code> ของเราตรง ๆ ทำเพื่อไม่ให้เฟืองสึกและงานไม่สะบัด</li>
-<li><strong>Kinetic scrolling บนจอสัมผัส</strong> — ปัดนิ้วบนมือถือแล้วปล่อย หน้าจอ <strong>ไถลต่อแล้วค่อยหยุด</strong> นั่นคือ <code>player_speed *= FRICTION</code> (<code>:46</code>) เป๊ะ ๆ ความเร็วจากนิ้วถูกคูณด้วยค่าน้อยกว่า 1 ทุกเฟรมจนลู่เข้าศูนย์</li>
-<li><strong>Saturation / limiting ในระบบควบคุม</strong> — output ของ PID ที่สั่งมอเตอร์ต้องถูก <strong>clamp</strong> ไม่ให้เกินกระแสสูงสุด เหมือน <code>max(-MAX_SPEED, min(MAX_SPEED, ...))</code> (<code>:47</code>) กันไม่ให้ระบบสั่งเกินขีดจนพัง เป็นชั้นความปลอดภัยพื้นฐานของทุก actuator</li>
-<li><strong>Broad-phase collision / hit-test ของ UI</strong> — เกมเอนจิน โปรแกรมวาดภาพ และการเช็กว่านิ้วแตะปุ่มไหน ล้วนเริ่มจาก <strong>AABB</strong> กล่องสองกล่องซ้อนกันไหม เหมือน <code>game.hit(ball, paddle)</code> ที่เราเข้าใจหลักไปแล้วในสไลด์ AABB</li>
+<li><strong>Motion profiling ของมอเตอร์/เซอร์โว</strong> — แขนกล เครื่อง CNC เครื่องพิมพ์ 3 มิติ ไม่กระตุกออกตัว แต่ <strong>เร่งขึ้นทีละนิด</strong> (soft-start / S-curve) แล้ว <strong>ชะลอก่อนถึงเป้า</strong> คือ <code>ACCEL</code> กับ <code>FRICTION</code> ตรง ๆ กันเฟืองสึกและงานสะบัด</li>
+<li><strong>Kinetic scrolling บนจอสัมผัส</strong> — ปัดนิ้วแล้วปล่อย หน้าจอ <strong>ไถลต่อแล้วค่อยหยุด</strong> นั่นคือ <code>player_speed *= FRICTION</code> (<code>:46</code>) ความเร็วถูกคูณด้วยค่าน้อยกว่า 1 ทุกเฟรมจนลู่เข้าศูนย์</li>
+<li><strong>Saturation / limiting ในระบบควบคุม</strong> — output ของ PID ที่สั่งมอเตอร์ต้องถูก <strong>clamp</strong> ไม่ให้เกินกระแสสูงสุด เหมือน <code>max(-MAX_SPEED, min(MAX_SPEED, ...))</code> (<code>:47</code>) ชั้นความปลอดภัยพื้นฐานของทุก actuator</li>
+<li><strong>Broad-phase collision / hit-test ของ UI</strong> — เกมเอนจิน โปรแกรมวาดภาพ และการเช็กว่านิ้วแตะปุ่มไหน เริ่มจาก <strong>AABB</strong> กล่องสองกล่องซ้อนกันไหม เหมือน <code>game.hit(ball, paddle)</code> ที่เราเข้าใจหลักไปแล้ว</li>
 </ul>
 <blockquote>
 <p>ไม่มีเทคนิคไหนวันนี้เป็นของสมมติเลย accel/friction/clamp/AABB ทั้งสี่มีเครื่องจริงในโลกที่เดินด้วยหลักการเดียวกันอยู่จริง</p>
@@ -738,8 +783,43 @@ player_y, player_speed = <span class="hljs-built_in">float</span>(PADDLE_START_Y
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="28" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="28" style="--paginate:true;--theme:default;" data-marpit-pagination-total="28">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="214" viewBox="0 0 840 214" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="s6xar" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker id="s6xdn" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="28" font-size="13" font-weight="700" fill="#1565c0">ผู้เล่น — ปุ่มป้อนความเร็ว</text>
+  <rect x="130" y="38" width="120" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="190" y="59" font-size="11" fill="#1565c0" text-anchor="middle">keys.up / keys.down</text>
+  <line x1="250" y1="55" x2="284" y2="55" stroke="#607d8b" stroke-width="2" marker-end="url(#s6xar)" />
+  <rect x="286" y="38" width="170" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="371" y="59" font-size="11" fill="#2e7d32" text-anchor="middle">player_speed ±= ACCEL</text>
+  <line x1="456" y1="55" x2="490" y2="55" stroke="#607d8b" stroke-width="2" marker-end="url(#s6xar)" />
+  <rect x="492" y="38" width="120" height="34" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="552" y="59" font-size="11" fill="#455a64" text-anchor="middle">ไม้ขยับ (clamp)</text>
+  
+  <line x1="371" y1="78" x2="371" y2="104" stroke="#607d8b" stroke-width="2" marker-end="url(#s6xdn)" />
+  <text x="387" y="97" font-size="11" fill="#777">เปลี่ยนวิธีคิด: input เปลี่ยน แต่ player_speed เหมือนเดิม</text>
+  
+  <text x="14" y="126" font-size="13" font-weight="700" fill="#2e7d32">AI คู่ต่อสู้ — อะไรมาแทนปุ่ม?</text>
+  <rect x="130" y="136" width="120" height="34" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="190" y="157" font-size="11" fill="#ef6c00" text-anchor="middle">ตำแหน่งลูก ball_y</text>
+  <line x1="250" y1="153" x2="282" y2="153" stroke="#607d8b" stroke-width="2" marker-end="url(#s6xar)" />
+  <rect x="284" y="136" width="176" height="34" rx="6" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="372" y="157" font-size="11" fill="#6a1b9a" text-anchor="middle">ลูกอยู่บน/ล่างไม้?</text>
+  <line x1="460" y1="153" x2="492" y2="153" stroke="#607d8b" stroke-width="2" marker-end="url(#s6xar)" />
+  <rect x="494" y="136" width="170" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="579" y="157" font-size="11" fill="#2e7d32" text-anchor="middle">player_speed ±= ACCEL</text>
+  <line x1="664" y1="153" x2="696" y2="153" stroke="#607d8b" stroke-width="2" marker-end="url(#s6xar)" />
+  <rect x="698" y="136" width="118" height="34" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="757" y="157" font-size="11" fill="#455a64" text-anchor="middle">ไม้ขยับ (clamp)</text>
+  <text x="420" y="196" font-size="12" fill="#777" text-anchor="middle">หัวใจเดียวกัน (player_speed + clamp) — ต่างแค่ "อะไรบอกให้เร่งขึ้น/ลง"</text>
+</svg>
+</div>
 <ul>
-<li><strong>ออกแบบ &quot;ฟีล&quot; ของแต่ละยาน</strong> — ถ้าเกมมีไม้ตี/ยาน/รถหลายแบบ อยากได้ตัวที่ &quot;หนักแต่แรงเยอะ&quot; กับตัวที่ &quot;เบาแต่ไถลไกล&quot; จะเล่นกับ <code>ACCEL</code> / <code>MAX_SPEED</code> / <code>FRICTION</code> สามค่ายังไงให้รู้สึกต่างกันชัดด้วยมือ ลองจดค่าที่ชอบไว้บนใบงาน</li>
+<li><strong>ออกแบบ &quot;ฟีล&quot; ของแต่ละยาน</strong> — ถ้าเกมมีไม้ตี/ยาน/รถหลายแบบ อยากได้ตัวที่ &quot;หนักแต่แรงเยอะ&quot; กับตัวที่ &quot;เบาแต่ไถลไกล&quot; จะเล่นกับ <code>ACCEL</code> / <code>MAX_SPEED</code> / <code>FRICTION</code> สามค่ายังไงให้รู้สึกต่างกันชัด ลองจดค่าที่ชอบไว้บนใบงาน</li>
 <li><strong>clamp แบบไม่แข็งทื่อ</strong> — ตอนนี้ไม้ชนขอบแล้วหยุดนิ่งเลย ถ้าอยากให้ไม้ &quot;เด้งกลับนิดหน่อย&quot; เมื่อชนขอบ (แทน clamp ตายตัว) จะแก้บรรทัด <code>:48</code> เป็นอะไร คิดว่าควรทำ <code>player_speed</code> ยังไงตอนแตะขอบ</li>
 <li><strong>กันลูกติดหนึบในไม้</strong> — ในโค้ดคาบหน้าเช็ก <code>ball_vx &lt; 0</code> ก่อน <code>game.hit()</code> ทำไมถึงต้องเช็กทิศก่อน ถ้าไม่เช็กแล้วลูกที่เพิ่งเด้งออกจะเกิดอะไรขึ้น ลองวาดเหตุการณ์บนกระดาษดู</li>
 <li><strong>ให้ไม้ฝั่งขวาขยับเอง (bridge ไปคาบ 7)</strong> — คาบหน้าฝั่งขวาจะเป็น AI คู่ต่อสู้ ถ้าอยากให้ไม้ AI &quot;ไล่ตามลูก&quot; อัตโนมัติ มันต่างจากไม้เราตรงไหน — เราเอา <code>keys.up/keys.down</code> มาป้อนความเร็ว แล้ว AI จะเอา <strong>อะไร</strong> มาแทนปุ่มเพื่อตัดสินใจเร่งขึ้น/ลง? ตอบข้อนี้ได้ คาบ 7 จะง่ายขึ้นมาก</li>

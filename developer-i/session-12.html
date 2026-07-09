@@ -820,11 +820,70 @@ MODE_NAME, SPAWN_DELAY, SPEED_MUL, START_LIVES, LOSE_WHEN_PASS, LOSE_WHEN_HIT = 
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--pool--many-vs-many--clamp--%E0%B8%84%E0%B8%A5%E0%B8%B7%E0%B9%88%E0%B8%99%E0%B8%95%E0%B8%B2%E0%B8%A1%E0%B8%88%E0%B8%B1%E0%B8%87%E0%B8%AB%E0%B8%A7%E0%B8%B0">ใช้จริงที่ไหน — pool · many-vs-many · clamp · คลื่นตามจังหวะ</h1>
 <p>สี่เทคนิคที่เราเพิ่งลงมือ ไม่ใช่ของเล่นในห้องเรียน มันคือสิ่งที่ระบบจริงใช้ทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">Object pool — บ่อ · DMA descriptor ring</text>
+  <rect x="40"  y="44" width="34" height="24" rx="4" fill="#1565c0" />
+  <rect x="82"  y="44" width="34" height="24" rx="4" fill="#1565c0" />
+  <rect x="124" y="44" width="34" height="24" rx="4" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <rect x="166" y="44" width="34" height="24" rx="4" fill="#1565c0" />
+  <rect x="208" y="44" width="34" height="24" rx="4" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <rect x="250" y="44" width="34" height="24" rx="4" fill="#1565c0" />
+  <rect x="304" y="43" width="13" height="12" rx="2" fill="#1565c0" />
+  <text x="322" y="53" font-size="11" fill="#607d8b">ใช้</text>
+  <rect x="304" y="59" width="13" height="12" rx="2" fill="#ffffff" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="3 2" />
+  <text x="322" y="69" font-size="11" fill="#607d8b">ว่าง</text>
+  <text x="28" y="100" font-size="11" fill="#777">จองช่องคงที่ล่วงหน้า · ยืม-คืน — ไม่ malloc ใน ISR</text>
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">many-vs-many AABB — ลูปซ้อนลูป</text>
+  <text x="540" y="44" font-size="10" fill="#607d8b" text-anchor="middle">กระสุน</text>
+  <text x="690" y="44" font-size="10" fill="#607d8b" text-anchor="middle">ศัตรู</text>
+  <line x1="545" y1="52" x2="685" y2="52" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="52" x2="685" y2="68" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="52" x2="685" y2="84" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="68" x2="685" y2="52" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="68" x2="685" y2="68" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="68" x2="685" y2="84" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="84" x2="685" y2="52" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="84" x2="685" y2="68" stroke="#a5d6a7" stroke-width="1" />
+  <line x1="545" y1="84" x2="685" y2="84" stroke="#a5d6a7" stroke-width="1" />
+  <circle cx="540" cy="52" r="5" fill="#2e7d32" />
+  <circle cx="540" cy="68" r="5" fill="#2e7d32" />
+  <circle cx="540" cy="84" r="5" fill="#2e7d32" />
+  <circle cx="690" cy="52" r="5" fill="#2e7d32" />
+  <circle cx="690" cy="68" r="5" fill="#2e7d32" />
+  <circle cx="690" cy="84" r="5" fill="#2e7d32" />
+  <text x="596" y="100" font-size="11" fill="#777" text-anchor="middle">6×6 = 36 คู่/เฟรม · สัมผัสหลายนิ้ว · เตือนชน</text>
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">clamp / saturate — min(9.0, base+0.15·score)</text>
+  <line x1="44" y1="170" x2="300" y2="170" stroke="#ef6c00" stroke-width="1.5" stroke-dasharray="4 3" />
+  <text x="246" y="166" font-size="11" fill="#607d8b">เพดาน 9.0</text>
+  <path d="M44,208 L176,170 L300,170" fill="none" stroke="#ef6c00" stroke-width="2.5" />
+  <circle cx="176" cy="170" r="4" fill="#ef6c00" />
+  <text x="316" y="172" font-size="11" fill="#607d8b">duty PWM มอเตอร์</text>
+  <text x="316" y="190" font-size="11" fill="#607d8b">ความสว่างจอ</text>
+  <text x="316" y="208" font-size="11" fill="#607d8b">ไม่เกินพิกัด</text>
+  <text x="28" y="223" font-size="11" fill="#777">จำกัดค่าไม่ให้พุ่งเกิน — saturate ค่าใน embedded</text>
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">spawn timer · งานตามคาบใน RTOS</text>
+  <line x1="495" y1="166" x2="556" y2="166" stroke="#6a1b9a" stroke-width="1" stroke-dasharray="3 2" />
+  <text x="525" y="162" font-size="10.5" fill="#607d8b" text-anchor="middle">SPAWN_DELAY</text>
+  <line x1="470" y1="198" x2="852" y2="198" stroke="#ce93d8" stroke-width="2" />
+  <rect x="486" y="174" width="9" height="24" fill="#6a1b9a" />
+  <rect x="556" y="174" width="9" height="24" fill="#6a1b9a" />
+  <rect x="626" y="174" width="9" height="24" fill="#6a1b9a" />
+  <rect x="696" y="174" width="9" height="24" fill="#6a1b9a" />
+  <rect x="766" y="174" width="9" height="24" fill="#6a1b9a" />
+  <rect x="836" y="174" width="9" height="24" fill="#6a1b9a" />
+  <text x="464" y="223" font-size="11" fill="#777">นับถึง 0 → ปล่อย 1 ตัว · อ่านเซนเซอร์ทุก N tick · debounce · heartbeat</text>
+</svg>
+</div>
 <ul>
-<li><strong>Object pool (บ่อกระสุน/บ่อศัตรู — <code>find_free_bullet</code> / <code>respawn_enemy</code>)</strong> ตรงกับ <strong>บัฟเฟอร์แพ็กเก็ตเครือข่าย</strong> และ <strong>DMA descriptor ring</strong> ในเฟิร์มแวร์: จองช่องคงที่ล่วงหน้า ห้าม <code>malloc</code> ใน ISR เพราะช้าและทำ heap แตก — ยืมช่องว่างมาใช้ ใช้เสร็จคืน เหมือน <code>find_free_bullet</code> เป๊ะ</li>
-<li><strong>many-vs-many AABB (ลูปซ้อนลูป 36 คู่/เฟรม)</strong> คือหัวใจของ <strong>ระบบสัมผัสหลายนิ้ว</strong> (นิ้ว N นิ้ว × ปุ่ม UI M ปุ่ม ใครแตะโดนอันไหน) และ <strong>การเตือนชน</strong> ในรถ/โดรน (ยานพาหนะ N คัน × สิ่งกีดขวาง M ชิ้น) — โครงลูปเดียวกับที่เราเช็คกระสุน×ศัตรู</li>
-<li><strong>Smooth difficulty clamp <code>min(9.0, base + 0.15·score)</code></strong> (สไลด์ wave) คือการ <strong>saturate ค่าใน embedded</strong>: จำกัด duty ของ PWM มอเตอร์/ความสว่างจอไม่ให้เกินพิกัด, rate-limit เสียง auto-volume — สูตร clamp ตัวเดียวกัน กันค่าพุ่งจนฮาร์ดแวร์พัง</li>
-<li><strong>spawn timer นับเฟรมแล้วปล่อยเป็นจังหวะ (<code>spawn_timer</code> ใน step5)</strong> ตรงกับ <strong>งานตามคาบเวลาใน RTOS</strong>: อ่านเซนเซอร์ทุก N tick, debounce ปุ่ม, ส่ง heartbeat — ทั้งหมดคือ &quot;นับลงแล้วทำเมื่อถึงศูนย์&quot; แบบเดียวกับ <code>SPAWN_DELAY</code></li>
+<li><strong>Object pool (<code>find_free_bullet</code> / <code>respawn_enemy</code>)</strong> ตรงกับ <strong>บัฟเฟอร์แพ็กเก็ตเครือข่าย</strong> และ <strong>DMA descriptor ring</strong>: จองช่องคงที่ล่วงหน้า ห้าม <code>malloc</code> ใน ISR เพราะทำ heap แตก — ยืมช่องว่างมาใช้ ใช้เสร็จคืน เหมือน <code>find_free_bullet</code></li>
+<li><strong>many-vs-many AABB (ลูปซ้อนลูป 36 คู่/เฟรม)</strong> คือหัวใจของ <strong>ระบบสัมผัสหลายนิ้ว</strong> (นิ้ว N × ปุ่ม M) และ <strong>การเตือนชน</strong> ในรถ/โดรน (ยาน N × สิ่งกีดขวาง M) — โครงลูปเดียวกับที่เราเช็คกระสุน×ศัตรู</li>
+<li><strong>Smooth difficulty clamp <code>min(9.0, base + 0.15·score)</code></strong> คือการ <strong>saturate ค่าใน embedded</strong>: จำกัด duty ของ PWM มอเตอร์/ความสว่างจอไม่ให้เกินพิกัด — สูตร clamp ตัวเดียวกัน กันค่าพุ่งจนฮาร์ดแวร์พัง</li>
+<li><strong>spawn timer (<code>spawn_timer</code> ใน step5)</strong> ตรงกับ <strong>งานตามคาบเวลาใน RTOS</strong>: อ่านเซนเซอร์ทุก N tick, debounce ปุ่ม, ส่ง heartbeat — &quot;นับลงแล้วทำเมื่อถึงศูนย์&quot; แบบเดียวกับ <code>SPAWN_DELAY</code></li>
 </ul>
 <blockquote>
 <p>เห็นไหมว่าทุกท่าที่เราเล่นวันนี้มีเครื่องจริงในโลกทำงานด้วยหลักการเดียวกันอยู่ เกมเป็นแค่ &quot;สนามซ้อม&quot; ที่เห็นผลไว</p>
@@ -833,6 +892,61 @@ MODE_NAME, SPAWN_DELAY, SPEED_MUL, START_LIVES, LOSE_WHEN_PASS, LOSE_WHEN_HIT = 
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="31" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#ef6c00">แบบไล่ทุกคู่ — brute force N × M</text>
+  <text x="250" y="42" font-size="10" fill="#607d8b" text-anchor="middle">ศัตรู ×50</text>
+  <text x="470" y="42" font-size="10" fill="#607d8b" text-anchor="middle">กระสุน ×30</text>
+  <line x1="250" y1="50" x2="470" y2="50" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="50" x2="470" y2="66" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="50" x2="470" y2="82" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="50" x2="470" y2="98" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="66" x2="470" y2="50" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="66" x2="470" y2="66" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="66" x2="470" y2="82" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="66" x2="470" y2="98" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="82" x2="470" y2="50" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="82" x2="470" y2="66" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="82" x2="470" y2="82" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="82" x2="470" y2="98" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="98" x2="470" y2="50" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="98" x2="470" y2="66" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="98" x2="470" y2="82" stroke="#ffcc80" stroke-width="1" />
+  <line x1="250" y1="98" x2="470" y2="98" stroke="#ffcc80" stroke-width="1" />
+  <circle cx="250" cy="50" r="5" fill="#607d8b" />
+  <circle cx="250" cy="66" r="5" fill="#607d8b" />
+  <circle cx="250" cy="82" r="5" fill="#607d8b" />
+  <circle cx="250" cy="98" r="5" fill="#607d8b" />
+  <circle cx="470" cy="50" r="5" fill="#607d8b" />
+  <circle cx="470" cy="66" r="5" fill="#607d8b" />
+  <circle cx="470" cy="82" r="5" fill="#607d8b" />
+  <circle cx="470" cy="98" r="5" fill="#607d8b" />
+  <text x="600" y="70" font-size="14" font-weight="700" fill="#ef6c00">1500 คู่/เฟรม</text>
+  <text x="600" y="88" font-size="11" fill="#777">ไล่เช็คทุกคู่ · เริ่มช้า</text>
+  <line x1="420" y1="106" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn)" />
+  <text x="436" y="120" font-size="11" fill="#777">เปลี่ยนวิธีคิด — กรองด้วยแกน y ก่อน</text>
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบ broad-phase — เช็คเฉพาะที่อยู่ใกล้กัน</text>
+  <rect x="232" y="168" width="256" height="34" rx="6" fill="#2e7d32" fill-opacity="0.12" />
+  <text x="360" y="164" font-size="10" fill="#2e7d32" text-anchor="middle">แถบ y ที่อยู่ใกล้กัน</text>
+  <line x1="250" y1="176" x2="470" y2="176" stroke="#2e7d32" stroke-width="1.4" />
+  <line x1="250" y1="192" x2="470" y2="192" stroke="#2e7d32" stroke-width="1.4" />
+  <line x1="250" y1="176" x2="470" y2="192" stroke="#2e7d32" stroke-width="1.4" />
+  <line x1="250" y1="192" x2="470" y2="176" stroke="#2e7d32" stroke-width="1.4" />
+  <circle cx="250" cy="160" r="5" fill="#2e7d32" />
+  <circle cx="250" cy="176" r="5" fill="#2e7d32" />
+  <circle cx="250" cy="192" r="5" fill="#2e7d32" />
+  <circle cx="250" cy="208" r="5" fill="#2e7d32" />
+  <circle cx="470" cy="160" r="5" fill="#2e7d32" />
+  <circle cx="470" cy="176" r="5" fill="#2e7d32" />
+  <circle cx="470" cy="192" r="5" fill="#2e7d32" />
+  <circle cx="470" cy="208" r="5" fill="#2e7d32" />
+  <text x="600" y="188" font-size="14" font-weight="700" fill="#2e7d32">~120 คู่/เฟรม</text>
+  <text x="600" y="206" font-size="11" fill="#2e7d32">เหลือคู่ที่ใกล้ · เร็ว</text>
+</svg>
+</div>
 <ul>
 <li><strong>ศัตรูเป็นฟอร์เมชันแบบ Space Invaders</strong> — ถ้าอยากให้ศัตรูเรียงเป็น &quot;แถว&quot; ไล่ลงมาแทนที่จะสุ่มตำแหน่ง จะออกแบบบ่อศัตรู + ตำแหน่งเริ่มของแต่ละตัวยังไง โดยยังใช้ pool เดิมไม่สร้างกล่องใหม่?</li>
 <li><strong>เมื่อคู่ที่ต้องเช็คเยอะเกินไป</strong> — ถ้าเกมโตเป็นศัตรู 50 ตัว × กระสุน 30 นัด = 1500 คู่/เฟรม การไล่เช็คทุกคู่จะเริ่มช้า จะลด &quot;จำนวนคู่ที่ต้องเช็ค&quot; ยังไง? (ใบ้: broad-phase — เช็คเฉพาะตัวที่อยู่ใกล้กันในแกน y ก่อน)</li>

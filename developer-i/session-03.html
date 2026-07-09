@@ -681,12 +681,72 @@ game.run(update)                    <span class="hljs-comment"># วิ่งท
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="31" style="--paginate:true;--theme:default;" data-marpit-pagination-total="32">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99-input--%E0%B8%AA%E0%B8%B0%E0%B8%AA%E0%B8%A1%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%99%E0%B8%B0--%E0%B8%82%E0%B8%A2%E0%B8%B1%E0%B8%9A%E0%B9%81%E0%B8%9A%E0%B8%9A%E0%B8%A1%E0%B8%B5%E0%B8%82%E0%B8%AD%E0%B8%9A">ใช้จริงที่ไหน — อ่าน input · สะสมสถานะ · ขยับแบบมีขอบ</h1>
-<p>เทคนิควันนี้ไม่ใช่แค่แบบฝึกหัด &quot;อ่าน input ต่อเฟรม → สะสมสถานะ → ขยับแบบมีขอบ&quot; คือโครงเดียวกับที่คุมเครื่องจริงจำนวนมาก:</p>
+<p>&quot;อ่าน input ต่อเฟรม → สะสมสถานะ → ขยับแบบมีขอบ&quot; คือโครงเดียวกับที่คุมเครื่องจริงจำนวนมาก:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arGr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker id="arPu" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#6a1b9a" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">Jog CNC / แขนกล · หยุดที่ soft limit</text>
+  <line x1="40" y1="84" x2="356" y2="84" stroke="#90a4ae" stroke-width="2" />
+  <rect x="56" y="66" width="22" height="18" fill="#1565c0" fill-opacity="0.25" />
+  <rect x="110" y="66" width="22" height="18" fill="#1565c0" fill-opacity="0.45" />
+  <rect x="164" y="66" width="22" height="18" fill="#1565c0" fill-opacity="0.65" />
+  <line x1="230" y1="75" x2="296" y2="75" stroke="#607d8b" stroke-width="2" marker-end="url(#arGr)" />
+  <rect x="300" y="66" width="22" height="18" fill="#1565c0" />
+  <rect x="356" y="56" width="10" height="30" fill="#607d8b" />
+  <text x="372" y="70" font-size="11" fill="#ef6c00">หยุด</text>
+  <text x="28" y="104" font-size="11" fill="#777">clamp: min(max(x+dx, 0), W−w) — หยุดที่ลิมิต ไม่ชนกลไก</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">ปุ่ม volume / หรี่ไฟ · กดค้างยิ่งเร็ว</text>
+  <line x1="470" y1="94" x2="852" y2="94" stroke="#90a4ae" stroke-width="2" />
+  <line x1="470" y1="50" x2="752" y2="50" stroke="#2e7d32" stroke-width="2" stroke-dasharray="6 4" />
+  <text x="758" y="54" font-size="11" fill="#2e7d32">MAX_SPEED</text>
+  <rect x="480" y="86" width="20" height="8" fill="#2e7d32" />
+  <rect x="510" y="79" width="20" height="15" fill="#2e7d32" />
+  <rect x="540" y="71" width="20" height="23" fill="#2e7d32" />
+  <rect x="570" y="63" width="20" height="31" fill="#2e7d32" />
+  <rect x="600" y="56" width="20" height="38" fill="#2e7d32" />
+  <rect x="630" y="50" width="20" height="44" fill="#2e7d32" />
+  <rect x="660" y="50" width="20" height="44" fill="#2e7d32" />
+  <rect x="690" y="50" width="20" height="44" fill="#2e7d32" />
+  <text x="464" y="108" font-size="11" fill="#777">speed = min(BASE_SPEED + hold_frames, MAX_SPEED)</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">กล้อง PTZ · ส่ายจนสุดมุมกลไก</text>
+  <path d="M102,206 A48,48 0 0 1 198,206" fill="none" stroke="#ef6c00" stroke-width="2.5" />
+  <circle cx="150" cy="206" r="4" fill="#ef6c00" />
+  <line x1="96" y1="206" x2="108" y2="206" stroke="#ef6c00" stroke-width="3" />
+  <line x1="192" y1="206" x2="204" y2="206" stroke="#ef6c00" stroke-width="3" />
+  <rect x="180" y="168" width="16" height="11" rx="2" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.5" />
+  <text x="250" y="180" font-size="11" fill="#607d8b">กดค้าง → ส่ายเร่งขึ้น</text>
+  <text x="250" y="200" font-size="11" fill="#ef6c00">ถึงมุมสุด → clamp หยุด</text>
+  <text x="28" y="224" font-size="11" fill="#777">สะสมเวลากด + clamp — ท่าเดียวกับ hold_frames + ขอบจอ</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">เมาส์ / อนาล็อกสติ๊ก · pointer accel</text>
+  <line x1="478" y1="170" x2="540" y2="170" stroke="#6a1b9a" stroke-width="2" marker-end="url(#arPu)" />
+  <text x="548" y="174" font-size="11" fill="#607d8b">กดสั้น</text>
+  <line x1="478" y1="190" x2="610" y2="190" stroke="#6a1b9a" stroke-width="2" marker-end="url(#arPu)" />
+  <line x1="478" y1="210" x2="700" y2="210" stroke="#6a1b9a" stroke-width="2" marker-end="url(#arPu)" />
+  <rect x="740" y="160" width="112" height="30" rx="6" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.5" />
+  <text x="796" y="173" font-size="11" fill="#6a1b9a" text-anchor="middle">USB HID</text>
+  <rect x="758" y="178" width="12" height="6" fill="#6a1b9a" />
+  <rect x="778" y="178" width="12" height="6" fill="#6a1b9a" />
+  <rect x="798" y="178" width="12" height="6" fill="#6a1b9a" />
+  <rect x="818" y="178" width="12" height="6" fill="#6a1b9a" />
+  <text x="464" y="226" font-size="11" fill="#777">ยิ่งกดนาน เคอร์เซอร์ยิ่งไกล — ก้านส่งค่าออก USB HID</text>
+</svg>
+</div>
 <ul>
-<li><strong>Jog เครื่อง CNC / แขนกล</strong> — กดปุ่มทิศค้างไว้ แกนเลื่อนไปเรื่อย ๆ ปล่อยแล้วหยุด และ &quot;หยุดเองที่ soft limit&quot; ไม่ให้ชนกลไก ตรงกับสูตร clamp <code>min(max(x+dx, 0), W-w)</code> (สไลด์ &quot;clamp&quot;) ที่กันกล่องหลุดขอบจอเป๊ะ แค่ขอบจอกลายเป็นลิมิตของแกนจริง</li>
-<li><strong>หรี่ไฟ / ปรับเสียงแบบกดค้างเร่ง</strong> — รีโมต ปุ่ม volume ที่ยิ่งกดค้างยิ่งเปลี่ยนเร็ว คือ <code>speed = min(BASE_SPEED + hold_frames, MAX_SPEED)</code> (สไลด์ &quot;ขั้น 4 — กดค้างยิ่งเร็ว&quot;) ตัวเดียวกัน: เริ่มช้าให้จูนละเอียด กดค้างแล้วเร่งให้ถึงไว</li>
-<li><strong>กล้องวงจรปิด PTZ (pan-tilt-zoom)</strong> — กดค้างเพื่อส่ายกล้อง เร่งความเร็วตามเวลาที่กด และหยุดที่มุมสุดของกลไก เป็นคู่ accumulator + clamp เดียวกับ <code>hold_frames</code> กับขอบจอของเรา</li>
-<li><strong>เคอร์เซอร์เมาส์ / อนาล็อกสติ๊ก (pointer acceleration)</strong> — ขยับก้านนานขึ้น เคอร์เซอร์วิ่งไกลขึ้นต่อหน่วยเวลา คือ ramp เดียวกับกราฟ speed ในสไลด์ &quot;ขั้น 4&quot; และก้านอนาล็อกก็ส่งค่าผ่าน USB HID เหมือนจอยของเรา (สไลด์ &quot;เข้าใจฮาร์ดแวร์&quot;)</li>
+<li><strong>Jog เครื่อง CNC / แขนกล</strong> — กดปุ่มทิศค้างไว้ แกนเลื่อนไปเรื่อย ๆ ปล่อยแล้วหยุด และหยุดเองที่ soft limit ไม่ให้ชนกลไก ตรงกับ clamp <code>min(max(x+dx, 0), W-w)</code> ที่กันกล่องหลุดขอบจอ แค่ขอบจอกลายเป็นลิมิตของแกนจริง</li>
+<li><strong>หรี่ไฟ / ปรับเสียงแบบกดค้างเร่ง</strong> — ปุ่ม volume ที่ยิ่งกดค้างยิ่งเปลี่ยนเร็ว คือ <code>speed = min(BASE_SPEED + hold_frames, MAX_SPEED)</code> ตัวเดียวกัน: เริ่มช้าให้จูนละเอียด กดค้างแล้วเร่งให้ถึงไว</li>
+<li><strong>กล้องวงจรปิด PTZ (pan-tilt-zoom)</strong> — กดค้างเพื่อส่ายกล้อง เร่งความเร็วตามเวลาที่กด และหยุดที่มุมสุดของกลไก เป็นคู่ accumulator + clamp เดียวกับ <code>hold_frames</code> กับขอบจอ</li>
+<li><strong>เคอร์เซอร์เมาส์ / อนาล็อกสติ๊ก (pointer acceleration)</strong> — ขยับก้านนานขึ้น เคอร์เซอร์วิ่งไกลขึ้นต่อหน่วยเวลา คือ ramp เดียวกับกราฟ speed และก้านอนาล็อกก็ส่งค่าผ่าน USB HID เหมือนจอยของเรา</li>
 </ul>
 <blockquote>
 <p>เห็นไหมว่าไม่มีข้อไหนเป็นของสมมติเลย ทุกข้อมีเครื่องจริงในโลกที่ทำงานด้วยหลักการเดียวกับกล่องที่น้องเพิ่งเขียนวันนี้</p>
@@ -695,6 +755,44 @@ game.run(update)                    <span class="hljs-comment"># วิ่งท
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="32" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="32" style="--paginate:true;--theme:default;" data-marpit-pagination-total="32">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn3" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#607d8b">ปล่อยจอย → รีเซ็ตทันที (หยุดปั๊บ)</text>
+  <line x1="120" y1="70" x2="470" y2="70" stroke="#90a4ae" stroke-width="2" />
+  <rect x="130" y="52" width="22" height="18" fill="#1565c0" fill-opacity="0.28" />
+  <rect x="175" y="52" width="22" height="18" fill="#1565c0" fill-opacity="0.5" />
+  <rect x="220" y="52" width="22" height="18" fill="#1565c0" fill-opacity="0.72" />
+  <rect x="265" y="52" width="22" height="18" fill="#1565c0" />
+  <line x1="276" y1="34" x2="276" y2="48" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn3)" />
+  <text x="276" y="30" font-size="11" fill="#607d8b" text-anchor="middle">ปล่อย</text>
+  <line x1="300" y1="48" x2="300" y2="72" stroke="#ef6c00" stroke-width="3" />
+  <text x="340" y="64" font-size="11" fill="#ef6c00">หยุดปั๊บ</text>
+  <line x1="300" y1="70" x2="462" y2="70" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="5 4" />
+  <text x="130" y="92" font-size="11" fill="#777">ความเร็วหายทันที — hold_frames = 0</text>
+  
+  <line x1="420" y1="100" x2="420" y2="124" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn3)" />
+  <text x="436" y="117" font-size="11" fill="#777">เปลี่ยนวิธีคิด: เก็บความเร็วไว้</text>
+  
+  <text x="14" y="148" font-size="13" font-weight="700" fill="#2e7d32">เก็บความเร็ว → ค่อย ๆ ลด (ไถลต่อ)</text>
+  <line x1="120" y1="190" x2="470" y2="190" stroke="#90a4ae" stroke-width="2" />
+  <rect x="130" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.28" />
+  <rect x="175" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.5" />
+  <rect x="220" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.72" />
+  <rect x="265" y="172" width="22" height="18" fill="#2e7d32" />
+  <line x1="276" y1="156" x2="276" y2="170" stroke="#2e7d32" stroke-width="2" marker-end="url(#arDn3)" />
+  <text x="276" y="152" font-size="11" fill="#2e7d32" text-anchor="middle">ปล่อย</text>
+  <rect x="305" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.55" />
+  <rect x="340" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.42" />
+  <rect x="368" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.3" />
+  <rect x="388" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.2" />
+  <rect x="402" y="172" width="22" height="18" fill="#2e7d32" fill-opacity="0.12" />
+  <text x="130" y="216" font-size="11" fill="#777">velocity ค่อย ๆ ลดทีละเฟรม — ไถลจนหยุดนุ่ม ๆ (inertia)</text>
+</svg>
+</div>
 <ul>
 <li><strong>ถ้าปล่อยจอยแล้วอยากให้กล่อง &quot;ไถลต่อ&quot; แทนหยุดทันที</strong> จะออกแบบยังไง? ใบ้: แทนที่จะรีเซ็ต <code>hold_frames = 0</code> ทันทีที่ปล่อย ลองเก็บ &quot;ความเร็วปัจจุบัน&quot; ไว้แล้วค่อย ๆ ลดลงทีละเฟรม นี่คือประตูสู่แรงเฉื่อย (inertia)</li>
 <li><strong>ถ้ากล่องชนขอบแล้วอยากให้เด้งกลับ แทนหยุดนิ่ง</strong> จะแก้ตรงไหน? ตอนนี้ clamp ใช้ <code>min</code>/<code>max</code> หนีบไว้เฉย ๆ ถ้าอยากเด้ง ต้องรู้ให้ได้ว่า &quot;ชนขอบแล้ว&quot; แล้วกลับทิศความเร็ว จะเก็บทิศไว้ในตัวแปรแบบไหน</li>

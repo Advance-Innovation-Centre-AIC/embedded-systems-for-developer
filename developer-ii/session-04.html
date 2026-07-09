@@ -855,11 +855,74 @@ game.run(on_each_frame, fps=<span class="hljs-number">9</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="26" style="--paginate:true;--theme:default;" data-marpit-pagination-total="27">
 <h2 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--%E0%B8%AA%E0%B8%B5%E0%B9%88%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B8%82%E0%B8%AD%E0%B8%87%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%99%E0%B8%B5%E0%B9%89%E0%B9%83%E0%B8%99%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87">ใช้จริงที่ไหน — สี่เทคนิคของวันนี้ในงานจริง</h2>
 <p>เทคนิคที่เราเขียนวันนี้ ไม่มีอันไหนเป็นของสมมติเลย ทุกอันมีระบบจริงที่ทำงานด้วยหลักเดียวกัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arG4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">rejection sampling — สุ่มจนกว่าจะว่าง</text>
+  <rect x="28" y="42" width="80" height="48" fill="#ffffff" stroke="#90caf9" />
+  <line x1="44" y1="42" x2="44" y2="90" stroke="#90caf9" />
+  <line x1="60" y1="42" x2="60" y2="90" stroke="#90caf9" />
+  <line x1="76" y1="42" x2="76" y2="90" stroke="#90caf9" />
+  <line x1="92" y1="42" x2="92" y2="90" stroke="#90caf9" />
+  <line x1="28" y1="58" x2="108" y2="58" stroke="#90caf9" />
+  <line x1="28" y1="74" x2="108" y2="74" stroke="#90caf9" />
+  <rect x="44" y="42" width="16" height="16" fill="#1565c0" />
+  <rect x="76" y="42" width="16" height="16" fill="#1565c0" />
+  <rect x="60" y="58" width="16" height="16" fill="#1565c0" />
+  <line x1="48" y1="46" x2="56" y2="54" stroke="#ef6c00" stroke-width="2" />
+  <line x1="56" y1="46" x2="48" y2="54" stroke="#ef6c00" stroke-width="2" />
+  <polyline points="96,82 99,86 104,77" fill="none" stroke="#2e7d32" stroke-width="2" />
+  <text x="126" y="54" font-size="11" fill="#607d8b">สุ่มโดนช่องที่มีงู → ทิ้ง</text>
+  <text x="126" y="72" font-size="11" fill="#777">สุ่มใหม่จนเจอช่องว่าง</text>
+  <text x="126" y="94" font-size="11" fill="#777">ยิ่งเต็ม ยิ่งแพง: E = 1/(1-f)</text>
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">event → feedback — ตอบสนองทันที</text>
+  <path d="M470,86 L494,86 L494,60 L522,60 L522,86 L556,86" fill="none" stroke="#2e7d32" stroke-width="2.5" />
+  <text x="513" y="52" font-size="11" fill="#607d8b" text-anchor="middle">เหตุการณ์เกิด</text>
+  <line x1="562" y1="73" x2="606" y2="73" stroke="#607d8b" stroke-width="2" marker-end="url(#arG4)" />
+  <polygon points="616,64 630,64 646,52 646,94 630,82 616,82" fill="#2e7d32" />
+  <path d="M652,58 a11 11 0 0 1 0 30" fill="none" stroke="#2e7d32" stroke-width="2" />
+  <path d="M660,50 a18 18 0 0 1 0 46" fill="none" stroke="#2e7d32" stroke-width="2" />
+  <text x="658" y="108" font-size="11" fill="#777" text-anchor="middle">ตรวจเจอเหตุการณ์ → ยิงสัญญาณให้รู้ทันที</text>
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">grid → pixel — col × CELL_PX</text>
+  <rect x="30" y="158" width="45" height="45" fill="#ffffff" stroke="#ffb74d" />
+  <line x1="45" y1="158" x2="45" y2="203" stroke="#ffb74d" />
+  <line x1="60" y1="158" x2="60" y2="203" stroke="#ffb74d" />
+  <line x1="30" y1="173" x2="75" y2="173" stroke="#ffb74d" />
+  <line x1="30" y1="188" x2="75" y2="188" stroke="#ffb74d" />
+  <rect x="60" y="158" width="15" height="15" fill="#ef6c00" />
+  <text x="30" y="216" font-size="10" fill="#607d8b">ช่อง [col,row]=[2,0]</text>
+  <line x1="84" y1="180" x2="148" y2="180" stroke="#607d8b" stroke-width="2" marker-end="url(#arG4)" />
+  <text x="116" y="172" font-size="11" fill="#777" text-anchor="middle">× CELL_PX</text>
+  <rect x="166" y="156" width="150" height="50" rx="6" fill="#ffffff" stroke="#ef6c00" stroke-width="2" />
+  <text x="174" y="170" font-size="9" fill="#999">(0,0) px</text>
+  <rect x="250" y="176" width="12" height="12" fill="#ef6c00" />
+  <text x="290" y="188" font-size="10" fill="#607d8b" text-anchor="middle">พิกเซลจริง</text>
+  <text x="222" y="224" font-size="11" fill="#777" text-anchor="middle">เก็บเป็นช่องจำนวนเต็ม → คูณเป็นพิกเซลตอนวาด</text>
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">deque โต/หด — insert(0) / pop()</text>
+  <text x="540" y="161" font-size="11" fill="#2e7d32" text-anchor="middle">เติมหัว insert(0)</text>
+  <line x1="514" y1="183" x2="542" y2="183" stroke="#607d8b" stroke-width="2" marker-end="url(#arG4)" />
+  <rect x="546" y="170" width="26" height="26" rx="4" fill="#a5d6a7" stroke="#2e7d32" stroke-width="2" />
+  <rect x="574" y="170" width="26" height="26" rx="4" fill="#ce93d8" stroke="#6a1b9a" />
+  <rect x="602" y="170" width="26" height="26" rx="4" fill="#ce93d8" stroke="#6a1b9a" />
+  <rect x="630" y="170" width="26" height="26" rx="4" fill="#ce93d8" stroke="#6a1b9a" />
+  <rect x="658" y="170" width="26" height="26" rx="4" fill="#ce93d8" stroke="#6a1b9a" />
+  <rect x="686" y="170" width="26" height="26" rx="4" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <line x1="716" y1="183" x2="752" y2="183" stroke="#607d8b" stroke-width="2" marker-end="url(#arG4)" />
+  <text x="734" y="161" font-size="11" fill="#ef6c00" text-anchor="middle">ตัดหาง pop()</text>
+  <text x="658" y="224" font-size="11" fill="#777" text-anchor="middle">เติมด้านหนึ่ง เอาออกอีกด้าน — ยาว/สั้นได้</text>
+</svg>
+</div>
 <ul>
-<li><strong>rejection sampling</strong> (&quot;สุ่มจนกว่าจะว่าง&quot; <code>:27-32</code>) — เอนจินเกมจริงใช้วางไอเทม/ศัตรูไม่ให้ทับกัน · ระบบสร้าง token/รหัสห้องแบบสุ่มแล้ว retry ถ้าชนของเดิม · จองที่นั่ง/slot ที่ยังว่างในระบบจอง ล้วนจ่ายต้นทุนเดียวกัน <code>E = 1/(1-f)</code> เมื่อของเต็มขึ้น</li>
-<li><strong>event → feedback</strong> (<code>game.sfx(&quot;eat&quot;)</code> <code>:54</code>) — เสียง notification บนมือถือ · ปุ่มกดที่มีเสียง/สั่นตอบกลับ · เครื่องมือแพทย์ที่ beep เมื่อค่าหลุดเกณฑ์ ทั้งหมดคือ &quot;ตรวจเจอเหตุการณ์ แล้วยิงสัญญาณให้คนรู้ทันที&quot; แบบเดียวกับที่งูงับอาหารแล้วมีเสียงงับ</li>
-<li><strong>grid → pixel transform</strong> (<code>col * CELL_PX</code> <code>:31</code>, <code>:64</code>) — เอนจิน tilemap ของเกม 2D · การ addressing จอ LED matrix · การ scale UI ตาม DPI ของจอ · แผนที่ GIS ที่แบ่งโลกเป็น tile ทุกอย่างเก็บเป็น &quot;ช่องจำนวนเต็ม&quot; แล้วคูณเป็นพิกัดจริงตอนแสดงผล</li>
-<li><strong>deque โต/หด</strong> (<code>insert(0)</code> / <code>pop()</code> <code>:48</code>, <code>:60</code>) — ring buffer เก็บค่าเซนเซอร์ล่าสุด N ตัว · undo history ในโปรแกรมแก้ไข · คิวงานใน OS · หน้าต่างเลื่อน (sliding window) บน stream ข้อมูล ล้วนคือ &quot;เติมด้านหนึ่ง เอาออกอีกด้าน&quot; เหมือนตัวงูเป๊ะ</li>
+<li><strong>rejection sampling</strong> (&quot;สุ่มจนกว่าจะว่าง&quot; <code>:27-32</code>) — เอนจินเกมวางไอเทม/ศัตรูไม่ให้ทับกัน · สร้าง token/รหัสห้องสุ่มแล้ว retry ถ้าชน · จองที่นั่งที่ยังว่าง ล้วนจ่ายต้นทุน <code>E = 1/(1-f)</code> เดียวกันเมื่อของเต็มขึ้น</li>
+<li><strong>event → feedback</strong> (<code>game.sfx(&quot;eat&quot;)</code> <code>:54</code>) — notification บนมือถือ · ปุ่มที่มีเสียง/สั่นตอบกลับ · เครื่องมือแพทย์ beep เมื่อค่าหลุดเกณฑ์ ล้วนคือ &quot;ตรวจเจอเหตุการณ์ → ยิงสัญญาณให้รู้ทันที&quot; แบบเดียวกับงูงับอาหารแล้วมีเสียง</li>
+<li><strong>grid → pixel transform</strong> (<code>col * CELL_PX</code> <code>:31</code>, <code>:64</code>) — tilemap เกม 2D · addressing จอ LED matrix · scale UI ตาม DPI · แผนที่ GIS แบ่งโลกเป็น tile ล้วนเก็บเป็น &quot;ช่องจำนวนเต็ม&quot; แล้วคูณเป็นพิกัดจริงตอนแสดงผล</li>
+<li><strong>deque โต/หด</strong> (<code>insert(0)</code> / <code>pop()</code> <code>:48</code>, <code>:60</code>) — ring buffer เก็บค่าเซนเซอร์ N ตัวล่าสุด · undo history · คิวงานใน OS · sliding window บน stream ล้วนคือ &quot;เติมด้านหนึ่ง เอาออกอีกด้าน&quot; เหมือนตัวงู</li>
 </ul>
 <blockquote>
 <p>เกม Snake เกมเล็ก ๆ เกมเดียว ซ่อนเทคนิคที่วิศวกรจริงใช้ทำงานกันทุกวันไว้ครบสี่อย่าง เข้าใจที่นี่แล้ว เอาไปใช้ที่อื่นได้ทันที</p>
@@ -868,11 +931,46 @@ game.run(on_each_frame, fps=<span class="hljs-number">9</span>)
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="27" style="--paginate:true;--theme:default;" data-marpit-pagination-total="27">
 <h2 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h2>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหางานจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arR5" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker id="arDn5" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#607d8b">ตอนนี้ — งูโต แต่ยังแพ้ไม่เป็น</text>
+  <rect x="120" y="40" width="104" height="32" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="172" y="60" font-size="11" fill="#1565c0" text-anchor="middle">หัวใหม่ next_head</text>
+  <line x1="224" y1="56" x2="250" y2="56" stroke="#607d8b" stroke-width="2" marker-end="url(#arR5)" />
+  <rect x="252" y="40" width="150" height="32" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="327" y="60" font-size="11" fill="#455a64" text-anchor="middle">insert(0) แล้ว pop()</text>
+  <line x1="402" y1="56" x2="428" y2="56" stroke="#607d8b" stroke-width="2" marker-end="url(#arR5)" />
+  <rect x="430" y="40" width="96" height="32" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="478" y="60" font-size="11" fill="#2e7d32" text-anchor="middle">วาดใหม่</text>
+  <text x="290" y="94" font-size="12" fill="#ef6c00" text-anchor="middle">ไม่มีจุดไหนถามว่า "ตายหรือยัง" → เกมไม่มีวันจบ</text>
+  <line x1="420" y1="104" x2="420" y2="132" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn5)" />
+  <text x="436" y="122" font-size="11" fill="#777">เพิ่มเงื่อนไขแพ้</text>
+  <text x="14" y="154" font-size="13" font-weight="700" fill="#2e7d32">คาบหน้า — ใส่ด่านตรวจ "แพ้" ก่อนเดินต่อ</text>
+  <rect x="96" y="168" width="94" height="30" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="143" y="187" font-size="11" fill="#1565c0" text-anchor="middle">หัวใหม่</text>
+  <line x1="190" y1="183" x2="224" y2="183" stroke="#607d8b" stroke-width="2" marker-end="url(#arR5)" />
+  <polygon points="298,160 368,183 298,206 228,183" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="298" y="181" font-size="11" fill="#6a1b9a" text-anchor="middle">ออกขอบ/ชนตัว?</text>
+  <text x="298" y="195" font-size="9" fill="#999" text-anchor="middle">GRID · snake_body</text>
+  <line x1="368" y1="176" x2="466" y2="166" stroke="#607d8b" stroke-width="2" marker-end="url(#arR5)" />
+  <text x="414" y="160" font-size="10" fill="#2e7d32">ไม่ชน</text>
+  <rect x="468" y="152" width="152" height="30" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="544" y="171" font-size="11" fill="#2e7d32" text-anchor="middle">เดินปกติ — โตต่อ</text>
+  <line x1="368" y1="192" x2="466" y2="202" stroke="#607d8b" stroke-width="2" marker-end="url(#arR5)" />
+  <text x="414" y="216" font-size="10" fill="#ef6c00">ชน</text>
+  <rect x="468" y="190" width="152" height="30" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="544" y="209" font-size="11" fill="#455a64" text-anchor="middle">GAME OVER</text>
+</svg>
+</div>
 <ul>
-<li><strong>อาหารพิเศษที่มีเวลาจำกัด</strong> — ถ้าอยากมี &quot;อาหารทอง&quot; ที่ให้ 5 แต้ม แต่โผล่แค่ 3 วินาทีแล้วหายไป จะเก็บ state อะไรเพิ่ม (ชนิดอาหาร + เวลาที่โผล่) แล้วเช็คหมดเวลายังไงในลูปที่วิ่ง 9 fps</li>
-<li><strong>กัน <code>place_food</code> วนไม่จบ</strong> — ถ้ากระดานเกือบเต็มจน rejection sampling สุ่มพลาดซ้ำ ๆ (<code>E = 1/(1-f)</code> พุ่งสูง) จะออกแบบ &quot;ทางออกฉุกเฉิน&quot; ยังไง ลองคิดว่าเก็บ <strong>list ของช่องว่าง</strong> ไว้แล้วสุ่มหยิบจาก list นั้นตรง ๆ จะดีกว่าไหม แลกกับอะไร</li>
-<li><strong>เสียงที่เปลี่ยนตามคะแนน</strong> — ถ้าอยากให้เสียงกินสูงขึ้นเรื่อย ๆ เมื่องูยาวขึ้น โดยยังเรียกผ่าน engine จะออกแบบวิธีเรียกเสียงให้ส่ง &quot;ระดับ&quot; เพิ่มเข้าไปยังไง (คิดในเชิงหน้าตา API ที่อยากให้มี)</li>
-<li><strong>สะพานสู่คาบหน้า — ทำให้ &quot;แพ้ได้&quot;</strong> — ตอนนี้งูยาวขึ้นเรื่อย ๆ แต่ยังตายไม่เป็น คาบหน้าเราจะเพิ่ม GAME OVER ลองคิดล่วงหน้าด้วยของที่เรามีอยู่แล้ว (<code>next_head</code>, <code>snake_body</code>, <code>GRID_COLS</code>, <code>GRID_ROWS</code>): จะเขียนเงื่อนไข &quot;หัวออกนอกกระดาน&quot; กับ &quot;หัวชนตัวเอง&quot; ยังไง เขียนคร่าว ๆ ลงใบงาน แล้วคาบหน้าเรามาเทียบกัน</li>
+<li><strong>อาหารพิเศษที่มีเวลาจำกัด</strong> — &quot;อาหารทอง&quot; ให้ 5 แต้ม แต่โผล่แค่ 3 วินาทีแล้วหาย จะเก็บ state อะไรเพิ่ม (ชนิดอาหาร + เวลาที่โผล่) แล้วเช็คหมดเวลายังไงในลูป 9 fps</li>
+<li><strong>กัน <code>place_food</code> วนไม่จบ</strong> — กระดานเกือบเต็มจน rejection sampling พลาดซ้ำ ๆ (<code>E = 1/(1-f)</code> พุ่งสูง) จะทำ &quot;ทางออกฉุกเฉิน&quot; ยังไง ถ้าเก็บ <strong>list ของช่องว่าง</strong> แล้วสุ่มหยิบตรง ๆ จะดีกว่าไหม แลกกับอะไร</li>
+<li><strong>เสียงที่เปลี่ยนตามคะแนน</strong> — อยากให้เสียงกินสูงขึ้นเมื่องูยาวขึ้น โดยยังเรียกผ่าน engine จะออกแบบให้ส่ง &quot;ระดับ&quot; เพิ่มเข้าไปยังไง (คิดในเชิงหน้าตา API ที่อยากมี)</li>
+<li><strong>สะพานสู่คาบหน้า — ทำให้ &quot;แพ้ได้&quot;</strong> — ตอนนี้งูโตเรื่อย ๆ แต่ตายไม่เป็น คาบหน้าเราเพิ่ม GAME OVER คิดล่วงหน้าด้วยของที่มีอยู่ (<code>next_head</code>, <code>snake_body</code>, <code>GRID_COLS</code>, <code>GRID_ROWS</code>): จะเขียนเงื่อนไข &quot;หัวออกนอกกระดาน&quot; กับ &quot;หัวชนตัวเอง&quot; ยังไง เขียนคร่าว ๆ ลงใบงาน แล้วคาบหน้ามาเทียบกัน</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากโค้ดที่พิมพ์เองวันนี้ — ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นคนออกแบบเกม ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

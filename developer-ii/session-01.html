@@ -624,11 +624,46 @@ last_reported = -<span class="hljs-number">1</span>             <span class="hlj
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="30" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="30" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--pinirq--edge-counting--non-blocking-loop">ใช้จริงที่ไหน — Pin.irq · edge counting · non-blocking loop</h1>
 <p>เทคนิคสามอย่างของวันนี้ไม่ใช่แค่แบบฝึกหัด มันคือสิ่งที่เฟิร์มแวร์จริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">กริ่ง / คีย์แพด / ปุ่มฉุกเฉิน</text>
+  <text x="28" y="48" font-size="11" fill="#607d8b">CPU หลับประหยัดไฟ (idle HIGH)</text>
+  <path d="M60,64 L205,64 L205,90 L240,90 L240,64 L410,64" fill="none" stroke="#1565c0" stroke-width="2.5" />
+  <text x="250" y="82" font-size="11" fill="#ef6c00">กด → IRQ_FALLING ปลุก</text>
+  <text x="28" y="108" font-size="11" fill="#777">ไม่มีใคร poll ปุ่มกริ่งทั้งวันให้เปลืองแบต</text>
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">นับรอบมอเตอร์ / tachometer</text>
+  <text x="464" y="48" font-size="11" fill="#607d8b">พัลส์ 1 ลูก = หมุน 1 รอบ</text>
+  <path d="M470,92 L490,92 L490,66 L505,66 L505,92 L540,92 L540,66 L555,66 L555,92 L590,92 L590,66 L605,66 L605,92 L640,92 L640,66 L655,66 L655,92 L690,92 L690,66 L705,66 L705,92 L740,92" fill="none" stroke="#2e7d32" stroke-width="2.5" />
+  <text x="497" y="60" font-size="10" fill="#607d8b" text-anchor="middle">1</text>
+  <text x="547" y="60" font-size="10" fill="#607d8b" text-anchor="middle">2</text>
+  <text x="597" y="60" font-size="10" fill="#607d8b" text-anchor="middle">3</text>
+  <text x="647" y="60" font-size="10" fill="#607d8b" text-anchor="middle">4</text>
+  <text x="697" y="60" font-size="10" fill="#607d8b" text-anchor="middle">5</text>
+  <text x="464" y="108" font-size="11" fill="#777">ผูก interrupt ที่ขอบ → บวก press_count ใน handler</text>
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">rotary encoder / ลูกบิดปรับเสียง</text>
+  <text x="28" y="165" font-size="11" fill="#607d8b">หมุน 1 คลิก = 1 ขอบ</text>
+  <path d="M40,206 L40,176 L70,176 L70,206 L100,206 L100,176 L130,176 L130,206 L160,206 L160,176 L190,176 L190,206 L220,206" fill="none" stroke="#ef6c00" stroke-width="2.5" />
+  <text x="316" y="150" font-size="11" fill="#607d8b" text-anchor="middle">ระดับเสียง</text>
+  <rect x="270" y="196" width="20" height="14" rx="2" fill="#ef6c00" />
+  <rect x="298" y="186" width="20" height="24" rx="2" fill="#ef6c00" />
+  <rect x="326" y="174" width="20" height="36" rx="2" fill="#ef6c00" />
+  <rect x="354" y="160" width="20" height="50" rx="2" fill="#ef6c00" />
+  <text x="28" y="224" font-size="11" fill="#777">IRQ_RISING/FALLING → เพิ่ม/ลดระดับทันที</text>
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">heartbeat LED · 1 Hz</text>
+  <text x="464" y="165" font-size="11" fill="#607d8b">ticks_ms คู่ขนาน main loop (non-blocking)</text>
+  <path d="M470,200 L470,176 L520,176 L520,200 L570,200 L570,176 L620,176 L620,200 L670,200 L670,176 L720,176 L720,200 L770,200 L770,176 L820,176 L820,200 L850,200" fill="none" stroke="#6a1b9a" stroke-width="2.5" />
+  <text x="656" y="224" font-size="11" fill="#777" text-anchor="middle">ไฟหยุดเต้น = เฟิร์มแวร์ค้าง (liveness)</text>
+</svg>
+</div>
 <ul>
-<li><strong>กริ่งประตู / คีย์แพด / ปุ่มฉุกเฉิน</strong> — อุปกรณ์พวกนี้ CPU หลับ ๆ ประหยัดไฟอยู่เกือบตลอด แล้วใช้ <code>Pin.irq</code> แบบ <code>IRQ_FALLING</code> ปลุกเฉพาะตอนมีคนกด ตรงกับท่า &quot;ผูก handler กับขอบขาลง&quot; ของเราเป๊ะ — ไม่มีใครนั่ง poll ปุ่มกริ่งทั้งวัน เปลืองแบตเปล่า ๆ</li>
-<li><strong>นับรอบมอเตอร์ / มิเตอร์วัดความเร็ว (tachometer)</strong> — เซนเซอร์ส่งพัลส์หนึ่งลูกต่อการหมุนหนึ่งรอบ เฟิร์มแวร์ผูก interrupt ที่ขอบสัญญาณแล้ว <strong>บวกตัวนับในhandler</strong> เหมือน <code>press_count += 1</code> ของเราตรง ๆ พัลส์มาเร็วแค่ไหนก็ไม่พลาด เพราะ handler สั้นและเร็วตามกฎเหล็ก</li>
-<li><strong>rotary encoder / ลูกบิดปรับเสียง</strong> — ทุกครั้งที่หมุนคลิกหนึ่งจะเกิดขอบสัญญาณ ระบบจับด้วย edge interrupt เดียวกับ <code>IRQ_FALLING</code>/<code>IRQ_RISING</code> ที่เราเรียนในสไลด์ &quot;ขอบขาลง&quot; แล้วเพิ่ม/ลดค่าระดับเสียงทันทีโดยจอไม่กระตุก</li>
-<li><strong>heartbeat LED + main loop ในเฟิร์มแวร์ทุกตัว</strong> — ระบบ embedded จริงมักกระพริบ LED 1 Hz บอกว่า &quot;ยังไม่แฮงก์&quot; ด้วย <code>ticks_ms</code> แบบไม่บล็อก คู่ขนานไปกับงานหลักที่ยังรับ event อื่นได้ตลอด นี่คือ software timer + non-blocking loop ของเราที่ทำงานอยู่ในเครื่องจริง</li>
+<li><strong>กริ่งประตู / คีย์แพด / ปุ่มฉุกเฉิน</strong> — CPU หลับประหยัดไฟเกือบตลอด ใช้ <code>Pin.irq</code> แบบ <code>IRQ_FALLING</code> ปลุกเฉพาะตอนมีคนกด ตรงกับท่า &quot;ผูก handler กับขอบขาลง&quot; ของเรา — ไม่มีใคร poll ปุ่มกริ่งทั้งวันให้เปลืองแบต</li>
+<li><strong>นับรอบมอเตอร์ / tachometer</strong> — เซนเซอร์ส่งพัลส์หนึ่งลูกต่อรอบ เฟิร์มแวร์ผูก interrupt ที่ขอบสัญญาณแล้ว <strong>บวกตัวนับในhandler</strong> เหมือน <code>press_count += 1</code> ของเรา พัลส์มาเร็วแค่ไหนก็ไม่พลาด เพราะ handler สั้นและเร็วตามกฎเหล็ก</li>
+<li><strong>rotary encoder / ลูกบิดปรับเสียง</strong> — หมุนหนึ่งคลิกเกิดหนึ่งขอบสัญญาณ ระบบจับด้วย edge interrupt เดียวกับ <code>IRQ_FALLING</code>/<code>IRQ_RISING</code> ที่เราเรียน แล้วเพิ่ม/ลดระดับเสียงทันทีโดยจอไม่กระตุก</li>
+<li><strong>heartbeat LED + main loop</strong> — เฟิร์มแวร์จริงมักกระพริบ LED 1 Hz บอกว่า &quot;ยังไม่แฮงก์&quot; ด้วย <code>ticks_ms</code> แบบไม่บล็อก คู่ขนานกับงานหลักที่ยังรับ event อื่นได้ตลอด นี่คือ software timer + non-blocking loop ของเราในเครื่องจริง</li>
 </ul>
 <blockquote>
 <p>ทั้งสี่ตัวอย่างนี้ไม่มีอันไหนเป็นของสมมติ ปุ่ม-นับ-กระพริบที่เราเล่นวันนี้ คือหลักการเดียวกับที่เดินอยู่ในเครื่องรอบตัวเราตอนนี้</p>
@@ -637,11 +672,41 @@ last_reported = -<span class="hljs-number">1</span>             <span class="hlj
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="31" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="31" style="--paginate:true;--theme:default;" data-marpit-pagination-total="31">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงและเกมที่เรากำลังจะสร้างได้:</p>
+<div style="text-align:center">
+<svg width="840" height="228" viewBox="0 0 840 228" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="arDn2" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  <text x="14" y="24" font-size="13" font-weight="700" fill="#607d8b">แบบ poll — while + time.sleep_ms()</text>
+  <rect x="120" y="36" width="70" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="155" y="57" font-size="11" fill="#1565c0" text-anchor="middle">เช็คปุ่ม</text>
+  <rect x="196" y="36" width="424" height="34" rx="6" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" />
+  <text x="408" y="57" font-size="12" fill="#455a64" text-anchor="middle">time.sleep_ms(500) — CPU ไม่ฟังปุ่ม</text>
+  <rect x="626" y="36" width="70" height="34" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="661" y="57" font-size="11" fill="#1565c0" text-anchor="middle">เช็คปุ่ม</text>
+  <text x="408" y="14" font-size="11" fill="#ef6c00" text-anchor="middle">กดตอนนี้</text>
+  <polygon points="392,18 424,18 408,33" fill="#ef6c00" />
+  <text x="408" y="92" font-size="11" fill="#ef6c00" text-anchor="middle">กดช่วง sleep → CPU ไม่รู้ ตกหล่น ไม่ถูกนับ</text>
+  <line x1="420" y1="102" x2="420" y2="126" stroke="#607d8b" stroke-width="2" marker-end="url(#arDn2)" />
+  <text x="436" y="119" font-size="11" fill="#777">เปลี่ยนวิธีคิด</text>
+  <text x="14" y="150" font-size="13" font-weight="700" fill="#2e7d32">แบบ interrupt — btn.irq(IRQ_FALLING)</text>
+  <rect x="120" y="162" width="616" height="34" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="132" y="183" font-size="12" fill="#2e7d32">main loop ไม่บล็อก: กระพริบไฟ + งานอื่นเดินต่อ</text>
+  <rect x="300" y="162" width="8" height="34" fill="#2e7d32" />
+  <rect x="480" y="162" width="8" height="34" fill="#2e7d32" />
+  <rect x="660" y="162" width="8" height="34" fill="#2e7d32" />
+  <polygon points="296,148 312,148 304,158" fill="#ef6c00" />
+  <polygon points="476,148 492,148 484,158" fill="#ef6c00" />
+  <polygon points="656,148 672,148 664,158" fill="#ef6c00" />
+  <text x="484" y="144" font-size="11" fill="#2e7d32" text-anchor="middle">irq แทรกทันทีที่กด → นับครบทุกครั้ง</text>
+  <text x="428" y="214" font-size="11" fill="#2e7d32" text-anchor="middle">กดตอนไหนก็รับได้ — ไฟยังกระพริบต่อ ไม่สะดุด</text>
+</svg>
+</div>
 <ul>
-<li><strong>ปุ่มเด้ง (button bounce)</strong> — ลองกดปุ่มจริงเร็ว ๆ แล้วสังเกตว่าบางทีนับเพิ่มทีเดียวหลายครั้งทั้งที่กดหนเดียว หน้าสัมผัสโลหะมันเด้งจริง ๆ ถ้าให้ออกแบบ จะกันการนับซ้ำนี้ยังไงโดย <strong>ไม่ผิดกฎ handler ต้องสั้น</strong>? (ใบ้: เอา <code>ticks_ms</code> มาช่วยจำเวลากดครั้งล่าสุด)</li>
-<li><strong>สองปุ่ม สองความหมาย</strong> — ถ้ามีปุ่มสองตัว ตัวหนึ่งเพิ่มค่า อีกตัวลดค่า จะผูก <code>Pin.irq</code> ให้ทั้งคู่ใช้ handler คนละตัว หรือ handler เดียวแล้วดูจาก argument <code>pin</code> ว่ามาจากปุ่มไหน แบบไหนสะอาดกว่าเมื่อปุ่มเยอะขึ้น</li>
+<li><strong>ปุ่มเด้ง (button bounce)</strong> — กดปุ่มจริงเร็ว ๆ บางทีนับเพิ่มหลายครั้งทั้งที่กดหนเดียว เพราะหน้าสัมผัสโลหะเด้งจริง จะกันการนับซ้ำนี้ยังไงโดย <strong>ไม่ผิดกฎ handler ต้องสั้น</strong>? (ใบ้: เอา <code>ticks_ms</code> มาจำเวลากดครั้งล่าสุด)</li>
+<li><strong>สองปุ่ม สองความหมาย</strong> — ปุ่มหนึ่งเพิ่มค่า อีกตัวลดค่า จะผูก <code>Pin.irq</code> ให้ใช้ handler คนละตัว หรือ handler เดียวแล้วดูจาก argument <code>pin</code> ว่ามาจากปุ่มไหน แบบไหนสะอาดกว่าเมื่อปุ่มเยอะขึ้น</li>
 <li><strong>ปรับจังหวะไฟตามเหตุการณ์</strong> — ตอนนี้ <code>BLINK_MS = 500</code> คงที่ ถ้าอยากให้ไฟกระพริบ <strong>เร็วขึ้นเมื่อกดปุ่มถี่ขึ้น</strong> (เอา <code>press_count</code> มาคิดเป็นความถี่) จะเปลี่ยนโครง non-blocking loop ตรงไหน โดยยังไม่กลับไป <code>sleep</code> ยาว</li>
-<li><strong>จากปุ่มสู่ทิศทางงู (บทต่อไป)</strong> — คาบหน้าเราขึ้น Snake ต้องวาดตัวงูเดินเองเป็นเฟรม ๆ พร้อมรับปุ่มบังคับทิศ ลองคิดล่วงหน้าว่า จะเอาโครง &quot;interrupt เก็บ input ใส่ตัวแปรร่วม + main loop ไม่บล็อกวาดเฟรม&quot; ของวันนี้ ไปทำให้งูเลี้ยวตามปุ่มโดยเกม <strong>ไม่ค้างระหว่างรอ</strong> ได้ยังไง — นี่คือสะพานตรงเข้าคาบ Snake #1</li>
+<li><strong>จากปุ่มสู่ทิศทางงู (บทต่อไป)</strong> — คาบหน้าขึ้น Snake ต้องวาดงูเดินเป็นเฟรม ๆ พร้อมรับปุ่มบังคับทิศ ลองคิดล่วงหน้าว่าจะเอาโครง &quot;interrupt เก็บ input ใส่ตัวแปรร่วม + main loop ไม่บล็อกวาดเฟรม&quot; ของวันนี้ ไปทำให้งูเลี้ยวตามปุ่มโดยเกม <strong>ไม่ค้างระหว่างรอ</strong> ได้ยังไง — สะพานตรงเข้าคาบ Snake #1</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูกตายตัว ขอแค่คิดต่อจากโค้ดที่พิมพ์เองวันนี้ ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นวิศวกร ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>

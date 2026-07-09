@@ -620,11 +620,80 @@ step_col, step_row = <span class="hljs-number">1</span>, <span class="hljs-numbe
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="25" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="25" style="--paginate:true;--theme:default;" data-marpit-pagination-total="26">
 <h1 id="%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%88%E0%B8%A3%E0%B8%B4%E0%B8%87%E0%B8%97%E0%B8%B5%E0%B9%88%E0%B9%84%E0%B8%AB%E0%B8%99--game-loop--deque--guarded-fsm">ใช้จริงที่ไหน — game loop · deque · guarded FSM</h1>
 <p>เทคนิคสี่อย่างของคาบนี้ไม่ได้อยู่แค่ในเกม มันคือของที่ระบบจริงใช้กันทุกวัน:</p>
+<div style="text-align:center">
+<svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="u3a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">fixed-timestep loop · งานควบคุม</text>
+  <text x="28" y="46" font-size="10.5" fill="#607d8b">อ่านเซนเซอร์ → คำนวณ → สั่งมอเตอร์ ทุกจังหวะ</text>
+  <line x1="44" y1="70" x2="412" y2="70" stroke="#1565c0" stroke-width="1.5" />
+  <rect x="70"  y="58" width="6" height="12" fill="#1565c0" />
+  <rect x="130" y="58" width="6" height="12" fill="#1565c0" />
+  <rect x="190" y="58" width="6" height="12" fill="#1565c0" />
+  <rect x="250" y="58" width="6" height="12" fill="#1565c0" />
+  <rect x="310" y="58" width="6" height="12" fill="#1565c0" />
+  <rect x="370" y="58" width="6" height="12" fill="#1565c0" />
+  <line x1="73" y1="86" x2="133" y2="86" stroke="#607d8b" stroke-width="1.5" />
+  <line x1="73" y1="82" x2="73" y2="90" stroke="#607d8b" stroke-width="1.5" />
+  <line x1="133" y1="82" x2="133" y2="90" stroke="#607d8b" stroke-width="1.5" />
+  <text x="103" y="102" font-size="10.5" fill="#607d8b" text-anchor="middle">1/9 s คงที่</text>
+  <text x="300" y="102" font-size="11" fill="#777" text-anchor="middle">โดรน · หุ่นยนต์ · 3D printer</text>
+  
+  <rect x="448" y="8" width="420" height="106" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <text x="464" y="28" font-size="13" font-weight="700" fill="#2e7d32">deque / ring buffer · O(1)</text>
+  <rect x="565" y="50" width="34" height="32" rx="6" fill="#c8e6c9" stroke="#2e7d32" />
+  <rect x="603" y="50" width="34" height="32" rx="6" fill="#ffffff" stroke="#2e7d32" />
+  <rect x="641" y="50" width="34" height="32" rx="6" fill="#ffffff" stroke="#2e7d32" />
+  <rect x="679" y="50" width="34" height="32" rx="6" fill="#ffffff" stroke="#2e7d32" />
+  <rect x="717" y="50" width="34" height="32" rx="6" fill="#ffffff" stroke="#2e7d32" />
+  <line x1="500" y1="66" x2="561" y2="66" stroke="#607d8b" stroke-width="2" marker-end="url(#u3a)" />
+  <text x="500" y="44" font-size="10.5" fill="#2e7d32">เขียนเข้าหัว</text>
+  <line x1="755" y1="66" x2="816" y2="66" stroke="#607d8b" stroke-width="2" marker-end="url(#u3a)" />
+  <text x="760" y="44" font-size="10.5" fill="#607d8b">อ่านออกหาง</text>
+  <text x="582" y="98" font-size="9.5" fill="#607d8b" text-anchor="middle">หัว</text>
+  <text x="734" y="98" font-size="9.5" fill="#607d8b" text-anchor="middle">หาง</text>
+  <text x="658" y="108" font-size="11" fill="#777" text-anchor="middle">แตะแค่ 2 ปลาย — ไม่เลื่อนทั้งบัฟเฟอร์</text>
+  
+  <rect x="12" y="126" width="420" height="106" rx="10" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />
+  <text x="28" y="146" font-size="13" font-weight="700" fill="#ef6c00">guarded FSM · ลิฟต์ · ATM · โปรโตคอล</text>
+  <rect x="24" y="164" width="84" height="30" rx="6" fill="#ffffff" stroke="#ef6c00" />
+  <text x="66" y="183" font-size="11" fill="#ef6c00" text-anchor="middle">สถานะ A</text>
+  <polygon points="204,160 232,180 204,200 176,180" fill="#ffffff" stroke="#607d8b" stroke-width="1.5" />
+  <text x="204" y="177" font-size="9.5" fill="#607d8b" text-anchor="middle">guard</text>
+  <text x="204" y="190" font-size="9" fill="#607d8b" text-anchor="middle">[=0?]</text>
+  <rect x="306" y="164" width="100" height="30" rx="6" fill="#ffffff" stroke="#ef6c00" />
+  <text x="356" y="183" font-size="11" fill="#ef6c00" text-anchor="middle">สถานะ B</text>
+  <line x1="108" y1="180" x2="174" y2="180" stroke="#607d8b" stroke-width="2" marker-end="url(#u3a)" />
+  <line x1="234" y1="180" x2="304" y2="180" stroke="#607d8b" stroke-width="2" marker-end="url(#u3a)" />
+  <text x="269" y="172" font-size="9.5" fill="#2e7d32" text-anchor="middle">ผ่าน → เปลี่ยน</text>
+  <text x="222" y="220" font-size="10.5" fill="#ef6c00" text-anchor="middle">guard ปิด (ทิศตรงข้าม) → คงสถานะเดิม กันพังตัวเอง</text>
+  
+  <rect x="448" y="126" width="420" height="106" rx="10" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="2" />
+  <text x="464" y="146" font-size="13" font-weight="700" fill="#6a1b9a">USB HID polling · ทุกเฟรม</text>
+  <text x="464" y="163" font-size="10.5" fill="#607d8b">game.keys() อ่านจอยทุกจังหวะ ไม่รอ event</text>
+  <line x1="470" y1="196" x2="758" y2="196" stroke="#6a1b9a" stroke-width="1.5" />
+  <rect x="486" y="180" width="6" height="16" fill="#6a1b9a" />
+  <rect x="532" y="180" width="6" height="16" fill="#6a1b9a" />
+  <rect x="578" y="180" width="6" height="16" fill="#6a1b9a" />
+  <rect x="624" y="180" width="6" height="16" fill="#6a1b9a" />
+  <rect x="670" y="180" width="6" height="16" fill="#6a1b9a" />
+  <rect x="716" y="180" width="6" height="16" fill="#6a1b9a" />
+  <text x="600" y="174" font-size="9.5" fill="#6a1b9a" text-anchor="middle">อ่านสถานะปุ่ม</text>
+  <circle cx="812" cy="188" r="20" fill="#ffffff" stroke="#6a1b9a" stroke-width="2" />
+  <line x1="812" y1="188" x2="812" y2="170" stroke="#6a1b9a" stroke-width="3" />
+  <circle cx="812" cy="167" r="6" fill="#6a1b9a" />
+  <line x1="724" y1="188" x2="786" y2="188" stroke="#607d8b" stroke-width="2" marker-end="url(#u3a)" />
+  <text x="620" y="220" font-size="11" fill="#777" text-anchor="middle">เมาส์ · คีย์บอร์ด · จอยคอนโซล — โพลเป็นรอบ</text>
+</svg>
+</div>
 <ul>
-<li><strong>fixed-timestep loop ในงานควบคุม</strong> — <code>game.run(fps=9)</code> ที่เรียกตรงเวลาทุก <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">1/9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/9</span></span></span></span> วินาที คือหลักเดียวกับ <strong>control loop</strong> ของโดรน/หุ่นยนต์/เครื่องพิมพ์ 3 มิติ ที่ต้องอ่านเซนเซอร์ → คำนวณ → สั่งมอเตอร์ ในจังหวะคงที่ เบื้องหลังคือ timer+interrupt ตัวเดียวกับที่สไลด์เชื่อมโยงรากฐานพูดถึง</li>
-<li><strong>ring buffer / deque ในสตรีมข้อมูล</strong> — insert ปลายหนึ่ง pop อีกปลาย (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>) แบบ <code>snake_body</code> คือหัวใจของ <strong>คิวข้อมูลเสียง/เครือข่าย</strong>: ไมค์เขียนตัวอย่างใหม่เข้าหัวคิว ตัวเล่นดึงออกจากหาง แตะแค่ 2 ปลายเหมือนงูเป๊ะ ไม่ต้องเลื่อนทั้งบัฟเฟอร์</li>
-<li><strong>guarded state machine คุมโหมดอุปกรณ์</strong> — กฎ &quot;เลี้ยวได้เฉพาะแกนที่นิ่ง&quot; คือ guarded transition แบบเดียวกับที่ <strong>ลิฟต์/เครื่อง ATM/โปรโตคอลสื่อสาร</strong> ใช้กันเปลี่ยนสถานะได้เฉพาะเมื่อเงื่อนไขปลอดภัยอนุญาต กันระบบเข้าสถานะที่พังตัวเอง เหมือนงูกันหัวพับทับตัว</li>
-<li><strong>USB HID polling ทุกเฟรม</strong> — <code>game.keys()</code> ที่อ่านจอยทุกจังหวะ คือแบบเดียวกับที่ <strong>เมาส์/คีย์บอร์ด/จอยเกมคอนโซล</strong> ถูกโพลสถานะปุ่มเป็นรอบ ๆ ไม่ใช่รอ event ทีละครั้ง</li>
+<li><strong>fixed-timestep loop ในงานควบคุม</strong> — <code>game.run(fps=9)</code> ที่เรียกตรงเวลาทุก <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi mathvariant="normal">/</mi><mn>9</mn></mrow><annotation encoding="application/x-tex">1/9</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1/9</span></span></span></span> วินาที คือหลักเดียวกับ <strong>control loop</strong> ของโดรน/หุ่นยนต์/เครื่องพิมพ์ 3 มิติ: อ่านเซนเซอร์ → คำนวณ → สั่งมอเตอร์ ในจังหวะคงที่ เบื้องหลังคือ timer+interrupt ตัวเดียวกัน</li>
+<li><strong>ring buffer / deque ในสตรีมข้อมูล</strong> — insert ปลายหนึ่ง pop อีกปลาย (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.0278em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>) แบบ <code>snake_body</code> คือหัวใจของ <strong>คิวข้อมูลเสียง/เครือข่าย</strong>: เขียนเข้าหัว ดึงออกหาง แตะแค่ 2 ปลาย ไม่ต้องเลื่อนทั้งบัฟเฟอร์</li>
+<li><strong>guarded state machine คุมโหมดอุปกรณ์</strong> — กฎ &quot;เลี้ยวได้เฉพาะแกนที่นิ่ง&quot; คือ guarded transition แบบเดียวกับ <strong>ลิฟต์/ATM/โปรโตคอลสื่อสาร</strong>: เปลี่ยนสถานะได้เฉพาะเมื่อเงื่อนไขปลอดภัยอนุญาต กันระบบพังตัวเอง เหมือนงูกันหัวพับทับตัว</li>
+<li><strong>USB HID polling ทุกเฟรม</strong> — <code>game.keys()</code> ที่อ่านจอยทุกจังหวะ คือแบบเดียวกับ <strong>เมาส์/คีย์บอร์ด/จอยคอนโซล</strong> ที่ถูกโพลสถานะปุ่มเป็นรอบ ๆ ไม่ใช่รอ event ทีละครั้ง</li>
 </ul>
 <blockquote>
 <p>สี่ท่าที่เราเล่นวันนี้ไม่มีท่าไหนเป็นของสมมติ ทุกท่ามีเครื่องจริงในโลกที่เดินด้วยหลักการเดียวกันอยู่ — เราแค่เล่นมันในร่างของงู</p>
@@ -633,11 +702,49 @@ step_col, step_row = <span class="hljs-number">1</span>, <span class="hljs-numbe
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="26" data-paginate="true" data-theme="default" lang="C" data-marpit-pagination="26" style="--paginate:true;--theme:default;" data-marpit-pagination-total="26">
 <h1 id="%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B8%A2%E0%B8%AD%E0%B8%94--%E0%B8%84%E0%B8%B4%E0%B8%94%E0%B8%95%E0%B9%88%E0%B8%AD%E0%B9%80%E0%B8%AD%E0%B8%87">ต่อยอด — คิดต่อเอง</h1>
 <p>ลองเอาโจทย์พวกนี้ไปคิดต่อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาของจริงได้:</p>
+<div style="text-align:center">
+<svg width="840" height="226" viewBox="0 0 840 226" font-family="DejaVu Sans, sans-serif">
+  <defs>
+    <marker id="t3d" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+  </defs>
+  
+  <text x="14" y="22" font-size="13" font-weight="700" fill="#607d8b">ตอนนี้: fps=9 คงที่</text>
+  <rect x="150" y="30" width="676" height="32" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
+  <rect x="190" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="270" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="350" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="430" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="510" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="590" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="670" y="34" width="6" height="24" fill="#1565c0" />
+  <rect x="750" y="34" width="6" height="24" fill="#1565c0" />
+  <text x="488" y="82" font-size="11" fill="#777" text-anchor="middle">จังหวะเท่ากันทุกช่วง — ง่ายแต่ตื่นเต้นน้อย</text>
+  
+  <line x1="430" y1="92" x2="430" y2="116" stroke="#607d8b" stroke-width="2" marker-end="url(#t3d)" />
+  <text x="446" y="108" font-size="11" fill="#777">เปลี่ยนวิธีคิด — ให้ความเร็วเป็นตัวแปร</text>
+  
+  <text x="14" y="146" font-size="13" font-weight="700" fill="#2e7d32">ต่อยอด: เร่งเมื่องูยาว</text>
+  <rect x="150" y="154" width="676" height="32" rx="6" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" />
+  <rect x="180" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="260" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="336" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="406" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="470" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="528" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="580" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="626" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="666" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="700" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="730" y="158" width="6" height="24" fill="#2e7d32" />
+  <rect x="756" y="158" width="6" height="24" fill="#2e7d32" />
+  <text x="488" y="210" font-size="11" fill="#2e7d32" text-anchor="middle">ยิ่งยาว ยิ่งเร็ว — จังหวะกลายเป็นดีไซน์ของเกม</text>
+</svg>
+</div>
 <ul>
-<li><strong>ปรับความเร็วตามสถานการณ์</strong> — ตอนนี้ <code>fps=9</code> คงที่ ถ้าอยากให้งูเร็วขึ้นเมื่อยาวเกินค่าหนึ่ง จะออกแบบยังไงให้จังหวะเปลี่ยนโดยไม่พังโครง game loop? ลองคิดว่าจะเก็บความเร็วเป็นตัวแปรที่แก้ได้ระหว่างเล่นแบบไหน</li>
-<li><strong>บัฟเฟอร์คำสั่งเลี้ยว</strong> — บนบอร์ดจริง ถ้ากดเลี้ยวสองทิศเร็ว ๆ ในเฟรมเดียว บางทีตกหล่น ถ้าจะ &quot;จำปุ่มที่กดล่าสุด&quot; ไว้ใช้เฟรมถัดไป จะออกแบบคิวคำสั่งยังไงให้ยังเคารพ guard กันถอยหลัง</li>
-<li><strong>กริดพันขอบ (wrap) หรือกำแพงตาย</strong> — ตอนนี้ยังไม่เช็กขอบจอเลย ถ้าให้งูทะลุขอบซ้ายไปโผล่ขวา (wrap) จะแก้ <code>next_head</code> ตรงไหน? แล้วถ้าจะให้ชนขอบ = ตายแทนล่ะ ออกแบบต่างกันยังไง</li>
-<li><strong>เตรียมทางให้อาหารคาบหน้า</strong> — คาบหน้าเราจะเพิ่มอาหารกับการโตของงู ลองคิดล่วงหน้า: เราจะเก็บตำแหน่งอาหารเป็นอะไร (ตัวแปรเดียว? list?) และตอนหัวงูเดินมาทับช่องอาหาร เราจะรู้ได้ยังไงว่า &quot;กินแล้ว&quot; แล้วการโตคือแค่ <strong>ข้าม <code>pop()</code> หนึ่งจังหวะ</strong> จริงไหม ลองวาดบนกระดาษดู</li>
+<li><strong>ปรับความเร็วตามสถานการณ์</strong> — ตอนนี้ <code>fps=9</code> คงที่ ถ้าอยากให้งูเร็วขึ้นเมื่อยาวเกินค่าหนึ่ง จะออกแบบยังไงให้จังหวะเปลี่ยนโดยไม่พังโครง game loop? เก็บความเร็วเป็นตัวแปรที่แก้ได้ระหว่างเล่นแบบไหน</li>
+<li><strong>บัฟเฟอร์คำสั่งเลี้ยว</strong> — ถ้ากดเลี้ยวสองทิศเร็ว ๆ ในเฟรมเดียว บางทีตกหล่น ถ้าจะ &quot;จำปุ่มที่กดล่าสุด&quot; ไว้ใช้เฟรมถัดไป จะออกแบบคิวคำสั่งยังไงให้ยังเคารพ guard กันถอยหลัง</li>
+<li><strong>กริดพันขอบ (wrap) หรือกำแพงตาย</strong> — ตอนนี้ยังไม่เช็กขอบจอ ถ้าให้งูทะลุขอบซ้ายไปโผล่ขวา (wrap) จะแก้ <code>next_head</code> ตรงไหน? แล้วถ้าให้ชนขอบ = ตายล่ะ ออกแบบต่างกันยังไง</li>
+<li><strong>เตรียมทางให้อาหารคาบหน้า</strong> — คาบหน้าเราจะเพิ่มอาหารกับการโตของงู ลองคิดล่วงหน้า: จะเก็บตำแหน่งอาหารเป็นอะไร (ตัวแปรเดียว? list?) และตอนหัวงูทับช่องอาหาร จะรู้ได้ยังไงว่า &quot;กินแล้ว&quot; แล้วการโตคือแค่ <strong>ข้าม <code>pop()</code> หนึ่งจังหวะ</strong> จริงไหม ลองวาดบนกระดาษดู</li>
 </ul>
 <blockquote>
 <p>เลือกมาสักข้อ แล้วเขียนลงใบงานว่า &quot;ถ้าเป็นเรา จะออกแบบยังไง&quot; ไม่ต้องมีคำตอบถูก ขอแค่คิดต่อจากงูที่พิมพ์เองวันนี้ — ตรงนั้นแหละคือจุดที่น้องเริ่มเป็นวิศวกร ไม่ใช่แค่คนพิมพ์ตามเฉลย</p>
