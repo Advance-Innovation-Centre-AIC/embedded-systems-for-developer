@@ -82,7 +82,7 @@
 </code></pre>
 <p>โครงทั้งไฟล์มีแค่ 3 จังหวะ: <code>init</code> รัน <strong>ครั้งเดียว</strong> ตอนเปิด → <code>game.run()</code> วน <code>update()</code> ให้เองทุกเฟรม → ตอนชนะ/แพ้เรา <code>return False</code> เพื่อจบรอบ:</p>
 <svg viewBox="0 0 700 150" width="100%">
-  <defs><marker id="rs" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#333" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="rs" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#333" /></marker></defs>
   <rect x="14" y="42" width="150" height="64" rx="10" fill="#cfe0ff" stroke="#46c" stroke-width="2" />
   <text x="89" y="70" text-anchor="middle" font-size="15" font-weight="bold">init (ครั้งเดียว)</text>
   <text x="89" y="90" text-anchor="middle" font-size="12" fill="#555">title / Box / Text / score=0</text>
@@ -148,7 +148,7 @@
   <line x1="510" y1="105" x2="548" y2="105" stroke="#333" stroke-width="2" marker-end="url(#a)" />
   <path d="M600 80 Q600 14 85 14 Q85 48 85 78" fill="none" stroke="#333" stroke-width="2" marker-end="url(#a)" />
   <text x="345" y="52" text-anchor="middle" font-size="13" fill="#555">กด START → soft reset → รันไฟล์ใหม่ตั้งแต่ init</text>
-  <defs><marker id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#333" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="a" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 z" fill="#333" /></marker></defs>
 </svg>
 <p>START = soft reset → กลับไป <strong>init บนสุดของไฟล์</strong> เอง (ไม่ต้องเขียน <code>while True</code> ครอบ) · <strong>เช็คผ่าน:</strong> เล่นแพ้ → เห็น GAME OVER + Score → กด START → เกมเริ่มรอบใหม่สด ๆ</p>
 <blockquote>
@@ -189,7 +189,7 @@
 <p>ผัง lifecycle ก่อนหน้าหยุดที่กล่อง &quot;วน <code>update()</code>&quot; เฉย ๆ ทีนี้เรากางข้างในของ <code>update()</code> ออกมาทั้งหมด — หนึ่งเฟรมทำอะไรบ้าง ตั้งแต่อ่านปุ่มจนถึงจุดที่ <code>return False</code> (ชนะ) แล้ว <code>game.run()</code> วนให้เองทุกเฟรม (<code>mygame.py:64</code>)</p>
 <div style="text-align:center">
 <svg viewBox="0 0 940 235" width="100%" font-family="DejaVu Sans, sans-serif">
-  <defs><marker id="s13c" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="s13c" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   <g font-size="13" text-anchor="middle">
     <rect x="6" y="102" width="120" height="46" rx="10" fill="#cfd8dc" stroke="#607d8b" stroke-width="2" /><text x="66" y="121" font-weight="700" fill="#455a64">init → run</text><text x="66" y="139" font-size="11" fill="#999">:17-23,64</text>
     <rect x="142" y="102" width="96" height="46" rx="10" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2" /><text x="190" y="121" font-weight="700" fill="#2e7d32">keys()</text><text x="190" y="139" font-size="11" fill="#999">:38</text>
@@ -530,7 +530,7 @@ game.run(update, fps=FPS)
 </ul>
 <div style="text-align:center">
 <svg width="900" height="120" viewBox="0 0 900 120" font-family="DejaVu Sans, sans-serif">
-  <defs><marker id="arS13" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="arS13" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker></defs>
   <line x1="60" y1="60" x2="850" y2="60" stroke="#cfd8dc" stroke-width="3" />
   <g text-anchor="middle">
     <circle cx="150" cy="60" r="8" fill="#607d8b" />
@@ -559,7 +559,7 @@ game.run(update, fps=FPS)
 <p>สี่เทคนิควันนี้ไม่ได้อยู่แค่ในคาบเรียน เฟิร์มแวร์กับซอฟต์แวร์จริงใช้ทั้งสี่อย่างนี้ทุกวัน:</p>
 <div style="text-align:center">
 <svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
-  <defs><marker id="s13u" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="s13u" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   
   <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
   <text x="28" y="28" font-size="13" font-weight="700" fill="#1565c0">App store / OTA — ส่ง artifact ที่ build แล้ว</text>
@@ -625,7 +625,7 @@ game.run(update, fps=FPS)
 <p>ลองเลือกไปคิดต่อสักข้อ ไม่มีคำตอบเดียวตายตัว ทุกข้อโยงกลับไปหาโปรเจกต์จริงได้:</p>
 <div style="text-align:center">
 <svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
-  <defs><marker id="arDn13" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="arDn13" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker></defs>
   
   <text x="14" y="22" font-size="13" font-weight="700" fill="#ef6c00">ก่อน — "ทำเสร็จ" (รันได้แค่บนเครื่องเรา)</text>
   <rect x="120" y="34" width="150" height="38" rx="6" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" />

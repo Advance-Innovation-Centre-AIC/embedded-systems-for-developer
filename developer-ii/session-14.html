@@ -26,7 +26,7 @@
 <div style="text-align:center">
 <svg width="820" height="210" viewBox="0 0 820 210" font-family="DejaVu Sans, sans-serif">
   <defs>
-    <marker id="arR0" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker markerUnits="userSpaceOnUse" id="arR0" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
   </defs>
   <rect x="30" y="55" width="250" height="100" rx="12" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.5" />
   <text x="155" y="88" text-anchor="middle" font-size="18" font-weight="bold" fill="#0d47a1">CM33 — คอร์ Python</text>
@@ -55,7 +55,7 @@
 <p><strong>อาการที่เจอ:</strong> ฉากไหนที่ของเยอะ ๆ (เกิดศัตรู + ระเบิด + ดาว พร้อมกัน) บางเฟรม CM33 ส่งจดหมายไปวาดเร็วกว่าที่ CM55 จะรับไหว CM55 เลยตอบว่า <strong>&quot;not ready&quot;</strong> ถ้าเราปล่อยให้ error นี้เด้งขึ้นมา (<code>raise</code>) → <strong>เกมค้างตายกลางเฟรม</strong></p>
 <p><strong>ความจริงของฮาร์ดแวร์:</strong> &quot;not ready&quot; ไม่ใช่ความผิดพลาด มันคือ <strong>backpressure</strong> — สัญญาณว่า &quot;ช้าลงหน่อย เดี๋ยวฉันตามทัน&quot; สภาวะแบบนี้เป็นเรื่อง<em>ปกติ</em>และ<em>ชั่วคราว</em> รอไม่กี่มิลลิวินาทีมันก็หายเอง</p>
 <svg viewBox="0 0 720 150" width="88%" font-family="sans-serif">
-  <defs><marker id="arL1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="arL1" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   <rect x="10" y="20" width="150" height="46" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
   <text x="85" y="40" text-anchor="middle" font-size="13" font-weight="bold" fill="#0d47a1">เรียก ui.pos()</text>
   <text x="85" y="57" text-anchor="middle" font-size="11" fill="#555">ส่งจดหมายไป CM55</text>
@@ -109,7 +109,7 @@
 <p><strong>อาการที่เจอ:</strong> เกม Shooter เวอร์ชัน Python รู้สึก <strong>&quot;หนืด&quot;</strong> — ทั้งที่เกม C บนบอร์ดเดียวกันลื่นปรื๊ด ทำไม? มันคือ CPU เดียวกันนี่นา</p>
 <p><strong>สาเหตุที่แท้จริง:</strong> ไม่ใช่ Python คำนวณช้า — แต่เป็น<strong>จำนวนจดหมายข้าม core ต่อเฟรม</strong> ทุก <code>move_to</code> หนึ่งครั้ง = IPC หนึ่งฉบับ CM33→CM55 เกมมีศัตรู + กระสุน + ระเบิด ยิ่งของบนจอเยอะ จดหมายต่อเฟรมยิ่งเยอะ → คอขวดอยู่ที่ <strong>จำนวน IPC round-trip ไม่ใช่ที่ความเร็ว CPU</strong></p>
 <svg viewBox="0 0 740 170" width="94%" font-family="sans-serif">
-  <defs><marker id="arL2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ef6c00" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="arL2" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ef6c00" /></marker></defs>
   <rect x="20" y="45" width="200" height="80" rx="12" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.5" />
   <text x="120" y="78" text-anchor="middle" font-size="15" font-weight="bold" fill="#0d47a1">CM33 (Python)</text>
   <text x="120" y="102" text-anchor="middle" font-size="12" fill="#555">วน move_to ทุก object</text>
@@ -199,7 +199,7 @@ parts = {<span class="hljs-string">&quot;top&quot;</span>: game.Box(-<span class
 <li><strong>grace period</strong> — 4 วินาทีแรกหลังออกตัว นกจะ <em>ตายไม่ได้</em> ครอบช่วงที่จอกำลังวาดพอดี (<code>flappy_full.py:186</code>)</li>
 </ol>
 <svg viewBox="0 0 740 150" width="94%" font-family="sans-serif">
-  <defs><marker id="arL4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
+  <defs><marker markerUnits="userSpaceOnUse" id="arL4" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker></defs>
   <line x1="30" y1="80" x2="710" y2="80" stroke="#607d8b" stroke-width="2.5" marker-end="url(#arL4)" />
   
   <rect x="30" y="55" width="200" height="50" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
@@ -425,7 +425,7 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 <div style="text-align:center">
 <svg width="900" height="118" viewBox="0 0 900 118" font-family="DejaVu Sans, sans-serif">
   <defs>
-    <marker id="arT14" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker>
+    <marker markerUnits="userSpaceOnUse" id="arT14" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#9e9e9e" /></marker>
   </defs>
   <line x1="60" y1="58" x2="850" y2="58" stroke="#cfd8dc" stroke-width="3" />
   <g text-anchor="middle">
@@ -462,8 +462,8 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 <div style="text-align:center">
 <svg width="880" height="240" viewBox="0 0 880 240" font-family="DejaVu Sans, sans-serif">
   <defs>
-    <marker id="arU" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
-    <marker id="arUo" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ef6c00" /></marker>
+    <marker markerUnits="userSpaceOnUse" id="arU" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#607d8b" /></marker>
+    <marker markerUnits="userSpaceOnUse" id="arUo" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto"><path d="M0,0 L7,3 L0,6 Z" fill="#ef6c00" /></marker>
   </defs>
   
   <rect x="12" y="8" width="420" height="106" rx="10" fill="#e3f2fd" stroke="#1565c0" stroke-width="2" />
@@ -535,7 +535,7 @@ start_ms = <span class="hljs-number">0</span>          <span class="hljs-comment
 <div style="text-align:center">
 <svg width="840" height="230" viewBox="0 0 840 230" font-family="DejaVu Sans, sans-serif">
   <defs>
-    <marker id="arV" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
+    <marker markerUnits="userSpaceOnUse" id="arV" markerWidth="9" markerHeight="9" refX="4" refY="7" orient="auto"><path d="M0,0 L8,0 L4,7 Z" fill="#607d8b" /></marker>
   </defs>
   <text x="16" y="24" font-size="13" font-weight="700" fill="#607d8b">ไม่มี engine — โค้ดเกมทุกไฟล์ต้องกันฮาร์ดแวร์เอง</text>
   <rect x="124" y="34" width="184" height="46" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="5 3" />
