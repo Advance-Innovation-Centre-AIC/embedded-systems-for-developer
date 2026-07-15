@@ -626,7 +626,7 @@ show(state)
 </section>
 </foreignObject></svg><svg data-marpit-svg="" viewBox="0 0 1280 720"><foreignObject width="1280" height="720"><section id="27" data-paginate="true" data-theme="default" lang="en-US" data-marpit-pagination="27" style="--paginate:true;--theme:default;" data-marpit-pagination-total="28">
 <h1 id="%E0%B8%AD%E0%B8%B5%E0%B8%81%E0%B8%A7%E0%B8%B4%E0%B8%98%E0%B8%B5%E0%B9%81%E0%B8%AA%E0%B8%94%E0%B8%87%E0%B8%9C%E0%B8%A5--%E0%B9%84%E0%B8%9F%E0%B8%88%E0%B8%A3%E0%B8%B2%E0%B8%88%E0%B8%A3-%E0%B8%95%E0%B8%B4%E0%B8%94%E0%B8%97%E0%B8%B5%E0%B8%A5%E0%B8%B0%E0%B8%94%E0%B8%A7%E0%B8%87-%E0%B8%AD%E0%B9%88%E0%B8%B2%E0%B8%99%E0%B9%80%E0%B8%AA%E0%B8%A3%E0%B8%B4%E0%B8%A1">อีกวิธีแสดงผล — ไฟจราจร &quot;ติดทีละดวง&quot; (อ่านเสริม)</h1>
-<p>โค้ดหลักของคาบนี้ใช้ LED <strong>2 ดวงเข้ารหัส</strong> 3 สถานะ (เหลือง = ติดทั้งคู่) — ทำงานถูก แต่ตาอ่านยากนิดหนึ่ง และ LED1 ไม่ได้ใช้ ลองดูอีกแบบที่ <strong>ติดทีละดวง</strong> เหมือนไฟจราจรจริง (ดวงเดียวติดต่อสถานะ):</p>
+<p>เวอร์ชันหลักของคาบนี้ใช้ LED <strong>2 ดวงเข้ารหัส</strong> 3 สถานะ (เหลือง = ติดทั้งคู่) — เป็นวิธีที่ฉลาดเมื่อมีดวงไฟน้อยกว่าจำนวนสถานะ ลองดูอีกแบบที่ <strong>ติดทีละดวง</strong> เหมือนไฟจราจรจริง แล้วสังเกตว่าทั้งสองแบบใช้ FSM เดียวกันเป๊ะ:</p>
 <pre is="marp-pre" data-auto-scaling="downscale-only"><code class="language-python"><span class="hljs-keyword">import</span> gpio, time
 
 btn  = gpio.button(<span class="hljs-number">0</span>)
