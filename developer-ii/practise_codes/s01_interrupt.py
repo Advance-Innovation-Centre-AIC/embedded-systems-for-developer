@@ -25,7 +25,7 @@ import time
 #   ส่วน interrupt ของจริงบนฮาร์ดแวร์ เราใช้กับปุ่มผ่าน Pin.irq() (รองรับเต็มตัว)
 
 led = gpio.led(0)            # ไฟดวงแรกไว้กระพริบเป็นจังหวะ
-btn = Pin("USER_BUTTON", Pin.IN)   # ปุ่ม SW1 = P7_0 บนบอร์ด, ตั้งเป็นขาเข้า
+btn = Pin("USER_BUTTON", Pin.IN)   # ปุ่ม USER BTN1 = P7_0 บนบอร์ด, ตั้งเป็นขาเข้า
 
 press_count = 0   # ตัวนับจำนวนครั้งที่ปุ่มถูกกด — อัปเดตจากใน interrupt
 
@@ -40,7 +40,7 @@ def on_button(pin):
 # เติม: ผูก handler เข้ากับปุ่มที่ขอบขาลง ใช้ btn.irq(handler=..., trigger=Pin.IRQ_FALLING)
 
 
-print("กดปุ่ม SW1 ได้เลย — ไฟจะกระพริบไปด้วยโดยไม่สะดุด (Ctrl+C เพื่อหยุด)")
+print("กดปุ่ม USER BTN1 ได้เลย — ไฟจะกระพริบไปด้วยโดยไม่สะดุด (Ctrl+C เพื่อหยุด)")
 
 BLINK_MS = 500              # อยากให้ไฟสลับสถานะทุก ๆ กี่มิลลิวินาที
 led_on = False
